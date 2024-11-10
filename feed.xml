@@ -44,12 +44,38 @@
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
   <item>
+    <title>Update: Neocities</title>
+    <author>webmaster@rapidcow.org</author>
+    <pubDate>Sun, 10 Nov 2024 03:00:00 -0600</pubDate>
+    <link>https://status.rapidcow.org/feed.html#1731229200</link>
+    <guid>https://status.rapidcow.org/feed.html#1731229200</guid>
+    <description><![CDATA[
+    <p>I made a Neocities account and wrote more than
+        I ever intended to even for www.rapidcow.org o_o</p>
+    <p>Looks like signing up for Neocities was the right choice,
+        but well, now I'm exhausted&hellip; and I need some sleep&hellip;.</p>
+    <p>(if you are curious about it *now*, head over to
+       <a target="_blank" rel="noopener noreferrer"
+href="https://rapidcow.neocities.org">https://rapidcow.neocities.org</a>.
+   i sat in front of my laptop for 4 hours just to
+   write up a good-enough answer &mdash; i did NOT
+   expect it to go like this.)</p>
+
+
+    <p>I made a Neocities account and wrote more than
+        I ever intended to even for www.rapidcow.org o_o</p>
+    <p>Looks like signing up for Neocities was the right choice,
+        but well, now I'm exhausted...</p>
+    ]]></description>
+  </item>
+
+  <item>
     <title>Grand opening of... status.rapidcow.org!</title>
     <author>webmaster@rapidcow.org</author>
     <pubDate>Tue, 05 Nov 2024 17:00:00 -0600</pubDate>
     <link>https://status.rapidcow.org/feed.html#1730847600</link>
     <guid>https://status.rapidcow.org/feed.html#1730847600</guid>
-    <description><![CDATA[<pre>Setting something up now...</pre>]]></description>
+    <description><![CDATA[<p>Setting something up now...</p>]]></description>
   </item>
 </channel>
 </rss>
