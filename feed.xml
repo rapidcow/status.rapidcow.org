@@ -43,6 +43,32 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>Plans for the end of 2024</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1733563800</link>
+    <guid>https://status.rapidcow.org/feed.html#1733563800</guid>
+    <pubDate>Sat, 07 Dec 2024 03:30:00 -0600</pubDate>
+    <description><![CDATA[
+    <p>I got some more motivation to return to this and escape
+    social media hellhole!  Thank you to my anonymous friend
+    for being my FIRST subscriber outside of social media :)
+    </p>
+    <p>The plans are simple: www.rapidcow.org will get a landing
+    page and a home page and www.endfind.me will get just a
+    landing page that double as the home page.  (Don't visit
+    either yet though, and if you do, don't be like <a href="https://twitter.com/AzzyThatMofo/status/1824128431245889679">Twitter</a>.)
+    </p>
+    <p>The exact date I'm unsure, but it should happen sometime
+    between next week and the week after.  I'll let you know
+    that when that happens.  Before that though I need to
+    deal with them finals next week (ugh school... DX)
+    </p>
+    <p>Thanks.  I hope I can keep feeling this motivated.</p>
+    ]]></description>
+  </item>
+
   <item>
     <title>Update: Neocities</title>
     <author>webmaster@rapidcow.org</author>
