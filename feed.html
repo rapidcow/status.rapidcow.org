@@ -8,7 +8,7 @@
     body { font-family: monospace; margin: 2rem; max-width: 64ch; }
     pre { font-family: monospace; }
   </style>
-  <link rel="alternate" type="application/rss+xml" title="Site Status" href="https://status.rapidcow.org/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed" href="https://status.rapidcow.org/feed.xml">
   <title>Site Status Feed</title>
 </head>
 <body><pre>
@@ -16,13 +16,63 @@
 
                    === Status Feed - HTML ===
 
-Hallo! You are reading the HTML version of <a href="/feed.xml">/feed.xml</a>! &gt;v&lt;
+Hallo! You are reading the HTML version of <a href="/feed.xml">/feed.xml</a>!
 
-Table of contents:
+The browser rules are the same: 64 columns per line minimum.
+I hope you enjoy this also super low-bandwidth feed page :)
+-RC
+
+Table of Contents:
+  # <a href="#1734141600">1734141600</a>   Server Downtime [+24 hours]
   # <a href="#1733566500">1733566500</a>   Plans for the end of 2024
   # <a href="#1731229200">1731229200</a>   Update: Neocities
   # <a href="#1730847600">1730847600</a>   Grand opening of... status.rapidcow.org!
 End of TOC.
+
+<a id="1734141600">1734141600</a>
+  From: &lt;webmaster&commat;rapidcow.org&gt;
+  Date: Fri, 13 Dec 2024 20:00:00 -0600
+  Subject: Server Downtime [+24 hours]
+
+  Hi this is rapid!
+
+  It's been a while since i cleaned out the nginx logs,
+  now that my finals are out of the way [well, the hard
+  ones for me at least :]  But before I do that I prefer
+  to not have to worry about new logs coming in.  Stuff
+  like telling nginx where to write the access/error logs
+  and logrotate are going to create a mess if I don't
+  set them up right...
+
+  So I decided to schedule a DOWNTIME!  Basically, the
+  server will be down for real this time (there wouldn't
+  even be a maintenance page).  This affects *all* sites
+  besides this status and the URL shortener (a.rdks.org),
+  which are the only sites hosted by Codeberg Pages.
+  Though I think no one would be *seriously* affected by
+  this, so I won't give you too much time prepare.
+
+  Things I want to do besides exporting nginx logs include:
+
+     a) set www.rapidcow.org as the canonical domain
+     b) clean up my server files scattered over /home and
+        /var/www/ (and update the nginx rules, obviously)
+     c) and probably learn how to use logrotate so that
+        I'm not looking at thousands of lines at once...
+        also i want to see how i can do this more regularly
+        and easily (and maybe even get goaccess to work?)
+
+  The exact period of maintenance is... I'm not sure.
+  But the plan is that it would be back within 24 hours of
+  the publish date of this post (so Sat thru Sun, UTC 2 AM).
+  The HTTP(S) ports might get turned on and off during this
+  period (so don't be surprised if you see the sites still
+  running -- I might still be working!) If I need more time
+  than that, I'll let you know :)
+
+  Thank you for understanding. It's an honor to be your
+  host of my Web... o7 -RC
+End of 1734141600.
 
 <a id="1733566500">1733566500</a>:
   From: &lt;webmaster&commat;rapidcow.org&gt;

@@ -45,6 +45,50 @@
   <!-- Now the rest are just feed items! -->
 
   <item>
+    <title>Server Downtime [+24 hours]</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1734141600</link>
+    <guid>https://status.rapidcow.org/feed.html#1734141600</guid>
+    <pubDate>Fri, 13 Dec 2024 20:00:00 -0600</pubDate>
+    <description><![CDATA[
+    <p>Hi this is rapid!</p>
+    <p>It's been a while since i cleaned out the nginx logs,
+    now that my finals are out of the way [well, the hard
+    ones for me at least :]  But before I do that I prefer
+    to not have to worry about new logs coming in.  Stuff
+    like telling nginx where to write the access/error logs
+    and logrotate are going to create a mess if I don't
+    set them up right...</p>
+    <p>So I decided to schedule a DOWNTIME!  Basically, the
+    server will be down for real this time (there wouldn't
+    even be a maintenance page).  This affects *all* sites
+    besides this status and the URL shortener (a.rdks.org),
+    which are the only sites hosted by Codeberg Pages.
+    Though I think no one would be <em>seriously</em> affected
+    by this, so I won't give you too much time prepare.</p>
+    <p>Things I want to do besides exporting nginx logs include:</p>
+    <ol>
+      <li> set www.rapidcow.org as the canonical domain </li>
+      <li> clean up my server files scattered over /home and
+        /var/www/ (and update the nginx rules, obviously) </li>
+      <li> and probably learn how to use logrotate so that
+        I'm not looking at thousands of lines at once...
+        also i want to see how i can do this more regularly
+        and easily (and maybe even get goaccess to work?) </li>
+    </ol>
+    <p>The exact period of maintenance is... I'm not sure.
+    But the plan is that it would be back within 24 hours of
+    the publish date of this post (so Sat thru Sun, UTC 2 AM).
+    The HTTP(S) ports might get turned on and off during this
+    period (so don't be surprised if you see the sites still
+    running -- I might still be working!) If I need more time
+    than that, I'll let you know :)</p>
+    <p>Thank you for understanding. It's an honor to be your
+    host of my Web... o7 -RC</p>
+    ]]></description>
+  </item>
+
+  <item>
     <title>Plans for the end of 2024</title>
     <author>webmaster@rapidcow.org</author>
     <link>https://status.rapidcow.org/feed.html#1733566500</link>
