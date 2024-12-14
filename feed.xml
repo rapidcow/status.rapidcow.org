@@ -61,7 +61,7 @@
     set them up right...</p>
     <p>So I decided to schedule a DOWNTIME!  Basically, the
     server will be down for real this time (there wouldn't
-    even be a maintenance page).  This affects *all* sites
+    even be a maintenance page).  This affects <em>all</em> sites
     besides this status and the URL shortener (a.rdks.org),
     which are the only sites hosted by Codeberg Pages.
     Though I think no one would be <em>seriously</em> affected
