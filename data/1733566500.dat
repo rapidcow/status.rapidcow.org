@@ -1,0 +1,30 @@
+From: <webmaster@rapidcow.org>
+Date: Sat, 07 Dec 2024 04:15:00 -0600
+Subject: Plans for the end of 2024
+
+[% IF html %]<p>[% END -%]
+I got some more motivation to return to this and escape
+social media hellhole!  Thank you to my anonymous friend
+for being my FIRST subscriber outside of social media :)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+The plans are simple: www.rapidcow.org will get a landing
+page and a home page and www.endfind.me will get just a
+landing page that double as the home page.  (Don't visit
+either yet though, and if you do, don't be like <a href="https://twitter.com/AzzyThatMofo/status/1824128431245889679">Twitter</a>.)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+The exact date I'm unsure, but it should happen sometime
+between next week and the week after.  I'll let you know
+that when that happens.  Before that though I need to
+deal with them finals next week (ugh school... DX)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Thanks.  I hope I can keep feeling this motivated.
+[%- IF html %]</p>[% END %]

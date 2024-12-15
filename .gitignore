@@ -1,0 +1,10 @@
+# Carmel
+/.carmel
+# carmel package?
+/vendor/cache
+# Output
+/public/
+# vim stuff
+.viminfo
+.netrwhist
+*.sw[a-p]

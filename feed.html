@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+    html { font-size: 12pt; color-scheme: dark light; }
+    body { font-family: monospace; margin: 2rem; max-width: 64ch; }
+    pre { font-family: monospace; }
+  </style>
+  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed" href="[% BASE_URL %]feed.xml">
+  <title>Site Status Feed</title>
+</head>
+<body><pre>
+]--[<a href="/">Home</a>]----------------------------------------------------[
+
+                   === Status Feed - HTML ===
+
+Hallo! You are reading the HTML version of <a href="/feed.xml">/feed.xml</a>!
+
+The browser rules are the same: 64 columns per line minimum.
+I hope you enjoy this also super low-bandwidth feed page :)
+-RC
+
+Table of Contents:
+[% FOR item IN items -%]
+  # <a href="#[% item.name %]">[% item.name %]</a>   [% item.headers.subject %]
+[% END -%]
+End of TOC.
+[% FOR item IN items %]
+<a id="[% item.name %]">[% item.name %]</a>:
+[% FOR pair IN item.headers.pairs -%]
+[% NEXT IF pair.key == 'content_location' -%]
+  [% pair.key | rfc822_case %]: [% pair.value | html | replace('@', '&commat;') %]
+[% END -%]
+
+[% item.content.text | indent '  ' | strip_trail | dedent_comment %]
+End of [% item.name %].
+[% END %]
+End of file.
+</pre></body>
+</html>

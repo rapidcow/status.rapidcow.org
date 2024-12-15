@@ -1,0 +1,35 @@
+From: <webmaster@rapidcow.org>
+Date: Sun, 10 Nov 2024 03:00:00 -0600
+Subject: Update: Neocities
+
+[% IF html -%]
+[%   now = "<em>now</em>" -%]
+[%   ddd = "&hellip;" -%]
+[%   mds = "&mdash;" -%]
+[% ELSE -%]
+[%   now = "*now*" -%]
+[%   ddd = "..." -%]
+[%   mds = "---" -%]
+[% END -%]
+[%- IF html %]<p>[% END -%]
+I made a Neocities account and wrote more than
+I ever intended to even for www.rapidcow.org o_o
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Looks like signing up for Neocities was the right choice,
+but well, now I'm exhausted[% ddd %] and I need some sleep[% ddd %].
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% # XXX: This as a URL should have a nonempty
+   # path!  We can fix this later though.
+   neo = "https://rapidcow.neocities.org" -%]
+[% IF html %]<p>[% END -%]
+(if you are curious about it [% now %], head over to
+ <a [% UNLESS html %]target="_blank" rel="noopener noreferrer" [% END %]href="[% neo %]">[% neo %]</a>.
+ i sat in front of my laptop for ~4 hours just to
+ write up a good-enough answer [% mds %] i did NOT
+ expect it to go like this.)
+[%- IF html %]</p>[% END %]

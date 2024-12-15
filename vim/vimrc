@@ -1,0 +1,52 @@
+" vim runtime config (because modelines are weird)
+" source this from your vimrc or -u thisguy i guess
+" actually -u vimrc does work thanks to
+" https://stackoverflow.com/a/3384476
+" (you can give it a shot, or alias vim="vim -u $(realpath vim/vimrc)"
+" if you like how things are with this config)
+" below is the wizardry runtime path stuff from
+" the said post:
+
+" set default 'runtimepath' (without ~/.vim folders)
+let &runtimepath = printf('%s/vimfiles,%s,%s/vimfiles/after', $VIM, $VIMRUNTIME, $VIM)
+
+" what is the name of the directory containing this file?
+let s:portable = expand('<sfile>:p:h')
+
+" add the directory to 'runtimepath'
+let &runtimepath = printf('%s,%s,%s/after', s:portable, &runtimepath, s:portable)
+
+" i don't know about you but this is VIMrc, so...
+" plus without this i don't even have netrw! what >:(
+set nocompatible
+" if we are sourced at all, we probably want syntax highlighting
+syntax on
+" make sure we turn on ftplugin for this
+filetype plugin on
+" (... and while nobody is watching)
+filetype indent on
+autocmd BufNewFile,BufRead *.dat setfiletype tt2 |
+	\ setlocal expandtab softtabstop=4 shiftwidth=4 tabstop=4
+autocmd BufNewFile,BufRead *.xml setfiletype xml
+autocmd BufNewFile,BufRead *.html setfiletype tt2html
+autocmd FileType xml,html,css
+	\ setlocal expandtab softtabstop=2 shiftwidth=2 tabstop=2
+" some more Vi-nocompatible settings
+set backspace=indent,eol,start   " make backspace behave 'normal'
+set ruler showcmd     " useful numbers in normal and visual mode
+" trailing whitespace! they always get me...
+set list listchars=tab:>\ ,trail:_,nbsp:~,extends:>,precedes:<
+" indent, they're useful i guess
+set autoindent
+" note: not setting mouse=a or mouse=nvi because i don't
+" think it is a universal thing to want mouse events to
+" go into vim all the time (or any time at all really)
+" see: https://github.com/tpope/vim-sensible/issues/152
+" the neovim folks have a something themselves, but...
+" i'd be looking into too much today :) for now, no mouse
+" unless you say so in your vim config....
+"
+" oh and, i need to watch public/*, so this is quite
+" important: https://stackoverflow.com/a/2329094
+au FocusGained,BufEnter * :silent! checktime
+set autoread
