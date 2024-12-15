@@ -45,6 +45,79 @@
   <!-- Now the rest are just feed items! -->
 
   <item>
+    <title>Extended Maintenance</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1734227100</link>
+    <guid>https://status.rapidcow.org/feed.html#1734227100</guid>
+    <pubDate>Sat, 14 Dec 2024 19:45:00 -0600</pubDate>
+    <description><![CDATA[
+    Argh can't believe it's 24-hours already... sorry. :(
+    I wasn't doing <em>just</em> the web site thing.  It's just I've
+    never had this much free time, I had to catch up with some
+    backing up personal stuff, and that involved hours of
+    yelling at git-annex to stop being so paranoid about
+    copying and deleting my files from Google Drive... and
+    connecting a ton of cables on my bed because some of the
+    files were only on my hard drive, yikes &gt;_&gt;
+
+    But I did get a look at the server logs in the end!
+    I do have some experience exporting since I've done that
+    before (a month or so ago), but because it was so tedious
+    last time that I decided to "speed up" the process by
+    making my Bash scripts more robust, and that meant running
+    into more quirky stuff like variable scopes.
+
+    And I got up at 5 PM! Okay don't judge me I know I slept
+    for 12 hours &gt;:( it was more than what I expected too,
+    but I am sort of hungry now... so I might have to go and
+    eat something first before continuing.
+
+    Also, the CSS for this page is kind of bad: pure white on
+    black/black on white?  Old-school terminals used pure white
+    exclusively for <strong>BOLD</strong> text (it looks something like <a href="https://int10h.org/oldschool-pc-fonts/">this)</a>;
+    it's like they understand color theory or something!
+    So I might have to change that -- but that's only after I
+    get the sites back up again?  Waaahhh I don't knoooow &gt;n&gt;
+
+    -- but I know the old blue maintenance page has to go!
+    I thought it'd mostly be the crawlers visiting (so the
+    PNG drawing wouldn't be requested as much), but I fed the
+    1.5 million logs I exported last time into GoAccess and
+    turns out there were still so many requests for the image!
+    So the new page will have to be MUCH more lightweight
+    (with NO images!) and I don't know, maybe I will call it
+    an "under construction" page to distinguish it from what
+    I am calling maintenance for this ongoing... thing?
+
+    But yeah. I will need more time. It'll probably take more
+    than a day to get <em>everything</em> done, but at least I will
+    configure nginx properly this time, set up logrotate and
+    figure out how to export logs in a way that doesn't shut
+    all the ports down again like this, put up the new page
+    for every site that I'm not ready to show --
+    geesh does that not sound like a lot to you?
+    Being a webmaster is HARD. :c
+
+    BUT... it's a battle I am willing to fight.  Being a
+    webmaster is fun, even if I know that fewer people will
+    watching compared to when I was on YouTube or Twitter.
+    Having said that I do remember reading a few things that
+    I quite liked: this world needs more <a href="https://justinjackson.ca/webmaster/">webmasters</a>, not
+    influencers, TikToks, social media -- and I definitely
+    don't mean <a href="https://interfacecritique.net/book/olia-lialina-from-my-to-me/">graphic designers and developers</a>!
+
+    Yeah right this announcement has been long enough I'll go
+    eat something and then get back to work =n= (ooh and I'm
+    also thinking of publishing some stats from my nginx logs,
+    with individual IP addresses anonymized (obviously)!
+    If <em>you</em> have anything specific you want to see in mind
+    (yes! YOU reading this!!!) send me an e-mail (it's in this
+    RSS feed) and let me know! Otherwise I'll only look into my
+    favorite stats like how much bandwidth I am wasting...)
+    ]]></description>
+  </item>
+
+  <item>
     <title>Server Downtime [+24 hours]</title>
     <author>webmaster@rapidcow.org</author>
     <link>https://status.rapidcow.org/feed.html#1734141600</link>
@@ -74,7 +147,7 @@
       <li> and probably learn how to use logrotate so that
         I'm not looking at thousands of lines at once...
         also i want to see how i can do this more regularly
-        and easily (and maybe even get goaccess to work?) </li>
+        and easily (and maybe even get GoAccess to work?) </li>
     </ol>
     <p>The exact period of maintenance is... I'm not sure.
     But the plan is that it would be back within 24 hours of
@@ -124,7 +197,7 @@
         I ever intended to even for www.rapidcow.org o_o</p>
     <p>Looks like signing up for Neocities was the right choice,
         but well, now I'm exhausted&hellip; and I need some sleep&hellip;.</p>
-    <p>(if you are curious about it *now*, head over to
+    <p>(if you are curious about it <em>now</em>, head over to
        <a target="_blank" rel="noopener noreferrer"
 href="https://rapidcow.neocities.org">https://rapidcow.neocities.org</a>.
    i sat in front of my laptop for ~4 hours just to
