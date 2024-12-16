@@ -30,6 +30,16 @@ sub commit {
 	say STDERR "# committing tree $tree";
 	if ($parent) {
 		say STDERR "# basing on $parent" if $parent;
+		print STDERR "# do you want to see a diff? (y/N) ";
+		chomp (my $answer = <STDIN>);
+		if ($answer eq 'y') {
+			try {
+				$git->command_noisy('diff', $parent, $tree);
+			} catch Error::Simple with {
+				# git-diff returns >0 status if any diff was
+				# present at all; it's not really of use
+			};
+		}
 	} else {
 		say STDERR "# (root commit)";
 	}

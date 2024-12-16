@@ -21,30 +21,34 @@ set them up right...
 [% IF html %]<p>[% END -%]
 So I decided to schedule a DOWNTIME!  Basically, the
 server will be down for real this time (there wouldn't
-even be a maintenance page).  This affects [% IF html %]<p>all</p>[% ELSE %]*all*[% END %] sites
+even be a maintenance page).  This affects [% IF html %]<em>all</em>[% ELSE %]*all*[% END %] sites
 besides this status and the URL shortener (a.rdks.org),
 which are the only sites hosted by Codeberg Pages.
-Though I think no one would be [% IF html %]<p>seriously</p>[% ELSE %]*seriously*[% END %] affected by
+Though I think no one would be [% IF html %]<em>seriously</em>[% ELSE %]*seriously*[% END %] affected by
 this, so I won't give you too much time prepare.
 [%- IF html %]</p>[% ELSE %]
 [% END -%]
 
+[% IF html %]<p>[% END -%]
 Things I want to do besides exporting nginx logs include:
 [%- IF html %]</p>[% ELSE %]
 [% END -%]
-[%- IF html %]<ul>[% ELSE %]
+[%- IF html %]<ol>[% ELSE %]
 [% END -%]
   [% IF html %]<li>[% ELSE %] a) [% END %]set www.rapidcow.org as the canonical domain
 [%- IF html %]</li>[% END %]
   [% IF html %]<li>[% ELSE %] b) [% END %]clean up my server files scattered over /home and
-               /var/www/ (and update the nginx rules, obviously)
+      /var/www/ (and update the nginx rules, obviously)
 [%- IF html %]</li>[% END %]
   [% IF html %]<li>[% ELSE %] c) [% END %]and probably learn how to use logrotate so that
       I'm not looking at thousands of lines at once...
       also i want to see how i can do this more regularly
       and easily (and maybe even get GoAccess to work?)
-[%- IF html %]</li></ul>[% END %]
+[%- IF html %]</li>
+</ol>[% ELSE %]
+[% END %]
 
+[% IF html %]<p>[% END -%]
 The exact period of maintenance is... I'm not sure.
 But the plan is that it would be back within 24 hours of
 the publish date of this post (so Sat thru Sun, UTC 2 AM).
@@ -52,6 +56,10 @@ The HTTP(S) ports might get turned on and off during this
 period (so don't be surprised if you see the sites still
 running -- I might still be working!) If I need more time
 than that, I'll let you know :)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
 
+[% IF html %]<p>[% END -%]
 Thank you for understanding. It's an honor to be your
 host of my Web... o7 -RC
+[%- IF html %]</p>[% END %]

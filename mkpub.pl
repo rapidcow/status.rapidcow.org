@@ -119,17 +119,28 @@ sub dedent_comment {
 	for (@lines) {
 		# using $_ is the only way to justify my sadness
 		# for the removal of given/when.... :<
-		if ($_ eq '<!--') {
+		if (/<!--$/) {
 			s/^[ ]{,2}//;
 			$incmt = 1;
-		} elsif ($_ eq '-->') {
+		} elsif (/-->$/) {
 			s/^[ ]{,2}//;
 			$incmt = 0;
-		} elsif ($_) {
+		} elsif ($incmt) {
 			s/^[ ]{,2}//;
 		}
 	}
 	return join "\n", @lines;
+}
+
+# this is meant to extract the address of an RFC822
+# From/To header. but since we're dealing with the
+# painfully simple <webmaster@rapidcow.org>, we can
+# get away with something stupid....
+sub address {
+	my $text = shift;
+	my $i = (index($text, "<") + 1);
+	my $j = (index($text, ">", $i) + 1 || length($text) + 1) - 1;
+	return substr($text, $i, $j - $i);
 }
 
 # main function
@@ -142,6 +153,7 @@ my $template = Template->new({
 		rfc822_case => \&rfc822_case,
 		strip_trail => \&strip_trail,
 		dedent_comment => \&dedent_comment,
+		address => \&address,
 	},
 }) || die $Template::ERROR, "\n";
 $template->process($file, {

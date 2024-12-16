@@ -43,10 +43,11 @@
   <atom:link rel="self" type="application/rss+xml"
       href="[% BASE_URL %]feed.xml" />
   <!-- Now the rest are just feed items! -->
-[% FOREACH item IN items -%]
+
+[% FOREACH item IN items %]
   <item>
     <title>[% item.headers.subject | html %]</title>
-    <author>[% item.headers.from | html %]</author>
+    <author>[% item.headers.from | address %]</author>
     <link>[% item.headers.content_location %]</link>
     <guid>[% item.headers.content_location %]</guid>
     <pubDate>[% item.headers.date %]</pubDate>

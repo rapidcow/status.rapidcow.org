@@ -59,7 +59,7 @@ I am calling maintenance for this ongoing... thing?
 
 [% IF html %]<p>[% END -%]
 But yeah. I will need more time. It'll probably take more
-than a day to get [% IF html %]<p>everything</p>[% ELSE %]*everything*[% END %] done, but at least I will
+than a day to get [% IF html %]<em>everything</em>[% ELSE %]*everything*[% END %] done, but at least I will
 configure nginx properly this time, set up logrotate and
 figure out how to export logs in a way that doesn't shut
 all the ports down again like this, put up the new page
@@ -136,12 +136,12 @@ don't mean <a href="https://interfacecritique.net/book/olia-lialina-from-my-to-m
   historian), go on YouTube and just... search "Wix" or "Wix
   advertisement".  I'm sure you'll find plenty of that filth.)
 -->[% END %]
-  Yeah right this announcement has been long enough I'll go
-  eat something and then get back to work =n= (ooh and I'm
-  also thinking of publishing some stats from my nginx logs,
-  with individual IP addresses anonymized (obviously)!
-  If [% IF html %]<p>you</p>[% ELSE %]*you*[% END %] have anything specific you want to see in mind
-  (yes! YOU reading this!!!) send me an e-mail (it's in this
-  RSS feed) and let me know! Otherwise I'll only look into my
-  favorite stats like how much bandwidth I am wasting...)
+Yeah right this announcement has been long enough I'll go
+eat something and then get back to work =n= (ooh and I'm
+also thinking of publishing some stats from my nginx logs,
+with individual IP addresses anonymized (obviously)!
+If [% IF html %]<em>you</em>[% ELSE %]*you*[% END %] have anything specific you want to see in mind
+(yes! YOU reading this!!!) send me an e-mail (it's in this
+RSS feed) and let me know! Otherwise I'll only look into my
+favorite stats like how much bandwidth I am wasting...)
 [%- IF html %]</p>[% END %]
