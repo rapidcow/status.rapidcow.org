@@ -31,6 +31,8 @@ sub parse {
 			die "duplicate field: $field\n";
 		}
 		$headers{$fieldname} = $value;
+		# to preserve header order...
+		push @{$headers{order}}, $fieldname;
 	}
 	return \%headers;
 }
