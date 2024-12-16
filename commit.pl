@@ -12,21 +12,21 @@ use Cwd 'abs_path';
 use File::Spec::Functions qw(catfile);
 
 # $1: git repository
-# $2: tree-ish
-# $3: branch
+# $2: branch
+# $3: tree-ish
 sub commit {
 	my $git = shift;
-	my $tree = shift;
 	my $head = shift;
+	my $tree = shift;
 	die unless defined $git;
-	die unless defined $tree;
 	die unless defined $head;
+	die unless defined $tree;
 	my $parent;
 	try {
 		$parent = $git->command_oneline('rev-parse', '--verify', $head);
-	} catch Git::Error::Command with {
+	} catch Error::Simple with {
 		$parent = 0;
-	}
+	};
 	say STDERR "# committing tree $tree";
 	if ($parent) {
 		say STDERR "# basing on $parent" if $parent;
