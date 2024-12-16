@@ -51,12 +51,12 @@
     <guid>https://status.rapidcow.org/feed.html#1734362640</guid>
     <pubDate>Mon, 16 Dec 2024 09:24:00 -0600</pubDate>
     <description><![CDATA[
-    <p>Yeah, I definitely underestimated what *could* happen
+    <p>Yeah, I definitely underestimated what <em>could</em> happen
     over a day rather than how long it practically takes to
     do the thing.  You never know what will get in the way.
     And eating more than I wanted definitely did not help my
     stomach, aeugh... (they even got me the wrong bao and
-    I couldn't even complain :<)</p>
+    I couldn't even complain :&lt;)</p>
     <p>(Life tip: if you do not want to eat more than a bowl of
     noodles and you see people ordering a bunch of things,
     *do not* order more than that bowl of noodles!  Otherwise
@@ -68,9 +68,9 @@
     know there's just so much to do!!! &gt;n&lt;</p>
     <p>But I did write a something that made updating this feed
     easier?  I pushed that new branch to Codeberg yesterday,
-    so you can see how it's done.  It uses Perl which I think
+    so <a href="https://codeberg.org/rapidcow/status/src/branch/pages-src">you can see</a> how it's done.  It uses Perl which I think
     is an underrated language full of code written by people
-    who enjoy the craft.  Really -- I was reading Template::Tutorials::Datafile and many other perldocs yesterday.
+    who enjoy the craft.  Really&mdash;I was reading Template::Tutorials::Datafile and many other perldocs yesterday.
     I am really glad to see this art isn't lost to time and
     completely displaced by huge corporate codebases. :)</p>
     <p>(Every time I say something that doesn't really have to
