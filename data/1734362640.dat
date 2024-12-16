@@ -4,15 +4,13 @@ From: <webmaster@rapidcow.org>
 Date: Mon, 16 Dec 2024 09:24:00 -0600
 Subject: I need more time :(
 
-[%-# TODO: HTML MARKUP (WILL DO AFTER EXAM) #-%]
-
 [% IF html %]<p>[% END -%]
-Yeah, I definitely underestimated what *could* happen
+Yeah, I definitely underestimated what [% IF html %]<em>could</em>[% ELSE %]*could*[% END %] happen
 over a day rather than how long it practically takes to
 do the thing.  You never know what will get in the way.
 And eating more than I wanted definitely did not help my
 stomach, aeugh... (they even got me the wrong bao and
-I couldn't even complain :<)
+I couldn't even complain [% FILTER html %]:<[% END %])
 [%- IF html %]</p>[% ELSE %]
 [% END -%]
 
@@ -36,9 +34,9 @@ know there's just so much to do!!! [% FILTER html %]>n<[% END %]
 [% IF html %]<p>[% END -%]
 But I did write a something that made updating this feed
 easier?  I pushed that new branch to Codeberg yesterday,
-so you can see how it's done.  It uses Perl which I think
+so <a href="https://codeberg.org/rapidcow/status/src/branch/pages-src">you can see</a> how it's done.  It uses Perl which I think
 is an underrated language full of code written by people
-who enjoy the craft.  Really -- I was reading Template::[% UNLESS html %]
+who enjoy the craft.  Really[% IF html %]&mdash;[% ELSE %] -- [% END %]I was reading Template::[% UNLESS html %]
 [% END -%]
 Tutorials::Datafile and many other perldocs yesterday.
 I am really glad to see this art isn't lost to time and

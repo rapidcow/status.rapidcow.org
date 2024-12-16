@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+[%# A document must not include both a 'meta' element with an -%]
+[%# 'http-equiv' attribute whose value is 'content-type', and -%]
+[%# 'meta' element with a 'charset' attribute. #-%]
+[%# Aww.... so remove this? :( #-%]
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+[%#<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-%]
   <style>
     html { font-size: 12pt; color-scheme: dark light; }
     body { font-family: monospace; margin: 2rem; max-width: 64ch; }
