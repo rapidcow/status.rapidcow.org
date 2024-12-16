@@ -33,7 +33,8 @@ this, so I won't give you too much time prepare.
 Things I want to do besides exporting nginx logs include:
 [%- IF html %]</p>[% ELSE %]
 [% END -%]
-[%- IF html %]<ol>[% ELSE %]
+
+[% IF html %]<ol>
 [% END -%]
   [% IF html %]<li>[% ELSE %] a) [% END %]set www.rapidcow.org as the canonical domain
 [%- IF html %]</li>[% END %]
@@ -46,7 +47,7 @@ Things I want to do besides exporting nginx logs include:
       and easily (and maybe even get GoAccess to work?)
 [%- IF html %]</li>
 </ol>[% ELSE %]
-[% END %]
+[% END -%]
 
 [% IF html %]<p>[% END -%]
 The exact period of maintenance is... I'm not sure.

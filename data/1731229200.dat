@@ -25,10 +25,12 @@ but well, now I'm exhausted[% ddd %] and I need some sleep[% ddd %].
 
 [% # XXX: This as a URL should have a nonempty
    # path!  We can fix this later though.
+   # Nevermind, we'll fit it now, since there's
+   # already so many changes by switching to TT
    neo = "https://rapidcow.neocities.org" -%]
 [% IF html %]<p>[% END -%]
 (if you are curious about it [% now %], head over to
- <a [% UNLESS html %]target="_blank" rel="noopener noreferrer" [% END %]href="[% neo %]">[% neo %]</a>.
+ <a [% UNLESS html %]target="_blank" rel="noopener noreferrer" [% END %]href="[% neo %]/">[% neo %]</a>.
  i sat in front of my laptop for ~4 hours just to
  write up a good-enough answer [% mds %] i did NOT
  expect it to go like this.)
