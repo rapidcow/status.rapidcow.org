@@ -7,9 +7,11 @@ export BASE_URL = https://status.rapidcow.org/
 
 public: $(patsubst %,public/%,.domains robots.txt index.html feed.html feed.xml)
 
-public/robots.txt: robots.txt
-	cp $< $@
 public/.domains: .domains
+	@mkdir -p public/
+	cp $< $@
+public/robots.txt: robots.txt
+	@mkdir -p public/
 	cp $< $@
 
 # catch-all rule
