@@ -145,17 +145,54 @@ sub address {
 	return substr($text, $i, $j - $i);
 }
 
+# according to this... https://stackoverflow.com/a/62477582
+# also see perldoc Template::Manual::Directives in FILTER
+# for examples of dynamic filters work
+sub rfc822_date_factory {
+	my ($context, $timezone) = @_;
+	$timezone = $timezone // "GMT";
+	use Time::Piece;
+	my $offset;
+	# on top of RFC822 Temps Universel Coordonné and Undertale time
+	# of course, modern emails aren't supposed to have either,
+	# as per the updated RFC2822 and RFC5322... but that doesn't
+	# mean we can't have fun here >:)
+	if ($timezone eq "GMT" || $timezone eq "UTC" || $timezone eq "UT") {
+		$offset = 0;
+	} else {
+		if ($timezone =~ m/\A([+-])(\d\d)(\d\d)\Z/) {
+			my $sign = $1 eq '+' ? 60 : -60;
+			my $hour = $2;
+			my $mint = $3;
+			$offset = $sign * ($hour*60 + $mint*1);
+		} else {
+			die "invalid RFC(2)822 timezone: $timezone";
+		}
+	}
+	return sub {
+		my $time = shift;
+		# now we can format time as if the clock was
+		# dialed forward/backward by that much
+		return Time::Piece->gmtime($time + $offset)->strftime(
+			"%a, %d %b %Y %H:%M:%S $timezone"	
+		);
+	}
+}
+
 # main function
 my $file = shift;
 die "usage: $0 <file>\n" unless defined $file;
 
 my $template = Template->new({
 	INCLUDE_PATH => ['.'],
+	# now to declare our filters according to
+	# Template::Filters...
 	FILTERS => {
 		rfc822_case => \&rfc822_case,
 		strip_trail => \&strip_trail,
 		dedent_comment => \&dedent_comment,
 		address => \&address,
+		rfc822_date => [ \&rfc822_date_factory, 1 ],
 	},
 }) || die $Template::ERROR, "\n";
 $template->process($file, {
