@@ -25,12 +25,12 @@ syntax on
 filetype plugin on
 " (... and while nobody is watching)
 filetype indent on
+" need to override autoload/dist/script.vim checking
+" for DOCTYPE declaration and setting filetype for us!
+" setfiletype is too "weak" for HTML!
 autocmd BufNewFile,BufRead *.dat setfiletype tt2 |
 	\ setlocal expandtab softtabstop=4 shiftwidth=4 tabstop=4
-autocmd BufNewFile,BufRead *.xml setfiletype xml
-autocmd BufNewFile,BufRead *.html setfiletype tt2html
-autocmd FileType xml,html,css
-	\ setlocal expandtab softtabstop=2 shiftwidth=2 tabstop=2
+autocmd BufNewFile,BufRead *.html setlocal filetype=tt2html
 " some more Vi-nocompatible settings
 set backspace=indent,eol,start   " make backspace behave 'normal'
 set ruler showcmd     " useful numbers in normal and visual mode
