@@ -153,10 +153,9 @@ sub rfc822_date_factory {
 	$timezone = $timezone // "GMT";
 	use Time::Piece;
 	my $offset;
-	# on top of RFC822 Temps Universel Coordonné and Undertale time
-	# of course, modern emails aren't supposed to have either,
-	# as per the updated RFC2822 and RFC5322... but that doesn't
-	# mean we can't have fun here >:)
+	# on top of RFC822 we can allow Temps Universel Coordonné and Undertale time
+	# of course, modern emails aren't supposed to have either, as per the updated
+	# RFC2822 and RFC5322... but that doesn't mean we can't have fun here >:)
 	if ($timezone eq "GMT" || $timezone eq "UTC" || $timezone eq "UT") {
 		$offset = 0;
 	} else {
@@ -174,7 +173,7 @@ sub rfc822_date_factory {
 		# now we can format time as if the clock was
 		# dialed forward/backward by that much
 		return Time::Piece->gmtime($time + $offset)->strftime(
-			"%a, %d %b %Y %H:%M:%S $timezone"	
+			"%a, %d %b %Y %H:%M:%S $timezone"
 		);
 	}
 }
