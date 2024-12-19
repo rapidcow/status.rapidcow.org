@@ -1,0 +1,78 @@
+From: <webmaster@rapidcow.org>
+Date: Thu, 19 Dec 2024 01:13:22 -0600
+Subject: Update
+
+[%
+  hellip = html ? '&hellip;' : '...'
+  emdash = html ? '&mdash;' : ' -- '
+-%]
+[% IF html %]<p>[% END -%]
+(Old Message on Wed, 18 Dec 2024 13:29:23 -0600)
+[%-# Old title: Update! (and More Plans!) -%]
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Hello hello! Good morning! ^^ (or afternoon I guess =.=)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+So last night I couldn't sleep so I went though the
+rest of server nginx logs[% hellip %] stayed up quite late but
+in the end it was worth it I guess?  At least now I get to
+see just how many bots are visiting and put their stats up
+in the hall of shame (mwehehe [% FILTER html %]>:)[% END %]
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+(New message)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Hiya so, now that I am hosting the status page myself,
+I can say I am quite disappointed.  Within mere [%
+html ? '<em>seconds</em>' : '*seconds*' %]
+my logs were instantaneously flooded with requests that
+blatantly probe for server vulnerability[% emdash %]paths like
+/.env and /wp-whatever and such.  I forgot what they were
+exactly but they made me feel sick[% hellip %].
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Also in case it isn't obvious enough already, every other
+site is still technically "down" even though the server
+isn't; for a while you could make requests to rapidcow.org
+and it would just give you a bad host error (because I
+disabled all my old configs and naturally nginx wouldn't
+recognize any virtual host other than status.rapidcow.org.)
+To prevent that confusion I have since removed DNS records
+that pointed rapidcow.org and www.rapidcow.org to my server,
+so now you get an DNS error instead of a scary bad host
+error.  I haven't done that for all domains though; but
+I'm tired[% hellip %]
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+About the plans?  Forget about it[% hellip %] I need to rest my
+eyes[% hellip %]. My flight back home is in less than 48 hours.
+I can probably look to measures to ban these bots more
+effectively than directly looking at the access logs
+(grep'ing their IPs in existing blacklists is an idea).
+But I won't be updating this until I'm back home[% hellip %].
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+(Sorry, it's just[% hellip %] the dead Internet thing feels too
+real.  Maybe only now am I seeing it for what it is.
+Why did I want to make a website again?  Maybe I can just
+turn it off when I'm tired and turn it back on when I'm
+not[% hellip %] It feels like no one's there[% hellip %] (or maybe I could
+just switch to Neocities so I don't have to experience
+despair from staring at the abysmal amount of bot requests))
+[%- IF html %]</p>[% END %]
