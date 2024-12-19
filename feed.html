@@ -22,6 +22,7 @@ I hope you enjoy this also super low-bandwidth feed page :)
 -RC
 
 Table of Contents:
+  # <a href="#1734592402">1734592402</a>   Update
   # <a href="#1734362640">1734362640</a>   I need more time :(
   # <a href="#1734227100">1734227100</a>   Extended Maintenance
   # <a href="#1734141600">1734141600</a>   Server Downtime [+24 hours]
@@ -29,6 +30,58 @@ Table of Contents:
   # <a href="#1731229200">1731229200</a>   Update: Neocities
   # <a href="#1730847600">1730847600</a>   Grand opening of... status.rapidcow.org!
 End of TOC.
+
+<a id="1734592402">1734592402</a>:
+  From: &lt;webmaster&commat;rapidcow.org&gt;
+  Date: Thu, 19 Dec 2024 01:13:22 -0600
+  Subject: Update
+
+  (Old Message on Wed, 18 Dec 2024 13:29:23 -0600)
+
+  Hello hello! Good morning! ^^ (or afternoon I guess =.=)
+
+  So last night I couldn't sleep so I went though the
+  rest of server nginx logs... stayed up quite late but
+  in the end it was worth it I guess?  At least now I get to
+  see just how many bots are visiting and put their stats up
+  in the hall of shame (mwehehe &gt;:)
+
+  (New message)
+
+  Hiya so, now that I am hosting the status page myself,
+  I can say I am quite disappointed.  Within mere *seconds*
+  my logs were instantaneously flooded with requests that
+  blatantly probe for server vulnerability -- paths like
+  /.env and /wp-whatever and such.  I forgot what they were
+  exactly but they made me feel sick....
+
+  Also in case it isn't obvious enough already, every other
+  site is still technically "down" even though the server
+  isn't; for a while you could make requests to rapidcow.org
+  and it would just give you a bad host error (because I
+  disabled all my old configs and naturally nginx wouldn't
+  recognize any virtual host other than status.rapidcow.org.)
+  To prevent that confusion I have since removed DNS records
+  that pointed rapidcow.org and www.rapidcow.org to my server,
+  so now you get an DNS error instead of a scary bad host
+  error.  I haven't done that for all domains though; but
+  I'm tired...
+
+  About the plans?  Forget about it... I need to rest my
+  eyes.... My flight back home is in less than 48 hours.
+  I can probably look to measures to ban these bots more
+  effectively than directly looking at the access logs
+  (grep'ing their IPs in existing blacklists is an idea).
+  But I won't be updating this until I'm back home....
+
+  (Sorry, it's just... the dead Internet thing feels too
+  real.  Maybe only now am I seeing it for what it is.
+  Why did I want to make a website again?  Maybe I can just
+  turn it off when I'm tired and turn it back on when I'm
+  not... It feels like no one's there... (or maybe I could
+  just switch to Neocities so I don't have to experience
+  despair from staring at the abysmal amount of bot requests))
+End of 1734592402.
 
 <a id="1734362640">1734362640</a>:
   From: &lt;webmaster&commat;rapidcow.org&gt;
