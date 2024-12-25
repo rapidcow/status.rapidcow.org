@@ -15,7 +15,8 @@
   <link rel="alternate" type="application/rss+xml" title="Site Status" href="[% BASE_URL %]feed.xml">
   <title>Site Status</title>
 </head>
-[% mtime = 1734412099 -%]
+[% mtime = 1735133015
+   mzone = "+0800" -%]
 <body><pre>
               === rapidcow's Site Status Page! ===
 
@@ -25,19 +26,12 @@
   Subscribe to stay updated! :D --&gt; [<a href="feed.xml">RSS</a>][<a
                                            href="feed.html">HTML</a>] &lt;--
 
-  +----- !!! NOTICE !!! --------------------------------------+
-  |   As per <a href="feed.html#[% items.item(1).name %]">the second-latest post</a>, the SERVER will be under |
-  |   maintenance until Wednesday.  Practically I will need   |
-  |   until next Monday because I have a flight on Friday.    |
-  |   Realistically, I don't know; I am feeling pretty down.  |
-  |                                                           |
-  |   I will still monitor the logs.  Worst case scenario     |
-  |   I'll stop self-hosting for a while and take care of     |
-  |   myself.  Whether or not you have been to my sites,      |
-  |   thank you for being a part of it -- perhaps the &lt;1%     |
-  |   human part of it.  I'll see you on Neocities, if not    |
-  |   on any of the following sites.                          |
-  |                                     -your webmaster, RC   |
+[% FILTER html -%]
+  +-----------------------< NOTICE >--------------------------+
+[%- END %]
+  |  www.rapidcow.org and friends will be down as I take a    |
+  |  break to heal from my tooth extraction (see post <a href="feed.html#[% items.first.name %]">here</a>).  |
+  |  Wishing you all a comfy holiday at your homes... ;)      |
   +-----------------------------------------------------------+
 
      *  www.rapidcow.org:   DOWN
@@ -51,11 +45,11 @@
 
   notable other places i happen to have:
 
-     rapidcow.neocities.org: see NOTICE above
+     rapidcow.neocities.org: I'm working on it!
      rapidcow.tumblr.com: don't ask
         (it's there but that's about it)
 
-  -- modified [% mtime %] ([% mtime | rfc822_date("-0600") %]) --
+  -- modified [% mtime %] ([% mtime | rfc822_date(mzone) %]) --
 <!--
      since we are settling for 64 columns, these guys
      can actually be nicely centered for once...

@@ -1,0 +1,104 @@
+From: <webmaster@rapidcow.org>
+Date: Wed, 25 Dec 2024 21:27:11 +0800
+Subject: Winter break and stuff
+
+[%
+  mmdash = html ? "&mdash;"  : " -- "
+  mdash  = html ? "&mdash;"  : " - "
+  ldash  = html ? "&mdash;"  : "- "
+  dots   = html ? "&hellip;" : "..."
+-%]
+[% IF html %]<p>[% END -%]
+(ouch i forgot how much tooth extraction hurts
+during the first few days[% dots %])
+[%-#  It's the root canal nerves that really hurt, yeah :'( #%]
+[%-# (Also the sensation of that loud & sharp metal saw...) #%]
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Anyway I've been having a lot of fun at home with
+my first ever Linux laptop! :) Staying too long in
+the virtual consoles, <a href="https://asciinema.org/a/696086">messing with Bash $PS1</a>,
+learning more about TCP networking and stuff[% dots %]
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+I also had my wisdom tooth extraction today though it hurts
+a lot less this time[% mmdash %]still I don't want to risk leaving
+this site untouched, in case I fall ill for a day or two :(
+Also my mom tells me that I should rest and I think so too...
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+(Yeah! Web sites can wait! But health comes first! [% ldash %]oh and
+ also backup backup backup backup backup[% mdash %]always back up
+ never stop backing up, <a href="https://write.as/synth-ruiner/the-low-tech-manifesto#we-own-our-own-culture">download</a> your favorite things or it
+ may be the last time you see it[% mdash %]backup backup BACKUP!!!)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Also: Neocities[% dots %] will actually be the first to be updated,
+because I decided that instead of trying to make a big
+message, I would just[% dots %] make something.  I thought of this
+when I was walking home tonight, that the best way of showing
+the Web I want to see is to just make it, and its existence
+alone would serve to defy everything that it is different
+from: I like text files, not Word and PowerPoint and Excel.
+I like old and modest tech, not the newest buzzword AI tech.
+I like the 90s Web, the Open Web, not the corporate Web,
+where a few monopolies control all our data, creations,
+and livelihoods; where people are spoon-fed content made
+just for the sake of content, not for the love of making;
+and where people are compressed into canned descriptions
+of their lives, to be copied over and over in those perfect
+rectangular profile boxes, so much so that [%# space #%]
+[%- BLOCK link -%]<a href="https://abdullahtarawneh.com/blog/personal-websites/">[% content %]</a>[% END -%]
+[% IF html -%]
+[% WRAPPER link %]they themselves start to introduce their being as such[% END %]
+[%- ELSE -%]
+[% WRAPPER link %]they themselves[% END %]
+[% WRAPPER link %]start to introduce their being as such[% END %]
+[%- END %][% dots %]
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+[% dots %][% dots %]
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+But all of that is just what's in my head!  I haven't
+actually written much, nyeah. :P  As I said I am taking a
+break[% dots %] a looooong break where I do things that I can
+never explain to any else[% mmdash %]is it an elaborate portfolio?
+A programming project? A creative writing project?  An ART
+project??? or is it just a bunch of things I like, done out
+of no reason other than me being the rambunctious teenage
+boy I am?  (Well we teenagers do <a href="https://phrack.org/issues/7/3">think alike</a>[%#
+%], so umm[% dots %])
+[%- IF html %]</p>[% END %]
+[%# I know I'm kind of stealing the term "teenager" here.  -%]
+[%# Frankly, I would prefer to just say "hackers", but not -%]
+[%# everyone would associate a hacker with someone they'd  -%]
+[%# want to talk to - which I find somewhat appropriate.   -%]
+[%# Both are, in a way, outcasts of the society, who chal- -%]
+[%# lenge its rules so much they are seen as deviants.     -%]
+[%#                                                        -%]
+[%# But is being an outcast what defines me as a teenager, -%]
+[%# as a hacker?  If I were to become one of the accepted  -%]
+[%# ones, celebrated by schools for my mischief, sponsored -%]
+[%# by the government for my hacks... it to me changes a   -%]
+[%# core part of my being -- that is the desire for auto-  -%]
+[%# nomy, and supposedly the respect for the autonomy of   -%]
+[%# one another, which neither do the authorities hold the -%]
+[%# empathy nor care for.  In an idealized outlook for a   -%]
+[%# world run by the outcasts we would base our power not  -%]
+[%# on the suppression of those deemed inferior by some    -%]
+[%# unspeakable criteria inferior, but on the equal power  -%]
+[%# we hold under this culture of exchanging knowledge and -%]
+[%# sharing information (sharing truly *is* caring, ha! :) -%]
