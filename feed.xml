@@ -45,6 +45,54 @@
   <!-- Now the rest are just feed items! -->
 
   <item>
+    <title>Winter break and stuff</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1735133231</link>
+    <guid>https://status.rapidcow.org/feed.html#1735133231</guid>
+    <pubDate>Wed, 25 Dec 2024 21:27:11 +0800</pubDate>
+    <description><![CDATA[
+    <p>(ouch i forgot how much tooth extraction hurts
+    during the first few days&hellip;)</p>
+    <p>Anyway I've been having a lot of fun at home with
+    my first ever Linux laptop! :) Staying too long in
+    the virtual consoles, <a href="https://asciinema.org/a/696086">messing with Bash $PS1</a>,
+    learning more about TCP networking and stuff&hellip;</p>
+    <p>I also had my wisdom tooth extraction today though it hurts
+    a lot less this time&mdash;still I don't want to risk leaving
+    this site untouched, in case I fall ill for a day or two :(
+    Also my mom tells me that I should rest and I think so too...</p>
+    <p>(Yeah! Web sites can wait! But health comes first! &mdash;oh and
+     also backup backup backup backup backup&mdash;always back up
+     never stop backing up, <a href="https://write.as/synth-ruiner/the-low-tech-manifesto#we-own-our-own-culture">download</a> your favorite things or it
+     may be the last time you see it&mdash;backup backup BACKUP!!!)</p>
+    <p>Also: Neocities&hellip; will actually be the first to be updated,
+    because I decided that instead of trying to make a big
+    message, I would just&hellip; make something.  I thought of this
+    when I was walking home tonight, that the best way of showing
+    the Web I want to see is to just make it, and its existence
+    alone would serve to defy everything that it is different
+    from: I like text files, not Word and PowerPoint and Excel.
+    I like old and modest tech, not the newest buzzword AI tech.
+    I like the 90s Web, the Open Web, not the corporate Web,
+    where a few monopolies control all our data, creations,
+    and livelihoods; where people are spoon-fed content made
+    just for the sake of content, not for the love of making;
+    and where people are compressed into canned descriptions
+    of their lives, to be copied over and over in those perfect
+    rectangular profile boxes, so much so that <a href="https://abdullahtarawneh.com/blog/personal-websites/">they themselves start to introduce their being as such</a>&hellip;</p>
+    <p>&hellip;&hellip;</p>
+    <p>But all of that is just what's in my head!  I haven't
+    actually written much, nyeah. :P  As I said I am taking a
+    break&hellip; a looooong break where I do things that I can
+    never explain to any else&mdash;is it an elaborate portfolio?
+    A programming project? A creative writing project?  An ART
+    project??? or is it just a bunch of things I like, done out
+    of no reason other than me being the rambunctious teenage
+    boy I am?  (Well we teenagers do <a href="https://phrack.org/issues/7/3">think alike</a>, so umm&hellip;)</p>
+    ]]></description>
+  </item>
+
+  <item>
     <title>Update</title>
     <author>webmaster@rapidcow.org</author>
     <link>https://status.rapidcow.org/feed.html#1734592402</link>
