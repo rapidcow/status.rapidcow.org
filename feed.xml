@@ -51,8 +51,13 @@
     <guid>[% item.headers.content_location %]</guid>
     <pubDate>[% item.headers.date %]</pubDate>
     <description><![CDATA[
+[%- # disable indent for posts with <pre> text # -%]
+[%- UNLESS item.name == "1735659900" %]
 [% item.content.html | indent '    ' | strip_trail %]
-    ]]></description>
+    [% ELSE -%]
+[% item.content.html | strip_trail %]
+[% END -%]
+]]></description>
   </item>
 [% END -%]
 </channel>

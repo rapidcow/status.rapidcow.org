@@ -8,3 +8,5 @@
 .viminfo
 .netrwhist
 *.sw[a-p]
+# Git Archive
+*.tar.gz

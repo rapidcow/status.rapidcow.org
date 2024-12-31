@@ -1,0 +1,434 @@
+From: <webmaster@rapidcow.org>
+Date: Tue, 31 Dec 2024 23:45:00 +0800
+Subject: Status of the status page
+
+[%-# this deletes the preceding line feed. -%]
+[% BLOCK quote_html %]'[% content %]'[% END -%]
+[% BLOCK quote_text %]`[% content %]'[% END -%]
+[% BLOCK quote_code %]<code>[% content %]</code>[% END -%]
+[% BLOCK smul_text %]*[% content %]*[% END -%]
+[% BLOCK smul_html %]<em>[% content %]</em>[% END -%]
+[% IF html -%]
+[%   SET qnam = 'quote_html' -%]
+[%   SET code = 'quote_code' -%]
+[%   SET smul = 'smul_html' -%]
+[%   SET dash = '&mdash;' -%]
+[%   SET dash1 = dash -%]
+[%   SET dash2 = dash -%]
+[%   SET dots = '&hellip;' -%]
+[%   SET ldots = dots -%]
+[% ELSE -%]
+[%   SET qnam = 'quote_text' -%]
+[%   SET code = 'quote_text' -%]
+[%   SET smul = 'smul_text' -%]
+[%   SET dash = ' -- ' -%]
+[%   SET dash1 = "\n-- " -%]
+[%   SET dash2 = " --\n" -%]
+[%   SET dots = '...' -%]
+[%   SET ldots = '....' -%]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+So turns out maintaining a simple status page with two mere
+HTML pages and an XML page, whose process of updating has
+long been automated by Perl scripts and Template Toolkit...
+isn't [% WRAPPER $qnam %]simple[% END %] in the slightest.  My goal with writing this,
+however, is not so you would pity me.  I've been pretty
+selfish doing what I want to do, mostly unrelated to the web
+sites, and almost never related to school.  It's like um...
+how you hear certain people partying in their room after the
+finals are over, except if you walk over there and tell them
+"hey, you might want to take a break..." you are greeted with
+a firm and adamant stubbornness of insisting that they're
+doing the right thing.
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+[% dots %] which I'm not saying that I think I am.  I know I've
+been staying on my bed with just my laptop for a week or so
+now.  I know it's probably best that I live like a normal
+person more, which hopefully means I can go to sleep early
+and not feel sleepy after being awake for only a few hours.
+[% dots %] and i guess i feel sorry for letting mom worry[% dots.repeat(2) %].
+I just don't know when I'll get things done if not[% dots %] now.
+Things move so fast, before I know it I'd be back[% dash %]and I
+definitely can't return with my phone still at full storage!
+(And uh, my obsession with getting everything figured out
+and resolved at the same time I come across them =n=)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+But well... personal rant aside, today is supposedly the last
+day of December (by the way the time just hit midnight as i
+was finishing up the first paragraph, but you probably knew
+what time that, everyone probably tells you about it... the
+Earth made a full cycle around the Sun, and everyone just got
+[%- BLOCK link %]<a href="https://en.wikipedia.org/wiki/East_Asian_age_reckoning#China">[% content %]</a>[% END %]
+a year older (at least [% WRAPPER link %]if you are Chinese[% END %])... It's not like
+I don't know it's 2025 that's kind of why I am writing this
+but it's also not like the whole point, plus it just so
+happens to be a year or so since rapidcow.org has been up!
+so i can finally do some analysis of the web traffic- okay
+you know what it KIND OF has to do with that it's 2025[% dots %])
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+*ahem* sorry[% dash %]AS I WAS SAYING THOUGH it's the end of a
+month, end of a year too (not a very happy year for me bu-
+ok I need to stop going off the track), and this status page
+(or pages if you will) went through THREE different hosts.
+Like, that's INSANE!  The second part was kind of my fault
+though, but I'll get to all of that here.  (Oh, and I feel
+obliged to say this[% dots %] This update will be a bit technical,
+but I feel like I should respect your choice to learn more
+about what happens, rather than hide those away from you.
+If you dislike the technical bits, then it's alright, but then
+I hope you can see kind of the whole point of this post is[% dots %]
+to explain the technical stuff.  That is the powerhouse of a
+website, the web server, the host[% dots %] and what I use to make
+sure that everything is running (unless your ISP bans foreign
+websites[% dash %]sorry, I don't think I have the knowledge to
+deal with that yet[% dots %] :c))
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+First off you may have noticed that the "hosted by codeberg"
+part is not at all accurate, and, indeed if you try to access
+pages.status.rapidcow.codeberg.page (where the old CNAME record
+pointed to), you would find that the 4xx error is still there:
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<pre><code>[% END %]
+[%- FILTER html -%]
+$ openssl s_client -crlf -nocommands -connect pages.status.rapidcow.codeberg.page:443
+Connecting to 217.197.91.145
+CONNECTED(00000003)
+depth=2 C=US, O=Internet Security Research Group, CN=ISRG Root X1
+verify return:1
+depth=1 C=US, O=Let's Encrypt, CN=R10
+verify return:1
+depth=0 CN=*.codeberg.page
+verify return:1
+---
+Certificate chain
+ 0 s:CN=*.codeberg.page
+   i:C=US, O=Let's Encrypt, CN=R10
+   a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Nov 12 04:21:52 2024 GMT; NotAfter: Feb 10 04:21:51 2025 GMT
+ 1 s:C=US, O=Let's Encrypt, CN=R10
+   i:C=US, O=Internet Security Research Group, CN=ISRG Root X1
+   a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Mar 13 00:00:00 2024 GMT; NotAfter: Mar 12 23:59:59 2027 GMT
+---
+Server certificate
+subject=CN=*.codeberg.page
+issuer=C=US, O=Let's Encrypt, CN=R10
+---
+New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
+Protocol: TLSv1.3
+---
+read R BLOCK
+### To make the following text easier to read, the input
+### (what *I* typed into the terminal) is prefixed with
+### "<<<", and the output (what the *server* sent back)
+### is prefixed with ">>>".  These "###" are comments that
+### clearly do not exist in the HTTP request (input) or
+### the HTTP response (output).
+<<< GET / HTTP/1.1
+<<< Host: status.rapidcow.org
+<<< Connection: close
+<<< 
+>>> HTTP/1.1 424 Failed Dependency
+>>> Content-Type: text/html; charset=utf-8
+>>> Referrer-Policy: strict-origin-when-cross-origin
+>>> Server: pages-server
+>>> Date: Tue, 31 Dec 2024 17:01:31 GMT
+>>> Connection: close
+>>> 
+>>> <!doctype html>
+>>> <html class="codeberg-design">
+>>>   <head>
+>>>     <meta charset="utf-8" />
+>>>     <meta name="viewport" content="width=device-width" />
+>>>     <title>Failed Dependency</title>
+>>> [STYLESHEET OMITTED]
+>>>   </head>
+>>>   <body>
+>>> [SVG THINGY OMITTED]
+>>>     <h1 class="mb-0 text-primary">Failed Dependency (Error 424)!</h1>
+>>>     <h5 class="text-center" style="max-width: 25em">
+>>>       <p>Sorry, but this page couldn't be served:</p>
+>>>       <p><b>"could not obtain repo owner from custom domain"</b></p>
+>>> [HELP TEXT OMITTED]
+>>>     </h5>
+>>> [FOOTER OMITTED]
+>>>   </body>
+>>> </html>
+closed
+[%- END %]
+[%- IF html %]</code></pre>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Frankly, this isn't exactly the same as accessing through
+status.rapidcow.org [% WRAPPER $smul %]with[% END %] the domain name (I believe
+somewhere in the SSL handshake the client sends the domain
+name so the server would return the correct certificate[% dash -%]
+[% UNLESS html %]
+[% END %]which was the reason I was able to host multiple domains yet
+have separate SSLs sent back for each), but if we assume the
+underlying HTTP server just looks at the Host header in the
+HTTP request I send (judging by my other site hosted on
+Codeberg Pages this seems to be the case), suffice it to say
+that I have reliably produced what would have happened [% WRAPPER $smul %]if[% END %]
+I switched back to Codeberg now.  Plus playing with the
+DNS record just for this experiment would be too silly, so
+reasonably I decided not to[% ldots %]   but instead play this
+trick to get around the mismatching SSL certificate name
+(FYI, subdomain certificates with a CN entry like what I got
+above with "CN=*.codeberg.page" are only one-level deep,
+so an Internet-standard abiding client would deem it invalid
+[%- dash1 %]see third section of RFC2818 for reference.  On the other
+hand, s_client is just an SSL client, so it doesn't validate
+that consistency, and I can still send an HTTP request in
+spite of all that. :)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+So that is the state of Codeberg Pages now[% dots %] I couldn't
+get it to work back when I still ran on it, and I don't
+think I will. :(  But maybe stepping away is a good thing:
+Codeberg Pages is <a href="https://codeberg.org/Codeberg/pages-server/issues/399">maintained by one person</a>, I feel that I
+shouldn't asking them to look into this minute problem[% dots %]
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Then well, I don't know how many of you noticed that somewhat
+unsettling red-text at the bottom of the page[% dash %]well for
+a while (a few weeks up until about a day ago) I hosted this
+on the same server where I put the funny-looking maintenance
+pages for rapidcow.org and friends, and also that initial
+version of rapidcow.org with the home page full with GIF[% dots %]
+you know which server I am talking about.  It's the one I
+rented from Digital Ocean since like February. 164.90.136.30
+[%- dash1 %]you might recognize it from that IPv4 address, even.
+(If not, try to [% WRAPPER $code %]<a href="https://en.wikipedia.org/wiki/Dig_(command)">dig</a> A rapidcow.org[% END %] sometime later ;)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+It was quite frantic when I migrated[% dash %]I archived the nginx
+logs, had to remove the existing nginx configs (because the
+maintenance pages would go up again and I don't want that
+to happen), then used [% WRAPPER $code %]rsync(1)[% END %] to push the files, created a
+server config that simply served the files using [% WRAPPER $code %]<a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#try_files">try_files</a>[% END %];
+then I swapped out the CNAME record for an A record, waited
+for it to propogate, ran certbot to issue SSL certificates
+for my status subdomain, then finally tweaked the nginx config
+slightly to my liking (I keep separate logs for port 80 (HTTP)
+and port 443 (HTTPS) for no reason[% dots %] right :/)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+But everything was fine! except people (or I guess bots)
+[% WRAPPER $smul %]immediately[% END %] started to access my other sites like
+rapidcow.org and www.yizx.net whose DNS records still
+pointed to this server!  I don't know if anyone got
+spooked by the bad Host header error I let nginx send back[% dots %]
+but that's what I made nginx do when no config matches.
+[%- # I once posted about it - I have zero idea where it is now. # %]
+[%- # (Right, i should be deleting my cringe mastodon posts....) # %]
+Still I thought it could be confusing to get a 4xx error
+instead of a 5xx one, so instead of being the responsible
+sysadmin to configure new nginx server blocks to do just that
+I removed the DNS records for my domains so that people
+wouldn't make the connection in the first place[% dots %] (to this
+day if you run [% WRAPPER $code %]dig A rapidcow.org[% END %] you would get nothing,
+which is[% dots %] kind of sad, and I do apologize for that :c)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+But back to the server.  Something went morbidly wrong when
+I tried to install ubuntu-desktop on the server last night
+(I wanted to see how this "X11 forwarding" thing I've heard
+worked over SSH[% dots %] for no good reason u_u):  The server
+stopped connecting to the Internet.  I couldn't install or
+update with [% WRAPPER $code %]apt-get[% END %], I couldn't [% WRAPPER $code %]ping(1)[% END %] any domain (heck
+they wouldn't even resolve in the first place)[% dash %]but worst
+of all[% dots %]  I couldn't log into it from my laptop via SSH.
+This meant that in the past few hours I had been using the
+Web console provided by Digital Ocean (the so-called "Rescue
+console", but that's only because the other console hang
+since the server was basically offline and the rescue console
+is the console that interacts with the server on the private
+network locally).
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% SET en0 = 'https://www.digitalocean.com/community/questions/no-internet-connection-after-droplet-reboot' -%]
+[% IF html %]<p>[% END -%]
+Now, know that I'm not saying that the server files got
+corrupted.  It was purely a network problem which [% WRAPPER $smul %]may[% END %] have
+been caused by ubuntu-desktop (or the x2goserver I installed
+shortly after) was bringing its own network manager that was
+<a href="[% en0 %]">conflicting with the then network manager</a>.
+The solution was almost trivial though: to get the Internet
+to work I only had to hook the eth0 interface to its gateway
+and subnet mask, like this:
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<pre><code>[% END %]
+[%- FILTER html -%]
+ifconfig eth0 <ipv4 address> netmask <subnet mask> up
+ip route add default via <gateway address>
+[%- END %]
+[%- IF html %]</code></pre>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+The IPv4 address here is indeed the public 164.90.136.30
+that you already know.  These are commands were all it took
+to bring my server back on the Internet.  And I did not have
+to edit /etc/resolv.conf to use Google's DNS server (8.8.8.8)
+because Digital Ocean's DNS servers work just fine (plus, not
+a lot of posts I've seen mention this, but chances are you're
+not supposed to edit /etc/resolv.conf directly?[% dots %] mine was a
+symlink to a file deeply nestled inside /run/ and had a huge
+block of comment at the top telling me to not edit it.)
+But I just couldn't for the life of me figure out how to
+tell it to configure those [% WRAPPER $smul %]on boot[% END %][% dash %]as soon as I reboot
+all of that had to be re-run; and since SSH is busted without
+Internet connection, all of this could only be re-run on the
+rescue console[% dots %] which makes things pretty annoying.
+[%- FILTER html %] >:([% END %][% IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+I tried <a href="https://docs.digitalocean.com/support/how-do-i-debug-my-droplets-network-configuration/">
+[%- WRAPPER $code %]netplan try --debug[% END %]</a> and <a href="https://serverfault.com/a/968142">
+[%- WRAPPER $code %]netplan apply --debug[% END %]</a>,
+and all it did was disconnect my SSH connection and never
+restore the IP stuff.  I tried to install and re-install the
+[% WRAPPER $code %]cloud-init[% END %] package and run <a href="https://www.digitalocean.com/community/questions/eth0-not-getting-configured-correctly-after-upgrade">
+[%- WRAPPER $code %]dpkg-reconfigure cloud-init[% END %]</a>,
+checked /etc/netplan/50-cloud-init.yaml, loaded and quite
+possibly re-generated it with netplan, [% WRAPPER $code %]apt remove --purge[% END %]d
+and reinstalled [% WRAPPER $code %]cloud-init[% END %], [% WRAPPER $code %]landscape-common[% END -%], and
+[% WRAPPER $code %]network-manager[% END %] (since one of the complaints in
+/var/log/cloud-init.log was that it couldn't find
+NetworkManager, so I figured it could be a dependency)[% dash2 -%]
+it's no use.  Once I reboot I end up right where I started.
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Now I could continue trying by opening a support ticket on
+Digital Ocean, but I was tired, and it's almost new year
+(not like people work on new year), and things don't matter
+[% WRAPPER $smul %]that[% END %] much[% dots %] so after taking out the latest nginx logs that
+had accumulated primarily before this disaster struck (the
+thing is as I said before, once the port becomes operational
+the logs are [% WRAPPER $smul %]instantaneous[% END %][% dash %]even if I finish typing in
+those two commands, there will be SSH login attempts, there
+will be HTTP requests made directly to the IP address with
+no Host header (likely from port scanning bots)[% dots %] so a
+minority of logs would come after, interestingly enough)
+I reinstalled the whole OS.  And phew it felt refreshing to
+see 80% of the disk space being free again[% dots %] don't have to
+go around hunting for unused files (like I would have to for
+a system that I am still actively using, sigh[% dots %] this feels
+good, honestly =v= and it's now automatically upgraded to
+the latest LTE of Ubuntu too!)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Of course nothing is configured yet and there shouldn't be
+any service running on any ports (except for sshd on port 22
+because obviously I have to log in)[% dots %] as to what this
+status page is now hosted by, well it is SourceHut!
+I know it sounds a lot like SourceForge, but SourceHut[% dots %]
+so me it's like GitHub but with less clutter.  Closer to
+Gitweb and the <a href="https://www.reddit.com/r/git/comments/apbbt/repoorcz_sponsor_pulls_out_needs_pledges_for_new/">humble</a> repo.or.cz (and <a href="https://git.zx2c4.com/cgit/about/">cgit</a>, what I once used
+for git.rapidcow.org), though the design looks nicer and
+cleaner, and it runs services that go beyond (though heavily
+revolve around) Git.  <a href="https://srht.site/">SourceHut Pages</a> is one such service
+that I really like because once you build and install this
+<a href="https://sr.ht/~xenrox/hut/">hut</a> command guy all you have to do to get a web site up is
+upload a tarball and specify a domain name and[% dots %] that's it.
+Then you point your DNS record to srht.site and it just works:
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<pre><code>[% END %]
+[%- FILTER html -%]
+$ openssl s_client -crlf -nocommands -connect status.rapidcow.org:443
+Connecting to 46.23.81.157
+CONNECTED(00000003)
+depth=2 C=US, O=Internet Security Research Group, CN=ISRG Root X1
+verify return:1
+depth=1 C=US, O=Let's Encrypt, CN=E5
+verify return:1
+depth=0 CN=status.rapidcow.org
+verify return:1
+---
+Certificate chain
+ 0 s:CN=status.rapidcow.org
+   i:C=US, O=Let's Encrypt, CN=E5
+   a:PKEY: id-ecPublicKey, 256 (bit); sigalg: ecdsa-with-SHA384
+   v:NotBefore: Dec 31 06:39:20 2024 GMT; NotAfter: Mar 31 06:39:19 2025 GMT
+ 1 s:C=US, O=Let's Encrypt, CN=E5
+   i:C=US, O=Internet Security Research Group, CN=ISRG Root X1
+   a:PKEY: id-ecPublicKey, 384 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Mar 13 00:00:00 2024 GMT; NotAfter: Mar 12 23:59:59 2027 GMT
+---
+Server certificate
+subject=CN=status.rapidcow.org
+issuer=C=US, O=Let's Encrypt, CN=E5
+---
+New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
+Protocol: TLSv1.3
+---
+read R BLOCK
+### (Same prefixes here)
+<<< GET / HTTP/1.1
+<<< Host: status.rapidcow.org
+<<< Connection: close
+<<< 
+>>> HTTP/1.1 200 OK
+>>> Content-Length: 2742
+>>> Content-Type: text/html; charset=utf-8
+>>> Last-Modified: Tue, 31 Dec 2024 07:37:44 GMT
+>>> Date: Tue, 31 Dec 2024 21:36:20 GMT
+>>> Connection: close
+>>> 
+>>> [You know the rest.... you're on it!]
+closed
+[%- END %]
+[%- IF html %]</code></pre>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+It even has a lot of information in the header, nice[% dots %]
+(although I should say they are more or less inaccurate,
+since tarballs created by git-archive(1) all share the
+same timestamp that is the Commit ID =n=)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+Anyways that should be it for me if not for you too ^^
+Gosh is this a super long update, urgh :[ next year I might
+consider archiving these status updates elsewhere other
+than /feed.html[% dots %]. but that's a job for later.
+[%- FILTER html %]:>[% END %][% IF html %]</p>[% END -%]
