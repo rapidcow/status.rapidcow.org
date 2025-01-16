@@ -295,8 +295,8 @@ any service running on any ports (except for sshd on port 22
 because obviously I have to log in)&hellip; as to what this
 status page is now hosted by, well it is SourceHut!
 I know it sounds a lot like SourceForge, but SourceHut&hellip;
-so me it's like GitHub but with less clutter.  Closer to
-Gitweb and the <a href="https://www.reddit.com/r/git/comments/apbbt/repoorcz_sponsor_pulls_out_needs_pledges_for_new/">humble</a> repo.or.cz (and <a href="https://git.zx2c4.com/cgit/about/">cgit</a>, what I once used
+to me it's like GitHub but with less clutter.  Closer to
+Gitweb and the <a title="Seriously, these guys don't get paid enough" href="https://www.reddit.com/r/git/comments/apbbt/repoorcz_sponsor_pulls_out_needs_pledges_for_new/">humble</a> repo.or.cz (and <a href="https://git.zx2c4.com/cgit/about/">cgit</a>, what I once used
 for git.rapidcow.org), though the design looks nicer and
 cleaner, and it runs services that go beyond (though heavily
 revolve around) Git.  <a href="https://srht.site/">SourceHut Pages</a> is one such service
