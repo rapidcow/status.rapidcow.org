@@ -45,6 +45,32 @@
   <!-- Now the rest are just feed items! -->
 
   <item>
+    <title>Server Operational!</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1737252638</link>
+    <guid>https://status.rapidcow.org/feed.html#1737252638</guid>
+    <pubDate>Sun, 19 Jan 2025 10:10:38 +0800</pubDate>
+    <description><![CDATA[
+    <p>Hey so just to let you know I've been leaving my server to
+    handle HTTP/S requests for www.rapidcow.org and friends for
+    a while now!  Got new SSL certificates with certbot, also
+    learned how to use Fail2ban so IPs that spam the server
+    will be temporarily banned by the firewall.  This of course
+    is far from foolproof (imagine the DoS attacks&hellip;) but it
+    is a good starter I think. :)</p>
+    <p>(P.S. if i wasn't clear with that, it means the <em>server</em>
+    is working, but just the server&mdash;no content yet!)</p>
+    <p>And now that it is the end of holiday for me I'm gonna
+    be on a flight soon&hellip; it's been fun, yeah.  This system
+    administeration thing and archiving old media I found
+    around my house are all cool.  Sometimes it can feel like
+    a fever dream, a place familiar yet so distant&hellip;.</p>
+    <p>That's it for now!  See y'all on the other side of the
+    coast&hellip; o/</p>
+    ]]></description>
+  </item>
+
+  <item>
     <title>Status of the status page</title>
     <author>webmaster@rapidcow.org</author>
     <link>https://status.rapidcow.org/feed.html#1735659900</link>
