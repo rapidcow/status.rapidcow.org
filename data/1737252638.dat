@@ -1,0 +1,54 @@
+From: <webmaster@rapidcow.org>
+Date: Sun, 19 Jan 2025 10:10:38 +0800
+Subject: Server Operational!
+
+[%-# originally 1737237960.dat, 06:06 AM #-%]
+
+[%- IF html -%]
+[%
+    begin_it = '<em>'
+    end_it = '</em>'
+    ndash = '&mdash;'
+    ellip = '&hellip;'
+-%]
+[% ELSE -%]
+[%
+    begin_it = '*'
+    end_it = '*'
+    ndash = ' -- '
+    ellip = '...'
+-%]
+[% END -%]
+[% BLOCK it %][% begin_it %][% content %][% end_it %][% END -%]
+
+[% IF html %]<p>[% END -%]
+Hey so just to let you know I've been leaving my server to
+handle HTTP/S requests for www.rapidcow.org and friends for
+a while now!  Got new SSL certificates with certbot, also
+learned how to use Fail2ban so IPs that spam the server
+will be temporarily banned by the firewall.  This of course
+is far from foolproof (imagine the DoS attacks[% ellip %]) but it
+is a good starter I think. :)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+(P.S. if i wasn't clear with that, it means the [% WRAPPER it %]server[% END %]
+is working, but just the server[% ndash %]no content yet!)
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+And now that it is the end of holiday for me I'm gonna
+be on a flight soon[% ellip %] it's been fun, yeah.  This system
+administeration thing and archiving old media I found
+around my house are all cool.  Sometimes it can feel like
+a fever dream, a place familiar yet so distant[% ellip %].
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
+
+[% IF html %]<p>[% END -%]
+That's it for now!  See y'all on the other side of the
+coast[% ellip %] o/
+[%- IF html %]</p>[% ELSE %]
+[% END -%]
