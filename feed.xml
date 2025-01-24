@@ -45,6 +45,29 @@
   <!-- Now the rest are just feed items! -->
 
   <item>
+    <title>I forgot to turn nginx on - sorry!</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1737725656</link>
+    <guid>https://status.rapidcow.org/feed.html#1737725656</guid>
+    <pubDate>Fri, 24 Jan 2025 07:34:16 -0600</pubDate>
+    <description><![CDATA[
+    <p>For a while I have been wondering why the server has been
+    refusing connections even though my firewall didn't block
+    the IP I was connecting from... well turns out nginx wasn't
+    running this whole time :x</p>
+    <p>Sorry for the confusion if anyone thought the server was
+    down!  Also let me know my firewall rules are too strict
+    for you... I understand that IP bans can be quite unfair
+    to people who actually want to access my website but can't
+    because a few bad actors taint the IP reputation.  If you
+    are patient know that the IP bans aren't permanent (as
+    long my ban wears them out -- which is the real point of
+    banning!  I promise it's not because I hate people, but
+    bots&hellip; are annoying. &gt;:c)</p>
+    ]]></description>
+  </item>
+
+  <item>
     <title>Server Operational!</title>
     <author>webmaster@rapidcow.org</author>
     <link>https://status.rapidcow.org/feed.html#1737252638</link>
