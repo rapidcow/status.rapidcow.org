@@ -4,7 +4,7 @@ the inner workings of the status page.  You may study
 the code and the structure, but do not re-publish or
 archive the content verbatim.
 
-The good stuff is tracked in the other two branches;
+The good stuff is tracked in the other two branches:
   pages       contains the raw content generated from pages-src
   pages-src   contains the code+data used to generate pages
 This main branch only contains informative files, such as the
