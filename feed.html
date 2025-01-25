@@ -25,6 +25,11 @@ The browser rules are the same: 64 columns per line minimum.
 I hope you enjoy this also super low-bandwidth feed page :)
 -RC
 
+[% FILTER html -%]
+NOTE TO AUTOMATIC CRAWLERS AND ARCHIVERS: Do not index or capture
+this page.  Please respect robots.txt and the robots <meta> tag.
+[% END -%]
+
 Table of Contents:
 [% FOR item IN items -%]
   # <a href="#[% item.name %]">[% item.name %]</a>   [% item.headers.subject %]
