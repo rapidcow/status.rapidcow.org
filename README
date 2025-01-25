@@ -1,4 +1,14 @@
 This is the source code of status.rapidcow.org.
+It is currently made public in the interest of showing
+the inner workings of the status page.  You may study
+the code and the structure, but do not re-publish or
+archive the content verbatim.
 
-Note that it is temporarily hosted on my server now.
-(Watch your requests, you stinky bots....)
+The good stuff is tracked in the other two branches;
+  pages       contains the raw content generated from pages-src
+  pages-src   contains the code+data used to generate pages
+This main branch only contains informative files, such as the
+README you are currently reading.
+
+This repository should not be archived and I do not hold any
+responsibility for making this repository available on the Web.
