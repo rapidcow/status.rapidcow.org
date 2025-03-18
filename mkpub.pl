@@ -179,7 +179,7 @@ sub rfc822_date_factory {
 }
 
 sub rfc822_now {
-	return Time::Piece->strftime("%a, %d %b %Y %H:%M:%S %z");
+	return Time::Piece->localtime()->strftime("%a, %d %b %Y %H:%M:%S %z");
 }
 
 # main function
