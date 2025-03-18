@@ -178,6 +178,10 @@ sub rfc822_date_factory {
 	}
 }
 
+sub rfc822_now {
+	return Time::Piece->strftime("%a, %d %b %Y %H:%M:%S %z");
+}
+
 # main function
 my $file = shift;
 die "usage: $0 <file>\n" unless defined $file;
@@ -192,6 +196,7 @@ my $template = Template->new({
 		dedent_comment => \&dedent_comment,
 		address => \&address,
 		rfc822_date => [ \&rfc822_date_factory, 1 ],
+		rfc822_now => \&rfc822_now,
 	},
 }) || die $Template::ERROR, "\n";
 $template->process($file, {
