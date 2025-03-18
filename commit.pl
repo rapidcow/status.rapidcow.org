@@ -106,6 +106,6 @@ spawn ('make public');
 my $git = Git->repository(
 	WorkingCopy => abs_path('.'),
 );
-my $head = 'refs/heads/status/pages';
+my $head = 'refs/heads/pages';
 my $rev = commit $git, $head, mktree $git, 'public';
 $git->command_noisy('update-ref', '-m', "($0) commit public", $head, $rev);
