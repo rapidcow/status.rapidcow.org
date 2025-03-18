@@ -196,10 +196,10 @@ my $template = Template->new({
 		dedent_comment => \&dedent_comment,
 		address => \&address,
 		rfc822_date => [ \&rfc822_date_factory, 1 ],
-		rfc822_now => \&rfc822_now,
 	},
 }) || die $Template::ERROR, "\n";
 $template->process($file, {
 	items => ls_items(),
 	BASE_URL => $BASE_URL,
+	rfc822_now => \&rfc822_now,
 }) || die $template->error(), "\n";
