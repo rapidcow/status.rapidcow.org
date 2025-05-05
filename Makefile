@@ -14,7 +14,9 @@ public/robots.txt: robots.txt
 	@mkdir -p public/
 	cp $< $@
 
+PERL_EXEC ?= /usr/bin/env perl
+
 # catch-all rule
 public/%: % mkpub.pl data/*.dat
 	@mkdir -p public/
-	carmel exec perl mkpub.pl $< > $@
+	${PERL_EXEC} mkpub.pl $< > $@
