@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Tue, 18 Mar 2025 14:22:54 -0500</lastBuildDate>
+  <lastBuildDate>Sun, 04 May 2025 21:46:32 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,101 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>Infrastructure update</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1746398081</link>
+    <guid>https://status.rapidcow.org/feed.html#1746398081</guid>
+    <pubDate>Sun, 04 May 2025 17:34:41 -0500</pubDate>
+    <description><![CDATA[
+    <pre>
+    It's a little bit late to say this, but I've started
+    proxying some of my "big" sites through Anubis[1].
+    (For those who are not aware of Anubis, it's basically
+    an HTTP proxy that should do a better job at blocking
+    web scraping bots than my Fail2ban filter can be.)
+
+    Okay, nobody has really noticed this, is there?
+    But that's okay, I'll just tell you what happened...
+
+     * www.endfindme.com was the first "lab rat" that
+       first got put behind the Anubis proxy:
+
+       commit ed468e5b435ac4fe4884456d553002b19de90036
+       Date:   Mon Apr 28 09:48:34 2025 -0500
+
+           try out this anubis thing
+
+           yooooo it really works :D
+
+           (and just before my class time, nice!)
+
+       (My math class starts at 10 am, so I did make it :)
+
+     * Then I published the new www.rapidcow.org I've kept
+       in my Git repository for a while (by that I mean...
+       three full months ago, from the start of February.)
+
+
+        commit 74d33bfaa6ce082ab572b86bbd1fec337647222a
+        Date:   Sat May 3 18:46:08 2025 -0500
+
+            configure www.rapidcow.org
+
+     * Within about one hour, I noticed that my Nginx sub-server
+       running on port 3000 was redirecting URLs to its own port,
+       making redirects on the "active" servers hang indefinitely:
+
+       commit 162a15f0131902db0bf0ad94f7de8e23c8852084
+       Date:   Sat May 3 19:49:57 2025 -0500
+
+           ack!!! do not forward people to port 3000!!!
+
+           it is a good thing they are behind firewall....
+
+       (By active, I just mean sites that have more than an index.txt,
+       which used to be that "blue screen" with me floating midair but
+       that is long gone because I don't want to waste bandwidth =_=
+       (I swear I've talked about this... I am just repeating in case
+       by the slimmest chance anyone new comes by; I am still 99% the
+       only human visitor to my websites are me, myself, and I.))
+
+    Here are a few more things I should update with:
+
+    1. Since this site has been hosted on SourceHut Pages for a
+       while now, I don't really feel obligated in making the full
+       history of these status on Codeberg updates available in
+       form of a Git repository.  This is done in anticipation of
+       expiring my older status updates.  Besides I never enjoy the
+       thought of people reading my mind without going through me...
+       (To be content with that you'd have to be either dead and/or
+       famous -- and I'm neither!)
+
+       There is a broken link to Codeberg in 1734362640.
+       It will be disabled shortly after I post this update.
+
+    2. Regarding the previous update (1742319000): I have intermittently
+       written posts on the CSL user page and have not touched the
+       current state of www.endfindme.com in any way.  But even *then*,
+       I must pause whatever I am doing.  I have in my course evaluation
+       form (glad they still do that...) included a link to a not-yet-
+       existent page at https://www.endfindme.com/cs400/critique/. But
+       it is up to the CS400 professors + staff if they want to take my...
+       hard-pressed unforgiving criticism.  (I don't know, maybe there is
+       just something about learning to program by yourself that prevents
+       you from accepting clear, narrow-minded nonsense they spoon-feed
+       you about how stuff works, compared to people who are just accept
+       ing it because they believe everything that the professors say.)
+
+    3. This status update has no effort in HTML markup.  For those
+       of you on RSS reader, sorry; but I won't have time to fix it
+       until my exam, homework, and dormitory move-out are settled...
+    </pre><p>
+
+    [1]: <a target="_blank" rel="noopener" href="https://xeiaso.net/blog/2025/anubis/">https://xeiaso.net/blog/2025/anubis/</a></p>
+    ]]></description>
+  </item>
 
   <item>
     <title>Planned Update</title>
