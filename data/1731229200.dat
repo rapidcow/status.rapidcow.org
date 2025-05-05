@@ -25,7 +25,7 @@ but well, now I'm exhausted[% ddd %] and I need some sleep[% ddd %].
 
 [% # XXX: This as a URL should have a nonempty
    # path!  We can fix this later though.
-   # Nevermind, we'll fit it now, since there's
+   # Nevermind, we'll fix it now, since there's
    # already so many changes by switching to TT
    neo = "https://rapidcow.neocities.org" -%]
 [% IF html %]<p>[% END -%]
