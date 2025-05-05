@@ -5,7 +5,6 @@ Subject: Infrastructure update
 [% IF html -%]
 <pre>
 [% END -%]
-
 It's a little bit late to say this, but I've started
 proxying some of my "big" sites through Anubis[1].
 (For those who are not aware of Anubis, it's basically
@@ -39,7 +38,6 @@ Date:   Sat May 3 18:46:08 2025 -0500
 
     configure www.rapidcow.org
 [% END %]
-
  * Within about one hour, I noticed that my Nginx sub-server
    running on port 3000 was redirecting URLs to its own port,
    making redirects on the "active" servers hang indefinitely:
@@ -56,7 +54,7 @@ Date:   Sat May 3 18:46:08 2025 -0500
    that is long gone because I don't want to waste bandwidth =_=
    (I swear I've talked about this... I am just repeating in case
    by the slimmest chance anyone new comes by; I am still 99% the
-   only human visitor to my websites are me, myself, and I.)
+   only human visitor to my websites are me, myself, and I.))
 
 Here are a few more things I should update with:
 
@@ -94,7 +92,7 @@ Here are a few more things I should update with:
 
 [% SET uri = "https://xeiaso.net/blog/2025/anubis/" -%]
 [1]: [% IF html -%]
-  <a rel="noopener" href="[% uri %]">[% uri %]</a></p>
+<a rel="noopener" href="[% uri %]">[% uri %]</a></p>
 [% ELSE -%]
-  [% uri %]
+[% uri %]
 [% END -%]
