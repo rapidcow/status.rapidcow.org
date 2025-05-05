@@ -91,8 +91,5 @@ Here are a few more things I should update with:
 [% END -%]
 
 [% SET uri = "https://xeiaso.net/blog/2025/anubis/" -%]
-[1]: [% IF html -%]
-<a rel="noopener" href="[% uri %]">[% uri %]</a></p>
-[% ELSE -%]
-[% uri %]
-[% END -%]
+[1]: <a target="_blank" rel="noopener" href="[% uri %]">[% uri %]</a>
+[%- IF html %]</p>[% END %]
