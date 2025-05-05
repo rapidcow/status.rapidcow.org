@@ -34,13 +34,12 @@ know there's just so much to do!!! [% FILTER html %]>n<[% END %]
 [% IF html %]<p>[% END -%]
 But I did write a something that made updating this feed
 easier?  I pushed that new branch to Codeberg yesterday,
-so <a href="https://codeberg.org/rapidcow/status/src/branch/pages-src">you can see</a> how it's done.  It uses Perl which I think
-is an underrated language full of code written by people
-who enjoy the craft.  Really[% IF html %]&mdash;[% ELSE %] -- [% END %]I was reading Template::[% UNLESS html %]
-[% END -%]
-Tutorials::Datafile and many other perldocs yesterday.
-I am really glad to see this art isn't lost to time and
-completely displaced by huge corporate codebases. :)
+so you can see how it's done (THIS IS NOW GONE.)  It uses
+Perl which I think is an underrated language full of code
+written by people who enjoy the craft.  Really[% IF html %]&mdash;[% ELSE %] -- [% END %] I was
+reading Template::Tutorials::Datafile and many other perldocs
+yesterday.  I am really glad to see this art isn't lost to
+time and completely displaced by huge corporate codebases. :)
 [%- IF html %]</p>[% ELSE %]
 [% END -%]
 
