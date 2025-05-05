@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Sun, 04 May 2025 21:46:32 -0500</lastBuildDate>
+  <lastBuildDate>Sun, 04 May 2025 21:57:58 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -79,11 +79,10 @@
        in my Git repository for a while (by that I mean...
        three full months ago, from the start of February.)
 
+       commit 74d33bfaa6ce082ab572b86bbd1fec337647222a
+       Date:   Sat May 3 18:46:08 2025 -0500
 
-        commit 74d33bfaa6ce082ab572b86bbd1fec337647222a
-        Date:   Sat May 3 18:46:08 2025 -0500
-
-            configure www.rapidcow.org
+           configure www.rapidcow.org
 
      * Within about one hour, I noticed that my Nginx sub-server
        running on port 3000 was redirecting URLs to its own port,
@@ -692,11 +691,12 @@ than /feed.html&hellip;. but that's a job for later.:&gt;</p>
     know there's just so much to do!!! &gt;n&lt;</p>
     <p>But I did write a something that made updating this feed
     easier?  I pushed that new branch to Codeberg yesterday,
-    so <a href="https://codeberg.org/rapidcow/status/src/branch/pages-src">you can see</a> how it's done.  It uses Perl which I think
-    is an underrated language full of code written by people
-    who enjoy the craft.  Really&mdash;I was reading Template::Tutorials::Datafile and many other perldocs yesterday.
-    I am really glad to see this art isn't lost to time and
-    completely displaced by huge corporate codebases. :)</p>
+    so you can see how it's done (THIS IS NOW GONE.)  It uses
+    Perl which I think is an underrated language full of code
+    written by people who enjoy the craft.  Really&mdash; I was
+    reading Template::Tutorials::Datafile and many other perldocs
+    yesterday.  I am really glad to see this art isn't lost to
+    time and completely displaced by huge corporate codebases. :)</p>
     <p>(Every time I say something that doesn't really have to
     do with the announcement, haha... but this is my website!
     It's kind of the point that I get to talk about what I
