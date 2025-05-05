@@ -32,12 +32,13 @@ But that's okay, I'll just tell you what happened...
    in my Git repository for a while (by that I mean...
    three full months ago, from the start of February.)
 
-[% FILTER indent("    ") %]
+[% FILTER indent("   ") -%]
 commit 74d33bfaa6ce082ab572b86bbd1fec337647222a
 Date:   Sat May 3 18:46:08 2025 -0500
 
     configure www.rapidcow.org
-[% END %]
+[% END -%]
+
  * Within about one hour, I noticed that my Nginx sub-server
    running on port 3000 was redirecting URLs to its own port,
    making redirects on the "active" servers hang indefinitely:
