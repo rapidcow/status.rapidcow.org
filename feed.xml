@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Sun, 04 May 2025 21:57:58 -0500</lastBuildDate>
+  <lastBuildDate>Tue, 20 May 2025 12:00:11 +0800</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,26 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>Reboot...</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1747713065</link>
+    <guid>https://status.rapidcow.org/feed.html#1747713065</guid>
+    <pubDate>Tue, 20 May 2025 11:51:05 +0800</pubDate>
+    <description><![CDATA[
+    I've just recently rebooted my server, good that I tested
+    enough basic routes while cleaning up Nginx configs for me
+    to realize I didn't start Anubis!  Anyone who happened to
+    access www.endfindme.com or www.rapidcow.org in the past 1
+    hour or something, I apologize for the 502 Bad Gateway error...
+    (I haven't read the logs, but I hope there weren't anyone
+    affected...)  Either way it should be good now!  It's a short
+    message but thank you for forgiving my silly mistakes, I think
+    I might consider writing basic test scripts for my sites...
+    but I gotta go eat lunch now bye :]
+    ]]></description>
+  </item>
 
   <item>
     <title>Infrastructure update</title>
