@@ -1,0 +1,14 @@
+From: webmaster@rapidcow.org
+Date: Tue, 20 May 2025 11:51:05 +0800
+Subject: Reboot...
+
+I've just recently rebooted my server, good that I tested
+enough basic routes while cleaning up Nginx configs for me
+to realize I didn't start Anubis!  Anyone who happened to
+access www.endfindme.com or www.rapidcow.org in the past 1
+hour or something, I apologize for the 502 Bad Gateway error...
+(I haven't read the logs, but I hope there weren't anyone
+affected...)  Either way it should be good now!  It's a short
+message but thank you for forgiving my silly mistakes, I think
+I might consider writing basic test scripts for my sites...
+but I gotta go eat lunch now bye :]
