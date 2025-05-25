@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Mon, 26 May 2025 02:03:28 +0800</lastBuildDate>
+  <lastBuildDate>Mon, 26 May 2025 02:08:39 +0800</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -194,7 +194,7 @@
 
     So yeah... that's two hours of my life spent figuring out if
     I misconfigured something.  Turns out it was just the GFW
-    meddling my sanity and my will to live in China.  It seems
+    meddling with my sanity and my will to live in China.  It seems
     like I have to migrate what was on www.yizx.net to blog.yizz.me
     or something like that, if I want my friends here to read them...
     </pre>
