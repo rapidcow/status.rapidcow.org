@@ -3,7 +3,7 @@ Date: Mon, 26 May 2025 01:48:40 +0800
 Subject: www.yizx.net got TCP RST treatment in China???
 
 [% IF html %]<pre>
-[% ELSE %][% END -%][% FILTER html %]
+[% ELSE %][% END -%][% FILTER html -%]
 Pardon me for the lazy pre text again (no pun intended), but I
 think I must talk about this.... I thought it was my SSL renewal
 that didn't trigger properly when I tried to access www.yizx.net
@@ -149,6 +149,6 @@ I misconfigured something.  Turns out it was just the GFW
 meddling my sanity and my will to live in China.  It seems
 like I have to migrate what was on www.yizx.net to blog.yizz.me
 or something like that, if I want my friends here to read them...
-[% END %-]
+[% END -%]
 [% IF html %]</pre>
 [% ELSE %][% END -%]
