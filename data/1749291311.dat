@@ -1,0 +1,9 @@
+From: <webmaster@rapidcow.org>
+Subject: I probably killed the server...
+Date: Sat, 07 Jun 2025 18:15:11 +0800
+
+Running cpan and doing git commit on the other panel was
+probably not the best idea ever... now I am timing out
+not even sure if it's a network issue or I overwhelmed
+the CPU too much :( I'll think of upgrading the Droplet
+to a more performant CPU maybe....
