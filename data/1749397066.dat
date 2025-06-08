@@ -5,11 +5,12 @@ Subject: Renewed!
 Phew we're back... I guess.  All it took was an extra
 "listen [::]:80" because Certbot really was adamant
 about checking if my server was reachable via IPv6.
-I guess it's because IPv6 didn't match so it went straight
-to my catch-all fallback server that USUALLY denies
-requests that don't provide an HTTP/1.1 Host header...
-but this time it denied requests that simply use IPv6
-and not IPv4 it knows.
+I guess it's because IPv6 didn't match any of the nginx
+virtual server blocks so it went straight to my catch-all
+fallback server that USUALLY denies requests that don't
+provide an HTTP/1.1 Host header... but this time it
+denied valid requests that simply use IPv6 and not the
+IPv4 it knows.
 
 I'm just, so weirded out -- like what @_@  Either way uh
 I ran certbot renew and the post-renewal hook basically
