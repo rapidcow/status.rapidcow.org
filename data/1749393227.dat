@@ -1,0 +1,19 @@
+From: webmaster@rapidcow.org
+Date: Sun, 08 Jun 2025 22:33:47 +0800
+Subject: Certificate for www.rapidcow.org just expired
+
+I think i was able to trace down the issue?  But now
+I'm being rate-limited because Let's Encrypt is quite
+strict with failures:
+https://letsencrypt.org/docs/rate-limits/#authorization-failures-per-hostname-per-account
+
+Weird that it automatically renewed just fine in March
+but now it's freaking out?  But well, fair enough, I've
+never read the certbot renewal logs once, and I am just
+re-learning how to run the most basic certbot commands again.
+
+Though, I believe the effects aren't too much --
+I was just showing my mom the site this morning!
+I've just been drawing all day that I didn't get a
+chance to see this.  Please be patient while I obtain
+a new SSL certificate!
