@@ -26,6 +26,7 @@ NOTE TO AUTOMATIC CRAWLERS AND ARCHIVERS: Do not index or capture
 this page.  Please respect robots.txt and the robots &lt;meta&gt; tag.
 
 Table of Contents:
+  # <a href="#1749397066">1749397066</a>   Renewed!
   # <a href="#1749395356">1749395356</a>   Ok this is weird
   # <a href="#1749393227">1749393227</a>   Certificate for www.rapidcow.org just expired
   # <a href="#1749291311">1749291311</a>   I probably killed the server...
@@ -45,6 +46,35 @@ Table of Contents:
   # <a href="#1731229200">1731229200</a>   Update: Neocities
   # <a href="#1730847600">1730847600</a>   Grand opening of... status.rapidcow.org!
 End of TOC.
+
+<a id="1749397066">1749397066</a>:
+  From: webmaster&commat;rapidcow.org
+  Date: Sun, 08 Jun 2025 23:37:46 +0800
+  Subject: Renewed!
+
+  Phew we're back... I guess.  All it took was an extra
+  "listen [::]:80" because Certbot really was adamant
+  about checking if my server was reachable via IPv6.
+  I guess it's because IPv6 didn't match so it went straight
+  to my catch-all fallback server that USUALLY denies
+  requests that don't provide an HTTP/1.1 Host header...
+  but this time it denied requests that simply use IPv6
+  and not IPv4 it knows.
+
+  I'm just, so weirded out -- like what @_@  Either way uh
+  I ran certbot renew and the post-renewal hook basically
+  brought all the sites back (it did completely ignore that
+  my pre-renewal hook complained with an error code, but...
+  whatever i guess &gt;_&gt;)  Right now I'm just reeling in
+  the madness i just witnessed, of my own site falling apart
+  completely because i didn't take that Let's Encrypt email
+  about expiration (that i did NOT expect was due to the
+  auto-renewal not running correctly!) so seriously.....
+
+  But well, lesson learned: Certbot does look at your IPv6.
+  I won't be dismissing that tiny [::]:80 and tiny [::]:443
+  any more from now on....
+End of 1749397066.
 
 <a id="1749395356">1749395356</a>:
   From: webmaster&commat;rapidcow.org

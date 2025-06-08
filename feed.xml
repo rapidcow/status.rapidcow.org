@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Sun, 08 Jun 2025 23:15:17 +0800</lastBuildDate>
+  <lastBuildDate>Sun, 08 Jun 2025 23:48:30 +0800</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,38 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>Renewed!</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1749397066</link>
+    <guid>https://status.rapidcow.org/feed.html#1749397066</guid>
+    <pubDate>Sun, 08 Jun 2025 23:37:46 +0800</pubDate>
+    <description><![CDATA[
+    Phew we're back... I guess.  All it took was an extra
+    "listen [::]:80" because Certbot really was adamant
+    about checking if my server was reachable via IPv6.
+    I guess it's because IPv6 didn't match so it went straight
+    to my catch-all fallback server that USUALLY denies
+    requests that don't provide an HTTP/1.1 Host header...
+    but this time it denied requests that simply use IPv6
+    and not IPv4 it knows.
+
+    I'm just, so weirded out -- like what @_@  Either way uh
+    I ran certbot renew and the post-renewal hook basically
+    brought all the sites back (it did completely ignore that
+    my pre-renewal hook complained with an error code, but...
+    whatever i guess &gt;_&gt;)  Right now I'm just reeling in
+    the madness i just witnessed, of my own site falling apart
+    completely because i didn't take that Let's Encrypt email
+    about expiration (that i did NOT expect was due to the
+    auto-renewal not running correctly!) so seriously.....
+
+    But well, lesson learned: Certbot does look at your IPv6.
+    I won't be dismissing that tiny [::]:80 and tiny [::]:443
+    any more from now on....
+    ]]></description>
+  </item>
 
   <item>
     <title>Ok this is weird</title>
