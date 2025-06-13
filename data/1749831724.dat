@@ -7,7 +7,7 @@ the OS itself to kill the process every time cpanm
 would have your back and just... get the stuff done.
 
 it even got me to notice that i didn't have -lz (zlib)
-installed!  and all i had to do was apt-get install zlib1gdev.
+installed!  and all i had to do was apt-get install zlib1g-dev.
 it's pretty nice, and my deployment script is passing too.
 
 index page has been updated as well, just fyi. :)
