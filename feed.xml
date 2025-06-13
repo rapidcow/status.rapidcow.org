@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Sun, 08 Jun 2025 23:52:16 +0800</lastBuildDate>
+  <lastBuildDate>Fri, 13 Jun 2025 23:45:30 +0800</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,23 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>Maintenance... ish</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1749829409</link>
+    <guid>https://status.rapidcow.org/feed.html#1749829409</guid>
+    <pubDate>Fri, 13 Jun 2025 23:43:29 +0800</pubDate>
+    <description><![CDATA[
+    I need the uh test script to run and i need SSL
+    perl modules for it -- it'll be back up when cpan
+    is choking my server less than it is rn
+
+    Also yizx.net is back i didn't tell you that but
+    uhhhhh you probably already figured?  idk lol, but
+    now you do know... don't run around telling anyone
+    ]]></description>
+  </item>
 
   <item>
     <title>Renewed!</title>
