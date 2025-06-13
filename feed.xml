@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Sat, 14 Jun 2025 00:30:16 +0800</lastBuildDate>
+  <lastBuildDate>Sat, 14 Jun 2025 00:58:31 +0800</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -56,7 +56,7 @@
     would have your back and just... get the stuff done.
 
     it even got me to notice that i didn't have -lz (zlib)
-    installed!  and all i had to do was apt-get install zlib1gdev.
+    installed!  and all i had to do was apt-get install zlib1g-dev.
     it's pretty nice, and my deployment script is passing too.
 
     index page has been updated as well, just fyi. :)
