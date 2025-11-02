@@ -72,6 +72,7 @@ expect {
 send -- "$pass\r"
 send -- "\r"
 interact
+(com) [rapidcow@RCs-T480s www:html/com] (main *%|+40)$ 
 
 yippee
 
