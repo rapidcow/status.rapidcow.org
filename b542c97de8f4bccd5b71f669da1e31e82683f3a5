@@ -1,0 +1,84 @@
+so i guess we did it
+
+(com) [rapidcow@RCs-T480s www:html/com] (main *%|+40)$ rsync -aPvRzn --chown=www-data:www-data public/./cs400/ root@rapidcow.org:/srv/www/com/
+sending incremental file list
+cs400/
+cs400/prog.html
+cs400/bin/
+cs400/bin/avail.sh
+cs400/bin/fetch-heads
+cs400/bin/getpass
+cs400/bin/index.html
+cs400/bin/init-subtree
+cs400/bin/login
+cs400/bin/mock-ref
+cs400/bin/sched.pl
+cs400/bin/wrap400
+cs400/critique/index.html
+cs400/essay/
+cs400/essay/critique.html
+cs400/essay/git-manytree.html
+
+sent 534 bytes  received 68 bytes  172.00 bytes/sec
+total size is 97,313  speedup is 161.65 (DRY RUN)
+(com) [rapidcow@RCs-T480s www:html/com] (main *%|+40)$ rsync -aPvRz --chown=www-data:www-data public/./cs400/ root@rapidcow.org:/srv/www/com/
+sending incremental file list
+cs400/
+cs400/prog.html
+          4,100 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=15/17)
+cs400/bin/
+cs400/bin/avail.sh
+            241 100%   58.84kB/s    0:00:00 (xfr#2, to-chk=11/17)
+cs400/bin/fetch-heads
+          3,953 100%  772.07kB/s    0:00:00 (xfr#3, to-chk=10/17)
+cs400/bin/getpass
+            120 100%   23.44kB/s    0:00:00 (xfr#4, to-chk=9/17)
+cs400/bin/index.html
+          1,379 100%  269.34kB/s    0:00:00 (xfr#5, to-chk=8/17)
+cs400/bin/init-subtree
+         36,071 100%    4.30MB/s    0:00:00 (xfr#6, to-chk=7/17)
+cs400/bin/login
+            464 100%   56.64kB/s    0:00:00 (xfr#7, to-chk=6/17)
+cs400/bin/mock-ref
+          1,589 100%  172.42kB/s    0:00:00 (xfr#8, to-chk=5/17)
+cs400/bin/sched.pl
+         11,067 100%  675.48kB/s    0:00:00 (xfr#9, to-chk=4/17)
+cs400/bin/wrap400
+            977 100%   59.63kB/s    0:00:00 (xfr#10, to-chk=3/17)
+cs400/critique/index.html
+          9,864 100%  535.16kB/s    0:00:00 (xfr#11, to-chk=2/17)
+cs400/essay/
+cs400/essay/critique.html
+          9,873 100%  482.08kB/s    0:00:00 (xfr#12, to-chk=1/17)
+cs400/essay/git-manytree.html
+         17,615 100%  614.36kB/s    0:00:00 (xfr#13, to-chk=0/17)
+
+sent 28,513 bytes  received 374 bytes  11,554.80 bytes/sec
+total size is 97,313  speedup is 3.37
+(com) [rapidcow@RCs-T480s www:html/com] (main *%|+40)$ curl -L https://www.endfindme.com/cs400/bin/login
+#!/usr/bin/expect
+set timeout 60
+# expect is Tcl, so... we'll need to use Tcl cmd capture
+# https://stackoverflow.com/a/12606133
+set pass [exec [file join [file dirname [info script]] getpass]]
+spawn ssh -o StrictHostKeyChecking=yes emeng@best-linux.cs.wisc.edu {*}$argv
+match_max 100000
+expect {
+  eof {
+    send_user "error: unexpected EOF from ssh (do you have to update ~/.known_hosts?)\n"; exit 1
+  }
+  "*Password: "
+}
+send -- "$pass\r"
+send -- "\r"
+interact
+
+yippee
+
+oh wait except i gotta publish my AP Calculus notes (for the
+pub@endfindme.com document i sent to the UW 2029 discord) and
+try building my AP Statistics!
+
+...
+
+later loser :) not now lol
