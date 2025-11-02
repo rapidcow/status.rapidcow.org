@@ -1,0 +1,13 @@
+thank goodness i still have `git notes edit --no-stripspace'
+in my bash history u_u  other than that tho....
+
+(com) [rapidcow@RCs-T480s www:html/com] (main *%|+42)$ rsync -aPvRz --chown=www-data:www-data public/./cs400/ root@rapidcow.org:/srv/www/com/
+sending incremental file list
+cs400/bin/index.html
+          1,853 100%    1.10MB/s    0:00:00 (xfr#1, to-chk=8/17)
+cs400/bin/sched.pl
+         11,065 100%   10.55MB/s    0:00:00 (xfr#2, to-chk=4/17)
+
+sent 1,681 bytes  received 170 bytes  1,234.00 bytes/sec
+total size is 97,793  speedup is 52.83
+(com) [rapidcow@RCs-T480s www:html/com] (main *%|+42)$ 
