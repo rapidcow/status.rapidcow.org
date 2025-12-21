@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Wed, 10 Dec 2025 02:44:16 -0600</lastBuildDate>
+  <lastBuildDate>Sun, 21 Dec 2025 12:05:32 -0600</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,66 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>Blacklist for all &gt;:)</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1766338825</link>
+    <guid>https://status.rapidcow.org/feed.html#1766338825</guid>
+    <pubDate>Sun, 21 Dec 2025 11:40:25 -0600</pubDate>
+    <description><![CDATA[
+    So I took a peek at the weblogs just now, having been deeply troubled
+    by the fact that Google *still* hasn't updated the snippet to my Perl
+    CPAN module page (ugh!  Search engines can be so annoying...) and I
+    discovered in the 1-megabyte 3000-ish logs for yizx.net today (I made
+    them rotate daily that is), there were these incessant php requests
+    over and over again.  Like if you are a human (because this guy clearly
+    wasn't), for reference, that is the equivalent of running a bloated
+    Javascript-loaded web app! (looking at you JS frameworks...)
+    My site has none of that, yet it is getting that treatment.
+    It's just unfair...
+
+    And because my manual regex "filters" aren't sensitive enough to pick up
+    on this delinquent behavior (and I don't have any rate limiting policy,
+    sigh...) this guy just escaped, as if it never did anything wrong.
+
+    But I wasn't letting them go... at least, when I picked one of them up
+    this time, I actually put it in a ban-list lookup.  And guess what?
+    It is banned on four of those lists!
+
+    <https://mxtoolbox.com/SuperTool.aspx?action=blacklist%3a129.153.203.128&run=toolpage>
+
+            Blacklist     Reason                      TTL
+    ======  ============  ==========================  ====
+    LISTED  BLOCKLIST.DE  129.153.203.128 was listed  2100
+    LISTED  DRONE BL      129.153.203.128 was listed   300
+    LISTED  s5h.net	      129.153.203.128 was listed     5
+    LISTED  Spamhaus ZEN  129.153.203.128 was listed   300
+
+    And then I realized -- wait a minute, there are people who curate specific
+    ban lists like these *FOR* me!  I don't even have to think about sifting
+    through thousands of logs- how did i- aghhh!!! o///o
+
+    (ok don't ask me how but I never thought thousands of "deny IP;" rules
+    of nginx rules would be viable ok =_=  Like, you gotta think about
+    how this scales.  And obviously anything linear in lookup time would
+    be absurd to use to deal with something with this scale.)
+
+    Right now I am using "ipsum"[1] because I found it from one search to
+    another and it introduced me to ipset, which has this cool thing that
+    matches IPs with a hash table.  We'll see how it goes out from here :)
+
+    [1]: https://github.com/stamparm/ipsum?tab=readme-ov-file
+
+    Generally I don't think anyone should have to worry about their IPs
+    ending up on these lists, unless someone who you happen to live near
+    and happens to use your network to do shady stuff... happens to be
+    on your network, well.  You can try finding yourself on the list, or
+    ask me to look it up for you in this "ipsum" hash table...
+
+    Either way, that's all you need to know!
+    ]]></description>
+  </item>
 
   <item>
     <title>Nginx httpd did not start....</title>
