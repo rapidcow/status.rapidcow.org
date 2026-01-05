@@ -3,4 +3,4 @@
 set -euo pipefail
 s=$(date -d "${DATE:-"$(date --rfc-email)"}" +%s)
 date -d @$s --rfc-email | tee data/$s.dat &&
-${EDITOR:-vi} data/$s.dat || rm date/$s.dat
+${EDITOR:-vi} data/$s.dat || rm data/$s.dat
