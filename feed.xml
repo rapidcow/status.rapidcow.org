@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Sun, 21 Dec 2025 12:09:40 -0600</lastBuildDate>
+  <lastBuildDate>Mon, 05 Jan 2026 15:18:10 +0800</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,29 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>New year</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1767596777</link>
+    <guid>https://status.rapidcow.org/feed.html#1767596777</guid>
+    <pubDate>Mon, 05 Jan 2026 15:06:17 +0800</pubDate>
+    <description><![CDATA[
+    Hey this is rapid!
+
+    (I swear my life is very orderly and in-place.... um.
+    That bit is very true.  YOU KNOW THAT!!!)
+
+    This isn't so much of a status update but maybe, like
+    I was just thinking... upptime has been running for a
+    while now [1] -- we could probably hand this status
+    thing over to that guy?
+
+    Anyways...
+
+    [1]: https://rapidcow.github.io/upptime/
+    ]]></description>
+  </item>
 
   <item>
     <title>Blacklist for all &gt;:)</title>
