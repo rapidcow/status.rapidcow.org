@@ -1,5 +1,5 @@
 #!/bin/sh
-if ! expr "$HOSTNAME" : RCs-T480s; then
+if ! expr "$HOSTNAME" : RCs-T480s >&/dev/null; then
 	cat <<HERE_BE_DRAGON
 warning: This script is intended to run on T480s, but you are
 warning: $HOSTNAME???  (You have been warned....)
