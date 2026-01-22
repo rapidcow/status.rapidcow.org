@@ -1,15 +1,25 @@
 #!/usr/bin/env perl
 
+# 5.12 for correct readdir behavior
+use v5.14;
 use strict;
 use warnings;
 use Git;
 # error handling????
 use Error qw(:try);
-# 5.12 for correct readdir behavior
-use v5.14;
 
 use Cwd 'abs_path';
 use File::Spec::Functions qw(catfile);
+use Getopt::Long;
+
+my $yes_to_everything;
+my @mesg;
+
+Getopt::Long::Configure(qw( gnu_compat ));
+GetOptions(
+	'y' => \$yes_to_everything,
+	'm=s@' => \@mesg,
+) or die "usage: $0 [-y] [-m MESG ...]";
 
 # $1: git repository
 # $2: branch
@@ -27,9 +37,13 @@ sub commit {
 	} catch Error::Simple with {
 		$parent = 0;
 	};
+THING: {
 	say STDERR "# committing tree $tree";
 	if ($parent) {
 		say STDERR "# basing on $parent" if $parent;
+		if ($yes_to_everything) {
+			next THING;
+		}
 		print STDERR "# do you want to see a diff? (y/N) ";
 		chomp (my $answer = <STDIN>);
 		if ($answer eq 'y') {
@@ -43,10 +57,21 @@ sub commit {
 	} else {
 		say STDERR "# (root commit)";
 	}
-	say STDERR "# please tell git-commit-tree about your commit message:";
-	return $parent
-		? $git->command_oneline('commit-tree', $tree, '-p', $parent)
-		: $git->command_oneline('commit-tree', $tree);
+}
+	if (!@mesg) {
+		say STDERR "# please tell git-commit-tree about your commit message:";
+		return $parent
+			? $git->command_oneline('commit-tree', $tree, '-p', $parent)
+			: $git->command_oneline('commit-tree', $tree);
+	}
+	else {
+		chomp @mesg;
+		$git->command_oneline('commit-tree',
+			map ({ ('-m', $_) } @mesg),
+			('-p', $parent) x !!$parent,
+			$tree,
+		);
+	}
 }
 
 # $1: git repository
