@@ -15,8 +15,8 @@
   <link rel="alternate" type="application/rss+xml" title="Site Status" href="[% BASE_URL %]feed.xml">
   <title>Site Status</title>
 </head>
-[% mtime = 1771586700
-   mzone = "+0800" -%]
+[% mtime = 1772462647
+   mzone = "-0600" -%]
 <body><pre>
               === rapidcow's Site Status Page! ===
 
@@ -39,7 +39,14 @@
   Subscribe to stay updated! :D --&gt; [<a href="feed.xml">RSS</a>][<a
                                            href="feed.html">HTML</a>] &lt;--
 
+  Everything is updated by hand to the best of my knowledge.
+  I try to fix things
+
+  World-Wide-Web (TCP 80/443) status:
+
      *  www.rapidcow.org:   OPERATIONAL (A)
+     *  git.rapidcow.org    OPERATIONAL
+        and git.rdkw.org
      *  mastodon.rapidcow.org: temporary (A)
      *  ftp.rapidcow.org:   OPERATIONAL
      *  www.yizx.net and    OPERATIONAL (A)(C)
@@ -58,11 +65,25 @@
   很遗憾我无能为力。我会考虑换个域名发布我之前的 blogs.... :(</span>
   [<b>It's here!</b>  You can access via <a rel="noopener" href="https://stuff.yizz.me/">stuff.yizz.me</a>.]
 
+  Domain-Name-System (TCP(/UDP?) 53) status:
+
+     *  rapidcow.org.       Cloudflare
+     *  yizz.me.            Namecheap
+     *  yizx.net.           Cloudflare
+
+  (All other domains are on Porkbun, but I'm
+   considering moving them!)
+
+<!-- urm... no?
   notable other places i happen to have:
 
      <a rel="noopener" href="https://rapidcow.neocities.org/">rapidcow.neocities.org</a>: hiatus (changelog has <a href="https://rapidcow.neocities.org/news/">happened</a>,
                              but umm... I need time to think)
      <a rel="noopener" href="https://rapidcow.tumblr.com/">rapidcow.tumblr.com</a>: probably not
+
+-->
+  While you're here, check out my <a rel="noopener" href="https://rapidcow.neocities.org/">NeoCities</a>?
+  (I will update when I'm less busy with school - promise!)
 
   -- modified [% mtime %] ([% mtime | rfc822_date(mzone) %]) --
 <!--
