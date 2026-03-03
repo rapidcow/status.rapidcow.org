@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Mon, 02 Mar 2026 08:51:44 -0600</lastBuildDate>
+  <lastBuildDate>Mon, 02 Mar 2026 19:50:20 -0600</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,30 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>forgot still :x</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1772501719</link>
+    <guid>https://status.rapidcow.org/feed.html#1772501719</guid>
+    <pubDate>Mon, 02 Mar 2026 19:35:19 -0600</pubDate>
+    <description><![CDATA[
+    Forgot to upload to Cloudflare yizx.net's zone file
+    this morning...
+
+    (i swear i thought i did before going to sleep at
+    8-9 am???  I'm sorry y'all i really thought i did
+    i really just wanted to take one nap first not two
+    before this like works D:)
+
+    Hopefully it will go back now that i just did?
+    (i was browsing for stuff to buy, so launching X
+    for the clickity stuff on the cloudflare dashboard
+    wasn't a problem.)
+
+    +Thanks to Uptime Robot for keeping me in check...
+    ]]></description>
+  </item>
 
   <item>
     <title>yizx.net DNS migration</title>
