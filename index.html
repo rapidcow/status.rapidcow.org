@@ -51,7 +51,7 @@
         and git.rdkw.org
      *  mastodon.rapidcow.org: temporary (A)
      *  ftp.rapidcow.org:   OPERATIONAL
-     *  www.yizx.net and    OPERATIONAL (A)(C)
+     *  www.yizx.net and    I HOPE???** (A)(C)
         stuff.yizz.me:                  (A)
      *  www.yizz.me:        OPERATIONAL
      *  www.endfindme.com:  OPERATIONAL (A)
@@ -66,6 +66,19 @@
   <span lang="zh-Hans">中国的朋友大概率会遇到 TCP 连接重置；这看似是 GFW 的作为，
   很遗憾我无能为力。我会考虑换个域名发布我之前的 blogs.... :(</span>
   [<b>It's here!</b>  You can access via <a rel="noopener" href="https://stuff.yizz.me/">stuff.yizz.me</a>.]
+
+  ** It's been a little over one day since I moved the
+  name records and had the A/AAAA record pointing to
+  the wrong server.  The server is running I swear --
+  please just wait for the DNS records to propagate!
+
+  If you must directly access it rn connect to the
+  right server "rapidcow.org" and use the Host header
+  (with SSL you'd have to also set the Server Name
+  Indication (in the case of openssl s_client, that's
+  -servername), or you can use --resolve www.yizx.net\
+  :$(dig +short A rapidcow.org) with curl to bypass
+  the faulty DNS record at the moment). Sorry again! /\
 
   Domain-Name-System status (I don't run any public-
   facing DNS server so this is purely informational):
