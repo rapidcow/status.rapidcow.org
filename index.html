@@ -57,8 +57,8 @@
   funnily enough, bots (Huawei's PetalBots as of late?)
   still try to hammer my site requesting for some /vod/
   because it had existed in the past!
--->
-  You are welcome to access the site via <a href="https://en.wikipedia.org/wiki/Domain_fronting#Obfuscating_requests">domain fronting</a>;
+-->  You
+  are welcome to access the site via <a href="https://en.wikipedia.org/wiki/Domain_fronting#Obfuscating_requests">domain fronting</a>;
   connect over HTTPS to TCP port 443, set the SNI
   server name to <b>rapidcow.org</b>, and the Host header
   to <b>www.yizx.net</b>.  I made a <a href="https://asciinema.org/a/816802">screencast</a> about it
@@ -66,19 +66,6 @@
 
   (Thank you to Claude by Anthropic for teaching me
   about the Internet censorship bypass jargon!)
-
-  ** It's been a little over one day since I moved the
-  name records and had the A/AAAA record pointing to
-  the wrong server.  The server is running I swear --
-  please just wait for the DNS records to propagate!
-
-  If you must directly access it rn connect to the
-  right server "rapidcow.org" and use the Host header
-  (with SSL you'd have to also set the Server Name
-  Indication (in the case of openssl s_client, that's
-  -servername), or you can use --resolve www.yizx.net\
-  :$(dig +short A rapidcow.org) with curl to bypass
-  the faulty DNS record at the moment). Sorry again! /\
 
   Domain-Name-System status (I don't run any public-
   facing DNS server so this is purely informational):
@@ -100,7 +87,7 @@
   While you're here, check out my <a rel="noopener" href="https://rapidcow.neocities.org/">NeoCities</a>?
   (I will update when I'm less busy with school - promise!)
 
-  -- modified 1772812662 (Fri, 06 Mar 2026 09:57:42 -0600) --
+  -- modified 1772812876 (Fri, 06 Mar 2026 10:01:16 -0600) --
 <!--
      since we are settling for 64 columns, these guys
      can actually be nicely centered for once...
