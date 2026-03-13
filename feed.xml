@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Fri, 06 Mar 2026 10:02:10 -0600</lastBuildDate>
+  <lastBuildDate>Fri, 13 Mar 2026 06:46:55 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,27 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>Update: Mastodon proxy lifted</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1773401929</link>
+    <guid>https://status.rapidcow.org/feed.html#1773401929</guid>
+    <pubDate>Fri, 13 Mar 2026 06:38:49 -0500</pubDate>
+    <description><![CDATA[
+    mastodon.rapidcow.org is no longer proxied
+    through Anubis.  This is entirely an impulsive
+    decision and I entirely blame the irresponsive
+    domain owner of the domain I want to acquire
+    for this.  Also I just want to see if
+    fediverse.observer (which contrary to my belief
+    appears to be probing us periodically, at least
+    judging from their site alone) would find us.
+
+    This by no means makes mastodon.rapidcow.org
+    any less "temporary"!
+    ]]></description>
+  </item>
 
   <item>
     <title>forgot still :x</title>
