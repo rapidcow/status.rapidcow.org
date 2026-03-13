@@ -5,4 +5,4 @@ warning: This script is intended to run on T480s, but you are
 warning: $HOSTNAME???  (You have been warned....)
 HERE_BE_DRAGON
 fi
-git push rpi-stat status/pages-src:pages-src status/pages:pages refs/notes/status/commits:refs/notes/commits
+git push rpi-stat "$@" status/pages-src:pages-src status/pages:pages refs/notes/status/commits:refs/notes/commits
