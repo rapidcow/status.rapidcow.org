@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Fri, 13 Mar 2026 06:51:30 -0500</lastBuildDate>
+  <lastBuildDate>Tue, 17 Mar 2026 14:11:00 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,121 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>rdkw.org Zone (first-time hostmaster?)</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1773772239</link>
+    <guid>https://status.rapidcow.org/feed.html#1773772239</guid>
+    <pubDate>Tue, 17 Mar 2026 13:30:39 -0500</pubDate>
+    <description><![CDATA[
+    So I wanted to set up a page for rdkw.org to show
+    a domain broker I've been in touch with (basically
+    to show him a forwarded version of the email I sent
+    to the Kuwaiti registrant of rdkw.net whose domain
+    I've been vying for ever since I... well, thought of
+    it could be a viable substitute for yizx.net for my
+    family), and Gmail "shockingly" butchers my RFC822
+    attachment completely!
+
+    Naturally I was going to change to an HTML part,
+    until I remembered nobody actually opens an HTML
+    file like a file.  And that's when I had the idea
+    of putting it on my web server, and giving him a
+    link to it.
+
+    ... which led me to signing keys with <b>dnssec-ksr</b>,
+    publishing the DS hash on my registrar (Porkbun), and
+    replacing the nameservers with my BIND9 servers....
+    (If you were wondering where that typo patch came from
+    it was from me reading the DNSSEC tutorial on BIND9's
+    ReadTheDocs... that's what I've been learning yeah :)
+
+    It took a LOT of work (like, all the way from yesterday
+    afternoon to midnight where I got tired, then 3 to 6am
+    (when I woke up to see my roommate leave the balcony
+    door open in the middle of a blizzard (granted I burnt
+    my pizza leftover in the microwave causing an obscene
+    amount of smoke in the living room but come on it's been
+    hours since that happened!)), and 9am to now) but now
+    having moved from Porkbun to my DNS servers I think it's
+    working quite well!
+
+    &lt;https://dnsviz.net/d/git.rdkw.org/dnssec/&gt;
+
+    This Verisign validator also reminded me of how one
+    (though it was the Ubuntu one, I'm not sure why?) of my
+    servers wasn't reachable over IPv6 with UDP, so I also
+    changed the YAML config in /etc/netplan on the Debian DO
+    server by adding the IPv6 address and gateway...
+    basically you can now reach it via IPv6.  (I haven't
+    been able to test IPv6 much from my laptop, so sorry
+    to anyone who tried to connect over IPv6!)
+
+    And yeah... if you look at the SOA record it'd say
+    something like:
+
+    <pre>  ; &lt;&lt;&gt;&gt; DiG 9.20.20 &lt;&lt;&gt;&gt; @1.1.1.1 +multi SOA rdkw.org
+    ; (1 server found)
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 28639
+    ;; flags: qr rd ra ad; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ;; QUESTION SECTION:
+    ;rdkw.org.		IN SOA
+
+    ;; ANSWER SECTION:
+    rdkw.org.		3600 IN	SOA ns1.rapidcow.net. hostmaster.rapidcow.org. (
+    				1773771571 ; serial
+    				43200      ; refresh (12 hours)
+    				900        ; retry (15 minutes)
+    				345600     ; expire (4 days)
+    				7200       ; minimum (2 hours)
+    				)
+    </pre>
+
+    (Note the "ad" (Authentic data) flag -- it means
+    that Cloudflare approves of my DNSSEC signature! :)
+
+    So I guess that makes me both the hostmaster and
+    the webmaster now, eh?  To some extent, though
+    I don't plan to host my own DNS forever... deSEC
+    and Cloudflare do a good enough job.  The only
+    thing I get annoyed at is that none of them let
+    me upload my own zone file (well deSEC just
+    straight up has no such interface (although it
+    let me import the first time, I don't see any way
+    to do it again?  (Might try reverse-engineering
+    what it did the first time, come to think of it...
+    but anything I do from here is extra work and will
+    only delay me working on homework that I was
+    supposed to get started on this Saturday so nyah!
+    Not doing that! &gt;n&lt;)) and Cloudflare... basically
+    does not replace the existing records and panics
+    at the sight of any duplicate entries, so what I've
+    been doing is delete everything; re-import it (and
+    PRAY that Cloudflare hasn't propagated its deletion);
+    then delete any extraneous records like NS records
+    at the apex (because at the moment I don't want
+    Cloudflare to list me as secondary zones; I don't
+    have any DS records delegating to my own keys so
+    the trust chain will break if my servers were to
+    act as authoritative for those servers (which they
+    are, but also they don't sign anything... again
+    KSK rollover will be exhausting, and I don't really
+    want to commit to it until I get a taste of how it
+    feels like for another few years...)
+
+    Either way, that's all you really have to know!
+    (Oh and of course I made DNS over HTTPS, that's
+    a necessity to me -- though if you were to use it
+    your queries would not be anonymous to me (BIND9
+    logs it), so just be careful with that... ;)
+    ]]></description>
+  </item>
 
   <item>
     <title>Update: Mastodon proxy lifted</title>
