@@ -17,7 +17,7 @@ file like a file.  And that's when I had the idea
 of putting it on my web server, and giving him a
 link to it.
 
-which led me to signing keys with <b>dnssec-ksr</b>,
+... which led me to signing keys with <b>dnssec-ksr</b>,
 publishing the DS hash on my registrar (Porkbun), and
 replacing the nameservers with my BIND9 servers....
 (If you were wondering where that typo patch came from
