@@ -48,7 +48,7 @@ to anyone who tried to connect over IPv6!)
 And yeah... if you look at the SOA record it'd say
 something like:
 
-[%- FILTER html -%]
+[% FILTER html -%]
 ; <<>> DiG 9.20.20 <<>> @1.1.1.1 +multi SOA rdkw.org
 ; (1 server found)
 ;; global options: +cmd
