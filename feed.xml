@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Tue, 17 Mar 2026 14:16:39 -0500</lastBuildDate>
+  <lastBuildDate>Tue, 17 Mar 2026 21:24:14 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -97,7 +97,7 @@
     And yeah... if you look at the SOA record it'd say
     something like:
 
-    <pre>  ; &lt;&lt;&gt;&gt; DiG 9.20.20 &lt;&lt;&gt;&gt; @1.1.1.1 +multi SOA rdkw.org
+    ; &lt;&lt;&gt;&gt; DiG 9.20.20 &lt;&lt;&gt;&gt; @1.1.1.1 +multi SOA rdkw.org
     ; (1 server found)
     ;; global options: +cmd
     ;; Got answer:
@@ -117,7 +117,6 @@
     				345600     ; expire (4 days)
     				7200       ; minimum (2 hours)
     				)
-    </pre>
 
     (Note the "ad" (Authentic data) flag -- it means
     that Cloudflare approves of my DNSSEC signature! :)
