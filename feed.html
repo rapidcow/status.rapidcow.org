@@ -274,7 +274,7 @@ End of TOC.
 
     * Botnet sends a plausible UDP packet, saying "I want
       *every* record---A, AAAA, TXT, and all that---at the
-      name dhl.com.", to a DNS resolver, and forges a return
+      name dhl.com.", to a DNS resolver, and forges a source
       address pointing to one of the addresses of Brazillian
       ISP.  (That is VPSes, but possibly residential IP too.)
 
@@ -287,6 +287,10 @@ End of TOC.
       DNS packet is lol, it's less than 256 for sure),
       but the response gets amplified to 2-6 kilobytes.
       Maximal damage for minimal effort!
+
+  Wikipedia has a neat diagram for it (although the gray
+  mess representing "the Internet" is kind of funny, lol):
+  &lt;https://en.wikipedia.org/wiki/IP_address_spoofing&gt;
 
   (Although, now that I checked against my own recursive
   resolvers, the TCP "rcvd" size is between 6888 and 6063,
