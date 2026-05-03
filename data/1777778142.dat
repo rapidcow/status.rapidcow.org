@@ -8,9 +8,10 @@ ns2 (nominally ns2.rapidcow.net) hasn't been serving
 any DNS records, and my Tailscale ACL is to blame...
 
 After a re-auth the ubuntu (ns1) server was untagged,
-which my ACL would not allow.  (Normally untagged
-machines are my laptops and phones, so just imagine
-mistaking a VPS for that!)
+which my ACL would not allow ns2 connecting to for the
+zone transfer.  (Normally untagged machines are my
+laptops and phones, so just imagine mistaking a VPS
+for that!)
 
 Also, I'm gonna need to find a way to not display the
 webmaster address directly, since (apparently) bots
