@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Tue, 28 Apr 2026 20:31:09 -0500</lastBuildDate>
+  <lastBuildDate>Sat, 02 May 2026 22:24:32 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,33 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>ns2 nameserver oddity</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed.html#1777778142</link>
+    <guid>https://status.rapidcow.org/feed.html#1777778142</guid>
+    <pubDate>Sat, 02 May 2026 22:15:42 -0500</pubDate>
+    <description><![CDATA[
+    For a bit (I'm not sure how long?  Maybe following my
+    futile attempt to move my Tailscale provider to OIDC)
+    ns2 (nominally ns2.rapidcow.net) hasn't been serving
+    any DNS records, and my Tailscale ACL is to blame...
+
+    After a re-auth the ubuntu (ns1) server was untagged,
+    which my ACL would not allow ns2 connecting to for the
+    zone transfer.  (Normally untagged machines are my
+    laptops and phones, so just imagine mistaking a VPS
+    for that!)
+
+    Also, I'm gonna need to find a way to not display the
+    webmaster address directly, since (apparently) bots
+    have found this address and have been taking ample
+    pleasure in spamming my inbox with it...
+
+    (I won't be gone for long this time. :)
+    ]]></description>
+  </item>
 
   <item>
     <title>Re: dhl.com IN ANY</title>

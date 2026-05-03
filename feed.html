@@ -44,6 +44,7 @@ has completely stripped of me. ;&lt;
                                               -2025/Dec/10-
 
 Table of Contents:
+  # <a href="#1777778142">1777778142</a>   ns2 nameserver oddity
   # <a href="#1774917894">1774917894</a>   Re: dhl.com IN ANY
   # <a href="#1774908318">1774908318</a>   dhl.com IN ANY
   # <a href="#1774352955">1774352955</a>   Markov-gibberish
@@ -78,6 +79,30 @@ Table of Contents:
   # <a href="#1731229200">1731229200</a>   Update: Neocities
   # <a href="#1730847600">1730847600</a>   Grand opening of... status.rapidcow.org!
 End of TOC.
+
+<a id="1777778142">1777778142</a>:
+  Date: Sat, 02 May 2026 22:15:42 -0500
+  From: webmaster&commat;rapidcow.org
+  Subject: ns2 nameserver oddity
+
+  For a bit (I'm not sure how long?  Maybe following my
+  futile attempt to move my Tailscale provider to OIDC)
+  ns2 (nominally ns2.rapidcow.net) hasn't been serving
+  any DNS records, and my Tailscale ACL is to blame...
+
+  After a re-auth the ubuntu (ns1) server was untagged,
+  which my ACL would not allow ns2 connecting to for the
+  zone transfer.  (Normally untagged machines are my
+  laptops and phones, so just imagine mistaking a VPS
+  for that!)
+
+  Also, I'm gonna need to find a way to not display the
+  webmaster address directly, since (apparently) bots
+  have found this address and have been taking ample
+  pleasure in spamming my inbox with it...
+
+  (I won't be gone for long this time. :)
+End of 1777778142.
 
 <a id="1774917894">1774917894</a>:
   From: webmaster&commat;rapidcow.org
