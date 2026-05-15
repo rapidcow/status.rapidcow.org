@@ -1,0 +1,99 @@
+From: ????? at rapidcow dot org
+Date: Fri, 15 May 2026 01:23:03 -0500
+Subject: Too many sites on Cloudflare
+
+(not showing my email since urm... spam.
+(infrequent, but still spam.))
+
+NS endfindme.com now goes on Cloudflare too;
+before it was Porkbun (though I *think* if
+knowledge serves me right, Porkbun uses
+Cloudflare in the background too.)
+
+The reason: serve that rotten clubradar
+project I've never had any interest in as
+a PERMANENT redirect, without costing a
+dime from my pocket!  I've heard of good
+things about Cloudflare Worker from a guy
+who's been running our university's last
+and only web-development club (well, maybe a
+bit excessive of an endorsement, considering
+the whole CLUB's infrastructure runs on
+Cloudflare: from registrar and DNS to website
+and business logic code...), so I decided
+to give it a shot.
+
+(Funny sorry, following incidence of our
+university's canvas.wisc.edu being caught
+in the middle of the (at the very least
+second) cyberattack against Instructure,
+our DoIT imprudently used 301 instead of
+302 or 307 to steer naive people away from
+canvas.wisc.edu to alerts.wisc.edu.  Days
+later (the following Tuesday, which is to
+say the Tuesday this week) someone in the
+UW-Madison Weixin group chat said their
+browser just insisted on following that
+redirect and won't go back to Canvas after
+it got fixed.  Somebody suggested the guy
+to ditch their browser session entirely
+because DoIT essentially "poisoned" the
+redirect cache. XD  So much for "protecting"
+the students...)
+
+So yes, the PERMANENT part is very much
+intentional, in that I am "intentionally"
+poisoning any of my pesky teammates who
+cared enough to revisit for whatever reason.
+Say that delivers a final goodbye kiss to
+them for the unsightly irresponsibility.
+
+But there is a catch with Cloudflare Worker
+... to get the vanity domain working AND to
+refrain from paying a dime, where money lacks
+well your dignity makes up for.  Cloudflare
+wants to manage my whole zone for me with
+what's called their "Full DNS Setup". Without
+it you either just can't use their service
+with your domain (not even CNAME to the
+worker.dev dynamic domain name!); or you'd
+be paying them a fortune for a business plan
+for a "Partial DNS Setup".  All for the basic
+dignity to use a custom domain name.
+
+..... *tsk* I sure do like it when people
+frame it that way.  "Custom"... name.  I
+mean it's your choice to make; sure.  You
+own the network; I don't.  I just hate the
+way it is phrased... as if we regular people
+owning a little place on the Internet was the
+exception rather than the norm.  Decentralized
+communication *was* the norm, pumpkin head!
+When the world was full of small sites and
+providers respected our personal space like
+Geocities... and you want to call FAANG and
+mega-apps like Tencent Weixin the f-kn' norm.
+
+Right now I've switched most of my *.net
+domains away from Cloudflare; the ones that
+I am serious about using internally at least.
+I am going to try to find a balance with
+things, but essentially... I don't want to
+grow reliant on Cloudflare.  Not while I still
+have to delete all my name records to upload
+a new one from my locally-managed BIND zone
+files (that is currently the only reason keeping
+me from moving to something that feels more
+"ethical", like deSEC.io); not while it randomly
+rejects my OPENPGPKEY record for random errors
+(and I mean random in a very literal sense --
+you literally can't make out s**t from it);
+and not while, unlike Netlify or Vercel, it
+refuses to deploy my stuff to my domain because
+it couldn't accept not having control over my
+entire zone and have me jump through fancy
+interfaces just to do the most simple basic
+task; just minding my own business with my
+DNS records.  Not while it asks to bind itself
+to parts of my infrastructure more than what
+I ask it to bind to.
