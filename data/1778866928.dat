@@ -1,0 +1,19 @@
+Date: Fri, 15 May 2026 12:42:08 -0500
+Subject: less-broken DNSSEC rapidcow.net
+
+okkk ns{1,2,3,4,5}.he.net should be authoritative
+over rapidcow.net instead of BuddyNS.  I tried
+querying them individually and it seems that it
+is...
+
+actually what am I saying, i didn't need to know
+from querying; i already trust them to know their
+stuff because their interface just makes sense. :)
+
+i haven't checked if the name servers support
+NOTIFY, but judging from
+https://forums.he.net/index.php?topic=4299.0
+it seems to be possible to use ns1...
+
+Either way, by the time cache expires i can let
+dnsviz.net confirm that everything is in place!
