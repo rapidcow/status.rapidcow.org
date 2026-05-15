@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Fri, 15 May 2026 02:16:05 -0500</lastBuildDate>
+  <lastBuildDate>Fri, 15 May 2026 11:46:46 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,55 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>half-broken DNSSEC rapidcow.net</title>
+    <author></author>
+    <link>https://status.rapidcow.org/feed.html#1778861980</link>
+    <guid>https://status.rapidcow.org/feed.html#1778861980</guid>
+    <pubDate>Fri, 15 May 2026 11:19:40 -0500</pubDate>
+    <description><![CDATA[
+    Hey y'all, so I'm trying out free secondary servers to
+    serve alongside my two measly Digital Ocean droplets.
+    rapidcow.net is the "lab rat" this time (which most of
+    you shouldn't know of; i only got it in a fit of anger
+    towards GoDaddy holding rapidcow.com hostage for some
+    unholy cost).  currently trying out BuddyNS (which i
+    keep misspelling as "bundy"...); apparently out of all
+    records in the world they don't support RRSIG!
+
+    Because DNSSEC is a paid feature?  I mean I'd get it
+    if they're the one rotating the keys and signing them,
+    but if I'm just letting you serve the RRSIG/NSEC3...
+    it shouldn't be any more work than being a RFC-compliant
+    secondary server. :(
+
+    Ironically directly below a retweet by Bundy^W BUDDY,
+    sorry, NS, the same person says:
+
+    https://twitter.com/jefhar70/status/1583566517429338112
+
+    > Actually I'm switching secondary dns from BuddyNS to
+    > http://dns.he.net.  One of them strips dnssec records
+    > from the slave zone, and the other preserves them.
+
+    https://twitter.com/jefhar70/status/1583596812585209856
+
+    > Well, they won't strip the dnssec records if you pay
+    > them, but that's like paying for a TLS certificate in
+    > the age of Let's Encrypt.
+
+    (I actually removed mentions of BuddyNS and letsencrypt
+    because i hate handle-centric internet.  That said, there
+    is a certain tinge of hope when there wasn't a handle for
+    he.net...)
+
+    Anyways, I'm dropping Buddy from the registry NS...
+    it's a good thing all the big recursive name servers
+    (1.1.1.1, 8.8.8.8, 9.9.9.9) didn't drop my name records
+    because of Buddy misbehaving... so much for that. &gt;n&gt;
+    ]]></description>
+  </item>
 
   <item>
     <title>quick word</title>
