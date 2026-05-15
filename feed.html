@@ -44,6 +44,7 @@ has completely stripped of me. ;&lt;
                                               -2025/Dec/10-
 
 Table of Contents:
+  # <a href="#1778866928">1778866928</a>   less-broken DNSSEC rapidcow.net
   # <a href="#1778861980">1778861980</a>   half-broken DNSSEC rapidcow.net
   # <a href="#1778828338">1778828338</a>   quick word
   # <a href="#1778826183">1778826183</a>   Too many sites on Cloudflare
@@ -82,6 +83,28 @@ Table of Contents:
   # <a href="#1731229200">1731229200</a>   Update: Neocities
   # <a href="#1730847600">1730847600</a>   Grand opening of... status.rapidcow.org!
 End of TOC.
+
+<a id="1778866928">1778866928</a>:
+  Date: Fri, 15 May 2026 12:42:08 -0500
+  Subject: less-broken DNSSEC rapidcow.net
+
+  okkk ns{1,2,3,4,5}.he.net should be authoritative
+  over rapidcow.net instead of BuddyNS.  I tried
+  querying them individually and it seems that it
+  is...
+
+  actually what am I saying, i didn't need to know
+  from querying; i already trust them to know their
+  stuff because their interface just makes sense. :)
+
+  i haven't checked if the name servers support
+  NOTIFY, but judging from
+  https://forums.he.net/index.php?topic=4299.0
+  it seems to be possible to use ns1...
+
+  Either way, by the time cache expires i can let
+  dnsviz.net confirm that everything is in place!
+End of 1778866928.
 
 <a id="1778861980">1778861980</a>:
   Date: Fri, 15 May 2026 11:19:40 -0500

@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Fri, 15 May 2026 11:46:46 -0500</lastBuildDate>
+  <lastBuildDate>Fri, 15 May 2026 12:53:49 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,32 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>less-broken DNSSEC rapidcow.net</title>
+    <author></author>
+    <link>https://status.rapidcow.org/feed.html#1778866928</link>
+    <guid>https://status.rapidcow.org/feed.html#1778866928</guid>
+    <pubDate>Fri, 15 May 2026 12:42:08 -0500</pubDate>
+    <description><![CDATA[
+    okkk ns{1,2,3,4,5}.he.net should be authoritative
+    over rapidcow.net instead of BuddyNS.  I tried
+    querying them individually and it seems that it
+    is...
+
+    actually what am I saying, i didn't need to know
+    from querying; i already trust them to know their
+    stuff because their interface just makes sense. :)
+
+    i haven't checked if the name servers support
+    NOTIFY, but judging from
+    https://forums.he.net/index.php?topic=4299.0
+    it seems to be possible to use ns1...
+
+    Either way, by the time cache expires i can let
+    dnsviz.net confirm that everything is in place!
+    ]]></description>
+  </item>
 
   <item>
     <title>half-broken DNSSEC rapidcow.net</title>
