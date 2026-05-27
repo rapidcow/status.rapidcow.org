@@ -10,3 +10,5 @@
 *.sw[a-p]
 # Git Archive
 *.tar.gz
+# CLOUDFLARE PAGES
+/.wrangler
