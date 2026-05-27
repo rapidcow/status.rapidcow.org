@@ -5,7 +5,7 @@ help:
 
 export BASE_URL = https://status.rapidcow.org/
 
-public: $(patsubst %,public/%,.domains robots.txt index.html feed.html feed.xml)
+public: $(patsubst %,public/%,robots.txt index.html feed.html feed.xml)
 
 public/.domains: .domains
 	@mkdir -p public/
