@@ -10,4 +10,7 @@ set -x
 tmpdir=$(mktemp -d "$template")
 trap 'rm -rf "$tmpdir"' EXIT
 tar xvf site.tar.gz -C "$tmpdir"
-$wrangler deploy "$tmpdir" --domain status.rapidcow.org
+$wrangler deploy --assets "$tmpdir" \
+	--compatibility-date 2026-05-27 \
+	--domain status.rapidcow.org \
+	--name rc-status
