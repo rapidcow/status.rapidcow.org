@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Wed, 27 May 2026 19:11:23 -0500</lastBuildDate>
+  <lastBuildDate>Thu, 28 May 2026 04:24:11 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,130 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>AI for code</title>
+    <author></author>
+    <link>https://status.rapidcow.org/feed.html#1779954807</link>
+    <guid>https://status.rapidcow.org/feed.html#1779954807</guid>
+    <pubDate>Thu, 28 May 2026 02:53:27 -0500</pubDate>
+    <description><![CDATA[
+    I have been using AI (Claude Code, namely) to write code,
+    and while nobody has mentioned this point to me (yet), I
+    ... still feel like I should say something.
+
+    (Like doing a press release, ugh.... but if i don't say
+    something, i can't sleep with this.)
+
+    Basically, I don't think i can make a stance that i can
+    stick to.  I am neither refraining from all AI-generated
+    writing/code nor embracing it fully.  One thing I can
+    take a strong stance against is the so-called AI-generated
+    art; but that isn't to say I automatically like any art
+    that isn't AI.  (It never has been the case, so why should
+    it be now?)
+
+    Another thing I can say is privacy: AI for my public code
+    is alright, private code sometimes (it's not like I keep
+    my diaries there), but data is where I draw the line.  I
+    periodically clean up GPT and Claude's memory because I
+    reveal too much, sometimes... it's mostly my real domain
+    name I forget to deface, but I still prune them regularly
+    to at least make an effort in obscuring my identity.
+
+    A third line I can draw is quality: now that I am writing up
+    a patch for Perl; you bet I will thoroughly compare Claude's
+    analysis with real code and my rudimentary compiler knowledge.
+    That also isn't worth a separate blog, I just realized...
+    I'll let the GitHub bugtracking system speak for itself;
+    anything I can't speak directly in front of the developers
+    is probably not worth letting the rest of the world either.
+    (Partially because I am still disgusted by that OCaml pull
+    request; something like https://github.com/Perl/perl5/pull/24402
+    in comparison at least feels more modest and accountable
+    for when AI "goes wrong".)  But like in terms of copyright,
+    yes, I will make sure it's not a blatant rip-off; and if
+    I treat authorship more like "person to hold accountable"
+    (rather than my usual Git metadata model which is to use
+    the author identity as the physical machine used to change
+    the files (and the committer as the machine used to commit
+    it, if that's different)), then yes, I will put my name
+    under it, not because I treat AI code as mine, but because
+    AI cannot be held accountable, and people can't email
+    &lt;claude@anthropic.com&gt; and ask about rationales for
+    the change (not like it even "remembers" writing that.)
+
+    It's probably just me but I hate it when I am told on the
+    one hand to do it the hard way, and on the other succumb to
+    AI.  Like computer science is pointless, and the job market
+    likes AI-first candidate.  Point is I am already using AI,
+    not because I am told one way or another; or that it means
+    I take a stance for or against AI, about water usage, cooling,
+    electricity whatnot, yada yada....  It just means I find it
+    suitable for what I want: getting information fast.  Often
+    weird niche information people don't ask about, like...
+    running Nginx to proxy DoH from BIND 9 for my nameservers.
+    (Like BIND 9 has zero concepts of virtual hosts; I had to
+    use two loopback addresses and enforce ACL on that); or
+    my super niche Git server that needs to have directories
+    and fine-grained ACLs on ref namespaces, and audit logs,
+    that I can absolutely ask no one about because nobody is
+    this insane to track everything in a Git repository!  And
+    what made you think I am a developer or in all this thing
+    because i care about the industry?  computer isn't what i
+    love; art is!  And I also like the way programming lets me
+    express what I want.  It's one of those things that, once
+    you discover software is made by people, you can't stop
+    thinking about how they could have been made differently...
+    but that's that!  I want to make things WORK and not suck,
+    and -- if I am in the mood to -- explain how those work.
+    And if AI helps in the process of making it work, I'll
+    accept it.  And in return, if AI inspired an idea, I'll
+    put a short "thanks" below it.  If AI generated the code
+    entirely, I'd let the AI proudly put the model name in
+    the author header than hide it in a Co-Authored-By field
+    or any non-machine-parseable format.  But I won't look at
+    the AI-generated code, run around and panic "what will
+    people THINK about ME?!" and decide to start over again --
+    for what?  Just because I can't be seen walking around
+    with less than 100% of original thoughts?  In my OWN code?
+
+    Of course, I won't get to do this when it's someone else's
+    project, and the stakes are high; and rightfully so...
+    This is what I will have to do for Perl 5.  I will also not
+    do it when it's clear that this is copyrighted code... (but
+    I would argue that's what git log is for; you would already
+    be able to tell, most of the time, if Claude generated the
+    code or i did.  (There is just a tiny exception where I
+    copied the code straight from Claude Code in commit 3625a59;
+    but even then, it is somewhat based on my past projects so
+    *technically*, it's like generated on the basis of my own
+    code... which I DID write!  Morally speaking it wasn't that
+    much worse than collocating information (and frankly if we
+    spend here all day analyzing on a per-case basis whether
+    something counts as potential copyright infringement....
+    Well. :x))
+
+    You can see how this is exhausting right?  I try my best to
+    be transparent about this, but at the end of the day I just
+    want it to work.  And by the time I am done with it, i can
+    get back to my websites, or whatever other archive / homenet
+    project I have going on beyond your sights on the Internet...
+
+    (Also please don't post this on HN if anyone even reads this
+    ... I'm only doing this to alleviate my guilt.  I DON'T need
+    more judgment than I already do judging myself and analyzing
+    the ways this could go wrong and how I will deal with it.
+    Writing code and wanting to share it with people shouldn't
+    demand a whole lawyer's worth of knowledge... and I should
+    be allowed to have a life outside of all this while having
+    a voice of sorts to change things in a project that I would
+    otherwise have not deserved to make changes in... and still
+    not being the best of best at it.  I try to understand and
+    follow all the guidelines and feedback, and not waste anyone's
+    time; in return I just want peace when it's my own code....)
+    ]]></description>
+  </item>
 
   <item>
     <title>status.rapidcow.org is back on-line</title>
@@ -65,7 +189,9 @@
 
     Ah yeah, and by the way, there is this uptime that
     goes with this now:
+
        https://rapidcow.github.io/upptime/
+
     I won't like link it officially or anything... I
     would prefer that you read this instead of an auto-
     matically renewing dashboard that gives nothing but
