@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Wed, 27 May 2026 18:36:28 -0500</lastBuildDate>
+  <lastBuildDate>Wed, 27 May 2026 19:11:23 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,37 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>status.rapidcow.org is back on-line</title>
+    <author></author>
+    <link>https://status.rapidcow.org/feed.html#1779926317</link>
+    <guid>https://status.rapidcow.org/feed.html#1779926317</guid>
+    <pubDate>Wed, 27 May 2026 18:58:37 -0500</pubDate>
+    <description><![CDATA[
+    Hey hey hey we're on Cloudflare Pages now!  For the 0%
+    of you who have been following my journey on the upptime
+    test... https://github.com/rapidcow/upptime/issues/4
+
+    yeah it's solved!
+
+    Unlike hut publish, wrangler deploy had to be eat a
+    real directory; but I just extract my usual tarball
+    with "mktemp -d" and upload that instead :^)  (Not for
+    this one Cloudflare... *you* don't get to control *my*
+    architecture!)
+
+    Ah yeah, and by the way, there is this uptime that
+    goes with this now:
+       https://rapidcow.github.io/upptime/
+    I won't like link it officially or anything... I
+    would prefer that you read this instead of an auto-
+    matically renewing dashboard that gives nothing but
+    anxiety. =_= (I've said this once, but I like a web-
+    site better when it "sleeps" and not on 24/7. Gives
+    the whole thing more humanness.)
+    ]]></description>
+  </item>
 
   <item>
     <title>PAUSE</title>
