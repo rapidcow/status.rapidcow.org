@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Thu, 28 May 2026 04:24:11 -0500</lastBuildDate>
+  <lastBuildDate>Thu, 28 May 2026 18:10:24 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,27 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>Re: AI for code</title>
+    <author></author>
+    <link>https://status.rapidcow.org/feed.html#1780009613</link>
+    <guid>https://status.rapidcow.org/feed.html#1780009613</guid>
+    <pubDate>Thu, 28 May 2026 18:06:53 -0500</pubDate>
+    <description><![CDATA[
+    Hey so I woke up today and decided that I *still*
+    didn't like having AI-generated code authored under
+    my name.  So I rebased and split out that hunk
+    specifically to attribute Claude, and extracted the
+    relevant transcript with Claude in the commit notes.
+
+    It was an exercise in using jq without consulting
+    AI to do a quick-and-dirty job... but it is one that
+    is worth it I think. :)  In any case, "git blame" on
+    xlib/tree-search.pl is not as misleading as it used
+    to be.  and i feel much more confident writing code!
+    ]]></description>
+  </item>
 
   <item>
     <title>AI for code</title>
