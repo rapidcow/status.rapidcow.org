@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Thu, 28 May 2026 18:10:24 -0500</lastBuildDate>
+  <lastBuildDate>Sat, 30 May 2026 14:08:37 -0500</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -43,6 +43,26 @@
   <atom:link rel="self" type="application/rss+xml"
       href="https://status.rapidcow.org/feed.xml" />
   <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>May 29 maintenance</title>
+    <author></author>
+    <link>https://status.rapidcow.org/feed.html#1780094627</link>
+    <guid>https://status.rapidcow.org/feed.html#1780094627</guid>
+    <pubDate>Fri, 29 May 2026 17:43:47 -0500</pubDate>
+    <description><![CDATA[
+    spent the whole day migrating the tailscale =n=
+
+    Also, I am going back to China to help clean up
+    my derelict apartment this summer... (that word
+    was not an exaggeration; it REALLY needs cleaning.)
+
+    (This is to follow up on
+    https://github.com/rapidcow/upptime/issues/6
+    where weird stuff came and also weirdly went away
+    after i upgraded tailscale to the latest version)
+    ]]></description>
+  </item>
 
   <item>
     <title>Re: AI for code</title>
