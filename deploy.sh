@@ -3,7 +3,7 @@ wrangler=$(command -v wrangler) || wrangler='npx wrangler'
 set -e
 (
 	set -x
-	git archive status/pages -o site.tar.gz
+	git archive pages -o site.tar.gz
 )
 template="$(basename $0)".XXXXXXXX
 set -x
