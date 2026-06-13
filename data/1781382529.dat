@@ -1,0 +1,6 @@
+Date: Sat, 13 Jun 2026 15:28:49 -0500
+Subject: June 13 maint-ish
+
+I am going to try to configure nginx auth_request to use Authelia
+after I am done eating.  Expect wacky stuff to happen, if you are
+still misled to visit rapidcow.org instead of foss.rapidcow.org...
