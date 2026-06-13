@@ -27,7 +27,7 @@ I hope you enjoy this also super low-bandwidth feed page :)
 
 NOTE TO CRAWLERS: Do not index this page.  The contents are
 subject to change.  (There was a similar statement about
-archivers previously; but my thoughts have changed, and I'm
+archivers previously; but my thoughts have changed, and I&#39;m
 too tired to think of how this could used against me.  Not
 saying I am tired of doing this (yet), but there are bigger
 things I should worry about, so perhaps... I should let go.)
@@ -35,7 +35,7 @@ things I should worry about, so perhaps... I should let go.)
 Some of the entries are still not 62 columns wide.  The more
 recent XML feed entries have not been formatted with proper
 HTML with the slightest attempt either.  I apologize for
-that in advance, but I really don't know if anyone reads
+that in advance, but I really don&#39;t know if anyone reads
 this stuff....  I can fix this when I get the time to (maybe
 after this equally nightmarish semester is over); but I mean
 it when I say if you read this and care please let me know...
@@ -44,6 +44,7 @@ has completely stripped of me. ;&lt;
                                               -2025/Dec/10-
 
 Table of Contents:
+  # <a href="#1781382529">1781382529</a>   June 13 maint-ish
   # <a href="#1781078968">1781078968</a>   ubuntu web port 80/443 outage
   # <a href="#1780094627">1780094627</a>   May 29 maintenance
   # <a href="#1780009613">1780009613</a>   Re: AI for code
@@ -89,6 +90,15 @@ Table of Contents:
   # <a href="#1731229200">1731229200</a>   Update: Neocities
   # <a href="#1730847600">1730847600</a>   Grand opening of... status.rapidcow.org!
 End of TOC.
+
+<a id="1781382529">1781382529</a>:
+  Date: Sat, 13 Jun 2026 15:28:49 -0500
+  Subject: June 13 maint-ish
+
+  I am going to try to configure nginx auth_request to use Authelia
+  after I am done eating.  Expect wacky stuff to happen, if you are
+  still misled to visit rapidcow.org instead of foss.rapidcow.org...
+End of 1781382529.
 
 <a id="1781078968">1781078968</a>:
   Date: Wed, 10 Jun 2026 03:09:28 -0500
@@ -1064,12 +1074,12 @@ End of 1774352955.
 
   So I guess that makes me both the hostmaster and
   the webmaster now, eh?  To some extent, though
-  I don't plan to host my own DNS forever... deSEC
+  I don&#39;t plan to host my own DNS forever... deSEC
   and Cloudflare do a good enough job.  The only
   thing I get annoyed at is that none of them let
   me upload my own zone file (well deSEC just
   straight up has no such interface (although it
-  let me import the first time, I don't see any way
+  let me import the first time, I don&#39;t see any way
   to do it again?  (Might try reverse-engineering
   what it did the first time, come to think of it...
   but anything I do from here is extra work and will
@@ -1077,17 +1087,17 @@ End of 1774352955.
   supposed to get started on this Saturday so nyah!
   Not doing that! &gt;n&lt;)) and Cloudflare... basically
   does not replace the existing records and panics
-  at the sight of any duplicate entries, so what I've
+  at the sight of any duplicate entries, so what I&#39;ve
   been doing is delete everything; re-import it (and
-  PRAY that Cloudflare hasn't propagated its deletion);
+  PRAY that Cloudflare hasn&#39;t propagated its deletion);
   then delete any extraneous records like NS records
-  at the apex (because at the moment I don't want
-  Cloudflare to list me as secondary zones; I don't
+  at the apex (because at the moment I don&#39;t want
+  Cloudflare to list me as secondary zones; I don&#39;t
   have any DS records delegating to my own keys so
   the trust chain will break if my servers were to
   act as authoritative for those servers (which they
-  are, but also they don't sign anything... again
-  KSK rollover will be exhausting, and I don't really
+  are, but also they don&#39;t sign anything... again
+  KSK rollover will be exhausting, and I don&#39;t really
   want to commit to it until I get a taste of how it
   feels like for another few years...)
 
@@ -1488,7 +1498,7 @@ End of 1749291311.
 
   Pardon me for the lazy pre text again (no pun intended), but I
   think I must talk about this.... I thought it was my SSL renewal
-  that didn't trigger properly when I tried to access www.yizx.net
+  that didn&#39;t trigger properly when I tried to access www.yizx.net
   on Firefox but got this:
 
   = Secure Connection Failed
@@ -1537,13 +1547,13 @@ End of 1749291311.
 
   I guess I never noticed it, maybe China had banned my domain
   because of its history with hosting questionable &quot;entertainment&quot;
-  videos...  I'm not quite sure what to do here.
+  videos...  I&#39;m not quite sure what to do here.
 
   One weird thing: I guess if I type slowly enough (that is, I use
   telnet(1) to make a TCP connection and type the request myself),
   then I have some chance of connecting to HTTP over port 80.
   But if I use standard HTTP clients: curl, wget, HTTP::Tiny, then
-  I get ECONNRESET (errno 54, Connection reset by peer).  It's as
+  I get ECONNRESET (errno 54, Connection reset by peer).  It&#39;s as
   if someone is sitting between my router and the ISP, watching
   the TCP packets I send... it only gets tired of watching after
   like 5 seconds, or if I time my escape correctly, 1/10 of a second
@@ -1554,7 +1564,7 @@ End of 1749291311.
   server sends out the response and dutifully records in the access
   log a successful 301 redirection.
 
-  And I have been testing port 80 (HTTP) only because I don't get a
+  And I have been testing port 80 (HTTP) only because I don&#39;t get a
   chance to connect over TLS due to...
 
   $ openssl s_client -crlf -nocommands -connect www.yizx.net:443
@@ -1580,7 +1590,7 @@ End of 1749291311.
   Verify return code: 0 (ok)
   ---
 
-  You guessed it, errno=54 in tiny print... it's ECONNRESET again!
+  You guessed it, errno=54 in tiny print... it&#39;s ECONNRESET again!
   The only way around this with my limited knowledge of SSL is by
   connecting to say, rapidcow.org, that I *know* is hosted by the
   same server as the one hosting yizx.net:
@@ -1589,7 +1599,7 @@ End of 1749291311.
   Connecting to 164.90.136.30
   depth=2 C=US, O=Internet Security Research Group, CN=ISRG Root X1
   verify return:1
-  depth=1 C=US, O=Let's Encrypt, CN=E6
+  depth=1 C=US, O=Let&#39;s Encrypt, CN=E6
   verify return:1
   depth=0 CN=www.rapidcow.org
   verify return:1
@@ -1611,22 +1621,22 @@ End of 1749291311.
 
   hiya!!! welcome to www.yizx.net!!!
 
-  if you see this, then i'm putting pieces together!
+  if you see this, then i&#39;m putting pieces together!
 
   if you are looking for specific content (e.g. the binary
-  search blog), i am aware.... it'll come back when i figure
+  search blog), i am aware.... it&#39;ll come back when i figure
   out how to set up my web server. so plz be patient.... :(
 
   P.S. i am the owner of yizx.net since November 2023.
   any content created before this point IS NOT MY WORK.
   i only learned such content recently through the wayback
-  machine, and i promise that i won't let such content
-  show up again while i'm in charge.
+  machine, and i promise that i won&#39;t let such content
+  show up again while i&#39;m in charge.
 
   in the meantime... be civil. kindly stop requesting those
-  &quot;content&quot;, because you won't find them here. ;)
+  &quot;content&quot;, because you won&#39;t find them here. ;)
 
-  So yeah... that's two hours of my life spent figuring out if
+  So yeah... that&#39;s two hours of my life spent figuring out if
   I misconfigured something.  Turns out it was just the GFW
   meddling with my sanity and my will to live in China.  It seems
   like I have to migrate what was on www.yizx.net to blog.yizz.me
@@ -1928,24 +1938,24 @@ End of 1737252638.
   CONNECTED(00000003)
   depth=2 C=US, O=Internet Security Research Group, CN=ISRG Root X1
   verify return:1
-  depth=1 C=US, O=Let's Encrypt, CN=R10
+  depth=1 C=US, O=Let&#39;s Encrypt, CN=R10
   verify return:1
   depth=0 CN=*.codeberg.page
   verify return:1
   ---
   Certificate chain
    0 s:CN=*.codeberg.page
-     i:C=US, O=Let's Encrypt, CN=R10
+     i:C=US, O=Let&#39;s Encrypt, CN=R10
      a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
      v:NotBefore: Nov 12 04:21:52 2024 GMT; NotAfter: Feb 10 04:21:51 2025 GMT
-   1 s:C=US, O=Let's Encrypt, CN=R10
+   1 s:C=US, O=Let&#39;s Encrypt, CN=R10
      i:C=US, O=Internet Security Research Group, CN=ISRG Root X1
      a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
      v:NotBefore: Mar 13 00:00:00 2024 GMT; NotAfter: Mar 12 23:59:59 2027 GMT
   ---
   Server certificate
   subject=CN=*.codeberg.page
-  issuer=C=US, O=Let's Encrypt, CN=R10
+  issuer=C=US, O=Let&#39;s Encrypt, CN=R10
   ---
   New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
   Protocol: TLSv1.3
@@ -1980,7 +1990,7 @@ End of 1737252638.
   &gt;&gt;&gt; [SVG THINGY OMITTED]
   &gt;&gt;&gt;     &lt;h1 class=&quot;mb-0 text-primary&quot;&gt;Failed Dependency (Error 424)!&lt;/h1&gt;
   &gt;&gt;&gt;     &lt;h5 class=&quot;text-center&quot; style=&quot;max-width: 25em&quot;&gt;
-  &gt;&gt;&gt;       &lt;p&gt;Sorry, but this page couldn't be served:&lt;/p&gt;
+  &gt;&gt;&gt;       &lt;p&gt;Sorry, but this page couldn&#39;t be served:&lt;/p&gt;
   &gt;&gt;&gt;       &lt;p&gt;&lt;b&gt;&quot;could not obtain repo owner from custom domain&quot;&lt;/b&gt;&lt;/p&gt;
   &gt;&gt;&gt; [HELP TEXT OMITTED]
   &gt;&gt;&gt;     &lt;/h5&gt;
@@ -2145,24 +2155,24 @@ End of 1737252638.
   CONNECTED(00000003)
   depth=2 C=US, O=Internet Security Research Group, CN=ISRG Root X1
   verify return:1
-  depth=1 C=US, O=Let's Encrypt, CN=E5
+  depth=1 C=US, O=Let&#39;s Encrypt, CN=E5
   verify return:1
   depth=0 CN=status.rapidcow.org
   verify return:1
   ---
   Certificate chain
    0 s:CN=status.rapidcow.org
-     i:C=US, O=Let's Encrypt, CN=E5
+     i:C=US, O=Let&#39;s Encrypt, CN=E5
      a:PKEY: id-ecPublicKey, 256 (bit); sigalg: ecdsa-with-SHA384
      v:NotBefore: Dec 31 06:39:20 2024 GMT; NotAfter: Mar 31 06:39:19 2025 GMT
-   1 s:C=US, O=Let's Encrypt, CN=E5
+   1 s:C=US, O=Let&#39;s Encrypt, CN=E5
      i:C=US, O=Internet Security Research Group, CN=ISRG Root X1
      a:PKEY: id-ecPublicKey, 384 (bit); sigalg: RSA-SHA256
      v:NotBefore: Mar 13 00:00:00 2024 GMT; NotAfter: Mar 12 23:59:59 2027 GMT
   ---
   Server certificate
   subject=CN=status.rapidcow.org
-  issuer=C=US, O=Let's Encrypt, CN=E5
+  issuer=C=US, O=Let&#39;s Encrypt, CN=E5
   ---
   New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
   Protocol: TLSv1.3
@@ -2180,7 +2190,7 @@ End of 1737252638.
   &gt;&gt;&gt; Date: Tue, 31 Dec 2024 21:36:20 GMT
   &gt;&gt;&gt; Connection: close
   &gt;&gt;&gt;
-  &gt;&gt;&gt; [You know the rest.... you're on it!]
+  &gt;&gt;&gt; [You know the rest.... you&#39;re on it!]
   closed
 
   It even has a lot of information in the header, nice...
