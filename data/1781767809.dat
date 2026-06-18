@@ -1,0 +1,47 @@
+Date: Thu, 18 Jun 2026 02:30:09 -0500
+Subject: ???? outage from before
+
+None of this is "public service" but I'd still
+mention a bit about what I know... a lot of
+hectic things happened following my flight, among
+node health features I didn't get to implement...
+
+www-auth was offline but recently brought back.
+I forgot to upgrade the zfs kernel module with the
+kernel so, lesson learned from that... (zfs-utils
+and zfs-dkms are recent enough to support my current
+kernel version, fortunately. :)
+
+The ns1 HTTP cert expired.  I'll look into that.
+For resolvers out there though, UDP port 53 should
+still work as you would expect.  (DoH has never been
+public service, btw.... but since i have (am? was?)
+advertised HTTPS capabilities i thought i'd mention.
+
+(The cert expiring alone isn't worrying; though i
+would have to check if something went wrong with certbot
+that could mean similar certs expiring for my other
+domains...)
+
+The domain/ route (if anybody knows... sorry Mike :c)
+will remain until I can bring the Pi online by
+configuring the network with HDMI video output.
+
+Finally I have no idea what happened between then
+and now on this domain (status.rapidcow.org).  I was
+going to investigate by logging into Cloudflare just
+now but... by the time I did that it was back up.
+(I don't really control the "status" A/AAAA records,
+since it's Cloudflare Pages and all... only Cloudflare
+knows what happens (besides myself, since i was the
+only person i know who was affected by this... but i
+didn't keep any diagnostics, so... that makes it a
+nobody-knows situation i guess. :x)
+
+rapidcow.org and friends currently hosted on the
+Ubuntu nyc droplet should be working just fine though.
+I realized i needed to do a little more "magic" than
+a simple proxy_pass and auth_request... until i get to
+do that i shouldn't be touching the sites much. (nor
+updating them, but you already know how little updates
+there have been... :)
