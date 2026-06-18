@@ -27,7 +27,7 @@
   <!-- generated RSS; it appears to be the last changed date -->
   <!-- simply, regardless of who it is changing it.          -->
   <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
-  <lastBuildDate>Thu, 18 Jun 2026 15:44:29 +0800</lastBuildDate>
+  <lastBuildDate>Thu, 18 Jun 2026 15:55:22 +0800</lastBuildDate>
   <language>en-US</language>
   <!-- These are the email (name)s of people writing  -->
   <!-- content and managing the channel. I am both :) -->
@@ -49,7 +49,7 @@
     <author></author>
     <link>https://status.rapidcow.org/feed.html#1781767809</link>
     <guid>https://status.rapidcow.org/feed.html#1781767809</guid>
-    <pubDate>Thu, 18 Jun 2026 14:30:09 +0800</pubDate>
+    <pubDate>Thu, 18 Jun 2026 15:30:09 +0800</pubDate>
     <description><![CDATA[
     None of this is "public service" but I'd still
     mention a bit about what I know... a lot of
