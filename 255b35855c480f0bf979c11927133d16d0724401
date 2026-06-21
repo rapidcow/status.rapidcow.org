@@ -1,0 +1,66 @@
+had to deploy em here because oh my god
+at this rate i am going to grow beard
+
+NucBox-G3:[rapidcow]:~/my/site/status$ npm config set registry https://registry.npmmirror.com
+NucBox-G3:[rapidcow]:~/my/site/status$ ls
+Makefile    commit.pl  cpanfile.snapshot  deploy.sh  feed.xml    kbs-push  publi.sh  robots.txt  site.tar.gz
+README.txt  cpanfile   data               feed.html  index.html  mkpub.pl  public    rpi-push    vim
+NucBox-G3:[rapidcow]:~/my/site/status$ ./deploy.sh
++ git archive pages -o site.tar.gz
+++ mktemp -d deploy.sh.XXXXXXXX
++ tmpdir=deploy.sh.iu7fKRPr
++ trap 'rm -rf "$tmpdir"' EXIT
++ tar xvf site.tar.gz -C deploy.sh.iu7fKRPr
+feed.html
+feed.xml
+index.html
+robots.txt
++ npx wrangler deploy --assets deploy.sh.iu7fKRPr --compatibility-date 2026-05-27 --domain status.rapidcow.org --name rc-status
+⠙^C++ rm -rf deploy.sh.iu7fKRPr
+
+NucBox-G3:[rapidcow]:~/my/site/status$ ^C
+NucBox-G3:[rapidcow]:~/my/site/status$ wrangler
+-bash: wrangler: command not found
+NucBox-G3:[rapidcow]:~/my/site/status$ sudo pacman -S wrangeler
+[sudo] password for rapidcow:
+sudo: a password is required
+NucBox-G3:[rapidcow]:~/my/site/status$ sudo pacman -S wrangler
+[sudo] password for rapidcow:
+Sorry, try again.
+[sudo] password for rapidcow:
+resolving dependencies...
+looking for conflicting packages...
+
+Packages (10) esbuild-0.28.0-1  libc++-22.1.6-1  libc++abi-22.1.6-1  rust-wasm-1:1.96.0-1  wasm-bindgen-0.2.123-1  wasm-component-ld-0.5.25-1
+              wasm-pack-0.15.0-1  worker-build-0.8.3-1  workerd-1.20260529.1-1  wrangler-4.82.2-1
+
+Total Download Size:   125.90 MiB
+Total Installed Size:  707.71 MiB
+
+:: Proceed with installation? [Y/n] y
+:: Retrieving packages...
+ esbuild-0.28.0-1-x86_64                                             3.8 MiB   103 KiB/s 00:38 [########################################################] 100%
+ wasm-bindgen-0.2.123-1-x86_64                                       3.6 MiB  81.2 KiB/s 00:46 [########################################################] 100%
+ rust-wasm-1:1.96.0-1-x86_64                                        24.4 MiB  5.67 KiB/s --:-- [##################--------------------------------------]  33%
+ workerd-1.20260529.1-1-x86_64                                      12.2 MiB  11.9 KiB/s 16:53 [############################----------------------------]  50%
+^C^[[A^[[A^[OA^[OA^[OA_64                                            9.2 MiB  29.8 KiB/s 03:19 [##################################----------------------]  61% Total ( 3/10)                                                      55.2 MiB  80.1 KiB/s 15:04 [########################--------------------------------]  43%
+Interrupt signal received
+
+#
+# Write/edit the notes for the following object:
+#
+# commit 255b35855c480f0bf979c11927133d16d0724401
+# Author: Ethan Meng <rapidcow@NucBox-G3.local>
+# Date:   Thu Jun 18 15:56:07 2026 +0800
+#
+#     5+8 ain't 12 bruh
+#
+#     whatever... in my head i went "02 CDT -> 14 OK"
+#     and just didn't question how ToT
+#
+#  feed.html | 2 +-
+#  feed.xml  | 4 ++--
+#  2 files changed, 3 insertions(+), 3 deletions(-)
+
+(only to realize this was the WRONG COMMIT aegh
+i'll push from the NucBox... to do this again =_=)
