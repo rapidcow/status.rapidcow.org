@@ -1,0 +1,9 @@
+Date: Sun, 21 Jun 2026 21:06:36 +0800
+Subject: re renewal
+
+ns1 and rdkw.org have been correctly renewed.
+turns out i had just forgotten to update my webroot ^^;
+
+www-auth will be down momentarily.  i need to
+migrate it to a Singapore VPS i just got from
+Vultr because the proxy's toooooooo slow now...
