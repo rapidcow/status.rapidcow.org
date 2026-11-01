@@ -1,9 +1,0 @@
-#!/bin/sh
-if ! expr "$HOSTNAME" : RCs-T480s >&/dev/null; then
-	cat <<HERE_BE_DRAGON
-warning: This script is intended to run on T480s, but you are
-warning: $HOSTNAME???  (You have been warned....)
-HERE_BE_DRAGON
-fi
-set -x
-git push keybase "$@" status/pages-src:pages-src status/pages:pages refs/notes/status/commits:refs/notes/commits refs/info/status/*:refs/info/*
