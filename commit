@@ -1,0 +1,73 @@
+#!/bin/sh
+set -e
+tmp=$(mktemp -d)
+trap 'rm -rf -- "$tmp"' EXIT INT HUP QUIT
+export GIT_INDEX_FILE="$tmp"/index
+export GIT_WORK_TREE='public'
+export GIT_DIR='.git'
+branch=pages
+BASE=$(git rev-parse --verify refs/heads/"$branch")
+TREE=$(git rev-parse --verify "$BASE"^{tree})
+git add -A
+git write-tree >"$tmp"/TREE
+(
+	exec >"$tmp"/COMMIT_EDITMSG
+	cat <<EOM
+
+
+# enter commit message ^^^^^
+#
+# yur tree is $(cat "$tmp"/TREE)
+#         was ${TREE}
+#
+# things below my magical wand also be smitten
+# from thy commit
+#
+# --<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--
+EOM
+	set +e
+	git diff --exit-code "$BASE"
+	case $? in
+	0)
+		echo "no changes."
+		;;
+	1)
+		# this is fine.
+		;;
+	*)
+		exit 1
+		;;
+	esac
+)
+if ${EDITOR-vi} "$tmp"/COMMIT_EDITMSG
+then (
+	exec <"$tmp"/COMMIT_EDITMSG
+	exec >"$tmp"/msg
+	while read -r line
+	do
+		if [ "${line#\#}" = "${line}" ]
+		then
+			echo "$line"
+			continue
+		fi
+		if [ "$line" = "# --<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--" ]
+		then
+			break
+		fi
+	done
+)
+	git stripspace <"$tmp"/msg | git commit-tree -p "$BASE" \
+		-F - "$(cat "$tmp"/TREE)" >"$tmp"/HEAD
+	HEAD=$(cat "$tmp"/HEAD)
+	git update-ref refs/heads/"$branch" "$(cat "$tmp"/HEAD)" "$BASE" \
+		-m "commit: by $0"
+	BASE_short=$(git rev-parse --short "$BASE")
+	HEAD_short=$(git rev-parse --short "$HEAD")
+	echo "refs/heads/$branch moved $BASE_short..$HEAD_short" >&2
+	echo "good day!" >&2
+else
+	echo "your \`${EDITOR-vi}' died of: status $?" >&2
+	echo "sad day. :(" >&2
+	exit 255
+fi
+
