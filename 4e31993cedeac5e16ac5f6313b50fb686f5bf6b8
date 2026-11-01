@@ -1,0 +1,39 @@
+nucbox npx was taking too long hhhhhhh =n=
+
+so i lowk just
+
+$ ./deploy.sh
++ git archive pages -o site.tar.gz
+++ mktemp -d deploy.sh.XXXXXXXX
++ tmpdir=deploy.sh.ePXK83sX
++ trap 'rm -rf "$tmpdir"' EXIT
++ tar xvf site.tar.gz -C deploy.sh.ePXK83sX
+.ok
+feed.html
+feed.xml
+index.html
+robots.txt
++ /usr/bin/wrangler deploy --assets deploy.sh.ePXK83sX --compatibility-date 2026-05-27 --domain status.rapidcow.org --name rc-status
+
+ ⛅️ wrangler 4.149.0 (update available 4.156.0)
+───────────────────────────────────────────────
+
+Cloudflare collects anonymous telemetry about your usage of Wrangler. Learn more at https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md
+🌀 Building list of assets...
+✨ Read 5 files from the assets directory /home/tree/view/my/website/status/deploy.sh.ePXK83sX
+🌀 Starting asset upload...
+🌀 Found 3 new or modified static assets to upload. Proceeding with upload...
++ /.ok
++ /index.html
++ /feed.xml
+Uploaded 1 of 3 assets
+Uploaded 2 of 3 assets
+Uploaded 3 of 3 assets
+✨ Success! Uploaded 3 files (2 already uploaded) (1.12 sec)
+
+Total Upload: 0.33 KiB / gzip: 0.23 KiB
+Uploaded rc-status (5.54 sec)
+Deployed rc-status triggers (3.90 sec)
+  status.rapidcow.org (custom domain)
+Current Version ID: 5517ac1f-e611-4c99-860f-c58b17070579
++ rm -rf deploy.sh.ePXK83sX
