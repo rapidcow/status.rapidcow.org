@@ -1,0 +1,2 @@
+index.html feed.html feed.xml:
+	cd -- ${A} && ${^X} mkpub.pl ${a}/${.TARGET} > ${b}/${.TARGET}

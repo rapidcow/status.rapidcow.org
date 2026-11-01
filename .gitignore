@@ -12,3 +12,6 @@
 *.tar.gz
 # CLOUDFLARE PAGES
 /.wrangler
+# siteconf
+MY/
+Makefile.inc
