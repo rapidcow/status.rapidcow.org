@@ -99,7 +99,7 @@ sub block {
 block('Makefile.in', 'feed years deps', map {
 	my $y = $_;
 	map { join(" \\\n", @$_) . "\n" } (
-		[ "feed/$y/index.html: \${a}/year.html", @{ $year{$y} } ],
+		[ "feed/$y/index.html: skel/year.html", @{ $year{$y} } ],
 		[ "feed/$y.xml: \${a}/feed.xml", @{ $year{$y} } ],
 	);
 } @year);
@@ -108,5 +108,5 @@ block('Makefile.in', 'feed years',
 	":\n");
 block('Makefile.in', 'feed entries',
 	(map { "$_ \\\n" } @html),
-	": \${a}/\${\@:R}.dat entry.html\n");
+	": \${a}/\${\@:R}.dat skel/entry.html\n");
 block('MANIFEST', 'feed pages', map { "\tNEED $_\n" } @index, @xml, @html);

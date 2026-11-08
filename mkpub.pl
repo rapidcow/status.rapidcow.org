@@ -253,7 +253,7 @@ my ($entry, $year, @items);
 my $years = ls_years();
 if ($target =~ s/[.]dat\z/.html/) {
 	$entry = load_item($file);
-	$file = 'entry.html';
+	$file = 'skel/entry.html';
 } elsif ($target =~ m{\Afeed/(\d{4})/index[.]html\z}
 	or $target =~ m{\Afeed/(\d{4})[.]xml\z})
 {

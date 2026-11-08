@@ -8,7 +8,7 @@ robots.txt:
 # and taking the entries of that year.  (The first block says what
 # they take; the second has the recipe for all of them.)
 # BEGIN feed years deps (scripts/update-needs)
-feed/2024/index.html: ${a}/year.html \
+feed/2024/index.html: skel/year.html \
 feed/2024/1730847600.dat \
 feed/2024/1731229200.dat \
 feed/2024/1733566500.dat \
@@ -28,7 +28,7 @@ feed/2024/1734362640.dat \
 feed/2024/1734592402.dat \
 feed/2024/1735133231.dat \
 feed/2024/1735659900.dat
-feed/2025/index.html: ${a}/year.html \
+feed/2025/index.html: skel/year.html \
 feed/2025/1737252638.dat \
 feed/2025/1737725656.dat \
 feed/2025/1742319000.dat \
@@ -58,7 +58,7 @@ feed/2025/1749829409.dat \
 feed/2025/1749831724.dat \
 feed/2025/1765352557.dat \
 feed/2025/1766338825.dat
-feed/2026/index.html: ${a}/year.html \
+feed/2026/index.html: skel/year.html \
 feed/2026/1767596777.dat \
 feed/2026/1769120884.dat \
 feed/2026/1771585936.dat \
@@ -170,6 +170,6 @@ feed/2026/1781078968.html \
 feed/2026/1781382529.html \
 feed/2026/1781767809.html \
 feed/2026/1782047196.html \
-: ${a}/${@:R}.dat entry.html
+: ${a}/${@:R}.dat skel/entry.html
 # END feed entries
 	cd -- ${A} && ./optenv ${B} ${^X} mkpub.pl ${a}/${<} > ${B}/${b}/${@}
