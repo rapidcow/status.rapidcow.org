@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This is an RSS feed for www.rapidcow.org and -->
+<!-- my other websites.  It may not be up to date -->
+<!-- but it reports things as I learn about them. -->
+<!--                                              -->
+<!-- This RSS is also purely hand-typed. As such, -->
+<!-- I write comments like these for visitors to  -->
+<!-- understand how this feed is maintained.  :D  -->
+<!-- If you want to you can make your own! -Ethan -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<!-- Every RSS has a single channel. Here's ours: -->
+<channel>
+  <!-- Every channel is required to have a title, -->
+  <!-- a link, and a description. -->
+  <title>Site Status 2024</title>
+  <link>https://status.rapidcow.org/</link>
+  <description>Feed for status of www.rapidcow.org and
+      other sites (2024).</description>
+  <!-- Link to documentation for RSS.                  -->
+  <!-- To quote from the following linked site itself, -->
+  <!-- "It's for people who might stumble across an    -->
+  <!-- "RSS file on a Web server 25 years from now and -->
+  <!-- wonder what it is."  Basically, it is a manual  -->
+  <!-- for you: felow human.  Go read it! :)           -->
+  <docs>https://www.rssboard.org/rss-specification</docs>
+  <!-- lastBuildDate is not only relevant in the context of  -->
+  <!-- generated RSS; it appears to be the last changed date -->
+  <!-- simply, regardless of who it is changing it.          -->
+  <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
+  <lastBuildDate>Sun, 08 Nov 2026 13:14:19 -0600</lastBuildDate>
+  <language>en-US</language>
+  <!-- These are the email (name)s of people writing  -->
+  <!-- content and managing the channel. I am both :) -->
+  <managingEditor>webmaster@rapidcow.org</managingEditor>
+  <webMaster>webmaster@rapidcow.org</webMaster>
+  <!-- Lastly, we need to link to ourselves? -->
+  <!-- This is a weird recommendation by W3: -->
+  <!-- https://validator.w3.org/feed/docs/   -->
+  <!--      warning/MissingAtomSelfLink.html -->
+  <!-- It should be noted that atom:link is  -->
+  <!-- in the atom namespace, declared above -->
+  <!-- as http://www.w3.org/2005/Atom.       -->
+  <atom:link rel="self" type="application/rss+xml"
+      href="https://status.rapidcow.org/feed/2024.xml" />
+  <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>Status of the status page</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2024/1735659900.html</link>
+    <guid>https://status.rapidcow.org/feed/2024/1735659900.html</guid>
+    <pubDate>Tue, 31 Dec 2024 23:45:00 +0800</pubDate>
+    <description><![CDATA[<p>So turns out maintaining a simple status page with two mere
+HTML pages and an XML page, whose process of updating has
+long been automated by Perl scripts and Template Toolkit...
+isn't 'simple' in the slightest.  My goal with writing this,
+however, is not so you would pity me.  I've been pretty
+selfish doing what I want to do, mostly unrelated to the web
+sites, and almost never related to school.  It's like um...
+how you hear certain people partying in their room after the
+finals are over, except if you walk over there and tell them
+"hey, you might want to take a break..." you are greeted with
+a firm and adamant stubbornness of insisting that they're
+doing the right thing.</p>
+<p>&hellip; which I'm not saying that I think I am.  I know I've
+been staying on my bed with just my laptop for a week or so
+now.  I know it's probably best that I live like a normal
+person more, which hopefully means I can go to sleep early
+and not feel sleepy after being awake for only a few hours.
+&hellip; and i guess i feel sorry for letting mom worry&hellip;&hellip;.
+I just don't know when I'll get things done if not&hellip; now.
+Things move so fast, before I know it I'd be back&mdash;and I
+definitely can't return with my phone still at full storage!
+(And uh, my obsession with getting everything figured out
+and resolved at the same time I come across them =n=)</p>
+<p>But well... personal rant aside, today is supposedly the last
+day of December (by the way the time just hit midnight as i
+was finishing up the first paragraph, but you probably knew
+what time that, everyone probably tells you about it... the
+Earth made a full cycle around the Sun, and everyone just got
+a year older (at least <a href="https://en.wikipedia.org/wiki/East_Asian_age_reckoning#China">if you are Chinese</a>)... It's not like
+I don't know it's 2025 that's kind of why I am writing this
+but it's also not like the whole point, plus it just so
+happens to be a year or so since rapidcow.org has been up!
+so i can finally do some analysis of the web traffic- okay
+you know what it KIND OF has to do with that it's 2025&hellip;)</p>
+<p>*ahem* sorry&mdash;AS I WAS SAYING THOUGH it's the end of a
+month, end of a year too (not a very happy year for me bu-
+ok I need to stop going off the track), and this status page
+(or pages if you will) went through THREE different hosts.
+Like, that's INSANE!  The second part was kind of my fault
+though, but I'll get to all of that here.  (Oh, and I feel
+obliged to say this&hellip; This update will be a bit technical,
+but I feel like I should respect your choice to learn more
+about what happens, rather than hide those away from you.
+If you dislike the technical bits, then it's alright, but then
+I hope you can see kind of the whole point of this post is&hellip;
+to explain the technical stuff.  That is the powerhouse of a
+website, the web server, the host&hellip; and what I use to make
+sure that everything is running (unless your ISP bans foreign
+websites&mdash;sorry, I don't think I have the knowledge to
+deal with that yet&hellip; :c))</p>
+<p>First off you may have noticed that the "hosted by codeberg"
+part is not at all accurate, and, indeed if you try to access
+pages.status.rapidcow.codeberg.page (where the old CNAME record
+pointed to), you would find that the 4xx error is still there:</p>
+<pre><code>$ openssl s_client -crlf -nocommands -connect pages.status.rapidcow.codeberg.page:443
+Connecting to 217.197.91.145
+CONNECTED(00000003)
+depth=2 C=US, O=Internet Security Research Group, CN=ISRG Root X1
+verify return:1
+depth=1 C=US, O=Let&#39;s Encrypt, CN=R10
+verify return:1
+depth=0 CN=*.codeberg.page
+verify return:1
+---
+Certificate chain
+ 0 s:CN=*.codeberg.page
+   i:C=US, O=Let&#39;s Encrypt, CN=R10
+   a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Nov 12 04:21:52 2024 GMT; NotAfter: Feb 10 04:21:51 2025 GMT
+ 1 s:C=US, O=Let&#39;s Encrypt, CN=R10
+   i:C=US, O=Internet Security Research Group, CN=ISRG Root X1
+   a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Mar 13 00:00:00 2024 GMT; NotAfter: Mar 12 23:59:59 2027 GMT
+---
+Server certificate
+subject=CN=*.codeberg.page
+issuer=C=US, O=Let&#39;s Encrypt, CN=R10
+---
+New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
+Protocol: TLSv1.3
+---
+read R BLOCK
+### To make the following text easier to read, the input
+### (what *I* typed into the terminal) is prefixed with
+### &quot;&lt;&lt;&lt;&quot;, and the output (what the *server* sent back)
+### is prefixed with &quot;&gt;&gt;&gt;&quot;.  These &quot;###&quot; are comments that
+### clearly do not exist in the HTTP request (input) or
+### the HTTP response (output).
+&lt;&lt;&lt; GET / HTTP/1.1
+&lt;&lt;&lt; Host: status.rapidcow.org
+&lt;&lt;&lt; Connection: close
+&lt;&lt;&lt;
+&gt;&gt;&gt; HTTP/1.1 424 Failed Dependency
+&gt;&gt;&gt; Content-Type: text/html; charset=utf-8
+&gt;&gt;&gt; Referrer-Policy: strict-origin-when-cross-origin
+&gt;&gt;&gt; Server: pages-server
+&gt;&gt;&gt; Date: Tue, 31 Dec 2024 17:01:31 GMT
+&gt;&gt;&gt; Connection: close
+&gt;&gt;&gt;
+&gt;&gt;&gt; &lt;!doctype html&gt;
+&gt;&gt;&gt; &lt;html class=&quot;codeberg-design&quot;&gt;
+&gt;&gt;&gt;   &lt;head&gt;
+&gt;&gt;&gt;     &lt;meta charset=&quot;utf-8&quot; /&gt;
+&gt;&gt;&gt;     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;
+&gt;&gt;&gt;     &lt;title&gt;Failed Dependency&lt;/title&gt;
+&gt;&gt;&gt; [STYLESHEET OMITTED]
+&gt;&gt;&gt;   &lt;/head&gt;
+&gt;&gt;&gt;   &lt;body&gt;
+&gt;&gt;&gt; [SVG THINGY OMITTED]
+&gt;&gt;&gt;     &lt;h1 class=&quot;mb-0 text-primary&quot;&gt;Failed Dependency (Error 424)!&lt;/h1&gt;
+&gt;&gt;&gt;     &lt;h5 class=&quot;text-center&quot; style=&quot;max-width: 25em&quot;&gt;
+&gt;&gt;&gt;       &lt;p&gt;Sorry, but this page couldn&#39;t be served:&lt;/p&gt;
+&gt;&gt;&gt;       &lt;p&gt;&lt;b&gt;&quot;could not obtain repo owner from custom domain&quot;&lt;/b&gt;&lt;/p&gt;
+&gt;&gt;&gt; [HELP TEXT OMITTED]
+&gt;&gt;&gt;     &lt;/h5&gt;
+&gt;&gt;&gt; [FOOTER OMITTED]
+&gt;&gt;&gt;   &lt;/body&gt;
+&gt;&gt;&gt; &lt;/html&gt;
+closed</code></pre>
+<p>Frankly, this isn't exactly the same as accessing through
+status.rapidcow.org <em>with</em> the domain name (I believe
+somewhere in the SSL handshake the client sends the domain
+name so the server would return the correct certificate&mdash;which was the reason I was able to host multiple domains yet
+have separate SSLs sent back for each), but if we assume the
+underlying HTTP server just looks at the Host header in the
+HTTP request I send (judging by my other site hosted on
+Codeberg Pages this seems to be the case), suffice it to say
+that I have reliably produced what would have happened <em>if</em>
+I switched back to Codeberg now.  Plus playing with the
+DNS record just for this experiment would be too silly, so
+reasonably I decided not to&hellip;   but instead play this
+trick to get around the mismatching SSL certificate name
+(FYI, subdomain certificates with a CN entry like what I got
+above with "CN=*.codeberg.page" are only one-level deep,
+so an Internet-standard abiding client would deem it invalid&mdash;see third section of RFC2818 for reference.  On the other
+hand, s_client is just an SSL client, so it doesn't validate
+that consistency, and I can still send an HTTP request in
+spite of all that. :)</p>
+<p>So that is the state of Codeberg Pages now&hellip; I couldn't
+get it to work back when I still ran on it, and I don't
+think I will. :(  But maybe stepping away is a good thing:
+Codeberg Pages is <a href="https://codeberg.org/Codeberg/pages-server/issues/399">maintained by one person</a>, I feel that I
+shouldn't asking them to look into this minute problem&hellip;</p>
+<p>Then well, I don't know how many of you noticed that somewhat
+unsettling red-text at the bottom of the page&mdash;well for
+a while (a few weeks up until about a day ago) I hosted this
+on the same server where I put the funny-looking maintenance
+pages for rapidcow.org and friends, and also that initial
+version of rapidcow.org with the home page full with GIF&hellip;
+you know which server I am talking about.  It's the one I
+rented from Digital Ocean since like February. 164.90.136.30&mdash;you might recognize it from that IPv4 address, even.
+(If not, try to <code><a href="https://en.wikipedia.org/wiki/Dig_(command)">dig</a> A rapidcow.org</code> sometime later ;)</p>
+<p>It was quite frantic when I migrated&mdash;I archived the nginx
+logs, had to remove the existing nginx configs (because the
+maintenance pages would go up again and I don't want that
+to happen), then used <code>rsync(1)</code> to push the files, created a
+server config that simply served the files using <code><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#try_files">try_files</a></code>;
+then I swapped out the CNAME record for an A record, waited
+for it to propogate, ran certbot to issue SSL certificates
+for my status subdomain, then finally tweaked the nginx config
+slightly to my liking (I keep separate logs for port 80 (HTTP)
+and port 443 (HTTPS) for no reason&hellip; right :/)</p>
+<p>But everything was fine! except people (or I guess bots)
+<em>immediately</em> started to access my other sites like
+rapidcow.org and www.yizx.net whose DNS records still
+pointed to this server!  I don't know if anyone got
+spooked by the bad Host header error I let nginx send back&hellip;
+but that's what I made nginx do when no config matches.
+Still I thought it could be confusing to get a 4xx error
+instead of a 5xx one, so instead of being the responsible
+sysadmin to configure new nginx server blocks to do just that
+I removed the DNS records for my domains so that people
+wouldn't make the connection in the first place&hellip; (to this
+day if you run <code>dig A rapidcow.org</code> you would get nothing,
+which is&hellip; kind of sad, and I do apologize for that :c)</p>
+<p>But back to the server.  Something went morbidly wrong when
+I tried to install ubuntu-desktop on the server last night
+(I wanted to see how this "X11 forwarding" thing I've heard
+worked over SSH&hellip; for no good reason u_u):  The server
+stopped connecting to the Internet.  I couldn't install or
+update with <code>apt-get</code>, I couldn't <code>ping(1)</code> any domain (heck
+they wouldn't even resolve in the first place)&mdash;but worst
+of all&hellip;  I couldn't log into it from my laptop via SSH.
+This meant that in the past few hours I had been using the
+Web console provided by Digital Ocean (the so-called "Rescue
+console", but that's only because the other console hang
+since the server was basically offline and the rescue console
+is the console that interacts with the server on the private
+network locally).</p>
+<p>Now, know that I'm not saying that the server files got
+corrupted.  It was purely a network problem which <em>may</em> have
+been caused by ubuntu-desktop (or the x2goserver I installed
+shortly after) was bringing its own network manager that was
+<a href="https://www.digitalocean.com/community/questions/no-internet-connection-after-droplet-reboot">conflicting with the then network manager</a>.
+The solution was almost trivial though: to get the Internet
+to work I only had to hook the eth0 interface to its gateway
+and subnet mask, like this:</p>
+<pre><code>ifconfig eth0 &lt;ipv4 address&gt; netmask &lt;subnet mask&gt; up
+ip route add default via &lt;gateway address&gt;</code></pre>
+<p>The IPv4 address here is indeed the public 164.90.136.30
+that you already know.  These are commands were all it took
+to bring my server back on the Internet.  And I did not have
+to edit /etc/resolv.conf to use Google's DNS server (8.8.8.8)
+because Digital Ocean's DNS servers work just fine (plus, not
+a lot of posts I've seen mention this, but chances are you're
+not supposed to edit /etc/resolv.conf directly?&hellip; mine was a
+symlink to a file deeply nestled inside /run/ and had a huge
+block of comment at the top telling me to not edit it.)
+But I just couldn't for the life of me figure out how to
+tell it to configure those <em>on boot</em>&mdash;as soon as I reboot
+all of that had to be re-run; and since SSH is busted without
+Internet connection, all of this could only be re-run on the
+rescue console&hellip; which makes things pretty annoying. &gt;:(</p>
+<p>I tried <a href="https://docs.digitalocean.com/support/how-do-i-debug-my-droplets-network-configuration/"><code>netplan try --debug</code></a> and <a href="https://serverfault.com/a/968142"><code>netplan apply --debug</code></a>,
+and all it did was disconnect my SSH connection and never
+restore the IP stuff.  I tried to install and re-install the
+<code>cloud-init</code> package and run <a href="https://www.digitalocean.com/community/questions/eth0-not-getting-configured-correctly-after-upgrade"><code>dpkg-reconfigure cloud-init</code></a>,
+checked /etc/netplan/50-cloud-init.yaml, loaded and quite
+possibly re-generated it with netplan, <code>apt remove --purge</code>d
+and reinstalled <code>cloud-init</code>, <code>landscape-common</code>, and
+<code>network-manager</code> (since one of the complaints in
+/var/log/cloud-init.log was that it couldn't find
+NetworkManager, so I figured it could be a dependency)&mdash;it's no use.  Once I reboot I end up right where I started.</p>
+<p>Now I could continue trying by opening a support ticket on
+Digital Ocean, but I was tired, and it's almost new year
+(not like people work on new year), and things don't matter
+<em>that</em> much&hellip; so after taking out the latest nginx logs that
+had accumulated primarily before this disaster struck (the
+thing is as I said before, once the port becomes operational
+the logs are <em>instantaneous</em>&mdash;even if I finish typing in
+those two commands, there will be SSH login attempts, there
+will be HTTP requests made directly to the IP address with
+no Host header (likely from port scanning bots)&hellip; so a
+minority of logs would come after, interestingly enough)
+I reinstalled the whole OS.  And phew it felt refreshing to
+see 80% of the disk space being free again&hellip; don't have to
+go around hunting for unused files (like I would have to for
+a system that I am still actively using, sigh&hellip; this feels
+good, honestly =v= and it's now automatically upgraded to
+the latest LTE of Ubuntu too!)</p>
+<p>Of course nothing is configured yet and there shouldn't be
+any service running on any ports (except for sshd on port 22
+because obviously I have to log in)&hellip; as to what this
+status page is now hosted by, well it is SourceHut!
+I know it sounds a lot like SourceForge, but SourceHut&hellip;
+to me it's like GitHub but with less clutter.  Closer to
+Gitweb and the <a title="Seriously, these guys don't get paid enough" href="https://www.reddit.com/r/git/comments/apbbt/repoorcz_sponsor_pulls_out_needs_pledges_for_new/">humble</a> repo.or.cz (and <a href="https://git.zx2c4.com/cgit/about/">cgit</a>, what I once used
+for git.rapidcow.org), though the design looks nicer and
+cleaner, and it runs services that go beyond (though heavily
+revolve around) Git.  <a href="https://srht.site/">SourceHut Pages</a> is one such service
+that I really like because once you build and install this
+<a href="https://sr.ht/~xenrox/hut/">hut</a> command guy all you have to do to get a web site up is
+upload a tarball and specify a domain name and&hellip; that's it.
+Then you point your DNS record to srht.site and it just works:</p>
+<pre><code>$ openssl s_client -crlf -nocommands -connect status.rapidcow.org:443
+Connecting to 46.23.81.157
+CONNECTED(00000003)
+depth=2 C=US, O=Internet Security Research Group, CN=ISRG Root X1
+verify return:1
+depth=1 C=US, O=Let&#39;s Encrypt, CN=E5
+verify return:1
+depth=0 CN=status.rapidcow.org
+verify return:1
+---
+Certificate chain
+ 0 s:CN=status.rapidcow.org
+   i:C=US, O=Let&#39;s Encrypt, CN=E5
+   a:PKEY: id-ecPublicKey, 256 (bit); sigalg: ecdsa-with-SHA384
+   v:NotBefore: Dec 31 06:39:20 2024 GMT; NotAfter: Mar 31 06:39:19 2025 GMT
+ 1 s:C=US, O=Let&#39;s Encrypt, CN=E5
+   i:C=US, O=Internet Security Research Group, CN=ISRG Root X1
+   a:PKEY: id-ecPublicKey, 384 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Mar 13 00:00:00 2024 GMT; NotAfter: Mar 12 23:59:59 2027 GMT
+---
+Server certificate
+subject=CN=status.rapidcow.org
+issuer=C=US, O=Let&#39;s Encrypt, CN=E5
+---
+New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
+Protocol: TLSv1.3
+---
+read R BLOCK
+### (Same prefixes here)
+&lt;&lt;&lt; GET / HTTP/1.1
+&lt;&lt;&lt; Host: status.rapidcow.org
+&lt;&lt;&lt; Connection: close
+&lt;&lt;&lt;
+&gt;&gt;&gt; HTTP/1.1 200 OK
+&gt;&gt;&gt; Content-Length: 2742
+&gt;&gt;&gt; Content-Type: text/html; charset=utf-8
+&gt;&gt;&gt; Last-Modified: Tue, 31 Dec 2024 07:37:44 GMT
+&gt;&gt;&gt; Date: Tue, 31 Dec 2024 21:36:20 GMT
+&gt;&gt;&gt; Connection: close
+&gt;&gt;&gt;
+&gt;&gt;&gt; [You know the rest.... you&#39;re on it!]
+closed</code></pre>
+<p>It even has a lot of information in the header, nice&hellip;
+(although I should say they are more or less inaccurate,
+since tarballs created by git-archive(1) all share the
+same timestamp that is the Commit ID =n=)</p>
+<p>Anyways that should be it for me if not for you too ^^
+Gosh is this a super long update, urgh :[ next year I might
+consider archiving these status updates elsewhere other
+than /feed.html&hellip;. but that's a job for later.:&gt;</p>
+]]></description>
+  </item>
+
+  <item>
+    <title>Winter break and stuff</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2024/1735133231.html</link>
+    <guid>https://status.rapidcow.org/feed/2024/1735133231.html</guid>
+    <pubDate>Wed, 25 Dec 2024 21:27:11 +0800</pubDate>
+    <description><![CDATA[
+    <p>(ouch i forgot how much tooth extraction hurts
+    during the first few days&hellip;)</p>
+    <p>Anyway I've been having a lot of fun at home with
+    my first ever Linux laptop! :) Staying too long in
+    the virtual consoles, <a href="https://asciinema.org/a/696086">messing with Bash $PS1</a>,
+    learning more about TCP networking and stuff&hellip;</p>
+    <p>I also had my wisdom tooth extraction today though it hurts
+    a lot less this time&mdash;still I don't want to risk leaving
+    this site untouched, in case I fall ill for a day or two :(
+    Also my mom tells me that I should rest and I think so too...</p>
+    <p>(Yeah! Web sites can wait! But health comes first! &mdash;oh and
+     also backup backup backup backup backup&mdash;always back up
+     never stop backing up, <a href="https://write.as/synth-ruiner/the-low-tech-manifesto#we-own-our-own-culture">download</a> your favorite things or it
+     may be the last time you see it&mdash;backup backup BACKUP!!!)</p>
+    <p>Also: Neocities&hellip; will actually be the first to be updated,
+    because I decided that instead of trying to make a big
+    message, I would just&hellip; make something.  I thought of this
+    when I was walking home tonight, that the best way of showing
+    the Web I want to see is to just make it, and its existence
+    alone would serve to defy everything that it is different
+    from: I like text files, not Word and PowerPoint and Excel.
+    I like old and modest tech, not the newest buzzword AI tech.
+    I like the 90s Web, the Open Web, not the corporate Web,
+    where a few monopolies control all our data, creations,
+    and livelihoods; where people are spoon-fed content made
+    just for the sake of content, not for the love of making;
+    and where people are compressed into canned descriptions
+    of their lives, to be copied over and over in those perfect
+    rectangular profile boxes, so much so that <a href="https://abdullahtarawneh.com/blog/personal-websites/">they themselves start to introduce their being as such</a>&hellip;</p>
+    <p>&hellip;&hellip;</p>
+    <p>But all of that is just what's in my head!  I haven't
+    actually written much, nyeah. :P  As I said I am taking a
+    break&hellip; a looooong break where I do things that I can
+    never explain to any else&mdash;is it an elaborate portfolio?
+    A programming project? A creative writing project?  An ART
+    project??? or is it just a bunch of things I like, done out
+    of no reason other than me being the rambunctious teenage
+    boy I am?  (Well we teenagers do <a href="https://phrack.org/issues/7/3">think alike</a>, so umm&hellip;)</p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Update</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2024/1734592402.html</link>
+    <guid>https://status.rapidcow.org/feed/2024/1734592402.html</guid>
+    <pubDate>Thu, 19 Dec 2024 01:13:22 -0600</pubDate>
+    <description><![CDATA[
+    <p>(Old Message on Wed, 18 Dec 2024 13:29:23 -0600)</p>
+    <p>Hello hello! Good morning! ^^ (or afternoon I guess =.=)</p>
+    <p>So last night I couldn't sleep so I went though the
+    rest of server nginx logs&hellip; stayed up quite late but
+    in the end it was worth it I guess?  At least now I get to
+    see just how many bots are visiting and put their stats up
+    in the hall of shame (mwehehe &gt;:)</p>
+    <p>(New message)</p>
+    <p>Hiya so, now that I am hosting the status page myself,
+    I can say I am quite disappointed.  Within mere <em>seconds</em>
+    my logs were instantaneously flooded with requests that
+    blatantly probe for server vulnerability&mdash;paths like
+    /.env and /wp-whatever and such.  I forgot what they were
+    exactly but they made me feel sick&hellip;.</p>
+    <p>Also in case it isn't obvious enough already, every other
+    site is still technically "down" even though the server
+    isn't; for a while you could make requests to rapidcow.org
+    and it would just give you a bad host error (because I
+    disabled all my old configs and naturally nginx wouldn't
+    recognize any virtual host other than status.rapidcow.org.)
+    To prevent that confusion I have since removed DNS records
+    that pointed rapidcow.org and www.rapidcow.org to my server,
+    so now you get an DNS error instead of a scary bad host
+    error.  I haven't done that for all domains though; but
+    I'm tired&hellip;</p>
+    <p>About the plans?  Forget about it&hellip; I need to rest my
+    eyes&hellip;. My flight back home is in less than 48 hours.
+    I can probably look to measures to ban these bots more
+    effectively than directly looking at the access logs
+    (grep'ing their IPs in existing blacklists is an idea).
+    But I won't be updating this until I'm back home&hellip;.</p>
+    <p>(Sorry, it's just&hellip; the dead Internet thing feels too
+    real.  Maybe only now am I seeing it for what it is.
+    Why did I want to make a website again?  Maybe I can just
+    turn it off when I'm tired and turn it back on when I'm
+    not&hellip; It feels like no one's there&hellip; (or maybe I could
+    just switch to Neocities so I don't have to experience
+    despair from staring at the abysmal amount of bot requests))</p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>I need more time :(</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2024/1734362640.html</link>
+    <guid>https://status.rapidcow.org/feed/2024/1734362640.html</guid>
+    <pubDate>Mon, 16 Dec 2024 09:24:00 -0600</pubDate>
+    <description><![CDATA[
+    <p>Yeah, I definitely underestimated what <em>could</em> happen
+    over a day rather than how long it practically takes to
+    do the thing.  You never know what will get in the way.
+    And eating more than I wanted definitely did not help my
+    stomach, aeugh... (they even got me the wrong bao and
+    I couldn't even complain :&lt;)</p>
+    <p>(Life tip: if you do not want to eat more than a bowl of
+    noodles and you see people ordering a bunch of things,
+    *do not* order more than that bowl of noodles!  Otherwise
+    -- well there is no otherwise; you'll just suffer...)</p>
+    <p>Also I have an exam in 30 minutes it's computer science
+    but they ask annoying questions that I don't know if
+    I will get right, then there's math tomorrow that I think
+    I will need to pay a little more attention to... I don't
+    know there's just so much to do!!! &gt;n&lt;</p>
+    <p>But I did write a something that made updating this feed
+    easier?  I pushed that new branch to Codeberg yesterday,
+    so you can see how it's done (THIS IS NOW GONE.)  It uses
+    Perl which I think is an underrated language full of code
+    written by people who enjoy the craft.  Really&mdash; I was
+    reading Template::Tutorials::Datafile and many other perldocs
+    yesterday.  I am really glad to see this art isn't lost to
+    time and completely displaced by huge corporate codebases. :)</p>
+    <p>(Every time I say something that doesn't really have to
+    do with the announcement, haha... but this is my website!
+    It's kind of the point that I get to talk about what I
+    want to talk about. XD)</p>
+    <p>Oh right, and if I were to name a new time.... Let's try
+    Wednesday in my time alright :) We'll see how things go...</p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Extended Maintenance</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2024/1734227100.html</link>
+    <guid>https://status.rapidcow.org/feed/2024/1734227100.html</guid>
+    <pubDate>Sat, 14 Dec 2024 19:45:00 -0600</pubDate>
+    <description><![CDATA[
+    <p>Argh can't believe it's 24-hours already... sorry. :(
+    I wasn't doing <em>just</em> the web site thing.  It's just I've
+    never had this much free time, I had to catch up with some
+    backing up personal stuff, and that involved hours of
+    yelling at git-annex to stop being so paranoid about
+    copying and deleting my files from Google Drive... and
+    connecting a ton of cables on my bed because some of the
+    files were only on my hard drive, yikes &gt;_&gt;</p>
+    <p>But I did get a look at the server logs in the end!
+    I do have some experience exporting since I've done that
+    before (a month or so ago), but because it was so tedious
+    last time that I decided to "speed up" the process by
+    making my Bash scripts more robust, and that meant running
+    into more quirky stuff like variable scopes.</p>
+    <p>And I got up at 5 PM! Okay don't judge me I know I slept
+    for 12 hours &gt;:( it was more than what I expected too,
+    but I am sort of hungry now... so I might have to go and
+    eat something first before continuing.</p>
+    <p>Also, the CSS for this page is kind of bad: pure white on
+    black/black on white?  Old-school terminals used pure white
+    exclusively for <strong>BOLD</strong> text (it looks something like <a href="https://int10h.org/oldschool-pc-fonts/">this)</a>;
+    it's like they understand color theory or something!
+    So I might have to change that -- but that's only after I
+    get the sites back up again?  Waaahhh I don't knoooow &gt;n&lt;</p>
+    <p>-- but I know the old blue maintenance page has to go!
+    I thought it'd mostly be the crawlers visiting (so the
+    PNG drawing wouldn't be requested as much), but I fed the
+    1.5 million logs I exported last time into GoAccess and
+    turns out there were still so many requests for the image!
+    So the new page will have to be MUCH more lightweight
+    (with NO images!) and I don't know, maybe I will call it
+    an "under construction" page to distinguish it from what
+    I am calling maintenance for this ongoing... thing?</p>
+    <p>But yeah. I will need more time. It'll probably take more
+    than a day to get <em>everything</em> done, but at least I will
+    configure nginx properly this time, set up logrotate and
+    figure out how to export logs in a way that doesn't shut
+    all the ports down again like this, put up the new page
+    for every site that I'm not ready to show --
+    geesh does that not sound like a lot to you?
+    Being a webmaster is HARD. :c</p>
+    <p>BUT... it's a battle I am willing to fight.  Being a
+    webmaster is fun, even if I know that fewer people will
+    watching compared to when I was on YouTube or Twitter.
+    Having said that I do remember reading a few things that
+    I quite liked: this world needs more <a href="https://justinjackson.ca/webmaster/">webmasters</a>, not
+    influencers, TikToks, social media -- and I definitely
+    don't mean <a href="https://interfacecritique.net/book/olia-lialina-from-my-to-me/">graphic designers and developers</a>!</p>
+    <p>
+    Yeah right this announcement has been long enough I'll go
+    eat something and then get back to work =n= (ooh and I'm
+    also thinking of publishing some stats from my nginx logs,
+    with individual IP addresses anonymized (obviously)!
+    If <em>you</em> have anything specific you want to see in mind
+    (yes! YOU reading this!!!) send me an e-mail (it's in this
+    RSS feed) and let me know! Otherwise I'll only look into my
+    favorite stats like how much bandwidth I am wasting...)</p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Server Downtime [+24 hours]</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2024/1734141600.html</link>
+    <guid>https://status.rapidcow.org/feed/2024/1734141600.html</guid>
+    <pubDate>Fri, 13 Dec 2024 20:00:00 -0600</pubDate>
+    <description><![CDATA[
+    <p>Hi this is rapid!</p>
+    <p>It's been a while since i cleaned out the nginx logs,
+    now that my finals are out of the way [well, the hard
+    ones for me at least :]  But before I do that I prefer
+    to not have to worry about new logs coming in.  Stuff
+    like telling nginx where to write the access/error logs
+    and logrotate are going to create a mess if I don't
+    set them up right...</p>
+    <p>So I decided to schedule a DOWNTIME!  Basically, the
+    server will be down for real this time (there wouldn't
+    even be a maintenance page).  This affects <em>all</em> sites
+    besides this status and the URL shortener (a.rdks.org),
+    which are the only sites hosted by Codeberg Pages.
+    Though I think no one would be <em>seriously</em> affected by
+    this, so I won't give you too much time prepare.</p>
+    <p>Things I want to do besides exporting nginx logs include:</p>
+    <ol>
+      <li>set www.rapidcow.org as the canonical domain</li>
+      <li>clean up my server files scattered over /home and
+          /var/www/ (and update the nginx rules, obviously)</li>
+      <li>and probably learn how to use logrotate so that
+          I'm not looking at thousands of lines at once...
+          also i want to see how i can do this more regularly
+          and easily (and maybe even get GoAccess to work?)</li>
+    </ol>
+    <p>The exact period of maintenance is... I'm not sure.
+    But the plan is that it would be back within 24 hours of
+    the publish date of this post (so Sat thru Sun, UTC 2 AM).
+    The HTTP(S) ports might get turned on and off during this
+    period (so don't be surprised if you see the sites still
+    running -- I might still be working!) If I need more time
+    than that, I'll let you know :)</p>
+    <p>Thank you for understanding. It's an honor to be your
+    host of my Web... o7 -RC</p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Plans for the end of 2024</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2024/1733566500.html</link>
+    <guid>https://status.rapidcow.org/feed/2024/1733566500.html</guid>
+    <pubDate>Sat, 07 Dec 2024 04:15:00 -0600</pubDate>
+    <description><![CDATA[
+    <p>I got some more motivation to return to this and escape
+    social media hellhole!  Thank you to my anonymous friend
+    for being my FIRST subscriber outside of social media :)</p>
+    <p>The plans are simple: www.rapidcow.org will get a landing
+    page and a home page and www.endfind.me will get just a
+    landing page that double as the home page.  (Don't visit
+    either yet though, and if you do, don't be like <a href="https://twitter.com/AzzyThatMofo/status/1824128431245889679">Twitter</a>.)</p>
+    <p>The exact date I'm unsure, but it should happen sometime
+    between next week and the week after.  I'll let you know
+    that when that happens.  Before that though I need to
+    deal with them finals next week (ugh school... DX)</p>
+    <p>Thanks.  I hope I can keep feeling this motivated.</p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Update: Neocities</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2024/1731229200.html</link>
+    <guid>https://status.rapidcow.org/feed/2024/1731229200.html</guid>
+    <pubDate>Sun, 10 Nov 2024 03:00:00 -0600</pubDate>
+    <description><![CDATA[
+    <p>I made a Neocities account and wrote more than
+    I ever intended to even for www.rapidcow.org o_o</p>
+    <p>Looks like signing up for Neocities was the right choice,
+    but well, now I'm exhausted&hellip; and I need some sleep&hellip;.</p>
+    <p>(if you are curious about it <em>now</em>, head over to
+     <a href="https://rapidcow.neocities.org/">https://rapidcow.neocities.org</a>.
+     i sat in front of my laptop for ~4 hours just to
+     write up a good-enough answer &mdash; i did NOT
+     expect it to go like this.)</p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Grand opening of... status.rapidcow.org!</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2024/1730847600.html</link>
+    <guid>https://status.rapidcow.org/feed/2024/1730847600.html</guid>
+    <pubDate>Tue, 05 Nov 2024 17:00:00 -0600</pubDate>
+    <description><![CDATA[
+    <p>Setting something up now...</p>
+    ]]></description>
+  </item>
+</channel>
+</rss>

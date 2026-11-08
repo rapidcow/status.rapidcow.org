@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <style>
+    html { font-size: 12pt; color-scheme: dark light; }
+    body { font-family: monospace; margin: 2rem; max-width: 64ch; }
+    pre { font-family: monospace; }
+  </style>
+  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed" href="https://status.rapidcow.org/feed.xml">
+  <meta name="robots" content="noindex nofollow">
+  <title>www.yizx.net got TCP RST treatment in China???</title>
+</head>
+<body><pre>
+]--[<a href="../..">Home</a>]--[<a href="../../feed.html">Feed</a>]--[<a href="../../index.html">2025</a>]-----------------[
+
+  From: webmaster&commat;rapidcow.org
+  Date: Mon, 26 May 2025 01:48:40 +0800
+  Subject: www.yizx.net got TCP RST treatment in China???
+
+  Pardon me for the lazy pre text again (no pun intended), but I
+  think I must talk about this.... I thought it was my SSL renewal
+  that didn&#39;t trigger properly when I tried to access www.yizx.net
+  on Firefox but got this:
+
+  = Secure Connection Failed
+  An error occurred during a connection to www.yizx.net.
+  Error code: PR_CONNECT_RESET_ERROR
+
+  Indeed there seems to be some kind of funky TCP thing
+  that just hangs me up for no good reason...
+
+  $ curl -vL http://www.yizx.net
+  * Host www.yizx.net:80 was resolved.
+  * IPv6: (none)
+  * IPv4: 164.90.136.30
+  *   Trying 164.90.136.30:80...
+  * Connected to www.yizx.net (164.90.136.30) port 80
+  &gt; GET / HTTP/1.1
+  &gt; Host: www.yizx.net
+  &gt; User-Agent: curl/8.7.1
+  &gt; Accept: */*
+  &gt;
+  * Request completely sent off
+  * Recv failure: Connection reset by peer
+  * Closing connection
+  curl: (56) Recv failure: Connection reset by peer
+
+  $ curl -vL https://www.yizx.net
+  * Host www.yizx.net:443 was resolved.
+  * IPv6: (none)
+  * IPv4: 164.90.136.30
+  *   Trying 164.90.136.30:443...
+  * Connected to www.yizx.net (164.90.136.30) port 443
+  * ALPN: curl offers h2,http/1.1
+  * (304) (OUT), TLS handshake, Client hello (1):
+  *  CAfile: /etc/ssl/cert.pem
+  *  CApath: none
+  * Recv failure: Connection reset by peer
+  * LibreSSL/3.3.6: error:02FFF036:system library:func(4095):Connection reset by peer
+  * Closing connection
+  curl: (35) Recv failure: Connection reset by peer
+
+  But I tried to connect from the server itself, on my
+  phone tunneled through a VPN... it seems to be fine
+  UNLESS I try to do it direct on my home Wi-Fi.
+  (Dad prolly removed the router proxy while I was in uni, so
+  I am connected to the raw, unfiltered network in China.)
+
+  I guess I never noticed it, maybe China had banned my domain
+  because of its history with hosting questionable &quot;entertainment&quot;
+  videos...  I&#39;m not quite sure what to do here.
+
+  One weird thing: I guess if I type slowly enough (that is, I use
+  telnet(1) to make a TCP connection and type the request myself),
+  then I have some chance of connecting to HTTP over port 80.
+  But if I use standard HTTP clients: curl, wget, HTTP::Tiny, then
+  I get ECONNRESET (errno 54, Connection reset by peer).  It&#39;s as
+  if someone is sitting between my router and the ISP, watching
+  the TCP packets I send... it only gets tired of watching after
+  like 5 seconds, or if I time my escape correctly, 1/10 of a second
+  works as well.  But these naive clients sending out the request
+  as quickly as they can all get sniped by a TCP RST with utmost
+  precision in their forehead.  In fact, this is such a blatant MITM
+  thing that I can see while my socket client gets a TCP reset, my
+  server sends out the response and dutifully records in the access
+  log a successful 301 redirection.
+
+  And I have been testing port 80 (HTTP) only because I don&#39;t get a
+  chance to connect over TLS due to...
+
+  $ openssl s_client -crlf -nocommands -connect www.yizx.net:443
+  Connecting to 164.90.136.30
+  CONNECTED(00000005)
+  write:errno=54
+  ---
+  no peer certificate available
+  ---
+  No client certificate CA names sent
+  Negotiated TLS1.3 group: &lt;NULL&gt;
+  ---
+  SSL handshake has read 0 bytes and written 1545 bytes
+  Verification: OK
+  ---
+  New, (NONE), Cipher is (NONE)
+  Protocol: TLSv1.3
+  This TLS version forbids renegotiation.
+  Compression: NONE
+  Expansion: NONE
+  No ALPN negotiated
+  Early data was not sent
+  Verify return code: 0 (ok)
+  ---
+
+  You guessed it, errno=54 in tiny print... it&#39;s ECONNRESET again!
+  The only way around this with my limited knowledge of SSL is by
+  connecting to say, rapidcow.org, that I *know* is hosted by the
+  same server as the one hosting yizx.net:
+
+  $ openssl s_client -crlf -nocommands -quiet -connect www.rapidcow.org:443
+  Connecting to 164.90.136.30
+  depth=2 C=US, O=Internet Security Research Group, CN=ISRG Root X1
+  verify return:1
+  depth=1 C=US, O=Let&#39;s Encrypt, CN=E6
+  verify return:1
+  depth=0 CN=www.rapidcow.org
+  verify return:1
+  GET / HTTP/1.1
+  Host: www.yizx.net
+  User-Agent: very tired ethan... =,=;
+  Accept: */*
+  Connection: close
+
+  HTTP/1.1 200 OK
+  Server: nginx/1.24.0 (Ubuntu)
+  Date: Sun, 25 May 2025 17:46:19 GMT
+  Content-Type: text/plain; charset=utf-8
+  Content-Length: 622
+  Last-Modified: Sat, 25 Jan 2025 19:36:27 GMT
+  Connection: close
+  ETag: &quot;67953d3b-26e&quot;
+  Accept-Ranges: bytes
+
+  hiya!!! welcome to www.yizx.net!!!
+
+  if you see this, then i&#39;m putting pieces together!
+
+  if you are looking for specific content (e.g. the binary
+  search blog), i am aware.... it&#39;ll come back when i figure
+  out how to set up my web server. so plz be patient.... :(
+
+  P.S. i am the owner of yizx.net since November 2023.
+  any content created before this point IS NOT MY WORK.
+  i only learned such content recently through the wayback
+  machine, and i promise that i won&#39;t let such content
+  show up again while i&#39;m in charge.
+
+  in the meantime... be civil. kindly stop requesting those
+  &quot;content&quot;, because you won&#39;t find them here. ;)
+
+  So yeah... that&#39;s two hours of my life spent figuring out if
+  I misconfigured something.  Turns out it was just the GFW
+  meddling with my sanity and my will to live in China.  It seems
+  like I have to migrate what was on www.yizx.net to blog.yizz.me
+  or something like that, if I want my friends here to read them...
+End of 1748195320.
+</pre></body>
+</html>

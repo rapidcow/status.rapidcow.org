@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <style>
+    html { font-size: 12pt; color-scheme: dark light; }
+    body { font-family: monospace; margin: 2rem; max-width: 64ch; }
+    pre { font-family: monospace; }
+  </style>
+  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed" href="https://status.rapidcow.org/feed.xml">
+  <meta name="robots" content="noindex nofollow">
+  <title>ubuntu web port 80/443 outage</title>
+</head>
+<body><pre>
+]--[<a href="../..">Home</a>]--[<a href="../../feed.html">Feed</a>]--[<a href="../../index.html">2026</a>]-----------------[
+
+  Date: Wed, 10 Jun 2026 03:09:28 -0500
+  Subject: ubuntu web port 80/443 outage
+
+  For some reason nginx decided to stop running on my main server.
+  well...
+
+  $ nmap -p443,80,22 ns1.rapidcow.net
+  Starting Nmap 7.99 ( https://nmap.org ) at 2026-06-10 03:07 -0500
+  Nmap scan report for ns1.rapidcow.net (164.90.136.30)
+  Host is up (0.040s latency).
+  Other addresses for ns1.rapidcow.net (not scanned): 2604:a880:800:10::638:c001
+  rDNS record for 164.90.136.30: ubuntu.rapidcow.net
+
+  PORT    STATE  SERVICE
+  22/tcp  open   ssh
+  80/tcp  closed http
+  443/tcp closed https
+
+  Nmap done: 1 IP address (1 host up) scanned in 0.48 seconds
+
+  I only realized this after I tried fetching from git+https
+  just now.  According to systemctl nginx has been down since
+  "Wed 2026-06-10 06:14:23 UTC", 1h 53min ago when i restarted it
+  (my git pushes happen over SSH, so I didn't notice for hours
+  straight... @_@)
+
+  I really do need a web host... running a web server is not fun.
+End of 1781078968.
+</pre></body>
+</html>

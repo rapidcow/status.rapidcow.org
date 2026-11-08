@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <style>
+    html { font-size: 12pt; color-scheme: dark light; }
+    body { font-family: monospace; margin: 2rem; max-width: 64ch; }
+    pre { font-family: monospace; }
+  </style>
+  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed" href="https://status.rapidcow.org/feed.xml">
+  <meta name="robots" content="noindex nofollow">
+  <title>Markov-gibberish</title>
+</head>
+<body><pre>
+]--[<a href="../..">Home</a>]--[<a href="../../feed.html">Feed</a>]--[<a href="../../index.html">2026</a>]-----------------[
+
+  Date: Tue, 24 Mar 2026 06:49:15 -0500
+  From: webmaster&commat;rapidcow.org
+  Subject: Markov-gibberish
+
+  This isn't a site update.  Still related, in the light
+  of things.  But anyway...
+
+  So I gathered the motivation to update the Homebrew tap
+  I have left untouched on Codeberg for months thanks to
+  my next option to "ugh i don't have time now i'll try it
+  in X months" being translated into "... you know what,
+  I'll let Claude try it."  (Under the impression that
+  "fixing" something was going to take less time than
+  writing something from the ground-up, but you don't
+  have to tell me how wrong that belief was... (it's more
+  of a motivation for myself, I should add!  I feel more
+  motivated to "do better" where I'm just pushing it just
+  a bit harder, not committing it too much, not demanding
+  for perfection; than get started from ground zero.))
+
+  But I got it working anyways!  git-annex rclone-builtin
+  special remote got a nice man page, and Homebrew was testing
+  exactly what I wanted to test.  (It's weird in places like
+  not having explicit dependency on rclone 1.67.0+, but the
+  test would have caught that; and I'm happy anyways.)
+
+  So I pushed the collective work of Claude setting up the
+  foundation and me dusting the corners, this time trying a
+  different email to attribute Claude's code because I didn't
+  quite like how it was a "no-reply" (could be a sign of
+  something worse... maybe).  But as I pushed I simultaneously
+  wondered... what was Codeberg's stance on AI?  Can I push
+  this "AI-generated" code?
+
+  "codeberg claude code"... I typed into Google.  I saw this:
+
+  &lt;https://codeberg.org/ziglang/zig/!~codeberger~!.epochalen/fatalistischer-chenille%27s/duschend/Beherrschens/uneindeutigerer/&gt;
+
+  It hit me that I have seen things like this: barely bright
+  dark background, QR code; gibberish that almost makes sense,
+  wait... it looks like a scrambling of Git documentations?
+  Later I learned this had to do with Markov-chain, but
+  that's only AFTER the rabbit hole I went down, trying to
+  pinpoint what this "advanced", going so far as to poison
+  the very web itself...
+
+  It's only recently that Codeberg used this rather neutral
+  corpus for this gibberish generation though, and I can tell
+  by how search engine bots like Googlebot being caught in
+  the cross-fire.  The index is still there, allowing me to
+  see remnants of some of the more depressing, horrific text
+  to ever exist: I looked up "Codeberg" with "was hopeless"
+  (which, by the way, DON'T), and it was full of 1984.
+  Something I have not read, but if even the gibberish
+  GENERATED from it sounds so depressing, I don't know if I
+  wish I had read the real thing to get the references (...
+  no I don't.)
+
+  It took me a few more searches to end up here:
+
+  &lt;https://lwn.net/Articles/1056953/&gt;
+
+  and it finally, FINALLY, gave me an answer:
+
+  It's Iocaine.  Named after a fictional, deadly poison...
+  for this "Princess Bride" thing, I don't know.  IT'S
+  TERRIFYING.  (Well, maybe for that part it mostly came
+  from the corpus it generated from.)
+
+  But no, it is actually the most unhinged thing I've ever
+  seen: from the LWN and from myself testing it with <b>curl</b>(1),
+  it examines your Sec-Fetch-* headers and sends you to jail
+  if you don't send those headers; I have never once seen
+  anything check if I'm really a browser this aggressively.
+
+  The source code itself is a concoction of Rust, Nix,
+  Lua, and a bunch of other languages I have never heard
+  of or seen anything like the likes of: Fennel? (said to
+  be Lisp syntax compiling to Lua; to me has an uncanny
+  semblance of RUST with all the "fn"s (I'm not sure if Lua
+  also uses "fn" please don't quote me on that))  Roto?
+  (Rust but SCRIPT?  My Vim syntax highlighter doesn't even
+  recognize parse of the statements ToT)  KDL? (okay maybe
+  that comes from Caddy... MAYBE.  Still unhinged though.)
+
+  (at least it didn't try to stop me from cloning the
+  repository, so... that's a good thing. I guess.)
+
+  So let me get this straight: search engine crawlers ARE
+  really caught in the middle of this cross-fire, MOST of
+  which are well-behaved... like i'd say Google, or even
+  Bingbot if I choose to let go of how deeply it crawled
+  over my cgit instance (PetalBot being the exception
+  though STOP BASHING YIZX.NET WITH THE **SAME** NONEXISTENT
+  ROUTES, people like you have been doing that for like
+  TWO years!!! Xc)  But now (at least with the right search
+  term), everywhere you look is this polluted nonsense, this
+  digital wasteland.  With only memories of what the Web
+  once was to hold onto... and possibly not even that.
+
+  It's sad...  I don't want the Web to end up like this.
+  I'd rather get hammered by PetalBot incessantly, even,
+  if it meant that I could see my writing and everything
+  I put up... somewhat unobstructed.
+
+  This "deadliest poison" really lives up to its name,
+  I can see... and that's also how I know that I won't
+  be using it -- at least for now, not when my site has
+  so little content it'd drown in this gibberish pile
+  of words that I wouldn't even say to another person;
+  that I could never.
+
+  I don't mean to be dismissive... I know how relentless
+  AI scrapers (read: badly written scrapers with the sole
+  selfish intention of collecting data for training LLM)
+  can be, as long as there is "gold" for them to mine. I'm
+  just... too sad to think or act on this poison right now.
+  At least Anubis felt defensive; this is an onslaught on
+  humanity, the burning of the Library of Alexandria.....
+  there has to be a better way right... we don't have to
+  resort to "war".....
+End of 1774352955.
+</pre></body>
+</html>

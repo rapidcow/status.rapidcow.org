@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <style>
+    html { font-size: 12pt; color-scheme: dark light; }
+    body { font-family: monospace; margin: 2rem; max-width: 64ch; }
+    pre { font-family: monospace; }
+  </style>
+  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed" href="https://status.rapidcow.org/feed.xml">
+  <meta name="robots" content="noindex nofollow">
+  <title>dhl.com IN ANY</title>
+</head>
+<body><pre>
+]--[<a href="../..">Home</a>]--[<a href="../../feed.html">Feed</a>]--[<a href="../../index.html">2026</a>]-----------------[
+
+  From: webmaster&commat;rapidcow.org
+  Date: Mon, 30 Mar 2026 17:05:18 -0500
+  Subject: dhl.com IN ANY
+
+  I meant to write about this a while ago but decided
+  to return as I'm currently lamenting how clueless
+  I am, egh... so much data, so little insight!
+
+  (I should be paying more attention in my R class,
+  oh well.  Tidyverse sounds like something that would
+  be very appropriate for this occasion.)
+
+  Just now I re-ran the command (that I shamefully have
+  the only copy of in Claude) on March 19
+  (2026-03-19T22:16:33.907407Z to be specific)
+  that produces a histogram of dhl.com IN ANY requests
+  made per hour, scaled down by a factor of 5000:
+
+  # perl -ne 'next unless /dhl.com IN ANY/; if (my ($D,$H) = /(\d{,2})-Mar-2026 (\d{,2})/) { $Bin{"Mar-$D $H:00"}++ } else { die }; END { foreach (sort { $a cmp $b } keys %Bin) { printf "%s %s\n", $_, "=" x int($Bin{$_} / 5000.0) } }' /var/log/bind/queries*
+  Mar-17 16:00 ========================================
+  Mar-17 17:00 =========================================
+  Mar-17 18:00 ==========================================
+  Mar-17 19:00 ==========================================
+  Mar-17 20:00 ==========================================
+  Mar-17 21:00 =========================================
+  Mar-17 22:00 ==========================================
+  Mar-17 23:00 ==========================================
+  Mar-18 00:00 ==========================================
+  Mar-18 01:00 ==========================================
+  Mar-18 02:00 =========================================
+  Mar-18 03:00 ==========================================
+  Mar-18 04:00 ==========================================
+  Mar-18 05:00 ==========================================
+  Mar-18 06:00 =========================================
+  Mar-18 07:00 ==========================================
+  Mar-18 08:00 ==========================================
+  Mar-18 09:00 ==========================================
+  Mar-18 10:00 ==========================================
+  Mar-18 11:00 ============================
+  Mar-18 12:00 ===================
+  Mar-18 13:00 ===================
+  Mar-18 14:00 ===================
+  Mar-18 15:00 ===================
+  Mar-18 16:00 ==========
+  Mar-21 16:00
+  Mar-22 16:00
+  Mar-24 18:00 =========
+  Mar-24 19:00 ==================================================================
+  Mar-25 20:00 =================================
+  Mar-25 21:00 ==============================
+
+  The last time I checked it appeared as a persistent attack
+  of 41 x 5000 requests per hour.  Now there's a spike with
+  at least 66 x 5000 requests at March 24, 19:00 UTC.  That's
+  like... 330000 with 4 zeros!  In an hour!
+
+  But here's the really weird thing about it: it's not just
+  one or two naughty IPs doing it.  Granted a handful of them
+  take the naughty leaderboard (but that hasn't changed since
+  March 19.  Indicative that the second spike is different...)
+
+  # ( LC_COLLATE=C; grep 'dhl.com IN ANY' /var/log/bind/queries* | cut -d ' ' -f 7 | cut -d '#' -f 1 | sort | uniq -c | sort -rnk1 ) | wc
+    20712   41424  473265
+  # ( LC_COLLATE=C; grep 'dhl.com IN ANY' /var/log/bind/queries* | cut -d ' ' -f 7 | cut -d '#' -f 1 | sort | uniq -c | sort -rnk1 ) | head -100
+     6918 191.240.255.61
+     6910 191.240.254.61
+     6874 186.194.203.61
+     6864 186.194.204.61
+     6851 186.194.205.61
+     6846 177.54.114.61
+     6225 191.240.255.49
+     6203 186.194.205.49
+     6196 191.240.254.49
+     6175 186.194.203.49
+     6157 177.54.114.49
+     5970 186.194.204.49
+     5925 191.240.255.115
+     5894 191.240.254.115
+     5869 186.194.205.115
+     5854 177.54.114.115
+     5844 186.194.203.115
+     5679 186.194.204.115
+     5675 186.194.204.169
+     5621 191.240.255.228
+     5594 191.240.254.228
+     5583 191.240.255.169
+     5572 186.194.203.169
+     5570 186.194.203.228
+     5552 177.54.114.228
+     5550 186.194.205.228
+     5548 191.240.255.143
+     5543 191.240.254.169
+     5502 191.240.254.143
+     5482 177.54.114.169
+     5480 186.194.205.169
+     5480 186.194.205.143
+     5471 186.194.203.143
+     5459 177.54.114.143
+     5423 186.194.204.143
+     5397 186.194.204.228
+     5338 191.240.255.36
+     5297 191.240.254.36
+     5296 186.194.203.36
+     5290 186.194.205.36
+     5277 177.54.114.36
+     5141 186.194.204.36
+     5075 191.240.255.224
+     5039 186.194.203.224
+     5029 191.240.254.224
+     5021 186.194.205.224
+     5008 177.54.114.224
+     4906 186.194.204.224
+     4839 191.240.255.84
+     4811 186.194.203.84
+     4803 191.240.254.84
+     4801 186.194.205.84
+     4767 177.54.114.84
+     4712 186.194.204.84
+     4438 191.240.254.16
+     4434 191.240.255.16
+     4425 186.194.203.16
+     4400 186.194.205.16
+     4378 177.54.114.16
+     4331 186.194.204.16
+     4115 191.240.255.233
+     4111 191.240.254.233
+     4096 186.194.203.233
+     4080 186.194.205.233
+     4052 177.54.114.233
+     4021 186.194.204.233
+     3969 191.240.254.72
+     3949 191.240.255.72
+     3927 186.194.203.72
+     3923 186.194.204.72
+     3909 186.194.205.72
+     3894 177.54.114.72
+     3824 191.240.254.40
+     3799 186.194.204.40
+     3791 186.194.203.40
+     3781 191.240.255.40
+     3763 177.54.114.40
+     3749 186.194.205.40
+     3694 191.240.254.174
+     3683 186.194.204.174
+     3669 186.194.203.174
+     3665 191.240.255.174
+     3634 186.194.205.174
+     3613 177.54.114.174
+     3569 186.194.204.155
+     3567 191.240.254.155
+     3559 191.240.255.155
+     3548 186.194.203.155
+     3530 191.240.230.61
+     3521 191.240.226.61
+     3511 186.194.205.155
+     3509 177.54.120.61
+     3507 177.54.122.61
+     3497 186.194.200.61
+     3497 177.54.115.61
+     3495 177.54.114.155
+     3491 177.54.119.61
+     3490 191.240.253.61
+     3487 186.194.194.61
+     3478 186.194.197.61
+
+  They appear to come from Brazillian ISPs.  I say "appear"
+  because... I googled it, thinking it was going to be like
+  one of those crappy crawlers that click on every link
+  (for instance recently I read about
+  &lt;https://zadzmo.org/blog/posts/2025/1218-Thinkbot.md&gt;
+  &lt;https://boston.conman.org/2025/08/21.1&gt;)  But
+  the truth is MY SERVER may have been used to attack
+  them instead.  Basically, post and relevant reply:
+
+  &lt;https://www.reddit.com/r/sysadmin/comments/1r8m3oq/&gt;
+  &lt;https://www.reddit.com/r/sysadmin/comments/1r8m3oq/comment/o6f07ty/&gt;
+
+  (This case of that is definitely different in that these
+  "dhl.com IN ANY" requests are made over UDP (EDNS0, to be
+  exact); but the general premise is there.)
+
+  And a lot more when I google "reflection attack" (not so
+  much "amplification" though):
+
+  &lt;https://www.netscout.com/what-is-ddos/what-is-reflection-amplification-attack&gt;
+  &lt;https://docs.aws.amazon.com/whitepapers/latest/aws-best-practices-ddos-resiliency/udp-reflection-attacks.html&gt;
+  &lt;https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack/&gt;
+  &lt;https://security.stackexchange.com/a/181123&gt;
+  &lt;https://security.stackexchange.com/a/94270&gt;
+  &lt;https://www.imperva.com/learn/ddos/dns-amplification/&gt;
+
+  So the flow of such an attack goes like this:
+
+    * Botnet sends a plausible UDP packet, saying "I want
+      *every* record---A, AAAA, TXT, and all that---at the
+      name dhl.com.", to a DNS resolver, and forges a source
+      address pointing to one of the addresses of Brazillian
+      ISP.  (That is VPSes, but possibly residential IP too.)
+
+    * The DNS resolver says "ok" and sends back to the forged
+      address, with kilobytes of (unsolicited) UDP packet.
+
+    * Do this many many times, appearing as many many
+      Brazillian IPs.  Each DNS request is 40-80 bytes
+      (source: claude; I don't really know how large a
+      DNS packet is lol, it's less than 256 for sure),
+      but the response gets amplified to 2-6 kilobytes.
+      Maximal damage for minimal effort!
+
+  Wikipedia has a neat diagram for it (although the gray
+  mess representing "the Internet" is kind of funny, lol):
+  &lt;https://en.wikipedia.org/wiki/IP_address_spoofing&gt;
+
+  (Although, now that I checked against my own recursive
+  resolvers, the TCP "rcvd" size is between 6888 and 6063,
+  which are both too big for BIND9's default max-udp-size and
+  edns-udp-size, so it doesn't matter how large the attacker
+  advertises their +bufsize in EDNS (even if they crank it all
+  the way up to the theoretical maximum UDP size of "65535"!).
+  In practice UDP is a dead-end; though they may succeed with
+  TCP.)
+
+  But in a sense I can't do anything about it: block these
+  AS ranges and it would have achieved one possible intent of
+  these attackers: cripple Internet service for Brazillian
+  residents.  Such an attack leaves no trace either, because
+  IP/UDP/TCP is like, a very low level protocol... (the fact
+  that these packets even got far is a different concern
+  though; suffice it to say though when my server receives
+  them it is indisginguishable from a legitimiate DNS query,
+  albeit suspicious, most obviously to me because of dhl.com
+  (Why the hell would you think my servers are authoritative
+  for those guys?  (Or they may not care that my server is
+  not a public recursive resolver like Cloudflare/Google are;
+  they did a rudimentary port scan and found an open port 53,
+  so it bluntly assumes this would be one of those guys.))
+  but also because it is an ANY-type query, which I have
+  previously not paid any attention to (nor have the awareness
+  of---I mean, there is TONS of DNS records I have never even
+  heard of before: SSHFP, OPENPGPKEY, SVCB (not SRV!), HTTPS;
+  and there's tons more deprecated.  No way am I going to pay
+  attention to all of them!)  But ANY is a special type that
+  literally means "return any record type"; a wildcard, if
+  you will.  And that's... not the best, yeah.  (I mean I
+  love it and would like that as an alternative to AXFR; but
+  for the world?  Especially when botnet tricks my server
+  into dumping an entire zone on innocent IPs?  No thanks...)
+
+  Fortunately, BIND9 has a config for that!
+
+  &lt;https://bind9.readthedocs.io/en/stable/reference.html#namedconf-statement-minimal-any&gt;
+
+  so before the attacker could figure out what zone I am
+  really authoritative for and use that to attack, I can
+  "disable" ANY queries... the issue is I haven't been able
+  to get it working for the time being so I'll have to go
+  figure that out now.
+End of 1774908318.
+</pre></body>
+</html>

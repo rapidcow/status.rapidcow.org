@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This is an RSS feed for www.rapidcow.org and -->
+<!-- my other websites.  It may not be up to date -->
+<!-- but it reports things as I learn about them. -->
+<!--                                              -->
+<!-- This RSS is also purely hand-typed. As such, -->
+<!-- I write comments like these for visitors to  -->
+<!-- understand how this feed is maintained.  :D  -->
+<!-- If you want to you can make your own! -Ethan -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<!-- Every RSS has a single channel. Here's ours: -->
+<channel>
+  <!-- Every channel is required to have a title, -->
+  <!-- a link, and a description. -->
+  <title>Site Status 2025</title>
+  <link>https://status.rapidcow.org/</link>
+  <description>Feed for status of www.rapidcow.org and
+      other sites (2025).</description>
+  <!-- Link to documentation for RSS.                  -->
+  <!-- To quote from the following linked site itself, -->
+  <!-- "It's for people who might stumble across an    -->
+  <!-- "RSS file on a Web server 25 years from now and -->
+  <!-- wonder what it is."  Basically, it is a manual  -->
+  <!-- for you: felow human.  Go read it! :)           -->
+  <docs>https://www.rssboard.org/rss-specification</docs>
+  <!-- lastBuildDate is not only relevant in the context of  -->
+  <!-- generated RSS; it appears to be the last changed date -->
+  <!-- simply, regardless of who it is changing it.          -->
+  <!-- NOTE: with GNU date command, run !date ~~rfc~email    -->
+  <lastBuildDate>Sun, 08 Nov 2026 13:14:19 -0600</lastBuildDate>
+  <language>en-US</language>
+  <!-- These are the email (name)s of people writing  -->
+  <!-- content and managing the channel. I am both :) -->
+  <managingEditor>webmaster@rapidcow.org</managingEditor>
+  <webMaster>webmaster@rapidcow.org</webMaster>
+  <!-- Lastly, we need to link to ourselves? -->
+  <!-- This is a weird recommendation by W3: -->
+  <!-- https://validator.w3.org/feed/docs/   -->
+  <!--      warning/MissingAtomSelfLink.html -->
+  <!-- It should be noted that atom:link is  -->
+  <!-- in the atom namespace, declared above -->
+  <!-- as http://www.w3.org/2005/Atom.       -->
+  <atom:link rel="self" type="application/rss+xml"
+      href="https://status.rapidcow.org/feed/2025.xml" />
+  <!-- Now the rest are just feed items! -->
+
+  <item>
+    <title>Blacklist for all &gt;:)</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1766338825.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1766338825.html</guid>
+    <pubDate>Sun, 21 Dec 2025 11:40:25 -0600</pubDate>
+    <description><![CDATA[
+    So I took a peek at the weblogs just now, having been deeply troubled
+    by the fact that Google *still* hasn't updated the snippet to my Perl
+    CPAN module page (ugh!  Search engines can be so annoying...) and I
+    discovered in the 1-megabyte 3000-ish logs for yizx.net today (I made
+    them rotate daily that is), there were these incessant php requests
+    over and over again.  Like if you are a human (because this guy clearly
+    wasn't), for reference, that is the equivalent of running a bloated
+    Javascript-loaded web app! (looking at you JS frameworks...)
+    My site has none of that, yet it is getting that treatment.
+    It's just unfair...
+
+    And because my manual regex "filters" aren't sensitive enough to pick up
+    on this delinquent behavior (and I don't have any rate limiting policy,
+    sigh...) this guy just escaped, as if it never did anything wrong.
+
+    But I wasn't letting them go... at least, when I picked one of them up
+    this time, I actually put it in a ban-list lookup.  And guess what?
+    It is banned on four of those lists!
+
+    https://mxtoolbox.com/SuperTool.aspx?action=blacklist%3a129.153.203.128&run=toolpage
+
+            <b>Blacklist</b>     <b>Reason</b>                      <b>TTL</b>
+    ======  ============  ==========================  ====
+    LISTED  BLOCKLIST.DE  129.153.203.128 was listed  2100
+    LISTED  DRONE BL      129.153.203.128 was listed   300
+    LISTED  s5h.net       129.153.203.128 was listed     5
+    LISTED  Spamhaus ZEN  129.153.203.128 was listed   300
+
+    And then I realized -- wait a minute, there are people who curate specific
+    ban lists like these *FOR* me!  I don't even have to think about sifting
+    through thousands of logs- how did i- aghhh!!! o///o
+
+    (ok don't ask me how but I never thought thousands of "deny IP;" rules
+    of nginx rules would be viable ok =_=  Like, you gotta think about
+    how this scales.  And obviously anything linear in lookup time would
+    be absurd to use to deal with something with this scale.)
+
+    Right now I am using "ipsum"[1] because I found it from one search to
+    another and it introduced me to ipset, which has this cool thing that
+    matches IPs with a hash table.  We'll see how it goes out from here :)
+
+    [1]: https://github.com/stamparm/ipsum?tab=readme-ov-file
+
+    Generally I don't think anyone should have to worry about their IPs
+    ending up on these lists, unless someone who you happen to live near
+    and happens to use your network to do shady stuff... happens to be
+    on your network, well.  You can try finding yourself on the list, or
+    ask me to look it up for you in this "ipsum" hash table...
+
+    Either way, that's all you need to know!
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Nginx httpd did not start....</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1765352557.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1765352557.html</guid>
+    <pubDate>Wed, 10 Dec 2025 01:42:37 -0600</pubDate>
+    <description><![CDATA[
+    Installing Apache HTTPD a while ago (*while* I have nginx,
+    yes, I wanted to see its directory listing icons which
+    were quite fancy compared to Nginx (which erm, has none))
+    caused the unit to be enabled by default, which I missed
+    so after my previous reboot, apache2.service was running
+    while nginx.service... well.  It could not start at all,
+    because port 80 was taken.
+
+    Disabled apache2.service just now so this shouldn't be a
+    problem anymore... (I will be honest, I had no idea that
+    the site was down because the server itself wasn't lol)
+
+    I went over to Uptime Robot (which I have been messing
+    around with for a while) and it said that the time it took
+    between my reboot and me getting some sleep afterwards was
+    um... "9 hours and 59 minutes".  Well, um.... I explained
+    why that happened anyways.
+
+    And I know we've been quite a lot of visits since I put my
+    website out there on CPAN (judging by that we got indexed
+    by Google at least (which I do *not* like to be quite honest
+    -- it's incomplete page that I don't have any time to fix
+    now since school has been a train wreck ToT)) so if you are
+    a human coming from there -- sorry about that!
+    ]]></description>
+  </item>
+
+  <item>
+    <title>The server is back</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1749831724.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1749831724.html</guid>
+    <pubDate>Sat, 14 Jun 2025 00:22:04 +0800</pubDate>
+    <description><![CDATA[
+    who knows that while cpan chokes your server causing
+    the OS itself to kill the process every time cpanm
+    would have your back and just... get the stuff done.
+
+    it even got me to notice that i didn't have -lz (zlib)
+    installed!  and all i had to do was apt-get install zlib1g-dev.
+    it's pretty nice, and my deployment script is passing too.
+
+    index page has been updated as well, just fyi. :)
+    (did i write any of that or did i just checkout 3
+    commits ago and fix up the timestamp?  well maybe...
+    but well, can't complain if it gets the job done.)
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Maintenance... ish</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1749829409.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1749829409.html</guid>
+    <pubDate>Fri, 13 Jun 2025 23:43:29 +0800</pubDate>
+    <description><![CDATA[
+    I need the uh test script to run and i need SSL
+    perl modules for it -- it'll be back up when cpan
+    is choking my server less than it is rn
+
+    Also yizx.net is back i didn't tell you that but
+    uhhhhh you probably already figured?  idk lol, but
+    now you do know... don't run around telling anyone
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Renewed!</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1749397066.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1749397066.html</guid>
+    <pubDate>Sun, 08 Jun 2025 23:37:46 +0800</pubDate>
+    <description><![CDATA[
+    Phew we're back... I guess.  All it took was an extra
+    "listen [::]:80" because Certbot really was adamant
+    about checking if my server was reachable via IPv6.
+    I guess it's because IPv6 didn't match any of the nginx
+    virtual server blocks so it went straight to my catch-all
+    fallback server that USUALLY denies requests that don't
+    provide an HTTP/1.1 Host header... but this time it
+    denied valid requests that simply use IPv6 and not the
+    IPv4 it knows.
+
+    I'm just, so weirded out -- like what @_@  Either way uh
+    I ran certbot renew and the post-renewal hook basically
+    brought all the sites back (it did completely ignore that
+    my pre-renewal hook complained with an error code, but...
+    whatever i guess &gt;_&gt;)  Right now I'm just reeling in
+    the madness i just witnessed, of my own site falling apart
+    completely because i didn't take that Let's Encrypt email
+    about expiration (that i did NOT expect was due to the
+    auto-renewal not running correctly!) so seriously.....
+
+    But well, lesson learned: Certbot does look at your IPv6.
+    I won't be dismissing that tiny [::]:80 and tiny [::]:443
+    anymore from now on....
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Ok this is weird</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1749395356.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1749395356.html</guid>
+    <pubDate>Sun, 08 Jun 2025 23:09:16 +0800</pubDate>
+    <description><![CDATA[
+    Save the explanation for later, i seriously have no idea
+    why tf my server is acting the way it is.... port 80 isn't
+    blocked certbot seems to be doing what it's doing.  The
+    only thing weird about it is that it's using IPv6 (which i
+    don't even have a way of testing from my laptop) and my
+    nginx logs are telling me i'm still using the wrong configs???
+
+    Whatever, i'm bringing the whole server down.  Sorry about
+    that, it's just really weird that this is happening.
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Certificate for www.rapidcow.org just expired</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1749393227.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1749393227.html</guid>
+    <pubDate>Sun, 08 Jun 2025 22:33:47 +0800</pubDate>
+    <description><![CDATA[
+    I think i was able to trace down the issue?  But now
+    I'm being rate-limited because Let's Encrypt is quite
+    strict with failures:
+    https://letsencrypt.org/docs/rate-limits/#authorization-failures-per-hostname-per-account
+
+    Weird that it automatically renewed just fine in March
+    but now it's freaking out?  But well, fair enough, I've
+    never read the certbot renewal logs once, and I am just
+    re-learning how to run the most basic certbot commands again.
+
+    Though, I believe the effects aren't too much --
+    I was just showing my mom the site this morning!
+    I've just been drawing all day that I didn't get a
+    chance to see this.  Please be patient while I obtain
+    a new SSL certificate!
+    ]]></description>
+  </item>
+
+  <item>
+    <title>I probably killed the server...</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1749291311.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1749291311.html</guid>
+    <pubDate>Sat, 07 Jun 2025 18:15:11 +0800</pubDate>
+    <description><![CDATA[
+    Running cpan and doing git commit on the other panel was
+    probably not the best idea ever... now I am timing out
+    not even sure if it's a network issue or I overwhelmed
+    the CPU too much :( I'll think of upgrading the Droplet
+    to a more performant CPU maybe....
+    ]]></description>
+  </item>
+
+  <item>
+    <title>www.yizx.net got TCP RST treatment in China???</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1748195320.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1748195320.html</guid>
+    <pubDate>Mon, 26 May 2025 01:48:40 +0800</pubDate>
+    <description><![CDATA[
+    <pre>
+    Pardon me for the lazy pre text again (no pun intended), but I
+    think I must talk about this.... I thought it was my SSL renewal
+    that didn&#39;t trigger properly when I tried to access www.yizx.net
+    on Firefox but got this:
+
+    = Secure Connection Failed
+    An error occurred during a connection to www.yizx.net.
+    Error code: PR_CONNECT_RESET_ERROR
+
+    Indeed there seems to be some kind of funky TCP thing
+    that just hangs me up for no good reason...
+
+    $ curl -vL http://www.yizx.net
+    * Host www.yizx.net:80 was resolved.
+    * IPv6: (none)
+    * IPv4: 164.90.136.30
+    *   Trying 164.90.136.30:80...
+    * Connected to www.yizx.net (164.90.136.30) port 80
+    &gt; GET / HTTP/1.1
+    &gt; Host: www.yizx.net
+    &gt; User-Agent: curl/8.7.1
+    &gt; Accept: */*
+    &gt;
+    * Request completely sent off
+    * Recv failure: Connection reset by peer
+    * Closing connection
+    curl: (56) Recv failure: Connection reset by peer
+
+    $ curl -vL https://www.yizx.net
+    * Host www.yizx.net:443 was resolved.
+    * IPv6: (none)
+    * IPv4: 164.90.136.30
+    *   Trying 164.90.136.30:443...
+    * Connected to www.yizx.net (164.90.136.30) port 443
+    * ALPN: curl offers h2,http/1.1
+    * (304) (OUT), TLS handshake, Client hello (1):
+    *  CAfile: /etc/ssl/cert.pem
+    *  CApath: none
+    * Recv failure: Connection reset by peer
+    * LibreSSL/3.3.6: error:02FFF036:system library:func(4095):Connection reset by peer
+    * Closing connection
+    curl: (35) Recv failure: Connection reset by peer
+
+    But I tried to connect from the server itself, on my
+    phone tunneled through a VPN... it seems to be fine
+    UNLESS I try to do it direct on my home Wi-Fi.
+    (Dad prolly removed the router proxy while I was in uni, so
+    I am connected to the raw, unfiltered network in China.)
+
+    I guess I never noticed it, maybe China had banned my domain
+    because of its history with hosting questionable &quot;entertainment&quot;
+    videos...  I&#39;m not quite sure what to do here.
+
+    One weird thing: I guess if I type slowly enough (that is, I use
+    telnet(1) to make a TCP connection and type the request myself),
+    then I have some chance of connecting to HTTP over port 80.
+    But if I use standard HTTP clients: curl, wget, HTTP::Tiny, then
+    I get ECONNRESET (errno 54, Connection reset by peer).  It&#39;s as
+    if someone is sitting between my router and the ISP, watching
+    the TCP packets I send... it only gets tired of watching after
+    like 5 seconds, or if I time my escape correctly, 1/10 of a second
+    works as well.  But these naive clients sending out the request
+    as quickly as they can all get sniped by a TCP RST with utmost
+    precision in their forehead.  In fact, this is such a blatant MITM
+    thing that I can see while my socket client gets a TCP reset, my
+    server sends out the response and dutifully records in the access
+    log a successful 301 redirection.
+
+    And I have been testing port 80 (HTTP) only because I don&#39;t get a
+    chance to connect over TLS due to...
+
+    $ openssl s_client -crlf -nocommands -connect www.yizx.net:443
+    Connecting to 164.90.136.30
+    CONNECTED(00000005)
+    write:errno=54
+    ---
+    no peer certificate available
+    ---
+    No client certificate CA names sent
+    Negotiated TLS1.3 group: &lt;NULL&gt;
+    ---
+    SSL handshake has read 0 bytes and written 1545 bytes
+    Verification: OK
+    ---
+    New, (NONE), Cipher is (NONE)
+    Protocol: TLSv1.3
+    This TLS version forbids renegotiation.
+    Compression: NONE
+    Expansion: NONE
+    No ALPN negotiated
+    Early data was not sent
+    Verify return code: 0 (ok)
+    ---
+
+    You guessed it, errno=54 in tiny print... it&#39;s ECONNRESET again!
+    The only way around this with my limited knowledge of SSL is by
+    connecting to say, rapidcow.org, that I *know* is hosted by the
+    same server as the one hosting yizx.net:
+
+    $ openssl s_client -crlf -nocommands -quiet -connect www.rapidcow.org:443
+    Connecting to 164.90.136.30
+    depth=2 C=US, O=Internet Security Research Group, CN=ISRG Root X1
+    verify return:1
+    depth=1 C=US, O=Let&#39;s Encrypt, CN=E6
+    verify return:1
+    depth=0 CN=www.rapidcow.org
+    verify return:1
+    GET / HTTP/1.1
+    Host: www.yizx.net
+    User-Agent: very tired ethan... =,=;
+    Accept: */*
+    Connection: close
+
+    HTTP/1.1 200 OK
+    Server: nginx/1.24.0 (Ubuntu)
+    Date: Sun, 25 May 2025 17:46:19 GMT
+    Content-Type: text/plain; charset=utf-8
+    Content-Length: 622
+    Last-Modified: Sat, 25 Jan 2025 19:36:27 GMT
+    Connection: close
+    ETag: &quot;67953d3b-26e&quot;
+    Accept-Ranges: bytes
+
+    hiya!!! welcome to www.yizx.net!!!
+
+    if you see this, then i&#39;m putting pieces together!
+
+    if you are looking for specific content (e.g. the binary
+    search blog), i am aware.... it&#39;ll come back when i figure
+    out how to set up my web server. so plz be patient.... :(
+
+    P.S. i am the owner of yizx.net since November 2023.
+    any content created before this point IS NOT MY WORK.
+    i only learned such content recently through the wayback
+    machine, and i promise that i won&#39;t let such content
+    show up again while i&#39;m in charge.
+
+    in the meantime... be civil. kindly stop requesting those
+    &quot;content&quot;, because you won&#39;t find them here. ;)
+
+    So yeah... that&#39;s two hours of my life spent figuring out if
+    I misconfigured something.  Turns out it was just the GFW
+    meddling with my sanity and my will to live in China.  It seems
+    like I have to migrate what was on www.yizx.net to blog.yizz.me
+    or something like that, if I want my friends here to read them...
+    </pre>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Reboot...</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1747713065.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1747713065.html</guid>
+    <pubDate>Tue, 20 May 2025 11:51:05 +0800</pubDate>
+    <description><![CDATA[
+    I've just recently rebooted my server, good that I tested
+    enough basic routes while cleaning up Nginx configs for me
+    to realize I didn't start Anubis!  Anyone who happened to
+    access www.endfindme.com or www.rapidcow.org in the past 1
+    hour or something, I apologize for the 502 Bad Gateway error...
+    (I haven't read the logs, but I hope there weren't anyone
+    affected...)  Either way it should be good now!  It's a short
+    message but thank you for forgiving my silly mistakes, I think
+    I might consider writing basic test scripts for my sites...
+    but I gotta go eat lunch now bye :]
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Infrastructure update</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1746398081.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1746398081.html</guid>
+    <pubDate>Sun, 04 May 2025 17:34:41 -0500</pubDate>
+    <description><![CDATA[
+    <pre>
+    It's a little bit late to say this, but I've started
+    proxying some of my "big" sites through Anubis[1].
+    (For those who are not aware of Anubis, it's basically
+    an HTTP proxy that should do a better job at blocking
+    web scraping bots than my Fail2ban filter can be.)
+
+    Okay, nobody has really noticed this, is there?
+    But that's okay, I'll just tell you what happened...
+
+     * www.endfindme.com was the first "lab rat" that
+       first got put behind the Anubis proxy:
+
+       commit ed468e5b435ac4fe4884456d553002b19de90036
+       Date:   Mon Apr 28 09:48:34 2025 -0500
+
+           try out this anubis thing
+
+           yooooo it really works :D
+
+           (and just before my class time, nice!)
+
+       (My math class starts at 10 am, so I did make it :)
+
+     * Then I published the new www.rapidcow.org I've kept
+       in my Git repository for a while (by that I mean...
+       three full months ago, from the start of February.)
+
+       commit 74d33bfaa6ce082ab572b86bbd1fec337647222a
+       Date:   Sat May 3 18:46:08 2025 -0500
+
+           configure www.rapidcow.org
+
+     * Within about one hour, I noticed that my Nginx sub-server
+       running on port 3000 was redirecting URLs to its own port,
+       making redirects on the "active" servers hang indefinitely:
+
+       commit 162a15f0131902db0bf0ad94f7de8e23c8852084
+       Date:   Sat May 3 19:49:57 2025 -0500
+
+           ack!!! do not forward people to port 3000!!!
+
+           it is a good thing they are behind firewall....
+
+       (By active, I just mean sites that have more than an index.txt,
+       which used to be that "blue screen" with me floating midair but
+       that is long gone because I don't want to waste bandwidth =_=
+       (I swear I've talked about this... I am just repeating in case
+       by the slimmest chance anyone new comes by; I am still 99% the
+       only human visitor to my websites are me, myself, and I.))
+
+    Here are a few more things I should update with:
+
+    1. Since this site has been hosted on SourceHut Pages for a
+       while now, I don't really feel obligated in making the full
+       history of these status on Codeberg updates available in
+       form of a Git repository.  This is done in anticipation of
+       expiring my older status updates.  Besides I never enjoy the
+       thought of people reading my mind without going through me...
+       (To be content with that you'd have to be either dead and/or
+       famous -- and I'm neither!)
+
+       There is a broken link to Codeberg in 1734362640.
+       It will be disabled shortly after I post this update.
+
+    2. Regarding the previous update (1742319000): I have intermittently
+       written posts on the CSL user page and have not touched the
+       current state of www.endfindme.com in any way.  But even *then*,
+       I must pause whatever I am doing.  I have in my course evaluation
+       form (glad they still do that...) included a link to a not-yet-
+       existent page at https://www.endfindme.com/cs400/critique/. But
+       it is up to the CS400 professors + staff if they want to take my...
+       hard-pressed unforgiving criticism.  (I don't know, maybe there is
+       just something about learning to program by yourself that prevents
+       you from accepting clear, narrow-minded nonsense they spoon-feed
+       you about how stuff works, compared to people who are just accept
+       ing it because they believe everything that the professors say.)
+
+    3. This status update has no effort in HTML markup.  For those
+       of you on RSS reader, sorry; but I won't have time to fix it
+       until my exam, homework, and dormitory move-out are settled...
+    </pre><p>
+
+    [1]: <a target="_blank" rel="noopener" href="https://xeiaso.net/blog/2025/anubis/">https://xeiaso.net/blog/2025/anubis/</a></p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Planned Update</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1742319000.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1742319000.html</guid>
+    <pubDate>Tue, 18 Mar 2025 12:30:00 -0500</pubDate>
+    <description><![CDATA[
+    <p>Hello Netizens.  It's been a while I know.  I don't have
+    much to say except CS400 sucks...  I haven't got the
+    time to do anything.  I am barely handing in my other
+    homework because everything snowballed ever since I had
+    to review three other people's code. (And if you are the
+    one person who has seen the sole code review I have ever
+    written, you'll know why I never got to complete just
+    one review.)</p>
+    <p>Thank goodness it is just about to be over and I will have
+    some time to roast about their abysmal course structure.
+    Hopefully it won't ambush me with the next project or
+    something like that (which is about making Web and GUI
+    applications which, I'm not particularly excited about.
+    As long as they don't force us to use anything monolithic
+    or expect us to squeeze everything in one class I should
+    be... relatively fine.)</p>
+    <p>I will be putting the goodies on www.endfindme.com though
+    (which is perfect for keep the angry "dry" boring stuff out
+    of my main web sites, but not quite "impersonal" enough to
+    be managed by someone else's domain/web server ;) since they
+    seem to want us to "submit" the next project's stuff through
+    the CSL user pages at pages.cs.wisc.edu/~user/.  Their
+    submission model has always been sketchy as heck since they
+    stopped using the tested-and-tried Gradescope, but I'll rant
+    about all that in one go.  Also, I use the word "submit" even
+    though I've yet checked the relevant course instruction pages
+    if that is the medium through which they want us to present
+    our work.  I just happened to stumble upon an impressive
+    array of student-made "web sites" the other day I was
+    navigating the public course directory in the CSL Ubuntu
+    machine.  They are like a graveyard of dead HTML pages that
+    served one purpose (that was likely the same reason that
+    brought them here) and ceased to be useful since.  With the
+    chilling wind blowing through tombtones, engraved with the
+    names of their previous owner, once eminating beams of life,
+    now hauled indifferently into the abyss, and trapped in this
+    bleak directory of nowhere.  The files that live on in this
+    strange kind of limbo but will never become what it was,
+    carrying nothing but the temporary memories and bits it
+    survived for...</p>
+    <p>Sorry, I am simply inclined to say such stuff about the
+    copius amounts of code and other things they had us write,
+    but will never have a second chance to see the light of the
+    day.  It saddens me to see that this is the way things are
+    in school assignments, in proprietary code bases (from what
+    I've heard).  How people could write stuff only to part with
+    it for good.  Of course my concern is less about the stuff
+    they wrote because they're, uh, trash anyways. :D
+    But I don't like that happen to <em>my</em> code.  My code <em>is</em> my
+    voice... and I don't like being trapped.  Which is kind of
+    the whole reason I make web sites, instead of trying to get
+    a proper Instagram account and follow every person I've
+    interacted with.  (Or a YouTube channel where I yap about
+    stuff as I know everything... that sounds fun, sure. &gt;_&gt;)</p>
+    <p>~RC (since it's been a while, I'll do a proper sign-off...)</p>
+    <p>P.S. Yes, I do have YouTube, and I do still have an idea
+    of what I want to upload.  But I will do that sparingly
+    since they now have AI video summaries, and... you know.
+    I want the context stuff on my web site and treat YouTube
+    more like a CDN than a self-contained source of truth.
+    There is <a target="_blank" href="https://indieweb.org/POSSE">an IndieWeb wiki page</a> about this.</p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>I forgot to turn nginx on - sorry!</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1737725656.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1737725656.html</guid>
+    <pubDate>Fri, 24 Jan 2025 07:34:16 -0600</pubDate>
+    <description><![CDATA[
+    <p>For a while I have been wondering why the server has been
+    refusing connections even though my firewall didn't block
+    the IP I was connecting from... well turns out nginx wasn't
+    running this whole time :x</p>
+    <p>Sorry for the confusion if anyone thought the server was
+    down!  Also let me know my firewall rules are too strict
+    for you... I understand that IP bans can be quite unfair
+    to people who actually want to access my website but can't
+    because a few bad actors taint the IP reputation.  If you
+    are patient know that the IP bans aren't permanent (as
+    long my ban wears them out -- which is the real point of
+    banning!  I promise it's not because I hate people, but
+    bots&hellip; are annoying. &gt;:c)</p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Server Operational!</title>
+    <author>webmaster@rapidcow.org</author>
+    <link>https://status.rapidcow.org/feed/2025/1737252638.html</link>
+    <guid>https://status.rapidcow.org/feed/2025/1737252638.html</guid>
+    <pubDate>Sun, 19 Jan 2025 10:10:38 +0800</pubDate>
+    <description><![CDATA[
+    <p>Hey so just to let you know I've been leaving my server to
+    handle HTTP/S requests for www.rapidcow.org and friends for
+    a while now!  Got new SSL certificates with certbot, also
+    learned how to use Fail2ban so IPs that spam the server
+    will be temporarily banned by the firewall.  This of course
+    is far from foolproof (imagine the DoS attacks&hellip;) but it
+    is a good starter I think. :)</p>
+    <p>(P.S. if i wasn't clear with that, it means the <em>server</em>
+    is working, but just the server&mdash;no content yet!)</p>
+    <p>And now that it is the end of holiday for me I'm gonna
+    be on a flight soon&hellip; it's been fun, yeah.  This system
+    administeration thing and archiving old media I found
+    around my house are all cool.  Sometimes it can feel like
+    a fever dream, a place familiar yet so distant&hellip;.</p>
+    <p>That's it for now!  See y'all on the other side of the
+    coast&hellip; o/</p>
+    ]]></description>
+  </item>
+</channel>
+</rss>

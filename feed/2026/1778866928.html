@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <style>
+    html { font-size: 12pt; color-scheme: dark light; }
+    body { font-family: monospace; margin: 2rem; max-width: 64ch; }
+    pre { font-family: monospace; }
+  </style>
+  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed" href="https://status.rapidcow.org/feed.xml">
+  <meta name="robots" content="noindex nofollow">
+  <title>less-broken DNSSEC rapidcow.net</title>
+</head>
+<body><pre>
+]--[<a href="../..">Home</a>]--[<a href="../../feed.html">Feed</a>]--[<a href="../../index.html">2026</a>]-----------------[
+
+  Date: Fri, 15 May 2026 12:42:08 -0500
+  Subject: less-broken DNSSEC rapidcow.net
+
+  okkk ns{1,2,3,4,5}.he.net should be authoritative
+  over rapidcow.net instead of BuddyNS.  I tried
+  querying them individually and it seems that it
+  is...
+
+  actually what am I saying, i didn't need to know
+  from querying; i already trust them to know their
+  stuff because their interface just makes sense. :)
+
+  i haven't checked if the name servers support
+  NOTIFY, but judging from
+  https://forums.he.net/index.php?topic=4299.0
+  it seems to be possible to use ns1...
+
+  Either way, by the time cache expires i can let
+  dnsviz.net confirm that everything is in place!
+End of 1778866928.
+</pre></body>
+</html>
