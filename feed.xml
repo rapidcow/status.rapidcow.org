@@ -63,7 +63,7 @@
   <!-- Every channel is required to have a title, -->
   <!-- a link, and a description. -->
   <title>Site Status</title>
-  <link>[% BASE_URL %]</link>
+  <link>[% SITE_URL _ BASE_URL %]</link>
   <description>Feed for status of www.rapidcow.org and
       other sites.</description>
   <!-- Link to documentation for RSS.                  -->
@@ -91,7 +91,7 @@
   <!-- in the atom namespace, declared above -->
   <!-- as http://www.w3.org/2005/Atom.       -->
   <atom:link rel="self" type="application/rss+xml"
-      href="[% BASE_URL %]feed.xml" />
+      href="[% locate('//feed.xml') | xml %]" />
   <!-- Now the rest are just feed items! -->
 [% FOREACH item IN items %]
   <item>
