@@ -77,7 +77,7 @@ has completely stripped of me. ;<
 
 Table of Contents:
 [% FOR item IN latest -%]
-  # <a href="[% locate(item.path) | xml %]">[% item.name %]</a>   [% item.headers.subject %]
+  # <a id="toc-[% item.name %]" href="#[% item.name %]">[% item.name %]</a>   [% item.headers.subject %]
 [% END -%]
 End of TOC.
 [% IF archives.size %]
@@ -87,14 +87,14 @@ Older entries are archived by year:
 [% END -%]
 [% END -%]
 [% FOR item IN latest %]
-<a href="[% locate(item.path) | xml %]">[% item.name %]</a>:
+<a id="[% item.name %]">[% item.name %]</a>:
 [% FOR field IN item.headers.order -%]
-[% NEXT IF field == 'content_location' -%]
   [% field | rfc822_case %]: [% item.headers.$field | html | replace('@', '&commat;') %]
 [% END -%]
+  Content-Location: <a href="[% locate(item.path) | xml %]">[% item.headers.content_location | html %]</a>
 
 [% item.content.text | indent '  ' | strip_trail | dedent_comment %]
-End of [% item.name %].
+End of <a href="#toc-[% item.name %]">[% item.name %]</a>.
 [% END %]
 End of file.
 </pre></body>
