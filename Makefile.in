@@ -4,20 +4,11 @@ index.html feed.html feed.xml:
 robots.txt:
 	cd -- ${A} && cp ${a}/${.TARGET} ${B}/${b}/${.TARGET}
 
-# Each year has an index, feed/YEAR/index.html, made from year.html
-# and taking the entries of that year.  (The first block says what
-# they take; the second has the recipe for all of them.)
+# Each year has an index, feed/YEAR/index.html (a source of its own,
+# NEEDing the entries of the year), and a feed, feed/YEAR.xml, made
+# from feed.xml.  (The first block says what the latter takes; the
+# second has the recipe for all of them.)
 # BEGIN feed years deps (scripts/update-needs)
-feed/2024/index.html: skel/year.html \
-feed/2024/1730847600.dat \
-feed/2024/1731229200.dat \
-feed/2024/1733566500.dat \
-feed/2024/1734141600.dat \
-feed/2024/1734227100.dat \
-feed/2024/1734362640.dat \
-feed/2024/1734592402.dat \
-feed/2024/1735133231.dat \
-feed/2024/1735659900.dat
 feed/2024.xml: ${a}/feed.xml \
 feed/2024/1730847600.dat \
 feed/2024/1731229200.dat \
@@ -28,21 +19,6 @@ feed/2024/1734362640.dat \
 feed/2024/1734592402.dat \
 feed/2024/1735133231.dat \
 feed/2024/1735659900.dat
-feed/2025/index.html: skel/year.html \
-feed/2025/1737252638.dat \
-feed/2025/1737725656.dat \
-feed/2025/1742319000.dat \
-feed/2025/1746398081.dat \
-feed/2025/1747713065.dat \
-feed/2025/1748195320.dat \
-feed/2025/1749291311.dat \
-feed/2025/1749393227.dat \
-feed/2025/1749395356.dat \
-feed/2025/1749397066.dat \
-feed/2025/1749829409.dat \
-feed/2025/1749831724.dat \
-feed/2025/1765352557.dat \
-feed/2025/1766338825.dat
 feed/2025.xml: ${a}/feed.xml \
 feed/2025/1737252638.dat \
 feed/2025/1737725656.dat \
@@ -58,31 +34,6 @@ feed/2025/1749829409.dat \
 feed/2025/1749831724.dat \
 feed/2025/1765352557.dat \
 feed/2025/1766338825.dat
-feed/2026/index.html: skel/year.html \
-feed/2026/1767596777.dat \
-feed/2026/1769120884.dat \
-feed/2026/1771585936.dat \
-feed/2026/1772459792.dat \
-feed/2026/1772501719.dat \
-feed/2026/1773401929.dat \
-feed/2026/1773772239.dat \
-feed/2026/1774352955.dat \
-feed/2026/1774908318.dat \
-feed/2026/1774917894.dat \
-feed/2026/1777778142.dat \
-feed/2026/1778826183.dat \
-feed/2026/1778828338.dat \
-feed/2026/1778861980.dat \
-feed/2026/1778866928.dat \
-feed/2026/1779338596.dat \
-feed/2026/1779926317.dat \
-feed/2026/1779954807.dat \
-feed/2026/1780009613.dat \
-feed/2026/1780094627.dat \
-feed/2026/1781078968.dat \
-feed/2026/1781382529.dat \
-feed/2026/1781767809.dat \
-feed/2026/1782047196.dat
 feed/2026.xml: ${a}/feed.xml \
 feed/2026/1767596777.dat \
 feed/2026/1769120884.dat \

@@ -22,10 +22,6 @@
 
 These are also in <a href="[% locate('/feed/' _ year _ '.xml') | xml %]">/feed/[% year %].xml</a>.
 
-Table of Contents:
-[% FOR item IN items -%]
-  # <a href="[% locate(item.path) | xml %]">[% item.name %]</a>   [% item.headers.subject | html %]
-[% END -%]
-End of TOC.
+[% content %]
 </pre></body>
 </html>
