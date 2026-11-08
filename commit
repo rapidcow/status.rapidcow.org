@@ -29,7 +29,7 @@ EOM
 	git diff --exit-code "$BASE"
 	case $? in
 	0)
-		echo "no changes."
+		echo "no changes." >&2
 		;;
 	1)
 		# this is fine.
