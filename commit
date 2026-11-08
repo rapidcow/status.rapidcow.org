@@ -9,6 +9,8 @@ branch=pages
 BASE=$(git rev-parse --verify refs/heads/"$branch")
 TREE=$(git rev-parse --verify "$BASE"^{tree})
 git add -A
+( find public -name .ok -print0 ) | perl -0pe 's!^public/!!' |
+git rm --cached --pathspec-from-file=- --pathspec-file-nul
 git write-tree >"$tmp"/TREE
 (
 	exec >"$tmp"/COMMIT_EDITMSG
