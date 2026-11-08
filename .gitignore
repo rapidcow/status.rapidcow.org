@@ -15,4 +15,5 @@
 /.wrangler
 # siteconf
 MY/
+Makefile
 Makefile.inc
