@@ -1,0 +1,31 @@
+[%
+ # HAVE: ${a}/year.html
+-%]
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <style>
+    html { font-size: 12pt; color-scheme: dark light; }
+    body { font-family: monospace; margin: 2rem; max-width: 64ch; }
+    pre { font-family: monospace; }
+  </style>
+  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed" href="[% locate('//feed.xml') | xml %]">
+  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed ([% year %])" href="[% locate('//feed/' _ year _ '.xml') | xml %]">
+  <meta name="robots" content="noindex nofollow">
+  <title>Site Status Feed [% year %]</title>
+</head>
+<body><pre>
+]--[<a href="[% locate('/') | xml %]">Home</a>]--[<a href="[% locate('/feed.html') | xml %]">Feed</a>]-----------------------------[
+
+                    === Status Feed - [% year %] ===
+
+These are also in <a href="[% locate('/feed/' _ year _ '.xml') | xml %]">/feed/[% year %].xml</a>.
+
+Table of Contents:
+[% FOR item IN items -%]
+  # <a href="[% locate(item.path) | xml %]">[% item.name %]</a>   [% item.headers.subject | html %]
+[% END -%]
+End of TOC.
+</pre></body>
+</html>

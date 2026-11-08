@@ -1,28 +1,5 @@
 [%
  # HAVE: ${a}/feed.html
- # NEED: feed/2024/1730847600.dat
- # NEED: feed/2024/1731229200.dat
- # NEED: feed/2024/1733566500.dat
- # NEED: feed/2024/1734141600.dat
- # NEED: feed/2024/1734227100.dat
- # NEED: feed/2024/1734362640.dat
- # NEED: feed/2024/1734592402.dat
- # NEED: feed/2024/1735133231.dat
- # NEED: feed/2024/1735659900.dat
- # NEED: feed/2025/1737252638.dat
- # NEED: feed/2025/1737725656.dat
- # NEED: feed/2025/1742319000.dat
- # NEED: feed/2025/1746398081.dat
- # NEED: feed/2025/1747713065.dat
- # NEED: feed/2025/1748195320.dat
- # NEED: feed/2025/1749291311.dat
- # NEED: feed/2025/1749393227.dat
- # NEED: feed/2025/1749395356.dat
- # NEED: feed/2025/1749397066.dat
- # NEED: feed/2025/1749829409.dat
- # NEED: feed/2025/1749831724.dat
- # NEED: feed/2025/1765352557.dat
- # NEED: feed/2025/1766338825.dat
  # NEED: feed/2026/1767596777.dat
  # NEED: feed/2026/1769120884.dat
  # NEED: feed/2026/1771585936.dat
@@ -99,12 +76,18 @@ has completely stripped of me. ;<
 [% END -%]
 
 Table of Contents:
-[% FOR item IN items -%]
-  # <a href="#[% item.name %]">[% item.name %]</a>   [% item.headers.subject %]
+[% FOR item IN latest -%]
+  # <a href="[% locate(item.path) | xml %]">[% item.name %]</a>   [% item.headers.subject %]
 [% END -%]
 End of TOC.
-[% FOR item IN items %]
-<a id="[% item.name %]">[% item.name %]</a>:
+[% IF archives.size %]
+Older entries are archived by year:
+[% FOR a IN archives -%]
+  # <a href="[% locate(a.path) | xml %]">[% a.year %]</a>   ([% a.count %] entries)
+[% END -%]
+[% END -%]
+[% FOR item IN latest %]
+<a href="[% locate(item.path) | xml %]">[% item.name %]</a>:
 [% FOR field IN item.headers.order -%]
 [% NEXT IF field == 'content_location' -%]
   [% field | rfc822_case %]: [% item.headers.$field | html | replace('@', '&commat;') %]

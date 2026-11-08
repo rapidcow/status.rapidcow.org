@@ -1,26 +1,5 @@
 [%
  # HAVE: ${a}/feed.xml
- # NEED: feed/2024/1730847600.dat
- # NEED: feed/2024/1731229200.dat
- # NEED: feed/2024/1733566500.dat
- # NEED: feed/2024/1734141600.dat
- # NEED: feed/2024/1734227100.dat
- # NEED: feed/2024/1734362640.dat
- # NEED: feed/2024/1734592402.dat
- # NEED: feed/2024/1735133231.dat
- # NEED: feed/2024/1735659900.dat
- # NEED: feed/2025/1737252638.dat
- # NEED: feed/2025/1737725656.dat
- # NEED: feed/2025/1742319000.dat
- # NEED: feed/2025/1746398081.dat
- # NEED: feed/2025/1747713065.dat
- # NEED: feed/2025/1748195320.dat
- # NEED: feed/2025/1749291311.dat
- # NEED: feed/2025/1749393227.dat
- # NEED: feed/2025/1749395356.dat
- # NEED: feed/2025/1749397066.dat
- # NEED: feed/2025/1749829409.dat
- # NEED: feed/2025/1749831724.dat
  # NEED: feed/2025/1765352557.dat
  # NEED: feed/2025/1766338825.dat
  # NEED: feed/2026/1767596777.dat
@@ -62,10 +41,10 @@
 <channel>
   <!-- Every channel is required to have a title, -->
   <!-- a link, and a description. -->
-  <title>Site Status</title>
+  <title>Site Status[% IF year %] [% year %][% END %]</title>
   <link>[% SITE_URL _ BASE_URL %]</link>
   <description>Feed for status of www.rapidcow.org and
-      other sites.</description>
+      other sites[% IF year %] ([% year %])[% END %].</description>
   <!-- Link to documentation for RSS.                  -->
   <!-- To quote from the following linked site itself, -->
   <!-- "It's for people who might stumble across an    -->
@@ -91,7 +70,7 @@
   <!-- in the atom namespace, declared above -->
   <!-- as http://www.w3.org/2005/Atom.       -->
   <atom:link rel="self" type="application/rss+xml"
-      href="[% locate('//feed.xml') | xml %]" />
+      href="[% locate(year ? '//feed/' _ year _ '.xml' : '//feed.xml') | xml %]" />
   <!-- Now the rest are just feed items! -->
 [% FOREACH item IN items %]
   <item>

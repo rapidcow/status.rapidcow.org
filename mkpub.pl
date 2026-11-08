@@ -70,6 +70,8 @@ sub get_body {
 sub load_item {
 	my $file = shift;
 	my $name = $file =~ s{.*/|[.]dat$}{}gr;
+	my ($year) = $file =~ m{(?:\A|/)feed/(\d{4})/[^/]+\z}
+		or die "$file: not in feed/YEAR/\n";
 	my %item;
 	my $message;
 	my $template = Template->new({
@@ -82,8 +84,10 @@ sub load_item {
 		html => 0,
 	}, \$message) || die $template->error(), "\n";
 	$item{headers} = parse $message;
+	# where the entry page lives (relative to the site root)
+	$item{path} = "feed/$year/$name.html";
 	$item{headers}{content_location}
-		= $SITE_URL . $BASE_URL . "feed.html#$name";
+		= $SITE_URL . $BASE_URL . $item{path};
 	$item{content}{text} = get_body $message;
 	$message = '';
 	$template->process($file, {
@@ -91,15 +95,26 @@ sub load_item {
 	}, \$message) || die $template->error(), "\n";
 	$item{content}{html} = get_body $message;
 	$item{name} = $name;
+	$item{year} = $year;
 	return \%item;
 }
 
-# fetch feed items from feed/, newest first
+# the years we have entries for, newest first
+sub ls_years {
+	my %year;
+	for my $dir (glob "feed/[0-9][0-9][0-9][0-9]") {
+		$year{basename $dir} = 1 if -d $dir;
+	}
+	return [ reverse sort keys %year ];
+}
+
+# fetch feed items from feed/ (of the given YEAR, if any), newest first
 sub ls_items {
+	my $year = shift;
 	my @items;
 	# the name (DATE) sorts by time; YEAR/ is only for tidiness
 	for my $file (sort { basename($b) cmp basename($a) }
-		glob "feed/[0-9][0-9][0-9][0-9]/*.dat")
+		glob "feed/" . ($year // "[0-9][0-9][0-9][0-9]") . "/*.dat")
 	{
 		# IMPORTANT: perl hashes are, deep down, an array,
 		# so if we push %item itself, the key-value would
@@ -205,7 +220,11 @@ sub rfc822_now {
 
 # main function
 my $file = shift;
-die "usage: $0 <file>\n" unless defined $file;
+# the name of the target, for when the source does not say
+# (feed/YEAR/index.html is made from the one year.html,
+# feed/YEAR.xml from feed.xml)
+my $as = shift;
+die "usage: $0 <file> [<target>]\n" unless defined $file;
 
 (my $target = do {
 	my %I = read_deps($file);
@@ -227,13 +246,38 @@ die "usage: $0 <file>\n" unless defined $file;
 		die "$source `$have' not in source directory\n";
 	}
 }) =~ s/\A\/+//;
+$target = $as if defined $as;
 
 # feed/YEAR/DATE.dat is rendered with entry.html, as feed/YEAR/DATE.html
-my $entry;
+my ($entry, $year, @items);
+my $years = ls_years();
 if ($target =~ s/[.]dat\z/.html/) {
 	$entry = load_item($file);
 	$file = 'entry.html';
+} elsif ($target =~ m{\Afeed/(\d{4})/index[.]html\z}
+	or $target =~ m{\Afeed/(\d{4})[.]xml\z})
+{
+	$year = $1;
+	@items = @{ ls_items($year) };
+} elsif ($target eq 'feed.xml') {
+	# feed.xml has the recent entries, and says which they are:
+	# they are what it NEEDs (see scripts/update-needs)
+	my %I = read_deps($file);
+	@items = map { load_item($_) } reverse sort { basename($a) cmp basename($b) }
+		grep { m{\Afeed/\d{4}/[^/]+[.]dat\z} } @{ $I{NEED} || [] };
+} else {
+	@items = @{ ls_items() };
 }
+# feed.html only shows the latest year, and points at the others
+my $latest = @$years ? $years->[0] : undef;
+my @archives = map {
+	my $y = $_;
+	+{
+		year => $y,
+		path => "feed/$y/index.html",
+		count => scalar(() = glob "feed/$y/*.dat"),
+	}
+} @$years[1 .. $#$years];
 
 my $template = Template->new({
 	INCLUDE_PATH => ['.'],
@@ -248,8 +292,11 @@ my $template = Template->new({
 	},
 }) || die $Template::ERROR, "\n";
 $template->process($file, {
-	items => $entry ? [] : ls_items(),
+	items => \@items,
 	item => $entry,
+	year => $year,
+	latest => [ grep { $_->{year} eq $latest } @items ],
+	archives => \@archives,
 	BASE_URL => $BASE_URL,
 	SITE_URL => $SITE_URL,
 	rfc822_now => \&rfc822_now,

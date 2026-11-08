@@ -12,7 +12,7 @@
   <title>[% item.headers.subject | html %]</title>
 </head>
 <body><pre>
-]--[<a href="[% locate('/') | xml %]">Home</a>]--[<a href="[% locate('/feed.html') | xml %]">Feed</a>]-----------------------------[
+]--[<a href="[% locate('/') | xml %]">Home</a>]--[<a href="[% locate('/feed.html') | xml %]">Feed</a>]--[<a href="[% locate('/feed/' _ item.year _ '/') | xml %]">[% item.year %]</a>]-----------------[
 
 [% FOR field IN item.headers.order -%]
 [% NEXT IF field == 'content_location' -%]
