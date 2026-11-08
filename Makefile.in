@@ -3,3 +3,57 @@ index.html feed.html feed.xml:
 
 robots.txt:
 	cd -- ${A} && cp ${a}/${.TARGET} ${B}/${b}/${.TARGET}
+
+# Each entry feed/YEAR/DATE.dat makes feed/YEAR/DATE.html.  The list
+# of targets is kept by scripts/update-needs.
+# BEGIN feed entries (scripts/update-needs)
+feed/2024/1730847600.html \
+feed/2024/1731229200.html \
+feed/2024/1733566500.html \
+feed/2024/1734141600.html \
+feed/2024/1734227100.html \
+feed/2024/1734362640.html \
+feed/2024/1734592402.html \
+feed/2024/1735133231.html \
+feed/2024/1735659900.html \
+feed/2025/1737252638.html \
+feed/2025/1737725656.html \
+feed/2025/1742319000.html \
+feed/2025/1746398081.html \
+feed/2025/1747713065.html \
+feed/2025/1748195320.html \
+feed/2025/1749291311.html \
+feed/2025/1749393227.html \
+feed/2025/1749395356.html \
+feed/2025/1749397066.html \
+feed/2025/1749829409.html \
+feed/2025/1749831724.html \
+feed/2025/1765352557.html \
+feed/2025/1766338825.html \
+feed/2026/1767596777.html \
+feed/2026/1769120884.html \
+feed/2026/1771585936.html \
+feed/2026/1772459792.html \
+feed/2026/1772501719.html \
+feed/2026/1773401929.html \
+feed/2026/1773772239.html \
+feed/2026/1774352955.html \
+feed/2026/1774908318.html \
+feed/2026/1774917894.html \
+feed/2026/1777778142.html \
+feed/2026/1778826183.html \
+feed/2026/1778828338.html \
+feed/2026/1778861980.html \
+feed/2026/1778866928.html \
+feed/2026/1779338596.html \
+feed/2026/1779926317.html \
+feed/2026/1779954807.html \
+feed/2026/1780009613.html \
+feed/2026/1780094627.html \
+feed/2026/1781078968.html \
+feed/2026/1781382529.html \
+feed/2026/1781767809.html \
+feed/2026/1782047196.html \
+: ${a}/${@:R}.dat entry.html
+# END feed entries
+	cd -- ${A} && ./optenv ${B} ${^X} mkpub.pl ${a}/${<} > ${B}/${b}/${@}

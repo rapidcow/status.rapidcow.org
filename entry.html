@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <style>
+    html { font-size: 12pt; color-scheme: dark light; }
+    body { font-family: monospace; margin: 2rem; max-width: 64ch; }
+    pre { font-family: monospace; }
+  </style>
+  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed" href="[% locate('//feed.xml') | xml %]">
+  <meta name="robots" content="noindex nofollow">
+  <title>[% item.headers.subject | html %]</title>
+</head>
+<body><pre>
+]--[<a href="[% locate('/') | xml %]">Home</a>]--[<a href="[% locate('/feed.html') | xml %]">Feed</a>]-----------------------------[
+
+[% FOR field IN item.headers.order -%]
+[% NEXT IF field == 'content_location' -%]
+  [% field | rfc822_case %]: [% item.headers.$field | html | replace('@', '&commat;') %]
+[% END -%]
+
+[% item.content.text | indent '  ' | strip_trail | dedent_comment %]
+End of [% item.name %].
+</pre></body>
+</html>

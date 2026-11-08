@@ -7,6 +7,7 @@ use warnings;
 # https://stackoverflow.com/a/1891986
 use v5.10;
 
+use File::Basename qw( basename );
 use File::Spec;
 use RdKw::WwW::GenLib qw( parse_base locate );
 use RdKw::WwW::GenGenLib 0.0002 qw(
@@ -65,36 +66,45 @@ sub get_body {
 	return join "\n", @body;
 }
 
-# fetch feed items from data/
+# read a feed item from FILE (feed/YEAR/DATE.dat)
+sub load_item {
+	my $file = shift;
+	my $name = $file =~ s{.*/|[.]dat$}{}gr;
+	my %item;
+	my $message;
+	my $template = Template->new({
+		INCLUDE_PATH => ['.'],
+	}) || die $Template::ERROR, "\n";
+	# Note: initializing $message is necessary
+	# because TT actually appends to it
+	$message = '';
+	$template->process($file, {
+		html => 0,
+	}, \$message) || die $template->error(), "\n";
+	$item{headers} = parse $message;
+	$item{headers}{content_location}
+		= $SITE_URL . $BASE_URL . "feed.html#$name";
+	$item{content}{text} = get_body $message;
+	$message = '';
+	$template->process($file, {
+		html => 1,
+	}, \$message) || die $template->error(), "\n";
+	$item{content}{html} = get_body $message;
+	$item{name} = $name;
+	return \%item;
+}
+
+# fetch feed items from feed/, newest first
 sub ls_items {
 	my @items;
-	for my $file (reverse sort glob "data/*.dat") {
-		my $name = $file =~ s{^data/|[.]dat$}{}gr;
-		my %item;
-		my $message;
-		my $template = Template->new({
-			INCLUDE_PATH => ['.'],
-		}) || die $Template::ERROR, "\n";
-		# Note: initializing $message is necessary
-		# because TT actually appends to it
-		$message = '';
-		$template->process($file, {
-			html => 0,
-		}, \$message) || die $template->error(), "\n";
-		$item{headers} = parse $message;
-		$item{headers}{content_location}
-			= $SITE_URL . $BASE_URL . "feed.html#$name";
-		$item{content}{text} = get_body $message;
-		$message = '';
-		$template->process($file, {
-			html => 1,
-		}, \$message) || die $template->error(), "\n";
-		$item{content}{html} = get_body $message;
-		$item{name} = $name;
+	# the name (DATE) sorts by time; YEAR/ is only for tidiness
+	for my $file (sort { basename($b) cmp basename($a) }
+		glob "feed/[0-9][0-9][0-9][0-9]/*.dat")
+	{
 		# IMPORTANT: perl hashes are, deep down, an array,
 		# so if we push %item itself, the key-value would
 		# be pushed as if they are separate items.
-		push @items, \%item;
+		push @items, load_item($file);
 	}
 	return \@items;
 }
@@ -201,7 +211,7 @@ die "usage: $0 <file>\n" unless defined $file;
 	my %I = read_deps($file);
 	my ($source, $have) = defined $I{HAVE}
 		? ('HAVE', norm_dep($I{HAVE}))
-		: ('file', File::Spec->normpath($file));
+		: ('file', File::Spec->canonpath($file));
 	my $name;
 	if (defined $I{HAVE} && defined ($name
 		= uproot('${a}', $have)))
@@ -218,6 +228,13 @@ die "usage: $0 <file>\n" unless defined $file;
 	}
 }) =~ s/\A\/+//;
 
+# feed/YEAR/DATE.dat is rendered with entry.html, as feed/YEAR/DATE.html
+my $entry;
+if ($target =~ s/[.]dat\z/.html/) {
+	$entry = load_item($file);
+	$file = 'entry.html';
+}
+
 my $template = Template->new({
 	INCLUDE_PATH => ['.'],
 	# now to declare our filters according to
@@ -231,7 +248,8 @@ my $template = Template->new({
 	},
 }) || die $Template::ERROR, "\n";
 $template->process($file, {
-	items => ls_items(),
+	items => $entry ? [] : ls_items(),
+	item => $entry,
 	BASE_URL => $BASE_URL,
 	SITE_URL => $SITE_URL,
 	rfc822_now => \&rfc822_now,
