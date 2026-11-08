@@ -71,6 +71,7 @@ sub update {
 my $year_index = <<'EOT';
 [%
  # HAVE: ${a}/feed/YEAR/index.html
+ # NEED: skel/year.html
 -%]
 [% WRAPPER skel/year.html -%]
 Table of Contents:
