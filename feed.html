@@ -60,7 +60,7 @@
     body { font-family: monospace; margin: 2rem; max-width: 64ch; }
     pre { font-family: monospace; }
   </style>
-  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed" href="[% BASE_URL %]feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Site Status RSS Feed" href="[% locate('//feed.xml') | xml %]">
   <!-- https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag
     I still think search engines should not index us. -->
   <meta name="robots" content="noindex nofollow">

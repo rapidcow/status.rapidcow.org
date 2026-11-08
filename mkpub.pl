@@ -2,15 +2,28 @@
 
 use strict;
 use warnings;
-use Template;
 # perl null coalescence ftw ^^!!!
 # we can use v5.10 proudly
 # https://stackoverflow.com/a/1891986
 use v5.10;
 
+use File::Spec;
+use RdKw::WwW::GenLib qw( parse_base locate );
+use RdKw::WwW::GenGenLib 0.0002 qw(
+	read_deps load_state
+	norm_dep subs_dep uproot );
+use Template;
+use Time::Piece;
+
 # global constant???
-my $DEFAULT_BASE_URL = 'https://status.rapidcow.org/';
-my $BASE_URL = $ENV{BASE_URL} // $DEFAULT_BASE_URL;
+my $DEFAULT_SITE = 'https://status.rapidcow.org/';
+my $BASE_URL = $ENV{BASE_URL} // '/';
+my $SITE_URL = $ENV{SITE_URL} // $DEFAULT_SITE;
+
+my $O = { base_url => $BASE_URL, site_url => $SITE_URL };
+parse_base($O);
+$BASE_URL = $O->{base_url};
+$SITE_URL = $O->{site_url};
 
 # parse gets the header; get_body gets the rest
 sub parse {
@@ -70,8 +83,7 @@ sub ls_items {
 		}, \$message) || die $template->error(), "\n";
 		$item{headers} = parse $message;
 		$item{headers}{content_location}
-			= ($ENV{BASE_URL} // $DEFAULT_BASE_URL)
-			. "feed.html#$name";
+			= $SITE_URL . $BASE_URL . "feed.html#$name";
 		$item{content}{text} = get_body $message;
 		$message = '';
 		$template->process($file, {
@@ -151,7 +163,6 @@ sub address {
 sub rfc822_date_factory {
 	my ($context, $timezone) = @_;
 	$timezone = $timezone // "GMT";
-	use Time::Piece;
 	my $offset;
 	# on top of RFC822 we can allow Temps Universel Coordonné and Undertale time
 	# of course, modern emails aren't supposed to have either, as per the updated
@@ -186,6 +197,27 @@ sub rfc822_now {
 my $file = shift;
 die "usage: $0 <file>\n" unless defined $file;
 
+(my $target = do {
+	my %I = read_deps($file);
+	my ($source, $have) = defined $I{HAVE}
+		? ('HAVE', norm_dep($I{HAVE}))
+		: ('file', File::Spec->normpath($file));
+	my $name;
+	if (defined $I{HAVE} && defined ($name
+		= uproot('${a}', $have)))
+	{
+		my $D = %{+{ load_state('.') }}{config};
+		subs_dep($D, $name);
+	}
+	elsif (defined ($name = uproot('.', $have)))
+	{
+		$name;
+	}
+	else {
+		die "$source `$have' not in source directory\n";
+	}
+}) =~ s/\A\/+//;
+
 my $template = Template->new({
 	INCLUDE_PATH => ['.'],
 	# now to declare our filters according to
@@ -201,5 +233,7 @@ my $template = Template->new({
 $template->process($file, {
 	items => ls_items(),
 	BASE_URL => $BASE_URL,
+	SITE_URL => $SITE_URL,
 	rfc822_now => \&rfc822_now,
+	locate => sub { locate($O, $target, @_); },
 }) || die $template->error(), "\n";
