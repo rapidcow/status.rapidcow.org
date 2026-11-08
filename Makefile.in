@@ -1,2 +1,5 @@
 index.html feed.html feed.xml:
-	cd -- ${A} && ./optenv ${B} ${^X} mkpub.pl ${a}/${.TARGET} > ${b}/${.TARGET}
+	cd -- ${A} && ./optenv ${B} ${^X} mkpub.pl ${a}/${.TARGET} > ${B}/${b}/${.TARGET}
+
+robots.txt:
+	cd -- ${A} && cp ${a}/${.TARGET} ${B}/${b}/${.TARGET}

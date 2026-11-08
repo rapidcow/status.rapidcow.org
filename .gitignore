@@ -4,6 +4,7 @@
 /vendor/cache
 # Output
 /public/
+/.cache/
 # vim stuff
 .viminfo
 .netrwhist

@@ -1,4 +1,5 @@
 MAKE site
+	NEED robots.txt
 	NEED index.html
 	NEED feed.html
 	NEED feed.xml
