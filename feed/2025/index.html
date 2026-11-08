@@ -1,0 +1,25 @@
+[%
+ # HAVE: ${a}/feed/2025/index.html
+ # NEED: feed/2025/1737252638.dat
+ # NEED: feed/2025/1737725656.dat
+ # NEED: feed/2025/1742319000.dat
+ # NEED: feed/2025/1746398081.dat
+ # NEED: feed/2025/1747713065.dat
+ # NEED: feed/2025/1748195320.dat
+ # NEED: feed/2025/1749291311.dat
+ # NEED: feed/2025/1749393227.dat
+ # NEED: feed/2025/1749395356.dat
+ # NEED: feed/2025/1749397066.dat
+ # NEED: feed/2025/1749829409.dat
+ # NEED: feed/2025/1749831724.dat
+ # NEED: feed/2025/1765352557.dat
+ # NEED: feed/2025/1766338825.dat
+ # NEED: skel/year.html
+-%]
+[% WRAPPER skel/year.html -%]
+Table of Contents:
+[% FOR item IN items -%]
+  # <a href="[% locate(item.path) | xml %]">[% item.name %]</a>   [% item.headers.subject | html %]
+[% END -%]
+End of TOC.
+[%- END %]

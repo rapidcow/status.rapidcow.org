@@ -1,0 +1,133 @@
+#!/usr/bin/env perl
+#
+# Usage: scripts/update-needs
+#
+# Run this after adding (or removing) an entry under feed/.  It
+# brings everything that lists the entries up to date:
+#
+#   - feed/YEAR/index.html, if there is none yet (it is yours to
+#     tweak after that; skel/year.html does the page around it)
+#   - the NEED headers of feed.html, index.html (the latest year's
+#     feed/YEAR/DATE.dat), feed/YEAR/index.html (that year's) and
+#     feed.xml (those from the past year)
+#   - Makefile.in: the rules making feed/YEAR/DATE.html,
+#     feed/YEAR/index.html and feed/YEAR.xml
+#   - MANIFEST: the goal NEEDs those pages
+#
+# The last two are kept between BEGIN/END marker comments.  Run
+# `siteconf -g' afterwards if you want a new Makefile.
+#
+use v5.14;
+use strict;
+use warnings;
+
+use Cwd qw( abs_path );
+use File::Basename qw( dirname );
+
+chdir dirname(abs_path($0)) . '/..' or die "chdir: $!\n";
+
+my @dat = sort {
+	# by date, which is the file name
+	(my $x = $a) =~ s{.*/}{};
+	(my $y = $b) =~ s{.*/}{};
+	$x cmp $y
+} glob 'feed/[0-9][0-9][0-9][0-9]/*.dat';
+my @html = map { s/[.]dat\z/.html/r } @dat;
+my %year;
+for (@dat) {
+	m{\Afeed/(\d{4})/} or die "$_: not in feed/YEAR/\n";
+	push @{ $year{$1} }, $_;
+}
+my @year = sort keys %year;
+my $latest = $year[-1];
+my @index = map { "feed/$_/index.html" } @year;
+my @xml = map { "feed/$_.xml" } @year;
+# feed.xml expires entries after a year (DATE is seconds since
+# the Epoch); feed/YEAR.xml has them for good.
+my $cutoff = time - 365 * 24 * 60 * 60;
+my @recent = grep { m{/(\d+)[.]dat\z} and $1 >= $cutoff } @dat;
+
+sub slurp {
+	my $file = shift;
+	open my $fh, '<:encoding(UTF-8)', $file or die "open <$file: $!\n";
+	local $/;
+	my $text = <$fh>;
+	close $fh;
+	$text;
+}
+
+sub update {
+	my ($file, $text) = @_;
+	return if slurp($file) eq $text;
+	open my $fh, '>:encoding(UTF-8)', $file or die "open >$file: $!\n";
+	print $fh $text;
+	close $fh or die "close $file: $!\n";
+	say STDERR "Updating $file";
+}
+
+# The NEEDs sit right after the HAVE in the header; whatever
+# NEEDs on .dat files were there are replaced.  feed.html shows
+# only the latest year (the rest are in feed/YEAR/index.html).
+my $year_index = <<'EOT';
+[%
+ # HAVE: ${a}/feed/YEAR/index.html
+ # NEED: skel/year.html
+-%]
+[% WRAPPER skel/year.html -%]
+Table of Contents:
+[% FOR item IN items -%]
+  # <a href="[% locate(item.path) | xml %]">[% item.name %]</a>   [% item.headers.subject | html %]
+[% END -%]
+End of TOC.
+[%- END %]
+EOT
+for my $y (@year) {
+	my $file = "feed/$y/index.html";
+	next if -e $file;
+	open my $fh, '>:encoding(UTF-8)', $file or die "open >$file: $!\n";
+	print $fh $year_index =~ s/YEAR/$y/gr;
+	close $fh or die "close $file: $!\n";
+	say STDERR "Creating $file";
+}
+my %needs = (
+	(map { ("feed/$_/index.html" => $year{$_}) } @year),
+	'feed.html' => $year{$latest},
+	'index.html' => $year{$latest},
+	'feed.xml' => \@recent,
+);
+for my $file (sort keys %needs) {
+	my $text = slurp($file);
+	$text =~ s/^ # NEED: \S+[.]dat\n//mg;
+	$text =~ s/^( # HAVE: .*\n)/$1 # NEED: $_\n/m
+		or die "$file: no HAVE header\n"
+		for reverse @{ $needs{$file} };
+	update($file, $text);
+}
+
+# Replace what is between the markers (and nothing else).
+sub block {
+	my ($file, $name, @lines) = @_;
+	my $lines = join '', @lines;
+	my $text = slurp($file);
+	my $begin = "# BEGIN $name (scripts/update-needs)\n";
+	my $end = "# END $name\n";
+	$text =~ s/^\Q$begin\E.*?^\Q$end\E/$begin$lines$end/ms
+		or die "$file: missing BEGIN/END $name markers\n";
+	update($file, $text);
+}
+
+@dat or die "no entries under feed/\n";
+# Targets are named from ${b}; the source of an entry is the .dat
+# beside it (the suffix transformation, .dat to .html).  That of a
+# year is year.html, and what it takes is the entries of the year.
+# (The recipes are Makefile.in's own, right after each END marker.)
+block('Makefile.in', 'feed years deps', map {
+	join(" \\\n", "feed/$_.xml: \${a}/feed.xml", @{ $year{$_} }) . "\n";
+} @year);
+block('Makefile.in', 'feed years',
+	(map { "$_ \\\n" } @index, @xml),
+	":\n");
+block('Makefile.in', 'feed entries',
+	(map { "$_ \\\n" } @html),
+	": \${a}/\${\@:R}.dat skel/entry.html\n");
+block('MANIFEST', 'feed pages', map { "\tNEED $_\n" } @index, @xml, @html);

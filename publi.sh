@@ -1,6 +1,13 @@
 #!/bin/sh
 # Usage: DATE="..." ./publi.sh
 set -euo pipefail
+cd -- "$(dirname -- "$0")"
 s=$(date -d "${DATE:-"$(date --rfc-email)"}" +%s)
-date -d @$s --rfc-email | tee data/$s.dat &&
-${EDITOR:-vi} data/$s.dat || rm data/$s.dat
+y=$(date -d @$s +%Y)
+f=feed/$y/$s.dat
+mkdir -p feed/$y
+date -d @$s --rfc-email | tee $f
+if ${EDITOR:-vi} $f
+then scripts/update-needs
+else rm -f $f; rmdir feed/$y 2>/dev/null || :
+fi
