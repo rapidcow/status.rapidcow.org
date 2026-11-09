@@ -1,0 +1,72 @@
+Date: Sun, 08 Nov 2026 19:24:32 -0600
+Subject: status site update!
+Content-Type: text/plain; charset="UTF-8"
+
+[% FILTER html -%]
+You may have noticed that something I mentioned at the
+beginning of the year [1] just became real... Permalinks!
+Archives!  This is feeling a lot like Wordpress wow. :)
+
+Sorry to the RSS readers... I know HTML output is
+still broken.  That is still something i'd like to
+get fixed eventually :[  (... just not right NOW.)
+
+Essentially each status update is a bunch of text
+files, looks basically like what you see here.
+(If you know Jekyll, Hugo, literally any sane SSG
+out there, this is analogous to your posts directory
+with Markdown with YAML frontmatter, except YAML
+is just RFC-822 headers, and there is no Markdown.
+(I have an ineffable distain for Markdown/YAML; don't
+ask me why, but i'm just saying using said SSGs is
+*NOT* an option for this site even if it'd make my
+life a million times easier. :>))
+
+Now you may be wondering "well how did HTML output
+work before", I wrote the HTML output by hand (like
+`m4 divert' with Template Toolkit conditionals).  I have
+not worked on coming up with a more comfortable DSL for
+semantic markup, hence the lack of HTML formatting as of
+late.  (That is also out of scope for this "update"...)
+
+Anyways, for the longest time, the whole site (with
+its STAGGERING amount of... 4 files) was just built
+from scratch, every time.  feed.html globs the data/
+directory (where I keep said text files), sorts them
+by date, and includes one's content.  (feed.xml does
+the same except it only looks for specific headers.)
+This is just a dumb source translation, meaning one
+input file (the Template Toolkit file with the loop)
+to one output file (feed.html and feed.xml).  To do
+the same for 47 files (at the time of writing this)
+would mean 47 sources (!) for each standalone perma-
+link, which obviously had to be done differently...
+
+(But okay, this bit isn't the hard part... you could
+just, have an actual generic template with substitutable
+variables.  I was just... lazy to write one :P)
+
+The harder part is having build those 47 files every
+time, which is... acceptable given the frequency at which
+i post?  But you know I don't settle for less when I
+can do better than that... :]  I am also VERY impatient
+waiting for the whole site to re-build when I only changed
+one single post 6_6 (unrelated to my name but... *ahem*.
+I just absolutely can't stand being incorrect, to the
+point my brain would shut down and refuse to collaborate
+when things are in the wrong state.)
+
+So I want dependency graph... but I also don't want
+magic (black-box in other words, like most SSGs are).
+But I also want the comfort of not having to worry
+about things most of the time.  You want to know how
+I did it?  Make! or any build system that works on files
+really.  What I made was essentially a build script
+generator that takes repetitive part out (like writing
+the file names twice; the `a/%: b/%' that I have used
+extensively for GNU make).  (I wrote it up during the
+summer in my grandparents' house for my archive project
+site (www-cellar), having been inspired by FreeBSD ports
+
+[1]: [% locate('//feed/2026/1772459792.html)' %]
+[% END %-]
