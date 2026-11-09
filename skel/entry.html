@@ -14,6 +14,7 @@
 <body><pre>
 ]--[<a href="[% locate('index.html') | xml %]">Home</a>]--[<a href="[% locate('feed.html') | xml %]">Feed</a>]--[<a href="[% locate('index.html') | xml %]">[% item.year %]</a>]------------------------------------[
 
+[% item.name %]:
 [% FOR field IN item.headers.order -%]
 [% NEXT IF field == 'content_location' -%]
   [% field | rfc822_case %]: [% item.headers.$field | html | replace('@', '&commat;') %]
