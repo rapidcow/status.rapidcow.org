@@ -66,7 +66,10 @@ generator that takes repetitive part out (like writing
 the file names twice; the `a/%: b/%' that I have used
 extensively for GNU make).  (I wrote it up during the
 summer in my grandparents' house for my archive project
-site (www-cellar), having been inspired by FreeBSD ports
+site (www-cellar), inspired by FreeBSD ports I'd been
+seeing on my T480 (it's a whole-ass language written in
+Make!  I'm not saying GNU Make isn't, but you just can't
+deny that the `bsd.*.mk' headers aren't totally wack.))
 
-[1]: [% locate('//feed/2026/1772459792.html)' %]
-[% END %-]
+[1]: [% locate('//feed/2026/1772459792.html') %]
+[% END -%]
