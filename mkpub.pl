@@ -86,7 +86,7 @@ sub load_item {
 	$message = '';
 	$template->process($file, {
 		html => 0,
-		locate => sub { locate($O, $target, @_); },
+		locate => \&locate,
 	}, \$message) || die $template->error(), "\n";
 	$item{headers} = parse $message;
 	# where the entry page lives (relative to the site root)
