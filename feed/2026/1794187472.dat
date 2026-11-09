@@ -69,7 +69,129 @@ summer in my grandparents' house for my archive project
 site (www-cellar), inspired by FreeBSD ports I'd been
 seeing on my T480 (it's a whole-ass language written in
 Make!  I'm not saying GNU Make isn't, but you just can't
-deny that the `bsd.*.mk' headers aren't totally wack.))
+deny that the `bsd.*.mk' headers aren't totally wack.)
+The other thing I borrowed from FreeBSD are the /etc/rc.d
+PROVIDE + REQUIRE headers read by rcorder(8), except I
+renamed them as HAVE + NEED.)
 
-[1]: [% locate('//feed/2026/1772459792.html') %]
+To generalize it to my other sites (including this one)
+though, I had Claude Code extract the shared bits into
+a Perl module.  So I know, I know, siteconf looks vibe-
+coded, and it *is*... but it's just the execution and not
+the idea! >:O  And I've accepted that if you want to make
+something so niche and you need right away, AI is the only
+realistic way to do it without having me completely give
+up on college and spend every hour awake to write this.
+(But okay, on that... I am not getting into that here. =_=)
+
+The part I didn't like about GNU make was globbing
+(which I guess the creator of Ninja also noticed and
+intentionally left out of their build script DSL.)  But,
+to put it simply, I think globbing is an anti-pattern
+because if your site loses some posts, you wouldn't know.
+(The MANIFEST is taken straight from Perl EU:MM, which
+I like more than how Python and other packagers do it,
+since I have a clear list of files I can expect to see.
+(Java is cool though!  They have META-INF/MANIFEST.MF :)
+)  This also helps with deterministic builds, which is
+something I care deeply about: to be able to know that
+my web site is self-archiving and not something that
+needs saving with an external archive system ten years
+from now.  (Of course the checksum on sources and the
+build outputs and version pinning of the environment will
+have to be done separately, but the stability of input /
+output rules won't be a separate concern. ;)
+
+But back to this: dependency graph is solved; what's
+left is just convenience.  For that, I just had Claude
+Code write a source-generator that updates the list of
+dependencies (the text files NEEDed by a year-feed,
+a recent post feed, and by the whole site).  (Well, I
+didn't explicitly tell Claude to do that, but it's what
+I would have done too.  I explicitly expected that
+siteconf would fit in a larger system where its input
+is also generated.  How you generate it is... well, your
+freedom!  Anything that writes to a file; any language.
+(Same for the build process; you don't need TT, no... a
+handful of my even older 2024 sites use Jinja2 (back when
+Python was the only scripting language I knew well enough
+for something like this...)  But there's nothing wrong!
+Outside of the lack of library function; but then again
+that is trivial to port... (maybe I will port them when
+I get involved in Python; or someone else could port it.
+I don't use any weird proprietary format (though you
+can't use spaces; that is a serious limitation :c) so
+the door is open!  And i do believe that things will get
+better from here... v_v))
+
+I am thinking of open-sourcing this site too if any of
+this is interesting 6_6  But when I'm feeling better lol.
+(It's unrelated to getting my horrible 2023 sites and
+maintenance pages archived, no... but more like losing
+my Ethernet cable, coffee spill on my Mech MX Mini, paid
+$40 to get diagnostics just to know the soldered switches
+and the logic board all need to be decontaminated, got
+scammed $40 from a total stranger said he needed gas to
+Janesville and he has not repaid me >:c  (Think I'm a cash
+cow for this country or something smh...)  so now i am
+conserving my expenses skipping more meals than i already
+have been and surviving on fried eggs and scallion pancakes
+(yes you can get those at Asian supermarkets) and frozen
+food... not because i need it but because i am just super
+salty the money that could have contributed to getting my
+keyboard cleaned, my 7yo macbook's battery replaced, the
+lopsided Enter key on my T480s replaced went to some jack-
+ass who thought i was free money... and what, it probably
+doesn't even cost that much for a gas refill?  And even if
+it did saying you'd repay and end up not actually repaying
+is just gross.  Like how do you expect me to document this
+transaction on my ledger.... fucking charity???
+
+Anyways.. oh something quick now: there are a few more
+subdomains you may or may not have noticed?  Those are
+legit -- their sources are all on GitHub; they themselves
+are GitHub pages like foss.rapidcow.org.  I don't like...
+host infrastructure now?  (Except for git.rapidcow.org,
+but as my git server and not as GitWeb, like Gitea/Forgejo
+or whatever crazy web daemon they have now.  (They also
+horrendously mutate the Git hooks which I need very badly
+for audit logs as distributed Git refs.)  And www since
+I need CGI and tilde directories, but well... (but i can't
+WAIT to get the .com guy off of my site.  It is SALIVATING
+the sheer thought of getting that stink off of me. uwu))
+If GitHub Pages is good enough for OpenZFS, and I open-
+source my stuff anyways (it's also for a free back up,
+in the catastrophic event that all my existing storage
+die in some horrendous event... (it's what Linus said
+was his backup strategy in the Linus Tech Tips video too
+and I very much concur with that XD  Abstinence from
+GitHub as a gesture against Microsoft and AI doesn't buy
+you anything.  I think private infrastructure should just
+stay private... no need to announce to the world "I am
+self-hosted" because, becoming your own SaSS provider is
+ultimately not addressing the maintainability and sustain-
+ability of the SaSS model?  (I think I said about this
+somewhere regarding why I don't consider Mastodon to be
+a solution to the self-indulgent culture on Twitter.
+Maybe foss?  Man I need a proper blog...)))
+
+And because they are on GitHub, obviously I won't report
+"status" updates on those. :)  But that's a good thing...
+it means I can care about different things like contents
+of my writing (like right now!); and I also get things for
+free, like... the source distribution part.  Disaster
+recovery, if someone wants to archive it if I disappear...
+
+When I feel more comfortable this status page can also go
+on GitHub Pages!  The tools are there anyways. :)  (I do
+especially adore Git as a publishing medium to be clear.
+I don't like the culture around GitHub but Git is so un-
+apologetically replicable and decentralized, that you have
+to both simultaneously love that you will never be locked
+out of your data... and live with the horrifying fact that
+any one with access to it basically has everything you've
+ever written.  And it suddenly... oh gosh.  (Yeah... it's
+why I need some more time to process.  Maybe next year :D))
+
 [% END -%]
+[1]: <a href="[% locate('feed/2026/1772459792.html') %]">[% locate('//feed/2026/1772459792.html') %]</a>
