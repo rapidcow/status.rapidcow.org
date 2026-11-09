@@ -121,12 +121,12 @@ sub block {
 # year is year.html, and what it takes is the entries of the year.
 # (The recipes are Makefile.in's own, right after each END marker.)
 block('Makefile.in', 'feed years deps', map {
-	join(" \\\n", "feed/$_.xml: \${a}/feed.xml", @{ $year{$_} }) . "\n";
+	join(" \\\n", "feed/$_.xml: \${a}/feed.xml optenv mkpub.pl", @{ $year{$_} }) . "\n";
 } @year);
 block('Makefile.in', 'feed years',
 	(map { "$_ \\\n" } @index, @xml),
 	":\n");
 block('Makefile.in', 'feed entries',
 	(map { "$_ \\\n" } @html),
-	": \${a}/\${\@:R}.dat skel/entry.html\n");
+	": \${a}/\${\@:R}.dat skel/entry.html optenv mkpub.pl\n");
 block('MANIFEST', 'feed pages', map { "\tNEED $_\n" } @index, @xml, @html);
