@@ -9,7 +9,7 @@ use v5.10;
 
 use File::Basename qw( basename );
 use File::Spec;
-use RdKw::WwW::GenLib qw( parse_base locate );
+use RdKw::WwW::GenLib qw( parse_base );
 use RdKw::WwW::GenGenLib 0.0002 qw(
 	read_deps load_state
 	norm_dep subs_dep uproot );
@@ -97,7 +97,7 @@ sub load_item {
 	$message = '';
 	$template->process($file, {
 		html => 1,
-		locate => sub { locate($O, $target, @_); },
+		locate => \&locate,
 	}, \$message) || die $template->error(), "\n";
 	$item{content}{html} = get_body $message;
 	$item{name} = $name;
@@ -224,6 +224,15 @@ sub rfc822_now {
 	return Time::Piece->localtime()->strftime("%a, %d %b %Y %H:%M:%S %z");
 }
 
+sub locate {
+	my ($path) = @_;
+	if ($O->{rewrite_url}) {
+		$path =~ s{([^/]+)\.html\z}{$1 eq "index" ? "" : $1}e;
+		$path = '.' if !length $path;
+	}
+	RdKw::WwW::GenLib::locate($O, $target, $path);
+}
+
 # main function
 my $file = shift;
 # the name of the target, for when the source does not say
@@ -306,12 +315,5 @@ $template->process($file, {
 	BASE_URL => $BASE_URL,
 	SITE_URL => $SITE_URL,
 	rfc822_now => \&rfc822_now,
-	locate => sub {
-		my ($path) = @_;
-		if ($O->{rewrite_url}) {
-			$path =~ s{([^/]+)\.html\z}{$1 eq "index" ? "" : $1}e;
-			$path = '.' if !length $path;
-		}
-		locate($O, $target, $path);
-	},
+	locate => \&locate,
 }) || die $template->error(), "\n";
