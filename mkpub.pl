@@ -21,7 +21,8 @@ my $DEFAULT_SITE = 'https://status.rapidcow.org/';
 my $BASE_URL = $ENV{BASE_URL} // '/';
 my $SITE_URL = $ENV{SITE_URL} // $DEFAULT_SITE;
 
-my $O = { base_url => $BASE_URL, site_url => $SITE_URL };
+my $O = { base_url => $BASE_URL, site_url => $SITE_URL,
+	rewrite_url => $ENV{REWRITE_URL} };
 parse_base($O);
 $BASE_URL = $O->{base_url};
 $SITE_URL = $O->{site_url};
@@ -305,5 +306,11 @@ $template->process($file, {
 	BASE_URL => $BASE_URL,
 	SITE_URL => $SITE_URL,
 	rfc822_now => \&rfc822_now,
-	locate => sub { locate($O, $target, @_); },
+	locate => sub {
+		my ($path) = @_;
+		if ($O->{rewrite_url}) {
+			$path =~ s{([^/]+)\.html\z}{$1 eq "index" ? "" : $1}e;
+		}
+		locate($O, $target, $path);
+	},
 }) || die $template->error(), "\n";

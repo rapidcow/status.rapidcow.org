@@ -1,13 +1,13 @@
 #!/usr/bin/env perl
 #
-# configure -- written by `siteconf -i' version 0.0202.
+# configure -- written by `siteconf -i' version 0.0203.
 #
 # Keep local changes as a patch on top of this file (it is generated
 # deterministically, so the same arguments give the same text and the
 # patch keeps applying), rather than editing it in place and losing
 # them the next time `siteconf -i' is run.
 #
-# options: -Sa=. -Sb=public -Sc=.cache -Obase_url=/ -Osite_url=https://status.rapidcow.org
+# options: -Sa=. -Sb=public -Sc=.cache -Obase_url=/ -Osite_url=https://status.rapidcow.org -Orewrite_url=1
 #
 use utf8;
 use 5.006;
@@ -87,6 +87,7 @@ my %Dd = (
 );
 my %Od = (
 	base_url => "/",
+	rewrite_url => 1,
 	site_url => "https://status.rapidcow.org",
 );
 
@@ -113,6 +114,7 @@ The following variables may be defined:
 Options with defaults:
 
   -Obase_url  Host-relative base URL (default: $Od{base_url})
+  -Orewrite_url (default: $Od{rewrite_url})
   -Osite_url  Absolute base URL (default: $Od{site_url})
 
 Anything else you may -D or -O goes into MY/config.mk or MY/option.mk
@@ -121,7 +123,7 @@ respectively, for the rulebook or for the files being transformed.
   -h          This help message (alias: --help, -?)
   --reset     Clear all configuration at this point
   -q          Disable tips (alias: --quiet)
-  --mkpath    Create non-leaf build directories
+  --mkpath    Create non-leaf build directory components
 
 See also `perldoc RdKw::WwW::SiteConf::Configure'.
 EOM
@@ -174,8 +176,8 @@ chdir $srcdir or die "E: cannot chdir to $srcdir: $!\n";
 # which is the very file it is about to choose.
 my $B = isnull($D{B}) ? $Dd{B} : $D{B};
 unless (-d $B) {
-	# Please don't --mkpath unless you absolutely need to.
-	# This is only a flag if you ABSOLUTELY depend on the
+	# Please do not --mkpath unless you absolutely need to.
+	# This is only provided if you ABSOLUTELY depend on the
 	# old behavior.  Consider running the mkdir -p equivalent
 	# on your system and setting the approrpiate permission
 	# or ACL bits, and at MOST leave the leaf directory to

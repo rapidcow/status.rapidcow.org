@@ -1,2 +1,2 @@
 #!/bin/sh
-siteconf -i -f -Sa=. -Sb=public -Sc=.cache -Obase_url=/ -Osite_url=https://status.rapidcow.org
+siteconf -i -f -Sa=. -Sb=public -Sc=.cache -Obase_url=/ -Osite_url=https://status.rapidcow.org -Orewrite_url=1
