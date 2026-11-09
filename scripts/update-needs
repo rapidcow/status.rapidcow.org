@@ -7,7 +7,7 @@
 #
 #   - feed/YEAR/index.html, if there is none yet (it is yours to
 #     tweak after that; skel/year.html does the page around it)
-#   - the NEED headers of feed.html, index.html (the latest year's
+#   - the NEED headers of feed.html (the latest year's
 #     feed/YEAR/DATE.dat), feed/YEAR/index.html (that year's) and
 #     feed.xml (those from the past year)
 #   - Makefile.in: the rules making feed/YEAR/DATE.html,
@@ -92,7 +92,6 @@ for my $y (@year) {
 my %needs = (
 	(map { ("feed/$_/index.html" => $year{$_}) } @year),
 	'feed.html' => $year{$latest},
-	'index.html' => $year{$latest},
 	'feed.xml' => \@recent,
 );
 for my $file (sort keys %needs) {
