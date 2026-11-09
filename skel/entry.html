@@ -12,7 +12,7 @@
   <title>[% item.headers.subject | html %]</title>
 </head>
 <body><pre>
-]--[<a href="[% locate('index.html') | xml %]">Home</a>]--[<a href="[% locate('feed.html') | xml %]">Feed</a>]--[<a href="[% locate('index.html') | xml %]">[% item.year %]</a>]------------------------------------[
+]--[<a href="[% locate('index.html') | xml %]">Home</a>]--[<a href="[% locate('feed.html') | xml %]">Feed</a>]--[<a href="[% locate('./index.html') | xml %]">[% item.year %]</a>]------------------------------------[
 
 [% item.name %]:
 [% FOR field IN item.headers.order -%]
