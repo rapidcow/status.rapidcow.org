@@ -66,6 +66,9 @@ sub get_body {
 	return join "\n", @body;
 }
 
+# the page being built; locate() in entries is relative to it
+my $target;
+
 # read a feed item from FILE (feed/YEAR/DATE.dat)
 sub load_item {
 	my $file = shift;
@@ -82,6 +85,7 @@ sub load_item {
 	$message = '';
 	$template->process($file, {
 		html => 0,
+		locate => sub { locate($O, $target, @_); },
 	}, \$message) || die $template->error(), "\n";
 	$item{headers} = parse $message;
 	# where the entry page lives (relative to the site root)
@@ -92,6 +96,7 @@ sub load_item {
 	$message = '';
 	$template->process($file, {
 		html => 1,
+		locate => sub { locate($O, $target, @_); },
 	}, \$message) || die $template->error(), "\n";
 	$item{content}{html} = get_body $message;
 	$item{name} = $name;
@@ -226,7 +231,7 @@ my $file = shift;
 my $as = shift;
 die "usage: $0 <file> [<target>]\n" unless defined $file;
 
-(my $target = do {
+($target = do {
 	my %I = read_deps($file);
 	my ($source, $have) = defined $I{HAVE}
 		? ('HAVE', norm_dep($I{HAVE}))
