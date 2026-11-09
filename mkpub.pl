@@ -228,7 +228,7 @@ sub locate {
 	my ($path) = @_;
 	if ($O->{rewrite_url}) {
 		$path =~ s{([^/]+)\.html\z}{$1 eq "index" ? "" : $1}e;
-		$path = '.' if !length $path;
+		$path = './.' if $path eq './';
 	}
 	RdKw::WwW::GenLib::locate($O, $target, $path);
 }
