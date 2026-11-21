@@ -68,7 +68,7 @@ sub get_body {
 }
 
 # the page being built; locate() in entries is relative to it
-my $target;
+my ($target, $location);
 
 # read a feed item from FILE (feed/YEAR/DATE.dat)
 sub load_item {
@@ -226,11 +226,20 @@ sub rfc822_now {
 
 sub locate {
 	my ($path) = @_;
-	if ($O->{rewrite_url}) {
-		$path =~ s{([^/]+)\.html\z}{$1 eq "index" ? "" : $1}e;
-		$path = './.' if $path eq './';
+	my $uri = RdKw::WwW::GenLib::locate($O, $location, $path);
+	if (defined $O->{rewrite_url} && !$O->{rewrite_url}
+		|| $O->{site_url} =~ m!\Ahttps?://!i)
+	{
+		# Logic from foss.rapidcow.org by Claude:
+		#
+		# Only if we stripped something, and that was all of it,
+		# do we go to ".": an empty URI that locate itself gave us
+		# means "this page" and must be left alone.
+		$uri = '.' if $uri =~ s{([^/]+)\.html$}
+			{( $1 eq "index" ? "" : $1 )}eig && !length $uri;
+		$uri =~ s{(?<=\A|\/)(\.\.)?/$}{$1};
 	}
-	RdKw::WwW::GenLib::locate($O, $target, $path);
+	$uri;
 }
 
 # main function
@@ -262,6 +271,10 @@ die "usage: $0 <file> [<target>]\n" unless defined $file;
 	}
 }) =~ s/\A\/+//;
 $target = $as if defined $as;
+# for ASCII-safe names i guess we could do this...
+# (also, because $as doesn't go through un_argv,
+# this would be wrong for anything Unicode anyways.)
+$location = $target;
 
 # feed/YEAR/DATE.dat is rendered with entry.html, as feed/YEAR/DATE.html
 my ($entry, $year, @items);
