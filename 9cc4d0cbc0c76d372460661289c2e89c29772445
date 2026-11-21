@@ -1,0 +1,79 @@
+ORIG = b424c90dfb48a11641d84e544e3995f2d7f5f5c9 (rpi/main)
+HEAD = bbc7349ed058014321e299021f75cd80130811f9 (main)
+ 0:  b424c90 !  0:  bbc7349 oops, a typo
+--- a/b424c90dfb48a11641d84e544e3995f2d7f5f5c9	2025-01-25 17:13:33
++++ b/bbc7349ed058014321e299021f75cd80130811f9	2025-01-25 17:13:33
+@@ -1,8 +1,8 @@
+ tree c939b00059949c879aa00e67b39a389e5cbacf4f
+ parent [1]
+-author Ethan Meng <webmaster@rapidcow.org> 1737825213 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1737825213 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1737825213 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1737825213 -0600
+
+ oops, a typo
+
+ agh i hate myopia....
+ 1:  06f7125 !  1:  74ed0cc update README with information and disclaimers
+--- a/06f71252040b8310ac3300b121d3267fb646de88	2025-01-25 17:07:49
++++ b/74ed0cc002ec2450c56e3c0de0794b35d0a0e548	2025-01-25 17:07:49
+@@ -1,8 +1,8 @@
+ tree 489e0d3534334d55d465f381c6eaefe0e49b984e
+ parent [2]
+-author Ethan Meng <webmaster@rapidcow.org> 1737824869 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1737824869 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1737824869 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1737824869 -0600
+
+ update README with information and disclaimers
+
+ i might regret sounding so grumpy... but whatever =n=
+ 2:  26c2dbb !  2:  efcc364 update
+--- a/26c2dbbf521ee02ac65b5d81afc8bb83962571ac	2024-12-19 07:51:49
++++ b/efcc364b9dfa75fd7e32d67849deae95c7ffd7a6	2024-12-19 07:51:49
+@@ -1,6 +1,6 @@
+ tree e853229b68c8f0fc1f5b75e7f5ae2ff7ff7d98dd
+ parent [3]
+-author Ethan Meng <webmaster@rapidcow.org> 1734594709 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734594709 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734594709 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734594709 -0600
+
+ update
+ 3:  dc90994 !  3:  9dd7588 SITE IS DOWN :(
+--- a/dc90994092b0fadcb9e24976111f6e95df17e1ec	2024-12-18 19:58:45
++++ b/9dd75886ebc3dfb19b6d11e0ad3c4a17827546c3	2024-12-18 19:58:45
+@@ -1,8 +1,8 @@
+ tree a04b32bc1c6ecc8eb0eefc1893340f28fb81f783
+ parent [4]
+-author Ethan Meng <webmaster@rapidcow.org> 1734551925 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734551925 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734551925 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734551925 -0600
+
+ SITE IS DOWN :(
+
+ gosh i JUST woke up after finishing exporting
+ 4:  f88775f !  4:  12ae95c update README
+--- a/f88775f36700350ac9227b575ceb7ddb5c2c9b04	2024-11-05 23:53:24
++++ b/12ae95c26350403396aa8baca75e3d36ac749b5f	2024-11-05 23:53:24
+@@ -1,6 +1,6 @@
+ tree 595758f2bf2b39415ca5da11c59c53c1201a0565
+ parent [5]
+-author Ethan Meng <webmaster@rapidcow.org> 1730850804 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1730850804 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730850804 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730850804 -0600
+
+ update README
+ 5:  8d08765 !  5:  3d2ffd4 status page ???
+--- a/8d087656eec68b40662acfbe7f9d870b66d307e6	2024-11-03 06:55:13
++++ b/3d2ffd472c20e26490b2c776298a8bebd437bbe8	2024-11-03 06:55:13
+@@ -1,5 +1,5 @@
+ tree a44bb642b0713109d67f3dd0d4be58d31c5596d0
+-author Ethan Meng <webmaster@rapidcow.org> 1730616913 -0500
+-committer Ethan Meng <webmaster@rapidcow.org> 1730616913 -0500
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730616913 -0500
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730616913 -0500
+
+ status page ???
