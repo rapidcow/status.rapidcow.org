@@ -1,0 +1,817 @@
+ORIG = 2f1d3a32310a5ea0dce4491360dcdf4499ea2afa (rpi/pages)
+HEAD = 45c31b41a1555f7ea5d22724930fb5f8f8227bc4 (pages)
+  0:  2f1d3a3 =   0:  45c31b4 uhhh.... missing page?
+  1:  dfbf325 =   1:  e6866a5 rebuild stuff
+  2:  5222b3b =   2:  f58c300 clean site
+  3:  db64ac7 =   3:  e9ba982 let's try this one
+  4:  20b6aed =   4:  5f7732d never mind we need to re-build
+  5:  a56e056 =   5:  742de83 build
+  6:  22bd00f =   6:  bbc029a more changes
+  7:  5253839 =   7:  48e3261 entry + art update
+  8:  f6b2ea0 =   8:  f43a0ec rel link
+  9:  da33d90 =   9:  8c29fe8 remove .ok
+ 10:  301da18 =  10:  8a4de3b split
+ 11:  4e31993 =  11:  24f9cf7 remove my penis
+ 12:  777c635 =  12:  33dff70 rebuild withOUT the neocities
+ 13:  654e78f =  13:  f2b7caa www-auth maint
+ 14:  255b358 =  14:  6b85f62 5+8 ain't 12 bruh
+ 15:  c0c9109 =  15:  99de4ee update ???? (i don't even know what or how)
+ 16:  8cf30dc =  16:  d0385f2 bump mtime
+ 17:  40df4e3 =  17:  9b43069 actually commit it
+ 18:  24c8165 =  18:  feaccba 1h 53m outage
+ 19:  52ac252 =  19:  8f9ed96 update what i should have updated
+ 20:  d284f0e =  20:  eae1b76 push RE
+ 21:  b739032 =  21:  c13cf5b non-status update
+ 22:  622c97a =  22:  914ec13 update-update
+ 23:  ad80a5b =  23:  6cf6a30 update; initial tarball for Cloudflare pages?
+ 24:  b58e9d8 =  24:  7b04d89 irrelevant update
+ 25:  3d1be2f =  25:  39ef0d3 obligatory follow-up update
+ 26:  945196c =  26:  78616da DNSSEC fail message
+ 27:  3e60d8f =  27:  496ce10 I FORGOT TO COMMIT MGHSGBSGH-
+ 28:  cc4ef40 =  28:  0cda34d oh yeah tell people about yizz.net
+ 29:  a294162 =  29:  d9bf7f2 new entry
+ 30:  b939d0e =  30:  f74b19e ns2 fiasco
+ 31:  f9e77b2 =  31:  1aaf6aa forgot to update this in forever
+ 32:  dcc1893 =  32:  603006f follow-up
+ 33:  781a379 =  33:  c570cba typo correction; improvement-ish thing idk
+ 34:  f870dbc =  34:  11e3234 eDNS amplification attack log
+ 35:  88a0fdc =  35:  9935a80 fucking depression
+ 36:  a4c30ad =  36:  5aa172f remove <pre>
+ 37:  249c213 =  37:  0f9f857 NetBSD has no -6 flag; correct my man page links
+ 38:  6872cf6 =  38:  b518a7a bump time
+ 39:  965cfc5 =  39:  bc8bc23 rdkw.org.
+ 40:  3235950 =  40:  dc60c13 remove "git.rdkw.org", which is a mere alias
+ 41:  c418963 =  41:  0704b2f relic fix
+ 42:  d333e17 =  42:  b3c38a2 something something blah blah
+ 43:  126949e =  43:  0152fba didn't remove it actually :,)
+ 44:  6483a96 =  44:  91c9d8c update update update
+ 45:  6e1e9a7 =  45:  de527de bump time
+ 46:  8876164 =  46:  0dd43d5 update on behalf of my clumsy ass lol
+ 47:  a94defb =  47:  d79a6fb the was imcomplete
+ 48:  88d2dea =  48:  6608667 yet another DNS misconfiguration
+ 49:  ad46c57 =  49:  3e956a8 HTML stupid
+ 50:  b6464a7 =  50:  5531a3c NS shenanigans
+ 51:  3360a1b =  51:  8b381f8 move MOTD over
+ 52:  d4cf43a =  52:  c7f40ba make it SNOW
+ 53:  f85e67c =  53:  40c2039 update + fix date order
+ 54:  fc1f4d3 =  54:  3ace9b0 ALIGN
+ 55:  1829915 =  55:  970f32e new guy
+ 56:  50a43df =  56:  6feebd7 formatting
+ 57:  89caf7c =  57:  5f4457c blacklist update
+ 58:  7bc72bb =  58:  aaa27e8 update crawler policy
+ 59:  57e887e =  59:  4dadfdb my silly ass forgot to disable apache httpd
+ 60:  9122568 !  60:  109404d remove outdated token renewal comment
+--- a/912256840f5df8439bcff84f02f2b6d0b1f0a9a9	2025-10-08 08:59:37
++++ b/109404dadb441fad75e242d5d16709c6ebe41e67	2025-10-08 08:59:37
+@@ -1,6 +1,6 @@
+ tree d61db05e96d0dbfc349048494e5ac7de9db26c5c
+ parent [61]
+-author Ethan Meng <webmaster@rapidcow.org> 1759913977 -0500
+-committer Ethan Meng <webmaster@rapidcow.org> 1759913977 -0500
++author Ethan Meng <rapidcow@RCs-T480s.local> 1759913977 -0500
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1759913977 -0500
+
+ remove outdated token renewal comment
+ 61:  ccdec16 !  61:  856ae4b post mastodon status
+--- a/ccdec16b2fb2c4143e5f4f95252bc10010b48049	2025-09-08 07:05:29
++++ b/856ae4bead45dae475dc78a32f2c04fdd70b41da	2025-09-08 07:05:29
+@@ -1,6 +1,6 @@
+ tree fccfa38babd3124d054110a0c22056a7970006ec
+ parent [62]
+-author Ethan Meng <webmaster@rapidcow.org> 1757315129 -0500
+-committer Ethan Meng <webmaster@rapidcow.org> 1757315129 -0500
++author Ethan Meng <rapidcow@RCs-T480s.local> 1757315129 -0500
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1757315129 -0500
+
+ post mastodon status
+ 62:  92f1ac1 !  62:  9ed071e add disclaimer in feed.html
+--- a/92f1ac1aa34417b6b3233f8fa3da2aa286166e39	2025-07-22 12:35:26
++++ b/9ed071ebe0d0b96536125d155896ba6697c6f122	2025-07-22 12:35:26
+@@ -1,6 +1,6 @@
+ tree 07ed7ec894316fe758931b4fd608490d2ce85b75
+ parent [63]
+-author Ethan Meng <webmaster@rapidcow.org> 1753187726 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1753187726 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1753187726 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1753187726 +0800
+
+ add disclaimer in feed.html
+ 63:  ba036a2 !  63:  d94fba1 index page update
+--- a/ba036a29202442ea8bac99722de9aba8874de1c4	2025-07-22 12:16:01
++++ b/d94fba1be34f3918d67390c5cd1fd40bbe19f313	2025-07-22 12:16:01
+@@ -1,8 +1,8 @@
+ tree 42187aebd9e2e09ac9b636a9640faddd5d662856
+ parent [64]
+-author Ethan Meng <webmaster@rapidcow.org> 1753186561 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1753186561 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1753186561 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1753186561 +0800
+
+ index page update
+
+ that cow had been there saying new year for 7 MONTHS XP
+ 64:  c085890 !  64:  09c1ba1 missed a hyphen here
+--- a/c0858905d8538e3efe38f44820de23c89f3568b7	2025-06-13 16:58:37
++++ b/09c1ba1b87b8a47adc2a7b9989fb1bb9581009a7	2025-06-13 16:58:37
+@@ -1,6 +1,6 @@
+ tree b4e7c54b5afee4a8fbdc0ac35a41b622b4b09027
+ parent [65]
+-author Ethan Meng <webmaster@rapidcow.org> 1749833917 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1749833917 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1749833917 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1749833917 +0800
+
+ missed a hyphen here
+ 65:  80e6205 !  65:  87be3a4 mention sub-domain and obsolete footer
+--- a/80e6205f2d18e87638d6e4e39fad2e9b9e2727c1	2025-06-13 16:31:23
++++ b/87be3a4ac2a72ef624048629941278fd03470017	2025-06-13 16:31:23
+@@ -1,8 +1,8 @@
+ tree 3467de04230837aa88ab2a4b803d0a0e7ab576a9
+ parent [66]
+-author Ethan Meng <webmaster@rapidcow.org> 1749832260 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1749832283 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1749832260 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1749832283 +0800
+
+ mention sub-domain and obsolete footer
+
+ that was very misleading :x good that i spotted it...
+ 66:  29aa849 !  66:  de85c14 we're back!
+--- a/29aa8493585c54e9e794e86ba01ac8bda5780bcf	2025-06-13 16:27:04
++++ b/de85c14de56279d832719a2fa6271e23ba1001ff	2025-06-13 16:27:04
+@@ -1,6 +1,6 @@
+ tree dacc6b446fe37e6ee8f9a8809a6852581295748c
+ parent [67]
+-author Ethan Meng <webmaster@rapidcow.org> 1749832024 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1749832024 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1749832024 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1749832024 +0800
+
+ we're back!
+ 67:  f1e0ad1 !  67:  6fca3a7 maintenance for installing cpan stuff
+--- a/f1e0ad11560489bc820ca82d0470253466c19788	2025-06-13 15:45:38
++++ b/6fca3a71c38edcef9ed4b78799c58bb391b4b689	2025-06-13 15:45:38
+@@ -1,6 +1,6 @@
+ tree 715bb18182dc2ecbda9357f8d09d5c80835b566f
+ parent [68]
+-author Ethan Meng <webmaster@rapidcow.org> 1749829538 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1749829538 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1749829538 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1749829538 +0800
+
+ maintenance for installing cpan stuff
+ 68:  2f32f38 !  68:  cea7b8c minor grammatical tweaks
+--- a/2f32f38bc356b6577d5911cead499fc9b1ada432	2025-06-08 15:52:29
++++ b/cea7b8c218823abbfd2d0531c57ec08aee786db1	2025-06-08 15:52:29
+@@ -1,8 +1,8 @@
+ tree 1d35ecd9f817485e37c01e98e6d8dd730dcd06f3
+ parent [69]
+-author Ethan Meng <webmaster@rapidcow.org> 1749397949 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1749397949 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1749397949 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1749397949 +0800
+
+ minor grammatical tweaks
+
+ ahhhhhhhhh never mind all that
+ 69:  c259185 !  69:  7d2e8f5 recovery
+--- a/c259185e5a182168f71f9b1acb771156149be663	2025-06-08 15:48:32
++++ b/7d2e8f57ca997abd3d7b39e12b68bc7d35520ce2	2025-06-08 15:48:32
+@@ -1,6 +1,6 @@
+ tree 8980030f0aff4b6fb2a00b5bcb531e170a1ab467
+ parent [70]
+-author Ethan Meng <webmaster@rapidcow.org> 1749397712 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1749397712 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1749397712 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1749397712 +0800
+
+ recovery
+ 70:  e41c94f !  70:  d162df5 ...
+--- a/e41c94f62fdc8bd4854e73374873f7bfa9abdfb9	2025-06-08 15:15:23
++++ b/d162df5cf7893b3eba20303471e41b5722ab1cb9	2025-06-08 15:15:23
+@@ -1,8 +1,8 @@
+ tree 3d233a033ecbb42daa080dc9b404136d25a423a5
+ parent [71]
+-author Ethan Meng <webmaster@rapidcow.org> 1749395723 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1749395723 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1749395723 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1749395723 +0800
+
+ ...
+
+ also stop making my T480s' fans roar cpan <:(
+ 71:  2846c1a !  71:  f5741bd urgent entry!
+--- a/2846c1a3b237884f68630bfaa5411fc5375052d7	2025-06-08 14:38:37
++++ b/f5741bd36d3b1e1e2134e049045a27541fc73de3	2025-06-08 14:38:37
+@@ -1,6 +1,6 @@
+ tree cc395a90f001e6a7df3d0de68b8bf25f3bfa0cc5
+ parent [72]
+-author Ethan Meng <webmaster@rapidcow.org> 1749393517 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1749393517 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1749393517 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1749393517 +0800
+
+ urgent entry!
+ 72:  a8b785e !  72:  96a365b laggy update
+--- a/a8b785ea82d83e4ce38b602795f56845342e932f	2025-06-07 10:18:55
++++ b/96a365b325bdf1f719bee7b35a408e59dd3b58da	2025-06-07 10:18:55
+@@ -1,8 +1,8 @@
+ tree 8016be43c47bd14d55049f8162b41e8ad05a1236
+ parent [73]
+-author Ethan Meng <webmaster@rapidcow.org> 1749291535 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1749291535 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1749291535 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1749291535 +0800
+
+ laggy update
+
+ this is the literal definition of AEUGHHH-
+ 73:  b9b2b01 !  73:  7f9a886 silly grammar slip-up
+--- a/b9b2b018342fc67570c3ff1cdc209a79cb697f04	2025-05-25 18:08:55
++++ b/7f9a886b5e685d2fa29751dc35a1b7fd711b96a6	2025-05-25 18:08:55
+@@ -1,8 +1,8 @@
+ tree 9ae4b51d200338687b3b546a58274a25ab1ac487
+ parent [74]
+-author Ethan Meng <webmaster@rapidcow.org> 1748196535 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1748196535 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1748196535 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1748196535 +0800
+
+ silly grammar slip-up
+
+ uhhhhhhhhhhhhhh
+ 74:  4c17968 !  74:  b903ad7 GFW update
+--- a/4c17968ce5d1b9f6ea71d9e3037fd393bf5685cc	2025-05-25 18:05:06
++++ b/b903ad78526f425f42cd1c20108b03507f473dd2	2025-05-25 18:05:06
+@@ -1,8 +1,8 @@
+ tree d689bbd8b2ca5f81121c9f7995a431c337e4557f
+ parent [75]
+-author Ethan Meng <webmaster@rapidcow.org> 1748196306 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1748196306 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1748196306 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1748196306 +0800
+
+ GFW update
+
+ surprise surprise... on my birthday i got forcible TCP RST
+ 75:  8a31cfb !  75:  1a5a2f8 quick update before lunch
+--- a/8a31cfb9957444a9e668a46a0fbbbd6ad6686166	2025-05-20 04:00:19
++++ b/1a5a2f89233ae18d0f8c26321297631be69d75bb	2025-05-20 04:00:19
+@@ -1,8 +1,8 @@
+ tree f021a74947dfa27d0e6d8d3c35aedc9eba1b40e0
+ parent [76]
+-author Ethan Meng <webmaster@rapidcow.org> 1747713619 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1747713619 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1747713619 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1747713619 +0800
+
+ quick update before lunch
+
+ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ 76:  c16486b !  76:  737bf11 misc fixes
+--- a/c16486b3e7bf8dbc6121edc6e0533ca58faf07f8	2025-05-05 02:58:11
++++ b/737bf11514184606ad618f7a2717d38a6e22b092	2025-05-05 02:58:11
+@@ -1,6 +1,6 @@
+ tree 742b8051a1212f869994475f0ebbf70bb4457298
+ parent [77]
+-author Ethan Meng <webmaster@rapidcow.org> 1746413891 -0500
+-committer Ethan Meng <webmaster@rapidcow.org> 1746413891 -0500
++author Ethan Meng <rapidcow@RCs-T480s.local> 1746413891 -0500
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1746413891 -0500
+
+ misc fixes
+ 77:  48b1122 !  77:  ae60fda update Anubis
+--- a/48b1122d23cf55cf6b1baed9dc67bfa23ea83ccf	2025-05-05 02:48:38
++++ b/ae60fda64b1af1d61000e2775111a1f33cfb0207	2025-05-05 02:48:38
+@@ -1,8 +1,8 @@
+ tree 98082806b1b297c1aa7cf6a2acc51b7e259c5872
+ parent [78]
+-author Ethan Meng <webmaster@rapidcow.org> 1746413318 -0500
+-committer Ethan Meng <webmaster@rapidcow.org> 1746413318 -0500
++author Ethan Meng <rapidcow@RCs-T480s.local> 1746413318 -0500
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1746413318 -0500
+
+ update Anubis
+
+ mostly telling people about the Anime girl that
+ 78:  0462685 !  78:  f531b07 update neocities information
+--- a/0462685c5b6db5c81c110c05ee2074dd981eb56c	2025-03-18 19:22:59
++++ b/f531b0736e71a0f581c5899062b0a1383d26bd4b	2025-03-18 19:22:59
+@@ -1,6 +1,6 @@
+ tree 3eb068495c52240018a95d0dbf33617e07140a60
+ parent [79]
+-author Ethan Meng <webmaster@rapidcow.org> 1742325779 -0500
+-committer Ethan Meng <webmaster@rapidcow.org> 1742325779 -0500
++author Ethan Meng <rapidcow@RCs-T480s.local> 1742325779 -0500
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1742325779 -0500
+
+ update neocities information
+ 79:  1fe1d82 !  79:  b5bf358 update
+--- a/1fe1d8201ffe221ea466a011cfd2403e4cb48b23	2025-03-18 18:50:05
++++ b/b5bf358c41a021a9176be44232527d81a3d73b8f	2025-03-18 18:50:05
+@@ -1,8 +1,8 @@
+ tree 0015a3964a20244ef693cf7f17a365e09fcf375b
+ parent [80]
+-author Ethan Meng <webmaster@rapidcow.org> 1742323729 -0500
+-committer Ethan Meng <webmaster@rapidcow.org> 1742323805 -0500
++author Ethan Meng <rapidcow@RCs-T480s.local> 1742323729 -0500
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1742323805 -0500
+
+ update
+
+ erm.... read the src branch i guess
+ 80:  5deefa9 !  80:  2a24af7 disallow feed.* exclusively
+--- a/5deefa96ecf57979e68e6551296b6c51b5c5fccf	2025-01-25 17:11:57
++++ b/2a24af7e18dd5f45cca86523603353b668d18979	2025-01-25 17:11:57
+@@ -1,6 +1,6 @@
+ tree 098ea9c8618c7070297627e46532f878dd63effb
+ parent [81]
+-author Ethan Meng <webmaster@rapidcow.org> 1737825117 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1737825117 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1737825117 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1737825117 -0600
+
+ disallow feed.* exclusively
+ 81:  7d8a96f !  81:  6240a2b add noindex to feed.html
+--- a/7d8a96ff35135988bbea14900651feefd165b082	2025-01-25 16:31:58
++++ b/6240a2bd47472e35bbe4148e4feb8eb76596fa16	2025-01-25 16:31:58
+@@ -1,6 +1,6 @@
+ tree bc78c693420b9d517e4b0e1802c1bb319c6792a7
+ parent [82]
+-author Ethan Meng <webmaster@rapidcow.org> 1737822718 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1737822718 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1737822718 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1737822718 -0600
+
+ add noindex to feed.html
+ 82:  48c4625 !  82:  ad85117 new status
+--- a/48c462565c40e5d582844cd54a53431cc5808ab3	2025-01-24 13:49:50
++++ b/ad851177f42baf26e010db086d45be98a8d1def7	2025-01-24 13:49:50
+@@ -1,8 +1,8 @@
+ tree 50777b4a1c793b7928041a8bf8028d1de1e4604a
+ parent [83]
+-author Ethan Meng <webmaster@rapidcow.org> 1737726590 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1737726590 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1737726590 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1737726590 -0600
+
+ new status
+
+ this one is where i uhhh forgor to turn on server
+ 83:  dd251cc !  83:  0397d96 center footer lines
+--- a/dd251ccb203785d90b71514d6e42c2cd4275133e	2025-01-19 03:47:26
++++ b/0397d966ccf0fa9cc6e9ea5b5043950e31c8bfbd	2025-01-19 03:47:26
+@@ -1,6 +1,6 @@
+ tree b2040685a56a790256ebe2d595f410b832c77456
+ parent [84]
+-author Ethan Meng <webmaster@rapidcow.org> 1737258446 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1737258446 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1737258446 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1737258446 +0800
+
+ center footer lines
+ 84:  58b68a2 !  84:  2a528de update
+--- a/58b68a26e70b4b1f5358ac764c50cc18386c13c0	2025-01-19 03:35:43
++++ b/2a528de7d65d6d0a89a5c7ffc32dc16c0035a741	2025-01-19 03:35:43
+@@ -1,8 +1,8 @@
+ tree d7ccbca1de4cf0e43bbd4ee6ac16426cb823be72
+ parent [85]
+-author Ethan Meng <webmaster@rapidcow.org> 1737257743 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1737257743 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1737257743 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1737257743 +0800
+
+ update
+
+ uhhhhh see msg in the pages-src branch
+ 85:  ac3f955 !  85:  ed0e0f7 fix a stupid typo
+--- a/ac3f955fc3b3e0c0227eb424bb6297f3ad073043	2025-01-16 13:09:10
++++ b/ed0e0f7fec120fefd009f1bd44f325e082278dd9	2025-01-16 13:09:10
+@@ -1,8 +1,8 @@
+ tree 41adba0ec8b53bf9d3f498ed84534d9a2384d314
+ parent [86]
+-author Ethan Meng <webmaster@rapidcow.org> 1737032950 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1737032950 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1737032950 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1737032950 +0800
+
+ fix a stupid typo
+
+ hey i'm still doing this website thing!
+ 86:  45e50c5 !  86:  483a75e new year update
+--- a/45e50c5a9537b83af698ba1681bbf8fc5cc80c74	2024-12-31 22:25:14
++++ b/483a75e6ac87969563a77ada8fffe14c4cdbd16c	2024-12-31 22:25:14
+@@ -1,8 +1,8 @@
+ tree b4512c02afcf98b96d165ae9a97e66b4fa0a7f41
+ parent [87]
+-author Ethan Meng <webmaster@rapidcow.org> 1735683914 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1735683914 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1735683914 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1735683914 +0800
+
+ new year update
+
+ all too unnecessarily long... blegh XP
+ 87:  de4984f !  87:  11bba94 publish this to sourcehut pages
+--- a/de4984f0d593e125f09e56ed35040a91e9d3f6cd	2024-12-31 06:50:12
++++ b/11bba94547ea8efd6c30078cc64fa2c1b43ffb6a	2024-12-31 06:50:12
+@@ -1,8 +1,8 @@
+ tree fd1527f8fa04ea27fe201040639ff6b35e2f97c5
+ parent [88]
+-author Ethan Meng <webmaster@rapidcow.org> 1735627801 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1735627812 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1735627801 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1735627812 +0800
+
+ publish this to sourcehut pages
+
+ mildly annoying that backspace doesn't work in xterm...
+ 88:  df54d37 !  88:  0890e0d AAAAAAAAHHHHH!!! UPDATE ALREADY!!!!!
+--- a/df54d37cb5cf9b13cd79996c52000f432768e128	2024-12-25 16:45:36
++++ b/0890e0d53d4e7a1ec3af1069bd3771b69bd5cdc7	2024-12-25 16:45:36
+@@ -1,8 +1,8 @@
+ tree 02c11348810b257695e7450c789c8f3f686efb4a
+ parent [89]
+-author Ethan Meng <webmaster@rapidcow.org> 1735145102 +0800
+-committer Ethan Meng <webmaster@rapidcow.org> 1735145136 +0800
++author Ethan Meng <rapidcow@RCs-T480s.local> 1735145102 +0800
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1735145136 +0800
+
+ AAAAAAAAHHHHH!!! UPDATE ALREADY!!!!!
+
+ I GOT TO DISTRACTED! I'M SORRY!!!! >n<
+ 89:  ef3d405 !  89:  ef021dc add "human"
+--- a/ef3d405841b138961bf332fdb68eceffe9c2f087	2024-12-19 08:20:26
++++ b/ef021dcab27b2a51baac902f7d2da1fd02790171	2024-12-19 08:20:26
+@@ -1,8 +1,8 @@
+ tree 93c4abd5bb023cc827f274f5bb4b68f766bea97a
+ parent [90]
+-author Ethan Meng <webmaster@rapidcow.org> 1734596426 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734596426 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734596426 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734596426 -0600
+
+ add "human"
+
+ how'd i miss that part?!? >;v
+ 90:  ff133bb !  90:  35d1db7 update
+--- a/ff133bb4b0430a09a6f21c6da26ac49469036251	2024-12-19 07:53:56
++++ b/35d1db76d269cb5151ff03daa498c1ac7e14182b	2024-12-19 07:53:56
+@@ -1,6 +1,6 @@
+ tree 5b0be31837989b0a0cd4a3c2347c02f61e652a7e
+ parent [91]
+-author Ethan Meng <webmaster@rapidcow.org> 1734594663 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734594836 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734594663 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734594836 -0600
+
+ update
+ 91:  2ebf653 !  91:  3e68c4b codeberg pages is down...
+--- a/2ebf65352e9b6f645de95fafdf29ccd70269f5a4	2024-12-18 23:17:38
++++ b/3e68c4beb8bf5520435b824de8f076806539fc67	2024-12-18 23:17:38
+@@ -1,8 +1,8 @@
+ tree a73b5a358dabeeb78bd58fd0183d5f4d55d19824
+ parent [92]
+-author Ethan Meng <webmaster@rapidcow.org> 1734563850 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734563858 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734563850 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734563858 -0600
+
+ codeberg pages is down...
+
+ well not down-down, something's weird and
+ 92:  72e6b65 !  92:  1945d80 add the modified time epoch back
+--- a/72e6b6501436c3ee22614f94598e187dee24b24a	2024-12-18 09:52:26
++++ b/1945d800594850ddbd6889b0e00211514b344022	2024-12-18 09:52:26
+@@ -1,8 +1,8 @@
+ tree 6eb98b525381ddcccd5593fc4d563f7bb7974af6
+ parent [93]
+-author Ethan Meng <webmaster@rapidcow.org> 1734515546 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734515546 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734515546 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734515546 -0600
+
+ add the modified time epoch back
+
+ yeah that was weird... that shouldn't have happened
+ 93:  3e8a728 !  93:  3afa8b7 update index.html with commit.pl
+--- a/3e8a728452c04d74029ec3a3fc890b9c11de0f53	2024-12-17 05:58:11
++++ b/3afa8b71b239eba232ff9b2c2a483c2a101d74bc	2024-12-17 05:58:11
+@@ -1,8 +1,8 @@
+ tree 7450cb7b1ea56dbaa3bc92c4dfe1b16956c97c5a
+ parent [94]
+-author Ethan Meng <webmaster@rapidcow.org> 1734414775 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734415091 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734414775 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734415091 -0600
+
+ update index.html with commit.pl
+
+ i should feel guilty but somehow i don't ^^;
+ 94:  1a6000a !  94:  c13e397 commit.pl agian because forgor
+--- a/1a6000aaa7cde7d0d8067c1ebd08aa805c9c0f71	2024-12-16 20:33:44
++++ b/c13e397c1039e1f2afe4cef7d5a76e718c73c002	2024-12-16 20:33:44
+@@ -1,8 +1,8 @@
+ tree 2ecf7d0695ff5fdc3acaec5066a9eb9af253783a
+ parent [95]
+-author Ethan Meng <webmaster@rapidcow.org> 1734381158 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734381224 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1734381158 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1734381224 -0600
+
+ commit.pl agian because forgor
+
+ me eepy me make mistake prone ;<
+ 95:  b29d8f7 !  95:  22de69b update again with commit.pl
+--- a/b29d8f7c68fa35bbd75030fbef1c2ed38bec5cf4	2024-12-16 20:26:22
++++ b/22de69bc3a9a1894ddd166a99655ab724bb0ca2a	2024-12-16 20:26:22
+@@ -1,8 +1,8 @@
+ tree f4b60d28fbca44d7f5bf3888a0ddfea3aa780071
+ parent [96]
+-author Ethan Meng <webmaster@rapidcow.org> 1734380782 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734380782 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734380782 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734380782 -0600
+
+ update again with commit.pl
+
+ something went wrong as i forgot to pass
+ 96:  06cd797 !  96:  c27e99f update with commit.pl!
+--- a/06cd7971cf987b7eeba36ea4e4fbd2ddf0025471	2024-12-16 15:48:05
++++ b/c27e99fc38e248de8bed117511fc092b2be570a7	2024-12-16 15:48:05
+@@ -1,8 +1,8 @@
+ tree fb2295606dc47cce4aea7d4144b06a646444d364
+ parent [97]
+-author Ethan Meng <webmaster@rapidcow.org> 1734364085 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734364085 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734364085 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734364085 -0600
+
+ update with commit.pl!
+
+ man committing by not using git-commit is so satisfying =v=
+ 97:  398aeea !  97:  506c453 initial migration
+--- a/398aeea8ecb3aaa9664abdcc56adaf0003698240	2024-12-16 02:15:58
++++ b/506c453a580d7438299cd48c4e2d3c8a5645b9a9	2024-12-16 02:15:58
+@@ -1,8 +1,8 @@
+ tree 0300c38c140a298fcf6f8ac491166b8df3ef0171
+ parent [98]
+-author Ethan Meng <webmaster@rapidcow.org> 1734315358 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734315358 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734315358 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734315358 -0600
+
+ initial migration
+
+ "automating" status creation with Template Toolkit ironically
+ 98:  7bb60f0 !  98:  6756061 update index accordingly
+--- a/7bb60f004754a3c124d61551d7a4d714800781db	2024-12-15 04:12:24
++++ b/67560613a0ba021a34635b57baaeacdf6881525c	2024-12-15 04:12:24
+@@ -1,8 +1,8 @@
+ tree aad6eda95a17a1679414da285262961ad7a2658a
+ parent [99]
+-author Ethan Meng <webmaster@rapidcow.org> 1734235129 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734235944 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734235129 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734235944 -0600
+
+ update index accordingly
+
+ i can't believe it's already 10 PM and i haven't eaten OxO
+ 99:  0ea0615 !  99:  07fdf38 more downtime needed, sorry......
+--- a/0ea06159d42a4cfab053a6ce715a7a4b7b935ecd	2024-12-15 03:45:09
++++ b/07fdf38a6bf92118770552c91f8d6c1719a962fa	2024-12-15 03:45:09
+@@ -1,8 +1,8 @@
+ tree 301547ecb1f865d89d0802fe00a3d3c35e743a14
+ parent [100]
+-author Ethan Meng <webmaster@rapidcow.org> 1734233200 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734234309 -0600
++author Ethan Meng <rapidcow@RCs-T480s.local> 1734233200 -0600
++committer Ethan Meng <rapidcow@RCs-T480s.local> 1734234309 -0600
+
+ more downtime needed, sorry......
+
+ then i got too carried away for writing this...
+100:  3e13415 ! 100:  9651dd9 forgot to convert this into HTML
+--- a/3e13415daadb6ee5a23ba4046ceade56581c25b1	2024-12-14 03:12:18
++++ b/9651dd9867ee850c1b219844baacb70076e0372c	2024-12-14 03:12:18
+@@ -1,8 +1,8 @@
+ tree 390cc4dce11116722a78957c28c2594310873ee8
+ parent [101]
+-author Ethan Meng <webmaster@rapidcow.org> 1734145938 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734145938 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1734145938 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1734145938 -0600
+
+ forgot to convert this into HTML
+
+ sorry... everything else should be good though
+101:  987b7e4 ! 101:  392aac8 validate RSS and inject link into index.html
+--- a/987b7e4d8c5c93b36b3eb1e0f4fda58f8741b813	2024-12-14 02:48:00
++++ b/392aac8627886d8b5b5af083852a0a917cdce745	2024-12-14 02:48:00
+@@ -1,8 +1,8 @@
+ tree 184b66e5a2e3d6c07ea5b083e5d4960561cab416
+ parent [102]
+-author Ethan Meng <webmaster@rapidcow.org> 1734144480 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734144480 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1734144480 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1734144480 -0600
+
+ validate RSS and inject link into index.html
+
+ can't believe it complained about my post
+102:  aa0c670 ! 102:  570b926 24-hour maintenance update
+--- a/aa0c670415ed7f06b3ade67a0c44f98e68b4080d	2024-12-14 02:37:16
++++ b/570b92658b3dd39f28944bd57ab54ddec4df3f96	2024-12-14 02:37:16
+@@ -1,8 +1,8 @@
+ tree aa1af7a58d6f0f5fbb3df592e389d60f438888ce
+ parent [103]
+-author Ethan Meng <webmaster@rapidcow.org> 1734143836 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1734143836 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1734143836 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1734143836 -0600
+
+ 24-hour maintenance update
+
+ gonna push this out as soon as possible, sorry...
+103:  1dbf692 ! 103:  5c90815 actually let me use the date now for this
+--- a/1dbf692fecd198d517c68b055264500f4d9255b9	2024-12-07 10:20:26
++++ b/5c9081539a94aa3a12c33e367ea46043350c8e92	2024-12-07 10:20:26
+@@ -1,8 +1,8 @@
+ tree 2671d63178c846bb35804b25e134aff9a2040554
+ parent [104]
+-author Ethan Meng <webmaster@rapidcow.org> 1733566725 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1733566826 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1733566725 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1733566826 -0600
+
+ actually let me use the date now for this
+
+ i'm biased against repeating digits, sorry (:
+104:  d5eba4d ! 104:  09ad66b update RSS!
+--- a/d5eba4d4b39543a35dca882739664e6afc80edd8	2024-12-07 10:10:59
++++ b/09ad66b4f17c27696b180059c35ca88b8b2ed3b2	2024-12-07 10:10:59
+@@ -1,8 +1,8 @@
+ tree 82745580eb5e3b8a1b05559af65eff0c2cbd2ad3
+ parent [105]
+-author Ethan Meng <webmaster@rapidcow.org> 1733566259 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1733566259 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1733566259 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1733566259 -0600
+
+ update RSS!
+
+ i am very careful this time to make sure it's valid and
+105:  61ca3e0 ! 105:  dbb20d2 add some more profound words in this comment
+--- a/61ca3e02af2a836e2b9338ab18849b857fa1c4a5	2024-12-07 09:26:48
++++ b/dbb20d2d9e9191aed2cffca82faede3b4a760cd8	2024-12-07 09:26:48
+@@ -1,8 +1,8 @@
+ tree 6b7cf6f75b1b65a1568c61106b39ccf7b41523de
+ parent [106]
+-author Ethan Meng <webmaster@rapidcow.org> 1733562295 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1733563608 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1733562295 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1733563608 -0600
+
+ add some more profound words in this comment
+
+ i felt like it and i did.  and this is one of the nice things
+106:  c37f1f8 ! 106:  7316ce7 update index.html because motivation :D
+--- a/c37f1f8dab2ca5304454054b28ea91b9a5852293	2024-12-07 08:54:10
++++ b/7316ce7aa7f6d5f9743a4996ac7d5c1e37f847fb	2024-12-07 08:54:10
+@@ -1,8 +1,8 @@
+ tree bf858d348fbc94b2f9d616f82043ed04509fea33
+ parent [107]
+-author Ethan Meng <webmaster@rapidcow.org> 1733561650 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1733561650 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1733561650 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1733561650 -0600
+
+ update index.html because motivation :D
+
+ it's middle of the night but i don't care ^^
+107:  83e7012 ! 107:  0a89856 delete typo in feed.html
+--- a/83e70121a892e4b2be59b1314ffc061405d267f4	2024-11-10 22:08:01
++++ b/0a898566b1361cc89fdda09ecbb7845fb4a0c0bd	2024-11-10 22:08:01
+@@ -1,8 +1,8 @@
+ tree c7e6a3691d1b892ec8e54c7e53f77f9b5179205a
+ parent [108]
+-author Ethan Meng <webmaster@rapidcow.org> 1731276481 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1731276481 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1731276481 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1731276481 -0600
+
+ delete typo in feed.html
+
+ saw this yesterday but i was't gonna come down
+108:  2e3e716 ! 108:  a4ff282 awguhgh i messed it all up so madly
+--- a/2e3e716eeec793f692c2bc5ed56a035bafba3555	2024-11-10 09:33:12
++++ b/a4ff2829099053ff09e8c50fd714d0660eb55c47	2024-11-10 09:33:12
+@@ -1,8 +1,8 @@
+ tree c3a3cef7834ddfcc24e21c529f16b97943d664dd
+ parent [109]
+-author Ethan Meng <webmaster@rapidcow.org> 1731231192 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1731231192 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1731231192 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1731231192 -0600
+
+ awguhgh i messed it all up so madly
+
+ this is why i shouldn't be updating RSS
+109:  16c5bae ! 109:  8294132 forgot to update the fields damnit DX
+--- a/16c5baea292123ecfe23ffdfcf5c7a666b361bea	2024-11-10 09:23:32
++++ b/8294132cbdfa0bba5e0ed411f88126b18397ee4e	2024-11-10 09:23:32
+@@ -1,6 +1,6 @@
+ tree ab76ffc5ceb7f8008598586d782955eddeb28500
+ parent [110]
+-author Ethan Meng <webmaster@rapidcow.org> 1731230612 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1731230612 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1731230612 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1731230612 -0600
+
+ forgot to update the fields damnit DX
+110:  179d248 ! 110:  0b068cd post RSS about neocities before i go to sleep
+--- a/179d248c746d08cc3b06162b72ce332481e1888f	2024-11-10 09:20:14
++++ b/0b068cd91485545bd9463343ddce3b7f5a4b553d	2024-11-10 09:20:14
+@@ -1,6 +1,6 @@
+ tree 3e3fc6cb48433aa44c2cd76bcfc3e456430ee7d6
+ parent [111]
+-author Ethan Meng <webmaster@rapidcow.org> 1731230414 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1731230414 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1731230414 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1731230414 -0600
+
+ post RSS about neocities before i go to sleep
+111:  ae56dfc ! 111:  4f534c7 re-re-format
+--- a/ae56dfc7fa439b9e3f638f5ee58dc10842557791	2024-11-06 19:59:01
++++ b/4f534c744be58610f7642674c53e8a7a0f308720	2024-11-06 19:59:01
+@@ -1,6 +1,6 @@
+ tree 4858668edf6c73b263b423948c2d3fad7632d1b8
+ parent [112]
+-author Ethan Meng <webmaster@rapidcow.org> 1730923141 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1730923141 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730923141 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730923141 -0600
+
+ re-re-format
+112:  569bf40 ! 112:  5a07823 re-format
+--- a/569bf409391d5662466d8ba564750474eda5213b	2024-11-06 19:56:23
++++ b/5a078239f659da256d0d51656bb36b43ec58d599	2024-11-06 19:56:23
+@@ -1,6 +1,6 @@
+ tree 4156b28da56542efe795d55170d16767ad26f1db
+ parent [113]
+-author Ethan Meng <webmaster@rapidcow.org> 1730922983 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1730922983 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730922983 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730922983 -0600
+
+ re-format
+113:  0261752 ! 113:  f77ee63 setup .domains like i did in url-shortener
+--- a/026175293d74b0ba5e229000af06b59a940765eb	2024-11-05 23:54:15
++++ b/f77ee63c0e70c3b111882a9c1d7fcd47e170c44b	2024-11-05 23:54:15
+@@ -1,6 +1,6 @@
+ tree 04ad506998c4fe8d250d6d2b1115268667ea73d9
+ parent [114]
+-author Ethan Meng <webmaster@rapidcow.org> 1730850855 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1730850855 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730850855 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730850855 -0600
+
+ setup .domains like i did in url-shortener
+114:  15b1c0c ! 114:  43724a2 update index.html
+--- a/15b1c0cff48397fb4266657851047534356c3dd2	2024-11-05 23:47:02
++++ b/43724a2220aed3ab9b2257faf5fe424a763e323d	2024-11-05 23:47:02
+@@ -1,6 +1,6 @@
+ tree a0e5ba6a4a09083bf38b9953d770d6457ee7de7b
+ parent [115]
+-author Ethan Meng <webmaster@rapidcow.org> 1730850345 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1730850422 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730850345 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730850422 -0600
+
+ update index.html
+115:  c52b900 ! 115:  09ff888 initialize status feed
+--- a/c52b900d1538573d5b116d52968d21d92f3387aa	2024-11-05 23:26:44
++++ b/09ff888cd2105e348e72381fab6ec18f8509bdf6	2024-11-05 23:26:44
+@@ -1,6 +1,6 @@
+ tree 5258aee3344e86a491317da363b13970664f6970
+ parent [116]
+-author Ethan Meng <webmaster@rapidcow.org> 1730849204 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1730849204 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730849204 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730849204 -0600
+
+ initialize status feed
+116:  fcfafb7 ! 116:  cdfee3d initial commit
+--- a/fcfafb77931102c4a124badc59ba633504c6ea60	2024-11-03 07:00:33
++++ b/cdfee3d46994cb837fa011736e30e756a10c6510	2024-11-03 07:00:33
+@@ -1,7 +1,7 @@
+ tree 317a4305c26f0fb9ed2450e5fe3d561d5bc514cd
+-author Ethan Meng <webmaster@rapidcow.org> 1730617233 -0600
+-committer Ethan Meng <webmaster@rapidcow.org> 1730617233 -0600
++author Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730617233 -0600
++committer Ethan Meng <rapidcow@RCs-MacBook-Pro.local> 1730617233 -0600
+
+ initial commit
+
+ (just to get this new branch to point to something)
