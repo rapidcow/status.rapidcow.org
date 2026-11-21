@@ -69,7 +69,7 @@ feed/2026/index.html \
 feed/2024.xml \
 feed/2025.xml \
 feed/2026.xml \
-:
+: optenv mkpub.pl
 # END feed years
 	cd -- ${A} && ./optenv ${B} ${^X} mkpub.pl ${a}/${<} ${@} > ${B}/${b}/${@}
 

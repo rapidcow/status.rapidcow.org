@@ -125,7 +125,7 @@ block('Makefile.in', 'feed years deps', map {
 } @year);
 block('Makefile.in', 'feed years',
 	(map { "$_ \\\n" } @index, @xml),
-	":\n");
+	": optenv mkpub.pl\n");
 block('Makefile.in', 'feed entries',
 	(map { "$_ \\\n" } @html),
 	": \${a}/\${\@:R}.dat skel/entry.html optenv mkpub.pl\n");
