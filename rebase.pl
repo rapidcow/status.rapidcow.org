@@ -70,6 +70,7 @@ sub hash
 }
 
 my %refs = map { chomp; split } split /^/, <<MAP;
+b424c90dfb48a11641d84e544e3995f2d7f5f5c9 refs/heads/main
 2f1d3a32310a5ea0dce4491360dcdf4499ea2afa refs/heads/pages
 3adca8a78d0f2a12419b2be1e06b24c1e7d07565 refs/heads/pages-src
 MAP
