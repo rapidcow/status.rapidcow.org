@@ -69,23 +69,6 @@ sub hash
 	return $hash,
 }
 
-foreach my $this (`git rev-list --all`) {
-	chomp $this;
-	my @parents;
-	foreach (`git cat-file commit $this`) {
-		next if /^ /;
-		if (s/^parent //) {
-			chomp;
-			push @parents, $_;
-		}
-		last if /^$/;
-	}
-	foreach my $past (@parents) {
-		push @{$futures{$past}}, $this;
-		push @{$parents{$this}}, $past;
-	}
-}
-
 my %refs = map { chomp; split } split /^/, <<MAP;
 2f1d3a32310a5ea0dce4491360dcdf4499ea2afa refs/heads/pages
 3adca8a78d0f2a12419b2be1e06b24c1e7d07565 refs/heads/pages-src
@@ -110,6 +93,29 @@ foreach my $sha (keys %refs) {
 		$peel{$sha} = $sha;
 	}
 }
+# Walk only what the refs above can reach, never `git rev-list --all`.
+# An unrelated ref must not change the answer, and the original commits
+# must keep working after the refs that used to point at them have moved
+# (e.g. once the rewritten branches have been pushed).
+my @roots = do { my %seen; grep { !$seen{$_}++ } values %peel };
+@roots or die "no refs to walk\n";
+foreach my $this (`git rev-list @roots`) {
+	chomp $this;
+	my @parents;
+	foreach (`git cat-file commit $this`) {
+		next if /^ /;
+		if (s/^parent //) {
+			chomp;
+			push @parents, $_;
+		}
+		last if /^$/;
+	}
+	foreach my $past (@parents) {
+		push @{$futures{$past}}, $this;
+		push @{$parents{$this}}, $past;
+	}
+}
+
 # A commit that mentions another commit by its full hash has to be
 # rewritten after it, or the mention would keep the old hash (this
 # can happen across branches, where neither is the other's ancestor).
@@ -118,7 +124,7 @@ my %deps = map { $_ => [ @{$parents{$_}} ] } keys %parents;
 {
 	local $/ = "\0";
 	my %mentions;
-	foreach (`git log --all --format=%H%n%B%x00`) {
+	foreach (`git log --format=%H%n%B%x00 @roots`) {
 		chomp;
 		s/\A\s+//;
 		next unless length;
