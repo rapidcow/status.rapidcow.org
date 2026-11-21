@@ -59,7 +59,8 @@ feed/2026/1781078968.dat \
 feed/2026/1781382529.dat \
 feed/2026/1781767809.dat \
 feed/2026/1782047196.dat \
-feed/2026/1794187472.dat
+feed/2026/1794187472.dat \
+feed/2026/1795221576.dat
 # END feed years deps
 # BEGIN feed years (scripts/update-needs)
 feed/2024/index.html \
@@ -123,6 +124,7 @@ feed/2026/1781382529.html \
 feed/2026/1781767809.html \
 feed/2026/1782047196.html \
 feed/2026/1794187472.html \
+feed/2026/1795221576.html \
 : ${a}/${@:R}.dat skel/entry.html optenv mkpub.pl
 # END feed entries
 	cd -- ${A} && ./optenv ${B} ${^X} mkpub.pl ${a}/${<} > ${B}/${b}/${@}
