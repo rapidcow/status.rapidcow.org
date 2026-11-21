@@ -14,6 +14,37 @@ my %REPLACE;
 my %futures;
 my %parents;
 
+# Identity rewrite: webmaster@rapidcow.org => rapidcow@HOST.
+#
+# The T480s got Linux between the afternoon of 2024-12-04 and the
+# morning of 2024-12-05 (US/Central).  Before that, everything made
+# under webmaster@ came from the MacBook Pro; after it, from the T480s.
+# No commit in any of the site repositories falls inside that window,
+# so any instant in it (this one is 2024-12-05 00:00 -0600) gives the
+# same answer.
+#
+# author and committer are judged separately, each by its own
+# timestamp, and each keeps its own timestamp and zone.
+#
+# %MBP_LATE lists the exceptions: commits made on the MacBook after
+# the cutoff (from the MacBook's own HEAD reflog), keyed by the full
+# hash of the ORIGINAL commit.
+use constant OLD_EMAIL => 'webmaster@rapidcow.org';
+use constant CUTOFF    => 1733378400;
+use constant HOST_MBP  => 'RCs-MacBook-Pro.local';
+use constant HOST_T480S => 'RCs-T480s.local';
+my %MBP_LATE = map { (split)[0] => 1 } split /^/, <<MBP_LATE;
+c37f1f8dab2ca5304454054b28ea91b9a5852293 update index.html because motivation :D
+61ca3e02af2a836e2b9338ab18849b857fa1c4a5 add some more profound words in this comment
+d5eba4d4b39543a35dca882739664e6afc80edd8 update RSS!
+1dbf692fecd198d517c68b055264500f4d9255b9 actually let me use the date now for this
+aa0c670415ed7f06b3ade67a0c44f98e68b4080d 24-hour maintenance update
+987b7e4d8c5c93b36b3eb1e0f4fda58f8741b813 validate RSS and inject link into index.html
+3e13415daadb6ee5a23ba4046ceade56581c25b1 forgot to convert this into HTML
+7507fea5dc034144d602f60d7027164944e91a5d eugh forgot to do the same here too
+1a6000aaa7cde7d0d8067c1ebd08aa805c9c0f71 commit.pl agian because forgor
+MBP_LATE
+
 $/ = "\012";
 $Data::Dumper::Useqq = 1;
 
@@ -201,6 +232,15 @@ my $i = 1; foreach (@walk) {
 	open my $tempfh, '+>', \(my $mem = "") or die "<:memory: error: $!";
 	print { $tempfh } `git cat-file commit $that`;
 
+	foreach my $role (qw(author committer)) {
+		my (undef, $email, $when, $zone) = get_identity($tempfh, $role);
+		next unless defined $email && $email eq OLD_EMAIL;
+		my $host = ($MBP_LATE{$this} || $when < CUTOFF)
+			? HOST_MBP : HOST_T480S;
+		replace_header($tempfh, \$mem, $role,
+			"$role Ethan Meng <rapidcow\@$host> $when $zone");
+	}
+
 	foreach my $past (@{$parents{$this} // []}) {
 		if (($last = $REPLACE{$past} // $past) ne $past) {
 			replace_header($tempfh, \$mem, "parent $past", "parent $last");
@@ -358,3 +398,18 @@ sub get_committer_date
 	die "no committer date???";
 }
 
+sub get_identity
+{
+	local $.;
+	local $/ = $/;
+	my ($tempfh, $role) = @_;
+	seek $tempfh, 0, SEEK_SET;
+	$. = 0;
+	while (<$tempfh>) {
+		last unless 1 .. /^$/;
+		if (/^\Q$role\E (.*) <(.*)> ([0-9]+) ([+-][0-9]{4})$/) {
+			return ($1, $2, $3, $4);
+		}
+	}
+	return;
+}
