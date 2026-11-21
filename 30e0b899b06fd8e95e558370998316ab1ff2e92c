@@ -1,0 +1,19 @@
+also the very fact that cloudflare's "white lie" would
+work is that they have access to their ZSK all the time...
+which is a valid assumption with MY zones!  The Pi zero
+holds the ZSKs and actually has to sign them; to have to
+sign a fresh key dynamically instead of pulling one out
+of the contiguous ranges delimited by either the names
+themselves (NSEC) or hashes of those names (NSEC3), is
+the WHOLE point of using NSEC -- it's to have a finite
+set of pre-signed records to deny the existence of the
+infinitely many possible names out there.  Cloudflare can
+do this merely means that they don't have this model; but
+not everyone is Cloudflare, both a global CDN and a DNS
+server!  (In particular DNS isn't always, well... at
+least trust-model wise, not everyone is a master and has
+persistent access to the zone-signing keys.  (Actually
+this is sort of making me regret doing that signing thing
+on the Pi because that means the Pi has to be alive for
+at least once a week.... yikes :x  Probably should have
+just done it on the VPSes.))
