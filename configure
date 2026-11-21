@@ -1,80 +1,102 @@
 #!/usr/bin/env perl
 #
-# configure -- written by `siteconf -i' version 0.0203.
-#
-# Keep local changes as a patch on top of this file (it is generated
-# deterministically, so the same arguments give the same text and the
-# patch keeps applying), rather than editing it in place and losing
-# them the next time `siteconf -i' is run.
+# configure -- written by `siteconf -i' version 0.03_00.
 #
 # options: -Sa=. -Sb=public -Sc=.cache -Obase_url=/ -Osite_url=https://status.rapidcow.org -Orewrite_url=1
 #
+
 use utf8;
-use 5.006;
+use 5.008;
 use strict;
 use warnings;
-use open ':std', ':encoding(UTF-8)';
 
-use Cwd qw(getcwd abs_path);
-use File::Basename;
+use Cwd qw( getcwd abs_path );
+use Encode ();
+use File::Basename qw( basename );
 use File::Spec;
 use FindBin;
 use Getopt::Long qw( GetOptions );
 
-# --- what we need: [ module, minimum version ], from `siteconf -i -M',
-# and the preset if any (which comes first, so it can add to the list)
+# siteconf 0.03 does not support Unicode-less
+# GenGenLib.pm, so this is a hard requirement.
+use RdKw::WwW::GenGenLib 0.0100 qw( read_make write_make );
+
+# Initialize locale and gettext.
+use RdKw::I18N::CodeSets ();
+use RdKw::L10N::TextDomain ':module' => 'RdKw::WwW::SiteConf::L10N';
+
+my ($cs, $me, $offset, $prog);
+
+BEGIN {
+	$cs = RdKw::I18N::CodeSets->locale;
+	$me = basename($0);
+
+	$cs->parse_from_env('SITECONF_CODESETS', prog => $me);
+	$offset = $cs->parse_from_argv(\@ARGV, prog => $me);
+	$cs->initstd( stderr => Encode::FB_PERLQQ() );
+}
+
+$prog = basename($cs->un_argv($0, { check => Encode::FB_PERLQQ() }));
+
+# Module requirements: [ module, minimum version ]
 our @NEED;
 BEGIN {
 	@NEED = (
-		[ "RdKw::WwW::GenGenLib", 0 ],
+
 	);
 }
 
-# ---
-
-# Look before we load: a missing module is reported by us, all of
-# them at once, and not by the first `use' to trip over it.
 BEGIN {
 	my @bad;
-	for my $need (@NEED) {
+	foreach my $need (@NEED) {
 		my ($module, $min) = @$need;
 		(my $file = "$module.pm") =~ s!::!/!g;
-		eval { require $file; 1 }
-			or do { push @bad, "missing $module"; next };
-		$min and !eval { $module->VERSION($min); 1 }
-			and push @bad, "$module: version $min required"
-				. " (this is " . (defined $module->VERSION ? $module->VERSION : '?') . ")";
+		unless (eval { require $file; 1 }) {
+			push @bad, $cs->diag(__("missing %s"), $module);
+			next;
+		}
+		unless (!$min || eval { $module->VERSION($min); 1 }) {
+			push @bad, $cs->diag(__("%s: version %s required (this is %s)"),
+				$module, $min,
+				defined $module->VERSION ? $module->VERSION : '?');
+		}
 	}
 	if (@bad) {
-		print STDERR "E: $_\n" for @bad;
-		die "E: " . scalar(@bad) . " module" . (@bad == 1 ? '' : 's')
-			. " missing.  Looks like you got some work to do...\n";
+		print STDERR $cs->tagmsg(E => $_) for @bad;
+		my $count = @bad;
+		die $cs->tagmsg(E => $cs->diag(__n(
+			"%d module missing.  Looks like you got some work to do...",
+			"%d modules missing.  Looks like you got some work to do...",
+			$count), $count));
 	}
 }
 
-use RdKw::WwW::GenGenLib qw(read_make write_make);
+sub to_fs { $cs->to_fs(@_, { prog => $prog }) }
+sub un_fs { $cs->un_fs(@_, { prog => $prog }) }
 
-#
-# How can ./configure work without siteconf -g afterwards
-# Anyways, let's just port this one function in the (very
-# weird) circumstance where SiteConf.pm is somehow missing.
-#
+# Quotes for POSIX shell (/bin/sh).
+# Ported from SiteConf.pm.
 sub shell_quote
 {
 	my ($s) = @_;
-	# Nothing in it for the shell to mangle?  Then leave it be.
+	# Nothing to mangle for the shell?  Then leave it be.
 	return $s if $s =~ m!\A[A-Za-z0-9_./:@%+=,-]+\z!;
-	# otherwise: single quotes, and ' itself as '\''
+	# Otherwise: single quotes, and ' itself as '\''
 	$s =~ s!'!'\\''!g;
 	"'$s'";
 }
 
-my $prog = basename($0);
+# This defines the notion of "null string", so
+# defaults can work like ${var:-${var_default}}.
+sub isnull
+{
+	!(defined $_[0]) || !(length $_[0]);
+}
 
-# Baked in by `siteconf -i'.
-#   D   definitions, which are filesystem routing and nothing else
-#   O   options, which alter the state of the build
-my %Dd = (
+# Defaults set by `siteconf -i' for:
+#   %D  definitions, mostly of filesystem routing
+#   %O  options, which alter the state of the build
+our %Dd = (
 	A => ".",
 	B => ".",
 	F => "MANIFEST",
@@ -85,198 +107,214 @@ my %Dd = (
 	clean => "clean",
 	e => ".ok",
 );
-my %Od = (
+our %Od = (
 	base_url => "/",
 	rewrite_url => 1,
 	site_url => "https://status.rapidcow.org",
 );
 
-sub isnull
+# Help text: [ flag, description, default ]
+# The default is deferred in a lambda for some reason.
+our @VARHELP = (
+	[ '-DA', N__('Project root, seen from current directory'), sub { $Dd{A} } ],
+	[ '-DB', N__('Build directory, seen from the source tree'), sub { $Dd{B} } ],
+	[ '-Da', N__('Source directory, seen from the source tree'), sub { $Dd{a} } ],
+	[ '-Db', N__('Target directory, seen from the build directory'), sub { $Dd{b} } ],
+	[ '-Dc', N__('Cache directory, seen from the build directory'),
+		sub { $Dd{c} ne $Dd{b} ? $Dd{c} : '-Db' } ],
+	[ '-DR', N__('Transformation rules, from current directory'), sub { $Dd{R} } ],
+	[ '-DF', N__('Manifest, from current directory'), sub { $Dd{F} } ],
+	[ '-De', N__('Directory marker'), sub { $Dd{e} } ],
+	[ '-Dclean', N__('Clean rule template'), sub { $Dd{clean} } ],
+);
+our @OPTHELP = (
+	[ "-Obase_url", N__("Host-relative base URL"), sub { $Od{base_url} } ],
+	[ "-Orewrite_url", "", sub { $Od{rewrite_url} } ],
+	[ "-Osite_url", N__("Absolute base URL"), sub { $Od{site_url} } ],
+);
+our @FLAGHELP = (
+	[ '-C', N__("Code sets overrides (see I18N::CodeSets)") ],
+	[ '-h', N__('This help message'), undef, '--help, -?' ],
+	[ '--reset', N__('Clear all configuration at this point') ],
+	[ '-q', N__('Disable tips'), undef, '--quiet' ],
+);
+
+sub section
 {
-	!(defined $_[0]) || !(length $_[0]);
+	my ($w, @row) = @_;
+	my $text = '';
+	for (@row) {
+		my ($syntax, $msgid, $default, $alias) = @$_;
+		my @line = split /\n/, length $msgid ? __($msgid) : '';
+		@line or @line = ('');
+		if ($default) {
+			my $last = pop @line;
+			push @line, length $last
+				? $cs->diag(__("%s (default: %s)"), $last, $default->())
+				: $cs->diag(__("(default: %s)"), $default->());
+		}
+		if (defined $alias) {
+			my $last = pop @line;
+			push @line, $cs->diag(__("%s (alias: %s)"), $last, $alias);
+		}
+		$text .= sprintf("  %-*s %s\n", $w, $syntax, shift @line);
+		$text .= ' ' x ($w + 3) . "$_\n" for @line;
+	}
+	$text =~ s/ +$//mg;
+	$text;
 }
 
-my $usage = <<EOM;
-usage: $prog [-Dvar=val ...] [-Ovar=val ...] [--reset] [--mkpath] [-hq]
+my $usage = do {
+	# Don't make it wider than 12 columns (including space).
+	# My screen isn't that wide; make it wider if yours is...
+	my $w = 11;
+	$cs->diag(__("usage: %s"), $cs->diag("%#q %s", $prog =>
+		  '[-C codeset ...] [-Dvar=val ...] [-Ovar=val ...] [--reset] [-hq]'))
+	. "\n\n" . __("The following variables may be defined:") . "\n\n"
+	. section($w, @VARHELP)
+	. (@OPTHELP ? "\n" . __("Options with defaults:") . "\n\n" . section($w, @OPTHELP) : '')
+	. "\n" . __("Anything else you may -D or -O goes into MY/config.mk or MY/option.mk\n"
+		. "respectively, for the rulebook or for the files being transformed.") . "\n"
+	. "\n" . section($w, @FLAGHELP)
+	. "\n" . __("See also WwW::SiteConf::Configure.") . "\n";
+};
 
-The following variables may be defined:
-
-  -DA         Project root, seen from current directory (default: $Dd{A})
-  -DB         Build directory, seen from the source tree (default: $Dd{B})
-  -Da         Source directory, seen from the source tree (default: $Dd{a})
-  -Db         Target directory, seen from the build directory (default: $Dd{b})
-  -Dc         Cache directory, seen from the build directory (default: @{[ $Dd{c} ne $Dd{b} ? $Dd{c} : '-Db' ]})
-  -DR         Transformation rules, from current directory (default: $Dd{R})
-  -DF         Manifest, from current directory (default: $Dd{F})
-  -De         Directory marker (default: $Dd{e})
-  -Dclean     Clean rule template (default: $Dd{clean})
-
-Options with defaults:
-
-  -Obase_url  Host-relative base URL (default: $Od{base_url})
-  -Orewrite_url (default: $Od{rewrite_url})
-  -Osite_url  Absolute base URL (default: $Od{site_url})
-
-Anything else you may -D or -O goes into MY/config.mk or MY/option.mk
-respectively, for the rulebook or for the files being transformed.
-
-  -h          This help message (alias: --help, -?)
-  --reset     Clear all configuration at this point
-  -q          Disable tips (alias: --quiet)
-  --mkpath    Create non-leaf build directory components
-
-See also `perldoc RdKw::WwW::SiteConf::Configure'.
-EOM
-
-# `use open' covers the standard handles and `use utf8' our source,
-# but not @ARGV: those arrive as raw bytes, and would be encoded a
-# second time on their way into MY/*.mk.  (Anything that is not
-# valid UTF-8 is left alone.)
-utf8::decode($_) for @ARGV;
-
-my (%D, %O, $reset, $shutup, $mkpath);
-
-# -Dname=val, -Oname=val (a lone -Dname is -Dname=)
+# Parse key-value options (-Dname=val, -Oname=val).
+# Lone -Dname / -Oname is parsed as { name => undef }.
 sub setter
 {
 	my ($S, $H) = @_;
 	sub {
 		my ($k, $v) = split(/=/, $_[1], 2);
-		length $k or die "$prog: -$S: empty name.\n";
-		$H->{$k} = defined $v ? $v : "";
+		length $k or die $cs->tagmsg($prog =>
+			# HEY!  %s is the option, -D or -O.
+			$cs->diag(__("%s: empty name."), "-$S"));
+		$H->{$k} = $v;
 	};
 }
 
+my (%D, %O, $reset, $shutup);
+@ARGV = $cs->un_argv(@ARGV, { start => 1 + $offset, prog => $prog });
 Getopt::Long::Configure(qw( bundling no_ignore_case ));
 GetOptions(
 	'h|help|?' => sub { print $usage; exit 0 },
 	'reset'    => sub { %D = (); %O = (); $reset = 1 },
 	'q|quiet'  => \$shutup,
-	'mkpath'   => \$mkpath,
 	'D=s'      => setter(D => \%D),
 	'O=s'      => setter(O => \%O),
-) or die +( split(/^/, $usage, 2) )[0];
-@ARGV and die "$prog: too many arguments\n";
+	# Reject misplaced -C arguments
+	'C:s' => sub { die $cs->diag("%#q: %s\n", $prog, __("too late to -C now.")); })
+	or die +( split(/(?<=\n)\n/m, $usage) )[0];
+@ARGV and die $cs->diag("%#q: %s\n", $prog, __("too many arguments"));
 
-# Store where we were started from: for telling the user what
-# to run after configuring.
-my $start = getcwd();
+# Store the starting directory: for the
+# `siteconf -g' hint after configuring.
+my $start = un_fs(getcwd());
 
-# We go to the source tree, which is where A says it is,
-# seen from where we have been started (not from this script).
+# Find the source tree, which is where ${A} says it is,
+# observed from the starting directory (not necessarily
+# relative to the base directory of this script).
 my $A = isnull($D{A}) ? $Dd{A} : $D{A};
-my $srcdir = abs_path(File::Spec->rel2abs($A, $start));
-defined $srcdir or die "E: cannot find the project root ($A): $!\n";
-chdir $srcdir or die "E: cannot chdir to $srcdir: $!\n";
+my $Adir = abs_path(to_fs(File::Spec->rel2abs($A, $start)));
+defined $Adir or die $cs->tagmsg(E => $cs->diag(__(
+	'cannot find ${A} (aka %q): %m'), $A));
+$Adir = un_fs($Adir);
+chdir to_fs($Adir) or die $cs->tagmsg(E => $cs->diag(__(
+	'cannot chdir to ${A} (aka %q): %m'), $Adir));
 
-# -DB is the build directory, seen from the source tree; like
-# `cmake -B' we go there, and make it if it is not there.  Its
-# spelling is kept as is -- absolute or not.  It is a statement about
-# *this* run: nothing about it is ever read back from MY/config.mk,
-# which is the very file it is about to choose.
+# ${B} is the build directory, seen from the source tree,
+# like `cmake -B'.  Determine it now from the command-line
+# or the configured defaults so we know where MY/*.mk are.
+# Like ${A}, we assume this path already exists.
 my $B = isnull($D{B}) ? $Dd{B} : $D{B};
-unless (-d $B) {
-	# Please do not --mkpath unless you absolutely need to.
-	# This is only provided if you ABSOLUTELY depend on the
-	# old behavior.  Consider running the mkdir -p equivalent
-	# on your system and setting the approrpiate permission
-	# or ACL bits, and at MOST leave the leaf directory to
-	# us to create it.
-	if ($mkpath) {
-		require File::Path;
-		File::Path::make_path($B, { error => \my $err });
-		if (@$err) {
-			my ($path, $why) = %{ $err->[0] };
-			die "E: cannot create " . (length $path ? $path : $B) . ": $why\n";
-		}
-	} else {
-		mkdir $B or $!{EEXIST}   # Forgive race condition...
-			or die "E: cannot mkdir $B: $!" . ($!{ENOENT}
-			# Provide a plausible explanation for ENOENT.
-			# There might be weirder cases with symlinks,
-			# but I'm not gonna investigate further lol.
-			? " (missing non-leaf components?)\n"
-			: "\n");
-	}
-}
-chdir $B or die "E: cannot chdir to $B: $!\n";
-my $Babs = getcwd();
+chdir to_fs($B) or die $cs->tagmsg(E => $cs->diag(__(
+	'cannot chdir to ${B} (aka %q): %m'), $B));
+my $Bdir = un_fs(getcwd());
 
-# Files first, command line over them -- unless --reset said otherwise.
+# Configs and options inherit from ${B}/MY/*.mk UNLESS
+# they have been --reset at least once, in which case
+# the %D and %O now are fine and don't require merging.
 unless ($reset) {
-	my %Dc = %D;   # cool times
-	my %Oc = %O;   # trade anyone?
-	%D = -f "MY/config.mk" && -r _ ? read_make("MY/config.mk") : ();
-	# A c that was the same as b (as it was last time: no distinction
-	# between build and cache, however it came to be) follows b, if b is
-	# now said to be something else -- unless c is said too.
-	$D{c} = $Dc{b} if !exists $Dc{c} && exists $Dc{b} && !isnull($D{c})
-		&& !isnull($D{b}) && $D{c} eq $D{b};
-	%O = -f "MY/option.mk" && -r _ ? read_make("MY/option.mk") : ();
+	my %Dc = %D;
+	my %Oc = %O;
+	%D = -f "MY/config.mk" && -r _ ? read_make("MY/config.mk", prog => $prog) : ();
+	# A ${c} that is read the same as ${b} is
+	# considered to be ``sticky'' and follows
+	# ${b} unless explicitly overridden via -Dc.
+	$D{c} = $Dc{b} if !exists $Dc{c} && exists $Dc{b}
+		&& !isnull($D{c}) && !isnull($D{b}) && $D{c} eq $D{b};
+	%O = -f "MY/option.mk" && -r _ ? read_make("MY/option.mk", prog => $prog) : ();
 	@D{keys %Dc} = values %Dc;
 	@O{keys %Oc} = values %Oc;
 }
 
-# Both are facts about where we are standing right now, so we clobber
-# whatever MY/config.mk said.  They are still written out, so that
-# whatever makes the Makefile need only read MY/*.mk.
-#
-#   A  the source tree, seen from the build dir (`.' in-tree)
-#   B  the build dir, seen from the source tree (`.' in-tree)
-# An absolute A or B is spelled as it was given.
+# Set base paths according to our knowledge.
+#   ${A}  the source tree, seen from the build dir (`.' in-tree)
+#   ${B}  the build dir, seen from the source tree (`.' in-tree)
+# An absolute ${A} or ${B} is spelled as it was given.
 $D{B} = $B;
 $D{A} = File::Spec->file_name_is_absolute($A) ? $A
-	: File::Spec->abs2rel($srcdir, $Babs);
+	: File::Spec->abs2rel($Adir, $Bdir);
 
-# What was not said, is the default (even if it was said to be empty).
-# (c is below: if it is b by default, it is whatever b is now)
-for my $k (keys %Dd) {
+# Set other paths and other variables.
+foreach my $k (keys %Dd) {
 	next if $k eq 'c';
 	$D{$k} = $Dd{$k} if isnull($D{$k});
 }
-for my $k (keys %Od) {
+foreach my $k (keys %Od) {
 	$O{$k} = $Od{$k} if isnull($O{$k});
 }
 
-defined &preset_finish and preset_finish(\%D, \%O);
+# If there is a preset, validate our state there.
+preset_finish(\%D, \%O) if defined &preset_finish;
 
-for my $k (qw( a b R F )) {
+foreach my $k (qw( a b R F )) {
 	$D{$k} =~ s!/+$!!;
-	length $D{$k} or die "E: `$k' may not be empty.\n";
+	length $D{$k} or die $cs->tagmsg(E => $cs->diag(__(
+		'${%s} may not be empty.'), $k));
 }
-# b is a directory we create rules under, one parent at a time; that
-# walk only ends at `.', so it must be relative.  (a, on the other
-# hand, is free to be absolute: out-of-tree builds.)
+# ${b} is a directory we create rules under, one parent at a time;
+# that walk ends at `.', so it must be relative.  (${a}, on the
+# other hand, is free to be absolute for foreign source files.)
 File::Spec->file_name_is_absolute($D{b})
-	and die "E: `b' prefix must be a relative path.\n";
-# c, the cache: -Dc, or else -Sc (which made it a default above), or
-# else b.  It is always written, so that it is never taken to be b by
-# something that reads MY/config.mk.
+	and die $cs->tagmsg(E => $cs->diag(__(
+	'${%s} prefix must be a relative path.'), 'b'));
+# ${c}, the cache: defaults to -Dc from the command-line, or
+# else -Sc (but *only* if it differs from -Sb), or else ${b}.
+# It is always defined since 0.02_01, though it is opt-in.
 isnull($D{c}) and $D{c} = !isnull($Dd{c}) && $Dd{c} ne $Dd{b} ? $Dd{c} : $D{b};
 $D{c} =~ s!/+$!!;
-length $D{c} or die "E: `c' may not be empty.\n";
+length $D{c} or die $cs->tagmsg(E => $cs->diag(__(
+	'${%s} may not be empty.'), 'c'));
+# We also create rules under ${c}, so it must be relative too.
 File::Spec->file_name_is_absolute($D{c})
-	and die "E: `c' prefix must be a relative path.\n";
-$D{e} =~ m!/! and die "E: `e' may not contain a slash.\n";
+	and die $cs->tagmsg(E => $cs->diag(__(
+	'${%s} prefix must be a relative path.'), 'c'));
+$D{e} =~ m!/! and $cs->tagmsg(E => $cs->diag(__(
+	'${%s} may not contain a slash.'), 'e'));
 
-# MY/option.mk first, or this would be circular.
--d 'MY' or mkdir 'MY' or die "mkdir MY: $!\n";
-for my $f ([ option => \%O ], [ config => \%D ]) {
+-d 'MY' or mkdir 'MY' or die $cs->tagmsg(E => $cs->diag(__(
+	"cannot mkdir %q: %m"), 'MY'));
+foreach my $f ([ config => \%D ], [ option => \%O ]) {
 	my ($name, $H) = @$f;
-	my $what = write_make("MY/$name.mk", $H, $prog);
-	$what and print STDERR ($what > 1 ? "Writing" : "Updating"),
-		" MY/$name.mk\n" unless $shutup;
+	my $what = write_make("MY/$name.mk", $H, prog => $prog);
+	$what and print STDERR $cs->diag(
+		$what > 1 ? __("Writing %#q") : __("Updating %#q"),
+		"MY/$name.mk"), "\n" unless $shutup;
 }
 
-# Compute $B for siteconf -g, as seen from the current directory
-# (not from the source tree, which is where -DB is seen from);
-# an absolute one is spelled as it was given, like in config.mk
-my $Bhere = File::Spec->file_name_is_absolute($B) ? $B
-	: File::Spec->abs2rel($Babs, $start);
-my $where = $Bhere eq '.' ? '' : " -B " . shell_quote($Bhere);
+# Compute $B for `siteconf -g', as seen from the starting directory
+# (not from the source tree, which is where $D{B} is seen from);
+# an absolute one is spelled as it was given, like in config.mk.
+my $Brel = File::Spec->file_name_is_absolute($B) ? $B
+	: File::Spec->abs2rel($Bdir, $start);
+my $Bcmd = $Brel eq '.' ? '' : " -B " . shell_quote($Brel);
 unless ($shutup) {
-	print STDERR "Done!\n";
-	print STDERR "To generate build script, run: siteconf -g$where\n";
+	print STDERR __("Done!"), "\n";
+	print STDERR $cs->diag(__(
+		# HEY!  %s is a command.
+		"To generate build script, run: %s"),
+		"siteconf -g$Bcmd"), "\n";
 }
 
 exit 0;
