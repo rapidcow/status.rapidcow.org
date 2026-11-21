@@ -1,8 +1,4 @@
 This is the source code of status.rapidcow.org.
-It is currently made public in the interest of showing
-the inner workings of the status page.  You may study
-the code and the structure, but do not re-publish or
-archive the content verbatim.
 
 The good stuff is tracked in the other two branches:
   pages       contains the raw content generated from pages-src
