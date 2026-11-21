@@ -1,0 +1,56 @@
+$ ./deploy.sh
++ git archive status/pages -o site.tar.gz
+++ mktemp -d deploy.sh.XXXXXXXX
++ tmpdir=deploy.sh.am62HgE4
++ trap 'rm -rf "$tmpdir"' EXIT
++ tar xvf site.tar.gz -C deploy.sh.am62HgE4
+feed.html
+feed.xml
+index.html
+robots.txt
++ /usr/bin/wrangler deploy --assets deploy.sh.am62HgE4 --compatibility-date 2026-05-27 --domain status.rapidcow.org --name rc-status
+
+ ⛅️ wrangler 4.82.2 (update available 4.99.0)
+─────────────────────────────────────────────
+
+✘ [ERROR] A request to the Cloudflare API (/accounts/c967fd4a643515ab75a5d90d6a8f1eb1/workers/services/rc-status) failed.
+
+  Authentication error [code: 10000]
+
+Getting User settings...
+👋 You are logged in with an OAuth Token. Unable to retrieve email for this user. Are you missing the `User->User Details->Read` permission?
+
+🔓 Token Permissions:
+Scope (Access)
+- account (read)
+- user (read)
+- workers (write)
+- workers_kv (write)
+- workers_routes (write)
+- workers_scripts (write)
+- workers_tail (read)
+- d1 (write)
+- pages (write)
+- zone (read)
+- ssl_certs (write)
+- ai (write)
+- ai-search (write)
+- ai-search (run)
+- queues (write)
+- pipelines (write)
+- secrets_store (write)
+- artifacts (write)
+- flagship (read)
+- flagship (write)
+- containers (write)
+- cloudchamber (write)
+- connectivity (admin)
+- email_routing (write)
+- email_sending (write)
+- browser (write)
+- offline_access
+🪵  Logs were written to "/home/.config/.wrangler/logs/wrangler-2026-06-10_08-14-12_981.log"
++ rm -rf deploy.sh.am62HgE4
+
+aw what the FUCK now cloudflare >:((( i am NOT in the mood
+for this shit man!!!!
